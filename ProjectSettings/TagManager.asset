@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - System
+  - Environment
+  - Cursor
+  - Grass
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Size
+    uniqueID: 2183070823
+    locked: 0
+  - name: Map
+    uniqueID: 1361345399
+    locked: 0
+  - name: Sky
+    uniqueID: 664790985
+    locked: 0
+  - name: Item
+    uniqueID: 1273403493
+    locked: 0
+  - name: Animal
+    uniqueID: 2508120485
+    locked: 0
