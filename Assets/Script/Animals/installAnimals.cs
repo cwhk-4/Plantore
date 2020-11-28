@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//1122123
 public class installAnimals : MonoBehaviour
 {
     public GameObject lion;
