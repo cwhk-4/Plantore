@@ -13,7 +13,7 @@ public class ItemStorage : MonoBehaviour
     private void Start( )
     {
         spriteRenderer = GetComponent<SpriteRenderer>( );
-        //spriteRenderer.color = Color.clear;
+        spriteRenderer.color = Color.clear;
     }
 
     private void Update( )
@@ -26,6 +26,7 @@ public class ItemStorage : MonoBehaviour
         {
             childGO = null;
         }
+
     }
 
     private void OnMouseOver( )
@@ -39,4 +40,10 @@ public class ItemStorage : MonoBehaviour
             spriteRenderer.color = notAvailable;
         }
     }
+
+    private void OnMouseExit()
+    {
+        spriteRenderer.color = Color.clear;
+    }
+
 }
