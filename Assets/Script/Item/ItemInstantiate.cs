@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class ItemInstantiate : MonoBehaviour
 {
-    public GameObject environment;
+    public GameObject parentGO;
     public GameObject grass;
     private Vector3 mousePos;
-
-    private void Start( )
-    {
-        environment = GameObject.FindWithTag( "Environment" );
-    }
-
     private void Update( )
     {
         mousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
@@ -22,7 +16,9 @@ public class ItemInstantiate : MonoBehaviour
         if( Input.GetMouseButtonDown( 0 ) )
         {
             var item = Instantiate( grass, mousePos, Quaternion.identity );
-            item.transform.parent = environment.transform;
+            //caution
+            //set parentGO
+            item.transform.parent = parentGO.transform;
             Destroy( this.gameObject );
         }
     }

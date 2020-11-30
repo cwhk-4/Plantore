@@ -5,8 +5,7 @@ using UnityEngine;
 public class ItemStorage : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    [SerializeField]private GameObject childGO;
-
+    public GameObject childGO;
     public Color available;
     public Color notAvailable;
 
@@ -45,5 +44,4 @@ public class ItemStorage : MonoBehaviour
     {
         spriteRenderer.color = Color.clear;
     }
-
 }
