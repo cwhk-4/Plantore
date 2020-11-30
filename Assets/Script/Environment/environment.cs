@@ -29,6 +29,7 @@ public class environment : MonoBehaviour
     {
         environmentType( _environment );
         changeEnvironment( );
+        Debug.Log( _environment );
     }
 
     void environmentType( ENVIRONMENT _environment )

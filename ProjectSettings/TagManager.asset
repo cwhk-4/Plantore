@@ -8,6 +8,9 @@ TagManager:
   - Environment
   - Cursor
   - Grass
+  - lion
+  - zebra
+  - tag
   layers:
   - Default
   - TransparentFX

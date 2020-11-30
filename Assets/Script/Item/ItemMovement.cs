@@ -12,6 +12,10 @@ public class ItemMovement : MonoBehaviour
 
     private bool isOverGO = false;
 
+    //new
+    GameObject _grass;
+    public static bool _item;
+
     private void Start( )
     {
         cursor = GameObject.FindWithTag( "Cursor" );
@@ -27,6 +31,7 @@ public class ItemMovement : MonoBehaviour
         {
             moveItem( );
         }
+        itemIn( );
     }
 
     private void OnMouseOver( )
@@ -67,5 +72,19 @@ public class ItemMovement : MonoBehaviour
     private void OnDestroy( )
     {
         isMoving = false;
+    }
+
+    //new
+    public void itemIn( )
+    {
+        _grass = GameObject.FindGameObjectWithTag( "Grass" );
+        if ( _grass != null )
+        {
+            _item = true;
+        }
+        else if ( _grass == null )
+        {
+            _item = false;
+        }
     }
 }
