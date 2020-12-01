@@ -14,6 +14,8 @@ public class ItemMovement : MonoBehaviour
 
     private GameObject parentGO;
 
+    private bool parentHvChild = false;
+
     //new
     GameObject _grass;
     public static bool _item;
@@ -52,9 +54,12 @@ public class ItemMovement : MonoBehaviour
             {
                 if( isMoving )
                 {
-                    isMoving = false;
-                    ItemStorage.isMoving = false;
-                    this.transform.parent = parentGO.transform;
+                    if( !parentHvChild )
+                    {
+                        isMoving = false;
+                        ItemStorage.isMoving = false;
+                        this.transform.parent = parentGO.transform;
+                    }  
                 }
                 else
                 {
@@ -87,10 +92,13 @@ public class ItemMovement : MonoBehaviour
     {
         if(other.gameObject.tag == "Grid")
         {
-            if(!other.gameObject.GetComponent<ItemStorage>().hvChild)
+            parentHvChild = other.gameObject.GetComponent<ItemStorage>().hvChild;
+
+            if(!parentHvChild)
             {
                 parentGO = other.gameObject; 
             }
+
         }
     }
 
