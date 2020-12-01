@@ -4,22 +4,37 @@ using UnityEngine;
 
 public class ItemInstantiate : MonoBehaviour
 {
-    public GameObject parentGO;
+    public static GameObject parentGO = null;
     public GameObject grass;
     private Vector3 mousePos;
+    public ItemStorage storage;
+
     private void Update( )
     {
+
         mousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
         mousePos = new Vector3( mousePos.x, mousePos.y, 0 );
         this.transform.position = mousePos;
 
-        if( Input.GetMouseButtonDown( 0 ) )
+        if( parentGO != null )
         {
-            var item = Instantiate( grass, mousePos, Quaternion.identity );
-            //caution
-            //set parentGO
-            item.transform.parent = parentGO.transform;
-            Destroy( this.gameObject );
+            storage = parentGO.GetComponent<ItemStorage>( );
+        
+            if( Input.GetMouseButtonDown( 0 ) )
+            {
+                if( !storage.hvChild )
+                {
+                    ItemStorage.isInstantiating = false;
+                    var item = Instantiate( grass, mousePos, Quaternion.identity );
+                    item.transform.parent = parentGO.transform;
+                    Destroy( this.gameObject );
+                }
+            }
         }
+    }
+
+    public static void setParentGO( GameObject parent ) 
+    {
+        parentGO = parent;
     }
 }

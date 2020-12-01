@@ -10,7 +10,9 @@ public class ItemMovement : MonoBehaviour
     private bool isMoving = false;
     public ItemCountDown itemCountDown;
 
-    private bool isOverGO = false;
+    public GameObject tempParent;
+
+    private GameObject parentGO;
 
     //new
     GameObject _grass;
@@ -23,6 +25,8 @@ public class ItemMovement : MonoBehaviour
 
         isMoving = false;
         itemCountDown = GetComponentInChildren<ItemCountDown>( );
+
+        tempParent = GameObject.FindWithTag("Temp Parent");
     }
 
     void Update()
@@ -30,7 +34,9 @@ public class ItemMovement : MonoBehaviour
         if( isMoving )
         {
             moveItem( );
+            this.transform.parent = tempParent.transform;
         }
+
         itemIn( );
     }
 
@@ -47,10 +53,13 @@ public class ItemMovement : MonoBehaviour
                 if( isMoving )
                 {
                     isMoving = false;
+                    ItemStorage.isMoving = false;
+                    this.transform.parent = parentGO.transform;
                 }
                 else
                 {
                     isMoving = true;
+                    ItemStorage.isMoving = true;
                 }
             }
         }
@@ -72,6 +81,17 @@ public class ItemMovement : MonoBehaviour
     private void OnDestroy( )
     {
         isMoving = false;
+    }
+
+    private void OnTriggerStay2D(Collider2D other) 
+    {
+        if(other.gameObject.tag == "Grid")
+        {
+            if(!other.gameObject.GetComponent<ItemStorage>().hvChild)
+            {
+                parentGO = other.gameObject; 
+            }
+        }
     }
 
     //new

@@ -11,6 +11,7 @@ public class ItemUIInstantiate : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
         mousePos = new Vector3( mousePos.x, mousePos.y, 0 );
         var item = Instantiate( instantiateController, mousePos, Quaternion.identity );
+        ItemStorage.isInstantiating = true;
     }
 
 }

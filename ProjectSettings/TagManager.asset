@@ -11,6 +11,9 @@ TagManager:
   - lion
   - zebra
   - tag
+  - UI
+  - Grid
+  - Temp Parent
   layers:
   - Default
   - TransparentFX
