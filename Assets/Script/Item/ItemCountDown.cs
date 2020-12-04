@@ -19,6 +19,8 @@ public class ItemCountDown : MonoBehaviour
     [SerializeField]private float timer = 10;
     private float startTime = 0;
 
+    public static float CD;
+
     void Start()
     {
         parentItem = this.transform.parent.gameObject;
@@ -37,7 +39,7 @@ public class ItemCountDown : MonoBehaviour
 
     void Update()
     {
-        float CD = timer - ( timeController.getNowRealSec( ) - startTime );
+        CD = timer - ( timeController.getNowRealSec( ) - startTime );
 
         slider.value = ( CD / timer );
 

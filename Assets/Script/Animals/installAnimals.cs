@@ -6,24 +6,38 @@ public class installAnimals : MonoBehaviour
 {
     public GameObject[ ] lion;
     public GameObject zebra;
+    public GameObject giraffe;
+    public GameObject impala;
     public LION _LION;
 
     public static GameObject LIONS;
     public static bool canMove;
 
-    private int zebra_num = 3;
+    private int zebraNum  = 0;
+    private int giraffeNum = 0;
+    private int impalaNum = 0;
     private int period;
     private int scriptCount = 0;
+
+    //キリン仮確率
+    int giraffeProbability;
 
     public struct Animals
     {
         public bool IN_LION_ENVIRONMENT;
-        public bool IN_ZEBRA_ENVIRONMENT;
+        //public bool IN_ZEBRA_ENVIRONMENT;
+        //public bool IN_GIRAFFE_ENVIRONMENT;
+        //public bool IN_IMPALA_ENVIRONMENT;
 
         public bool IN_LION_PERIOD;
+        //public bool IN_ZEBRA_PERIOD;
+        //public bool IN_GIRAFFE_PERIOD;
+        //public bool IN_IMPALA_PERIOD;
 
         public bool IN_LION;
         public bool IN_ZEBRA;
+        public bool IN_GIRAFFE;
+        public bool IN_IMPALA;
     };
     public static Animals in_animals = new Animals( );
 
@@ -31,6 +45,9 @@ public class installAnimals : MonoBehaviour
     {
         LIONS = GameObject.Find( "LIONS" );
         canMove = false;
+
+        //
+        giraffeProbability = Random.Range( 0, 10 );
     }
 
     void Update( )
@@ -68,22 +85,37 @@ public class installAnimals : MonoBehaviour
         //ZEBRA
         if ( in_animals.IN_ZEBRA )
         {
-            if ( zebra_num <= 3 )
+            if ( ItemMovement._item )
             {
-                if ( ItemMovement._item )
+                if ( zebraNum == 0 )
                 {
                     Instantiate( zebra, new Vector3( 15.0f, 0.0f, 0.0f ), Quaternion.identity );
-                    zebra_num++;
+                    zebraNum = 1;
                 }
             }
         }
-        if ( zebra_num == 0 )
+
+        //GIRAFFE
+        if ( in_animals.IN_GIRAFFE )
         {
-            Debug.Log( "zebra : true" + zebra_num );
+            if ( ItemMovement._item && in_animals.IN_ZEBRA )
+            {
+                if ( giraffeProbability > 0 && giraffeNum == 0 )
+                {
+                    Instantiate( giraffe, new Vector3( 15.0f, 4.0f, 0.0f ), Quaternion.identity );
+                    giraffeNum = 1;
+                }
+            }
         }
-        else if ( zebra_num != 0 )
+
+        //IMPALA
+        if ( ItemMovement._item && in_animals.IN_IMPALA )
         {
-            Debug.Log( "zebra : false" + zebra_num );
+            if ( impalaNum == 0 && GetNum.grassNum >= 3 )
+            {
+                Instantiate( impala, new Vector3( 15.0f, 8.0f, 0.0f ), Quaternion.identity );
+                impalaNum = 1;
+            }
         }
     }
 
@@ -95,14 +127,20 @@ public class installAnimals : MonoBehaviour
             case environment.ENVIRONMENT.GRASSLAND:
                 in_animals.IN_LION_ENVIRONMENT = true;
                 in_animals.IN_ZEBRA = true;
+                in_animals.IN_GIRAFFE = true;
+                in_animals.IN_IMPALA = true;
                 break;
             case environment.ENVIRONMENT.ROCKY:
                 in_animals.IN_LION_ENVIRONMENT = true;
                 in_animals.IN_ZEBRA = false;
+                in_animals.IN_GIRAFFE = false;
+                in_animals.IN_IMPALA = false;
                 break;
             case environment.ENVIRONMENT.OTHER:
                 in_animals.IN_LION_ENVIRONMENT = false;
                 in_animals.IN_ZEBRA = false;
+                in_animals.IN_GIRAFFE = false;
+                in_animals.IN_IMPALA = false;
                 break;
         }
     }
@@ -142,9 +180,11 @@ public class installAnimals : MonoBehaviour
 
     void debugText( )
     {
-        Debug.Log( "inZebra : " + in_animals.IN_ZEBRA );
-        Debug.Log( "period : " + period );
         Debug.Log( "inLion : " + in_animals.IN_LION );
+        Debug.Log( "inZebra : " + in_animals.IN_ZEBRA );
+        Debug.Log( "inGiraffe : " + in_animals.IN_GIRAFFE );
+        Debug.Log( "inIMPALA : " + in_animals.IN_IMPALA );
+        Debug.Log( "period : " + period );
         Debug.Log( "probability : " + LION._lion.predationProbability );
         Debug.Log( "canPredation : " + LION.canPredation );
         Debug.Log( "lionsNUM : " + GetNum.lionsNum );

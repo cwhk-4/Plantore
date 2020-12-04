@@ -4,25 +4,36 @@ using UnityEngine;
 
 public class GetNum : MonoBehaviour
 {
-    public static GameObject[ ] ala;
+    public static GameObject[ ] _LION;
+    public static GameObject[ ] _GRASS;
 
     public static int lionsNum;
-    void Start()
+    public static int grassNum;
+    void Start( )
     {
 
     }
 
     // Update is called once per frame
-    void Update()
+    void Update( )
     {
         getLionsNum( );
+        getGrassNum( );
     }
 
     void getLionsNum( )
     {
-        ala = GameObject.FindGameObjectsWithTag( "lion" );
-        Debug.Log( "ala.length : " + ala.Length );
+        _LION = GameObject.FindGameObjectsWithTag( "lion" );
+        lionsNum = _LION.Length;
+        
+        Debug.Log( "_LION.length : " + _LION.Length );
+    }
 
-        lionsNum = ala.Length;
+    void getGrassNum( )
+    {
+        _GRASS = GameObject.FindGameObjectsWithTag( "Grass" );
+        grassNum = _GRASS.Length;
+
+        Debug.Log( "_Grass.length : " + _GRASS.Length );
     }
 }

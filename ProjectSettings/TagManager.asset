@@ -16,6 +16,8 @@ TagManager:
   - Temp Parent
   - GRASS
   - LIONS
+  - giraffe
+  - impala
   layers:
   - Default
   - TransparentFX

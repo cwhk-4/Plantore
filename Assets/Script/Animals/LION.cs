@@ -69,7 +69,7 @@ public class LION : MonoBehaviour
             {
                 Target.transform.position = new Vector3( -15, Random.Range( -5, 5 ), 0 );
                 installAnimals.LIONS.transform.position = Vector3.MoveTowards( installAnimals.LIONS.transform.position, Target.transform.position, _lion.moveSpeed * Time.deltaTime );
-                Destroy( installAnimals.LIONS , 3 );
+                Destroy( installAnimals.LIONS , 5 );
             }
         }
     }
@@ -105,8 +105,8 @@ public class LION : MonoBehaviour
 
         if ( _lion.fightEachOther )
         {
-            Destroy( GetNum.ala[ GetNum.lionsNum - 1 ] );
-            Destroy( GetNum.ala[ GetNum.lionsNum - 2 ] );
+            Destroy( GetNum._LION[ GetNum.lionsNum - 1 ] );
+            Destroy( GetNum._LION[ GetNum.lionsNum - 2 ] );
         }
     }
 
@@ -115,7 +115,6 @@ public class LION : MonoBehaviour
         if ( ZEBRA._zebra.animals && installAnimals.in_animals.IN_LION )
         {
             float timeOver = _lion.timeOut - ( GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( ) - startTime );
-            Debug.Log( timeOver );
             if ( timeOver <= 0 )
             {
                 timeToInstallLion = true;
@@ -135,7 +134,7 @@ public class LION : MonoBehaviour
                 }
                 else
                 {
-                    Destroy( GetNum.ala[ GetNum.lionsNum - 1 ] );
+                    Destroy( GetNum._LION[ GetNum.lionsNum - 1 ] );
                 }
             }
         }
