@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class installAnimals : MonoBehaviour
 {
-    public GameObject lion;
+    public GameObject[ ] lion;
     public GameObject zebra;
-    private int zebra_num = 3;
-    public static int predationProbability;
 
-    //new
-    int period;
+    public static int lionsNum;
+
+    public static GameObject LIONS;
+    private int zebra_num = 3;
+    private int period;
+
 
     public struct Animals
     {
@@ -18,7 +20,6 @@ public class installAnimals : MonoBehaviour
         public bool IN_ZEBRA_ENVIRONMENT;
 
         public bool IN_LION_PERIOD;
-        //public bool IN_ZEBRA_PERIOD;  ( true )
 
         public bool IN_LION;
         public bool IN_ZEBRA;
@@ -31,7 +32,8 @@ public class installAnimals : MonoBehaviour
     }
     void Start( )
     {
-       
+        LIONS = GameObject.Find( "LIONS" );
+
     }
 
     void Update( )
@@ -43,6 +45,7 @@ public class installAnimals : MonoBehaviour
         animalsType( );
         animalsInstall( );
         debugText( );
+        lionsNum = lion.Length;
     }
 
     void animalsInstall( )
@@ -54,9 +57,11 @@ public class installAnimals : MonoBehaviour
             {
                 if ( Input.GetKeyDown( KeyCode.A ) )
                 {
-                    Debug.Log( "123" );
-                    Instantiate( lion, new Vector3( -10.0f + 1.0f, 0.0f - 1.0f, 0.0f ), Quaternion.identity );
-                    predationProbability = Random.Range( 0, 3 );
+                    for ( int i = 0; i < 4; i++ )
+                    {
+                        lion[ i ].SetActive( true );
+                    }
+                    //GameObject.Find( "AnimalsController" ).GetComponent<LION>( ).lionPredationProbability( );
                 }
             }
         }
@@ -94,7 +99,7 @@ public class installAnimals : MonoBehaviour
                 break;
             case environment.ENVIRONMENT.ROCKY:
                 in_animals.IN_LION_ENVIRONMENT = true;
-                in_animals.IN_ZEBRA = false; 
+                in_animals.IN_ZEBRA = false;
                 break;
             case environment.ENVIRONMENT.OTHER:
                 in_animals.IN_LION_ENVIRONMENT = false;
@@ -103,7 +108,6 @@ public class installAnimals : MonoBehaviour
         }
     }
 
-    //new
     void periodAnimalsType( )
     {
         switch ( period )
@@ -143,5 +147,8 @@ public class installAnimals : MonoBehaviour
         Debug.Log( "period : " + period );
         Debug.Log( "inLion : " + in_animals.IN_LION );
         Debug.Log( "prob : " + LION._lion.predationProbability );
+        Debug.Log( "canPredation : " + LION.canPredation );
+        Debug.Log( "lionsNUM : " + lionsNum );
     }
+
 }

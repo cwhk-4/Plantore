@@ -13,6 +13,8 @@ public class animalsCollection : MonoBehaviour
         public  GameObject animals;
         public float moveSpeed;
         public int predationProbability;
+        public int fightProbability;
+        public bool fightEachOther;
     };
     public static animalsSystem allAnimals = new animalsSystem( );
 

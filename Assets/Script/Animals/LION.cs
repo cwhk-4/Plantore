@@ -4,48 +4,99 @@ using UnityEngine;
 
 public class LION : MonoBehaviour
 {
-    GameObject TARGET;
-    GameObject target;
-    
     public static animalsCollection.animalsSystem _lion = new animalsCollection.animalsSystem( );
+    public static bool canPredation;
 
     void Start( )
     {
         _lion.animals = this.gameObject;
         _lion.moveSpeed = 4.0f;
-        _lion.predationProbability = Random.Range( 0, 3 );
-
-        target = ZEBRA._zebra.animals;
-        TARGET = GameObject.FindGameObjectWithTag( "tag" );
+        _lion.predationProbability = Random.Range( 0, 9 );
+        canPredation = false;
     }
 
     void Update( )
     {
-        lionMove( );
-        Debug.Log( "lionMoveSpeed : " + _lion.moveSpeed );
+        if ( Input.GetKeyDown( KeyCode.A ) )
+        {
+            lionPredationProbability( );
+        }
+        
+    }
+
+    public void lionPredationProbability( )
+    {
+        switch ( installAnimals.lionsNum )
+        {
+            case 4:
+                _lion.predationProbability = Random.Range( 0, 9 );
+                if ( _lion.predationProbability > 5 )
+                {
+                    canPredation = true;
+                }
+                else
+                {
+                    canPredation = false;
+                }
+                break;
+            case 3:
+                _lion.predationProbability = Random.Range( 0, 4 );
+                if ( _lion.predationProbability > 2 )
+                {
+                    canPredation = true;
+                }
+                else
+                {
+                    canPredation = false;
+                }
+                break;
+            case 2:
+                _lion.predationProbability = Random.Range( 0, 5 );
+                if ( _lion.predationProbability > 3 )
+                {
+                    canPredation = true;
+                }
+                else
+                {
+                    canPredation = false;
+                }
+                break;
+            case 1:
+                _lion.predationProbability = Random.Range( 0, 6 );
+                if ( _lion.predationProbability > 4 )
+                {
+                    canPredation = true;
+                }
+                else
+                {
+                    canPredation = false;
+                }
+                break;
+            case 0:
+                canPredation = false;
+                break;
+        }
     }
 
     void lionMove( )
     {
-        if ( ZEBRA._zebra.animals )
-        {
-            _lion.animals.transform.position = Vector3.MoveTowards( _lion.animals.transform.position, target.transform.position, _lion.moveSpeed * Time.deltaTime );
-            if ( _lion.animals.transform.position == ZEBRA._zebra.animals.transform.position )
-            {
-                TARGET.transform.position = new Vector2( Random.Range( -60, 60 ), Random.Range( -60, 60 ) );
-                target = TARGET;
-                if ( _lion.predationProbability == 2 )
-                {
-                    Destroy( ZEBRA._zebra.animals );
-                }
-                else
-                {
-                    Debug.Log( "MISS!" );
-                }
-            }
-        }
-        Destroy( _lion.animals, 30 );
+
     }
 
+    void infighting( )
+    {
+        _lion.fightProbability = Random.Range( 0, 20 );
+        if ( _lion.fightProbability < 4 )
+        {
+            _lion.fightEachOther = true;
+        }else
+        {
+            _lion.fightEachOther = false;
+        }
 
+        if ( _lion.fightEachOther )
+        {
+            
+        }
+    }
 }
