@@ -8605,7 +8605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bf02e9011914739b38fe8c25604cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StageUI: {fileID: 1303664802}
+  Menu: {fileID: 1303664802}
 --- !u!1 &1388061390
 GameObject:
   m_ObjectHideFlags: 0

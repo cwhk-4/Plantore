@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3381563740186842714}
   - component: {fileID: 3381563740186842715}
   - component: {fileID: -2525134776926302811}
+  - component: {fileID: 1696659719905869902}
   m_Layer: 0
   m_Name: zebra
   m_TagString: Untagged
@@ -94,3 +95,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cacec8fbeb9e0408af7d2f5c573731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1696659719905869902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3381563740186842692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0966d236daa40c0b9cf33e95fbd060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  sprites:
+  - {fileID: 21300000, guid: 303e5bb88ebfa404993b70c3f1376673, type: 3}
+  - {fileID: 21300000, guid: 3094e6bb6445e46a19b67c1d3c31774d, type: 3}
+  - {fileID: 21300000, guid: 8832ea540b4024bffb6689037d197f53, type: 3}
+  - {fileID: 21300000, guid: 9e2d6321205024d79867bd590eb1be50, type: 3}
+  - {fileID: 21300000, guid: b505b1daaea584b8b8866ec1ae3d0047, type: 3}
+  - {fileID: 21300000, guid: fd9dcf756710d450ab8b1bd419b56bd9, type: 3}
+  - {fileID: 21300000, guid: 76987a8953f444505841eace7a8fab4d, type: 3}
+  - {fileID: 21300000, guid: 5b9d4020a43384717af85f4cbd345862, type: 3}
+  - {fileID: 21300000, guid: 44f03aca86e2b4bd794df380295c4dad, type: 3}
+  - {fileID: 21300000, guid: d94ff3d65ee2a4c0ab14c225cbfcf0d3, type: 3}
+  - {fileID: 21300000, guid: 9c5080c05a94b41c9808b8a2ff8bf00b, type: 3}
