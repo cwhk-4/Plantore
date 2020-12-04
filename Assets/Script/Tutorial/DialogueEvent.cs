@@ -24,7 +24,6 @@ public class DialogueEvent : MonoBehaviour
         UIController = GameObject.FindWithTag( "UI" );
         itemUIInstantiate = UIController.GetComponent<ItemUIInstantiate>( );
 
-        BlackScreen = GameObject.FindWithTag( "BlackScreen" );
         BlackScreen.SetActive( false );
     }
 
@@ -70,6 +69,23 @@ public class DialogueEvent : MonoBehaviour
     {
         closeDialogueWindow( );
         BlackScreen.SetActive( true );
+        BlackScreen.GetComponent<BlackScreenAnimationController>( ).show = true;
+    }
+
+    public void calledZebra( )
+    {
+        showDialogueWindow( );
+    }
+
+    public void calledLion( )
+    {
+        showDialogueWindow( );
+    }
+
+    public void finishedLoading( )
+    {
+        BlackScreen.SetActive( false );
+        showDialogueWindow( );
     }
 
     public void finishedTutorial( )

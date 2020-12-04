@@ -22,7 +22,6 @@ TagManager:
   - Menu
   - DialogueWindow
   - DialogueControl
-  - BlackScreen
   layers:
   - Default
   - TransparentFX

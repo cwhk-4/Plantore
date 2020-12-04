@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 161800158}
   m_Layer: 5
   m_Name: BlackScreen
-  m_TagString: BlackScreen
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -940,7 +940,7 @@ MonoBehaviour:
   activateMenu: {fileID: 0}
   UIController: {fileID: 0}
   itemUIInstantiate: {fileID: 0}
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 161800154}
 --- !u!114 &498947155
 MonoBehaviour:
   m_ObjectHideFlags: 0

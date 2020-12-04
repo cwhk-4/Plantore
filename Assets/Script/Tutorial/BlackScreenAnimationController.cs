@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class BlackScreenAnimationController : MonoBehaviour
 {
+    public DialogueEvent dialogueEvent;
+
     private RawImage rawImage;
     public Color color = Color.black;
 
@@ -16,10 +18,12 @@ public class BlackScreenAnimationController : MonoBehaviour
     [SerializeField]
     private float blackoutTime = 3f;
 
-    private bool show = true;
+    public bool show = true;
 
-    void Start( )
+    private void Start( )
     {
+        dialogueEvent = GameObject.FindWithTag( "DialogueControl" ).GetComponent<DialogueEvent>( );
+
         loadingText = this.transform.GetChild( 0 ).gameObject;
         loadingText.SetActive( false );
 
@@ -46,7 +50,11 @@ public class BlackScreenAnimationController : MonoBehaviour
                 rawImage.color = color;
                 loadingText.SetActive( false );
             }
-            blackoutTime = 3f;
+            else
+            {
+                blackoutTime = 3f;
+                dialogueEvent.finishedLoading( );
+            }
         }
 
         if( color.a >= 1 )

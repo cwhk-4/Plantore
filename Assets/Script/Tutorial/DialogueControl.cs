@@ -64,12 +64,13 @@ public class DialogueControl : MonoBehaviour
 
             case 4:
                 dialogueEvent.showBlackScreen( );
-                //zebra come
+                //callZebra
                 dialogueCount++;
                 break;
 
             case 5:
-                //lion come
+                dialogueEvent.showBlackScreen( );
+                //callLion
                 dialogueCount++;
                 break;
 
