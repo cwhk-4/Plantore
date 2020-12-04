@@ -14,6 +14,8 @@ public class animalsCollection : MonoBehaviour
         public int predationProbability;
         public int fightProbability;
         public int Minus;
+        public float timeOut;
+        public float startTime;
         public float moveSpeed;
         public bool fightEachOther;
     };
@@ -52,7 +54,7 @@ public class animalsCollection : MonoBehaviour
 
     void Update( )
     {
-        Debug.Log( _predator );
+
     }
 
     //void animalsType( )

@@ -6,13 +6,14 @@ public class installAnimals : MonoBehaviour
 {
     public GameObject[ ] lion;
     public GameObject zebra;
+    public LION _LION;
 
     public static GameObject LIONS;
-    private int zebra_num = 3;
-    private int period;
-
     public static bool canMove;
 
+    private int zebra_num = 3;
+    private int period;
+    private int scriptCount = 0;
 
     public struct Animals
     {
@@ -46,19 +47,21 @@ public class installAnimals : MonoBehaviour
     void animalsInstall( )
     {
         //LION
-        if ( ZEBRA._zebra.animals )
+        if ( ZEBRA._zebra.animals && in_animals.IN_LION )
         {
-            if ( in_animals.IN_LION )
+            if ( scriptCount == 0 )
             {
-                if ( Input.GetKeyDown( KeyCode.A ) )
+                _LION = GameObject.FindGameObjectWithTag( "LIONS" ).AddComponent<LION>( );
+                scriptCount = 1;
+            }
+            if ( LION.timeToInstallLion )
+            {
+                canMove = true;
+                for ( int i = 0; i < 4; i++ )
                 {
-                    canMove = true;
-                    for ( int i = 0; i < 4; i++ )
-                    {
-                        lion[ i ].SetActive( true );
-                    }
-                    //GameObject.Find( "AnimalsController" ).GetComponent<LION>( ).lionPredationProbability( );
+                    lion[ i ].SetActive( true );
                 }
+                //GameObject.Find( "AnimalsController" ).GetComponent<LION>( ).lionPredationProbability( );
             }
         }
 

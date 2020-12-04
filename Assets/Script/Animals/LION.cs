@@ -5,32 +5,39 @@ using UnityEngine;
 public class LION : MonoBehaviour
 {
     public static animalsCollection.animalsSystem _lion = new animalsCollection.animalsSystem( );
-    public static installAnimals.Animals _lionStall = new installAnimals.Animals( );
-    public static bool canPredation;
-    public static int startProbability;
-    bool canFind;
 
     GameObject goStage;
-    //GameObject Target;
+    GameObject Target;
+
+    public static int startProbability;
+    public static bool canPredation;
+    public static bool timeToInstallLion;
+    private float startTime = 0;
+    bool canFind;
 
     void Start( )
     {
+        startTime = GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( );
         _lion.animals = this.gameObject;
-        _lion.moveSpeed = 2.0f;
+        _lion.moveSpeed = 4.0f;
         _lion.Minus = 5;
+        _lion.timeOut = 5;
         _lion.predationProbability = Random.Range( 0, 9 );
 
+        timeToInstallLion = false;
         canPredation = false;
         canFind = false;
         startProbability = 30;
         goStage = GameObject.Find( "lionTarget" );
+        Target = GameObject.Find( "LIONTARGET" );
+        Target.transform.position = goStage.transform.position;
     }
 
     void Update( )
     {
-        lionPredationProbability( );
         lionMove( );
-        Debug.Log( startProbability - ( 4 - GetNum.lionsNum ) * _lion.Minus );
+        Predation( );
+        timeIn( );
     }
 
     void lionMove( )
@@ -39,23 +46,36 @@ public class LION : MonoBehaviour
         {
             if ( ZEBRA._zebra.animals )
             {
-                installAnimals.LIONS.transform.position = Vector3.MoveTowards( installAnimals.LIONS.transform.position, goStage.transform.position, _lion.moveSpeed * Time.deltaTime );
+                installAnimals.LIONS.transform.position = Vector3.MoveTowards( installAnimals.LIONS.transform.position, Target.transform.position, _lion.moveSpeed * Time.deltaTime );
+
                 if ( installAnimals.LIONS.transform.position == goStage.transform.position )
                 {
                     canFind = true;
+                    lionPredationProbability( );
                 }
+
                 if ( canFind )
                 {
-                    goStage.transform.position = ZEBRA._zebra.animals.transform.position;
+                    Target.transform.position = ZEBRA._zebra.animals.transform.position;
                 }
+
+                if( installAnimals.LIONS.transform.position == ZEBRA._zebra.animals.transform.position )
+                {
+                    canFind = false;
+                    Target.transform.position = goStage.transform.position;
+                }
+            }
+            else
+            {
+                Target.transform.position = new Vector3( -15, Random.Range( -5, 5 ), 0 );
+                installAnimals.LIONS.transform.position = Vector3.MoveTowards( installAnimals.LIONS.transform.position, Target.transform.position, _lion.moveSpeed * Time.deltaTime );
+                Destroy( installAnimals.LIONS , 3 );
             }
         }
     }
 
     public void lionPredationProbability( )
     {
-        if ( Input.GetKeyDown( KeyCode.A ) )
-        {
             _lion.predationProbability = Random.Range( 0, 100 );
             if ( _lion.predationProbability < ( startProbability - ( 4 - GetNum.lionsNum ) * _lion.Minus ) )
             {
@@ -69,7 +89,6 @@ public class LION : MonoBehaviour
             {
                 infighting( );
             }
-        }
     }
 
     void infighting( )
@@ -88,6 +107,37 @@ public class LION : MonoBehaviour
         {
             Destroy( GetNum.ala[ GetNum.lionsNum - 1 ] );
             Destroy( GetNum.ala[ GetNum.lionsNum - 2 ] );
+        }
+    }
+
+    void timeIn( )
+    {
+        if ( ZEBRA._zebra.animals && installAnimals.in_animals.IN_LION )
+        {
+            float timeOver = _lion.timeOut - ( GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( ) - startTime );
+            Debug.Log( timeOver );
+            if ( timeOver <= 0 )
+            {
+                timeToInstallLion = true;
+            }
+        }
+    }
+
+    void Predation( )
+    {
+        if ( ZEBRA._zebra.animals )
+        {
+            if ( installAnimals.LIONS.transform.position == ZEBRA._zebra.animals.transform.position )
+            {
+                if ( canPredation )
+                {
+                    Destroy( ZEBRA._zebra.animals );
+                }
+                else
+                {
+                    Destroy( GetNum.ala[ GetNum.lionsNum - 1 ] );
+                }
+            }
         }
     }
 }

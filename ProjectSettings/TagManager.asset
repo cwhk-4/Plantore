@@ -15,6 +15,7 @@ TagManager:
   - Grid
   - Temp Parent
   - GRASS
+  - LIONS
   layers:
   - Default
   - TransparentFX
