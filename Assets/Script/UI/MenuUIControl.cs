@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MenuUIControl : MonoBehaviour
 {
     public GameObject Menu;
-    public GameObject MenuButton;
 
     void Start()
     {
@@ -16,15 +14,13 @@ public class MenuUIControl : MonoBehaviour
 
     public void openMenu()
     {
-        Menu.SetActive(true);
-        MenuButton.SetActive( false );
+        Menu.SetActive( true );
         Time.timeScale = 0;
     }
 
     public void closeMenu()
     {
         Menu.SetActive(false);
-        MenuButton.SetActive( true );
         Time.timeScale = 1;
     }
 
