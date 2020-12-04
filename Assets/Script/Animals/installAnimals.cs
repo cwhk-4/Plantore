@@ -7,11 +7,11 @@ public class installAnimals : MonoBehaviour
     public GameObject[ ] lion;
     public GameObject zebra;
 
-    public static int lionsNum;
-
     public static GameObject LIONS;
     private int zebra_num = 3;
     private int period;
+
+    public static bool canMove;
 
 
     public struct Animals
@@ -26,14 +26,10 @@ public class installAnimals : MonoBehaviour
     };
     public static Animals in_animals = new Animals( );
 
-    private void Awake( )
-    {
-
-    }
     void Start( )
     {
         LIONS = GameObject.Find( "LIONS" );
-
+        canMove = false;
     }
 
     void Update( )
@@ -45,7 +41,6 @@ public class installAnimals : MonoBehaviour
         animalsType( );
         animalsInstall( );
         debugText( );
-        lionsNum = lion.Length;
     }
 
     void animalsInstall( )
@@ -57,6 +52,7 @@ public class installAnimals : MonoBehaviour
             {
                 if ( Input.GetKeyDown( KeyCode.A ) )
                 {
+                    canMove = true;
                     for ( int i = 0; i < 4; i++ )
                     {
                         lion[ i ].SetActive( true );
@@ -146,9 +142,10 @@ public class installAnimals : MonoBehaviour
         Debug.Log( "inZebra : " + in_animals.IN_ZEBRA );
         Debug.Log( "period : " + period );
         Debug.Log( "inLion : " + in_animals.IN_LION );
-        Debug.Log( "prob : " + LION._lion.predationProbability );
+        Debug.Log( "probability : " + LION._lion.predationProbability );
         Debug.Log( "canPredation : " + LION.canPredation );
-        Debug.Log( "lionsNUM : " + lionsNum );
+        Debug.Log( "lionsNUM : " + GetNum.lionsNum );
+        Debug.Log( "lionFightProbability : " + LION._lion.fightProbability );
     }
 
 }

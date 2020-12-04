@@ -11,9 +11,10 @@ public class animalsCollection : MonoBehaviour
     public struct animalsSystem
     {
         public  GameObject animals;
-        public float moveSpeed;
         public int predationProbability;
         public int fightProbability;
+        public int Minus;
+        public float moveSpeed;
         public bool fightEachOther;
     };
     public static animalsSystem allAnimals = new animalsSystem( );

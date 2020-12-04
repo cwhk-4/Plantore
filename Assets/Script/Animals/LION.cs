@@ -5,82 +5,71 @@ using UnityEngine;
 public class LION : MonoBehaviour
 {
     public static animalsCollection.animalsSystem _lion = new animalsCollection.animalsSystem( );
+    public static installAnimals.Animals _lionStall = new installAnimals.Animals( );
     public static bool canPredation;
+    public static int startProbability;
+    bool canFind;
+
+    GameObject goStage;
+    //GameObject Target;
 
     void Start( )
     {
         _lion.animals = this.gameObject;
-        _lion.moveSpeed = 4.0f;
+        _lion.moveSpeed = 2.0f;
+        _lion.Minus = 5;
         _lion.predationProbability = Random.Range( 0, 9 );
+
         canPredation = false;
+        canFind = false;
+        startProbability = 30;
+        goStage = GameObject.Find( "lionTarget" );
     }
 
     void Update( )
     {
-        if ( Input.GetKeyDown( KeyCode.A ) )
-        {
-            lionPredationProbability( );
-        }
-        
-    }
-
-    public void lionPredationProbability( )
-    {
-        switch ( installAnimals.lionsNum )
-        {
-            case 4:
-                _lion.predationProbability = Random.Range( 0, 9 );
-                if ( _lion.predationProbability > 5 )
-                {
-                    canPredation = true;
-                }
-                else
-                {
-                    canPredation = false;
-                }
-                break;
-            case 3:
-                _lion.predationProbability = Random.Range( 0, 4 );
-                if ( _lion.predationProbability > 2 )
-                {
-                    canPredation = true;
-                }
-                else
-                {
-                    canPredation = false;
-                }
-                break;
-            case 2:
-                _lion.predationProbability = Random.Range( 0, 5 );
-                if ( _lion.predationProbability > 3 )
-                {
-                    canPredation = true;
-                }
-                else
-                {
-                    canPredation = false;
-                }
-                break;
-            case 1:
-                _lion.predationProbability = Random.Range( 0, 6 );
-                if ( _lion.predationProbability > 4 )
-                {
-                    canPredation = true;
-                }
-                else
-                {
-                    canPredation = false;
-                }
-                break;
-            case 0:
-                canPredation = false;
-                break;
-        }
+        lionPredationProbability( );
+        lionMove( );
+        Debug.Log( startProbability - ( 4 - GetNum.lionsNum ) * _lion.Minus );
     }
 
     void lionMove( )
     {
+        if ( installAnimals.canMove )
+        {
+            if ( ZEBRA._zebra.animals )
+            {
+                installAnimals.LIONS.transform.position = Vector3.MoveTowards( installAnimals.LIONS.transform.position, goStage.transform.position, _lion.moveSpeed * Time.deltaTime );
+                if ( installAnimals.LIONS.transform.position == goStage.transform.position )
+                {
+                    canFind = true;
+                }
+                if ( canFind )
+                {
+                    goStage.transform.position = ZEBRA._zebra.animals.transform.position;
+                }
+            }
+        }
+    }
 
+    public void lionPredationProbability( )
+    {
+        if ( Input.GetKeyDown( KeyCode.A ) )
+        {
+            _lion.predationProbability = Random.Range( 0, 100 );
+            if ( _lion.predationProbability < ( startProbability - ( 4 - GetNum.lionsNum ) * _lion.Minus ) )
+            {
+                canPredation = true;
+            }
+            else
+            {
+                canPredation = false;
+            }
+            if ( GetNum.lionsNum == 4 )
+            {
+                infighting( );
+            }
+        }
     }
 
     void infighting( )
@@ -89,14 +78,16 @@ public class LION : MonoBehaviour
         if ( _lion.fightProbability < 4 )
         {
             _lion.fightEachOther = true;
-        }else
+        }
+        else
         {
             _lion.fightEachOther = false;
         }
 
         if ( _lion.fightEachOther )
         {
-            
+            Destroy( GetNum.ala[ GetNum.lionsNum - 1 ] );
+            Destroy( GetNum.ala[ GetNum.lionsNum - 2 ] );
         }
     }
 }

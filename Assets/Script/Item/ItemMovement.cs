@@ -16,8 +16,8 @@ public class ItemMovement : MonoBehaviour
 
     private bool parentHvChild = false;
 
-    //new
-    GameObject _grass;
+
+    public static GameObject _grass;
     public static bool _item;
 
     private void Start( )
@@ -102,7 +102,6 @@ public class ItemMovement : MonoBehaviour
         }
     }
 
-    //new
     public void itemIn( )
     {
         _grass = GameObject.FindGameObjectWithTag( "Grass" );
@@ -110,7 +109,7 @@ public class ItemMovement : MonoBehaviour
         {
             _item = true;
         }
-        else if ( _grass == null )
+        else
         {
             _item = false;
         }

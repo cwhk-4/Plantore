@@ -44,6 +44,8 @@ public class ItemCountDown : MonoBehaviour
         if( slider.value == 0 )
         {
             spriteRenderer.sprite = driedGrass;
+            //new
+            spriteRenderer.tag = "GRASS";
         }
 
         text.text = ( int )CD + "s Left";
