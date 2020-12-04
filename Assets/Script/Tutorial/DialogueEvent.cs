@@ -11,7 +11,12 @@ public class DialogueEvent : MonoBehaviour
     public GameObject UIController;
     public ItemUIInstantiate itemUIInstantiate;
 
+    public DialogueControl dialogueControl;
+
     public GameObject BlackScreen;
+
+    private bool isCounting = false;
+    private float timer = 3f;
 
     private void Start( )
     {
@@ -24,7 +29,26 @@ public class DialogueEvent : MonoBehaviour
         UIController = GameObject.FindWithTag( "UI" );
         itemUIInstantiate = UIController.GetComponent<ItemUIInstantiate>( );
 
+        dialogueControl = GetComponent<DialogueControl>( );
+
         BlackScreen.SetActive( false );
+    }
+
+    private void Update( )
+    {
+        if( isCounting )
+        {
+            if( timer >= 0 )
+            {
+                timer -= Time.deltaTime;
+            }
+            else
+            {
+                calledAnimals( );
+                timer = 3f;
+                isCounting = false;
+            }
+        }
     }
 
     public void showDialogueWindow( )
@@ -72,19 +96,25 @@ public class DialogueEvent : MonoBehaviour
         BlackScreen.GetComponent<BlackScreenAnimationController>( ).show = true;
     }
 
-    public void calledZebra( )
-    {
-        showDialogueWindow( );
-    }
-
-    public void calledLion( )
-    {
-        showDialogueWindow( );
-    }
-
     public void finishedLoading( )
     {
         BlackScreen.SetActive( false );
+
+        if( dialogueControl.getDialogueCount( ) == 4 )
+        {
+            //callZebra
+        }
+
+        if( dialogueControl.getDialogueCount( ) == 5 )
+        {
+            //callLion
+        }
+
+        isCounting = true;
+    }
+
+    public void calledAnimals( )
+    {
         showDialogueWindow( );
     }
 

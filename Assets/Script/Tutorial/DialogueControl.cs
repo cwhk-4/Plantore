@@ -42,12 +42,16 @@ public class DialogueControl : MonoBehaviour
 
     }
 
+    public int getDialogueCount( )
+    {
+        return dialogueCount;
+    }
+
     private void nextDialogue( )
     {
         switch( dialogueCount )
         {
             case 1:
-            case 7:
             case 8:
                 dialogueCount++;
                 break;
@@ -75,7 +79,12 @@ public class DialogueControl : MonoBehaviour
                 break;
 
             case 6:
-                //fix grass
+                //right click to tool
+                dialogueCount++;
+                break;
+
+            case 7:
+                //repair grass
                 dialogueCount++;
                 break;
         }

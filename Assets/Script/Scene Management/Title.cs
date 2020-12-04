@@ -9,4 +9,9 @@ public class Title : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial");
     }
+
+    public void clickSkipTutorial( )
+    {
+        SceneManager.LoadScene( "Stage" );
+    }    
 }
