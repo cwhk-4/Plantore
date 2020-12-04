@@ -18,6 +18,11 @@ TagManager:
   - LIONS
   - giraffe
   - impala
+  - Dialogue
+  - Menu
+  - DialogueWindow
+  - DialogueControl
+  - BlackScreen
   layers:
   - Default
   - TransparentFX
