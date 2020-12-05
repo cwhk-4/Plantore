@@ -15,7 +15,7 @@ public class DialogueText : MonoBehaviour
             break;
 
             case 2:
-            str = "動物はエサを求めて箱庭にやってきます\n\nまずはアイテムから草を配置しましょう！";
+            str = "動物はエサを求めて箱庭へやってきます\n\nまずはアイテムから草を配置しましょう!";
             break;
 
             case 3:
@@ -27,11 +27,11 @@ public class DialogueText : MonoBehaviour
             break;
 
             case 5:
-            str = "これでシマウマが箱庭に配置されました!\n\n一旦、様子を見てみましょう...。";
+            str = "これでシマウマが箱庭に配置されました!\n\n一旦、様子を見てみましょう...";
             break;
 
             case 6:
-            str = "草が枯れてしまい、ライオンも来てしまいました...。\n\nこのままでは危ないので、枯れ草をどうぐで修繕しましょう!";
+            str = "草が枯れてしまい、ライオンも来てしまいました...\n\nこのままでは危ないので、枯れ草をどうぐで修繕しましょう!";
             break;
 
             case 7:

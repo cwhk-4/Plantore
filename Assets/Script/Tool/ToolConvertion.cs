@@ -5,7 +5,7 @@ using UnityEngine;
 public class ToolConvertion : MonoBehaviour
 {
     public Texture2D wateringCan;
-    public Vector2 hotSpot = Vector2.zero;
+    public Vector2 canhotSpot = Vector2.zero;
     private bool isCan = false;
     private bool isOnGO = false;
 
@@ -15,6 +15,7 @@ public class ToolConvertion : MonoBehaviour
     void Start()
     {
         isCan = false;
+        canhotSpot = new Vector2( 0f , wateringCan.height / 3 * 2 );
     }
 
     void Update()
@@ -23,12 +24,12 @@ public class ToolConvertion : MonoBehaviour
         {
             if( !isCan && !isOnGO)
             {
-                Cursor.SetCursor( wateringCan, hotSpot, CursorMode.Auto );
+                Cursor.SetCursor( wateringCan, canhotSpot, CursorMode.Auto );
                 isCan = true;
             }
             else
             {
-                Cursor.SetCursor( null, hotSpot, CursorMode.Auto );
+                Cursor.SetCursor( null, Vector2.zero, CursorMode.Auto );
                 isCan = false;
             }
         }
