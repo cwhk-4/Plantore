@@ -18,6 +18,18 @@ public class DialogueEvent : MonoBehaviour
     private bool isCounting = false;
     private float timer = 3f;
 
+    public GameObject Grass;
+    public SpriteRenderer spriteRenderer;
+    public Sprite originalGrass;
+    public Sprite driedGrass;
+
+    public GameObject cursor;
+    public ToolConvertion toolConvertion;
+
+    private bool checkTool = false;
+
+    public GameObject toStageButton;
+
     private void Start( )
     {
         dialogueWindow = GameObject.FindWithTag( "DialogueWindow" );
@@ -32,6 +44,12 @@ public class DialogueEvent : MonoBehaviour
         dialogueControl = GetComponent<DialogueControl>( );
 
         BlackScreen.SetActive( false );
+
+        cursor = GameObject.FindWithTag( "Cursor" );
+        toolConvertion = cursor.GetComponent<ToolConvertion>( );
+
+        toStageButton = GameObject.FindWithTag( "ToStageButton" );
+        toStageButton.SetActive( false );
     }
 
     private void Update( )
@@ -44,9 +62,17 @@ public class DialogueEvent : MonoBehaviour
             }
             else
             {
-                calledAnimals( );
-                timer = 3f;
+                showDialogueWindow( );
                 isCounting = false;
+            }
+        }
+
+        if( checkTool )
+        {
+            if( toolConvertion.getIsCan( ) )
+            {
+                checkTool = false;
+                showDialogueWindow( );
             }
         }
     }
@@ -87,6 +113,9 @@ public class DialogueEvent : MonoBehaviour
     public void grassPlaced( )
     {
         showDialogueWindow( );
+
+        Grass = GameObject.FindWithTag( "Grass" );
+        spriteRenderer = Grass.GetComponent<SpriteRenderer>( );
     }
 
     public void showBlackScreen( )
@@ -99,23 +128,60 @@ public class DialogueEvent : MonoBehaviour
     public void finishedLoading( )
     {
         BlackScreen.SetActive( false );
-
-        if( dialogueControl.getDialogueCount( ) == 4 )
-        {
-            //callZebra
-        }
-
-        if( dialogueControl.getDialogueCount( ) == 5 )
-        {
-            //callLion
-        }
-
         isCounting = true;
     }
 
-    public void calledAnimals( )
+    public void installAnimals( )
     {
-        showDialogueWindow( );
+        if( dialogueControl.getDialogueCount( ) == 5 )
+        {
+            installZebra( );
+        }
+        else if( dialogueControl.getDialogueCount( ) == 6 )
+        {
+            changeToDriedGrass( );
+            installLion( );
+        }
+    }
+
+    private void changeToDriedGrass( )
+    {
+        spriteRenderer.sprite = driedGrass;
+    }
+
+    //caution
+    //install Animals
+    private void installZebra( )
+    {
+
+    }
+
+    private void installLion( )
+    {
+
+    }
+
+    public void changeTool()
+    {
+        closeDialogueWindow( );
+        checkTool = true;
+    }
+
+    public void waitForRepair( )
+    {
+        closeDialogueWindow( );
+    }
+
+    public void repairGrass( )
+    {
+        spriteRenderer.sprite = originalGrass;
+        isCounting = true;
+        timer = 2f;
+    }
+
+    public void showToStageButton( )
+    {
+        toStageButton.SetActive( true );
     }
 
     public void finishedTutorial( )

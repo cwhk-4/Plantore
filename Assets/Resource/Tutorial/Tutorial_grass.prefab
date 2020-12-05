@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3700460559456111218}
   - component: {fileID: -4570675494139798249}
   - component: {fileID: 956009354148531650}
+  - component: {fileID: 2302481832819516570}
   m_Layer: 0
   m_Name: Tutorial_grass
   m_TagString: Grass
@@ -143,4 +144,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c54a54162fe4ccbaa933e1592120b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueEvent: {fileID: 0}
+--- !u!114 &2302481832819516570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6587741821020689999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e891d092cae6443088e6b0b6b8317a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 0}
+  toolConvertion: {fileID: 0}
   dialogueEvent: {fileID: 0}

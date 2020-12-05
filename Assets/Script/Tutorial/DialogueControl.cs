@@ -25,7 +25,7 @@ public class DialogueControl : MonoBehaviour
         {
             if( Input.GetMouseButtonDown( 0 ) )
             {
-                if( dialogueCount < 9 )
+                if( dialogueCount <= 9 )
                 {
                     nextDialogue( );
                 }
@@ -33,7 +33,7 @@ public class DialogueControl : MonoBehaviour
 
                 if( dialogueCount == 9 )
                 {
-                    dialogueEvent.finishedTutorial( );
+                    dialogueEvent.showToStageButton( );
                 }
             }
 
@@ -52,7 +52,6 @@ public class DialogueControl : MonoBehaviour
         switch( dialogueCount )
         {
             case 1:
-            case 8:
                 dialogueCount++;
                 break;
 
@@ -67,24 +66,22 @@ public class DialogueControl : MonoBehaviour
                 break;
 
             case 4:
-                dialogueEvent.showBlackScreen( );
-                //callZebra
-                dialogueCount++;
-                break;
-
             case 5:
                 dialogueEvent.showBlackScreen( );
-                //callLion
                 dialogueCount++;
                 break;
 
             case 6:
-                //right click to tool
+                dialogueEvent.changeTool( );
                 dialogueCount++;
                 break;
 
             case 7:
-                //repair grass
+                dialogueEvent.waitForRepair( );
+                dialogueCount++;
+                break;
+
+            case 8:
                 dialogueCount++;
                 break;
         }

@@ -63,6 +63,11 @@ public class BlackScreenAnimationController : MonoBehaviour
             blackoutTime -= Time.deltaTime;
         }
 
+        if( blackoutTime <= 1f )
+        {
+            dialogueEvent.installAnimals( );
+        }
+
         if( blackoutTime <= 0 )
         {
             show = false;

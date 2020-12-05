@@ -22,6 +22,7 @@ TagManager:
   - Menu
   - DialogueWindow
   - DialogueControl
+  - ToStageButton
   layers:
   - Default
   - TransparentFX
