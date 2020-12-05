@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 788965816321542743}
   - component: {fileID: 6446701097770961035}
   - component: {fileID: -2114316998469961007}
+  - component: {fileID: 9190838799171186669}
   m_Layer: 0
   m_Name: giraffe
   m_TagString: giraffe
@@ -94,3 +95,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2dbd9a19e9bd8f48b37b86df69dfb31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9190838799171186669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4776594033630795429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0966d236daa40c0b9cf33e95fbd060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  sprites:
+  - {fileID: 21300000, guid: 10016d6b13348454dad4ac071cadfca0, type: 3}
+  - {fileID: 21300000, guid: 0ac6a292f6f844bf090cb2896d03c5dc, type: 3}
+  - {fileID: 21300000, guid: 4e219bf5ba0644162bcc87bee210c513, type: 3}
+  - {fileID: 21300000, guid: c31fd106044cf413489bf0866f6f1d08, type: 3}
+  - {fileID: 21300000, guid: 46e7109332dd546e59285ea7a056b865, type: 3}
+  - {fileID: 21300000, guid: 8469a935dd6ca467da912d42bb43ffd7, type: 3}
+  - {fileID: 21300000, guid: e1d34efd6993542e2b0c8b878c71dc75, type: 3}
+  - {fileID: 21300000, guid: 358b9d20471f4461fb65bbde7f40a013, type: 3}
+  - {fileID: 21300000, guid: 8877f48c9d55d4f11ae57b527ed403c6, type: 3}
+  - {fileID: 21300000, guid: 5d0cfe2cb3e57456aa51f34533033d11, type: 3}
+  - {fileID: 21300000, guid: b76ee6cdfeeca4ecc959950484b4f7fb, type: 3}
+  - {fileID: 21300000, guid: 7c493e20e05844e768b5fd6f5f0b9517, type: 3}
+  - {fileID: 21300000, guid: 788cc8e84b91c446ca92b6feb5bed073, type: 3}
+  - {fileID: 21300000, guid: e470c5916bd424e28b21eae3f6772db7, type: 3}
+  - {fileID: 21300000, guid: 9ae14475d075a40238ef4bdfd66cea46, type: 3}
+  - {fileID: 21300000, guid: 6b8d4066179a2446c90ef02d9d2d82a9, type: 3}
+  - {fileID: 21300000, guid: 051ca4f1a23ce45f18a9bbaeebc018e6, type: 3}
+  - {fileID: 21300000, guid: 6a7efe7e1a47744ee82af9a733324293, type: 3}
