@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7629627573555250967}
   - component: {fileID: 7629627573555250964}
+  - component: {fileID: -5213856019450562713}
   m_Layer: 0
   m_Name: lion
   m_TagString: lion
@@ -81,3 +82,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5213856019450562713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7629627573555250965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0966d236daa40c0b9cf33e95fbd060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  sprites: []
+  name: 

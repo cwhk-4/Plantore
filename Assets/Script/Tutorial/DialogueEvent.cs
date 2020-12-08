@@ -33,6 +33,9 @@ public class DialogueEvent : MonoBehaviour
     public GameObject _LION;
     public GameObject _ZEBRA;
 
+    public GameObject leftGuide;
+    public GameObject rightGuide;
+
     private void Start( )
     {
         dialogueWindow = GameObject.FindWithTag( "DialogueWindow" );
@@ -93,6 +96,21 @@ public class DialogueEvent : MonoBehaviour
     public bool getDialogueWindowState( )
     {
         return dialogueWindow.activeSelf;
+    }
+
+    public void openMenu( )
+    {
+
+    }
+
+    public void showMouseRightGuide( Vector2 toPos )
+    {
+
+    }
+
+    public void showMouseLeftGuide( Vector2 toPos )
+    {
+
     }
 
     public void showGrass( )
