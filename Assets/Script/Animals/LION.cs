@@ -10,6 +10,7 @@ public class LION : MonoBehaviour
     GameObject Target;
 
     public static int startProbability;
+    public static int lionsNUM;
     public static bool canPredation;
     public static bool timeToInstallLion;
     private float startTime = 0;
@@ -38,6 +39,7 @@ public class LION : MonoBehaviour
         lionMove( );
         Predation( );
         timeIn( );
+        numsProbability( );
     }
 
     void lionMove( )
@@ -85,30 +87,12 @@ public class LION : MonoBehaviour
             {
                 canPredation = false;
             }
-            if ( GetNum.lionsNum == 4 )
-            {
-                infighting( );
-            }
+            //if ( GetNum.lionsNum == 4 )
+            //{
+            //    infighting( );
+            //}
     }
 
-    void infighting( )
-    {
-        _lion.fightProbability = Random.Range( 0, 20 );
-        if ( _lion.fightProbability < 4 )
-        {
-            _lion.fightEachOther = true;
-        }
-        else
-        {
-            _lion.fightEachOther = false;
-        }
-
-        if ( _lion.fightEachOther )
-        {
-            Destroy( GetNum._LION[ GetNum.lionsNum - 1 ] );
-            Destroy( GetNum._LION[ GetNum.lionsNum - 2 ] );
-        }
-    }
 
     void timeIn( )
     {
@@ -118,6 +102,10 @@ public class LION : MonoBehaviour
             if ( timeOver <= 0 )
             {
                 timeToInstallLion = true;
+            }
+            else
+            {
+                timeToInstallLion = false;
             }
         }
     }
@@ -139,4 +127,43 @@ public class LION : MonoBehaviour
             }
         }
     }
+
+    void numsProbability( )
+    {
+        if ( installAnimals.lionsNumProbability <= 1 )
+        {
+            lionsNUM = 1;
+        }else if ( installAnimals.lionsNumProbability <= 4 )
+        {
+            lionsNUM = 2;
+        }else if ( installAnimals.lionsNumProbability <= 8 )
+        {
+            lionsNUM = 3;
+        }else
+        {
+            lionsNUM = 4;
+        }
+    }
+
+    //
+    ////level3
+    //
+    //void infighting( )
+    //{
+    //    _lion.fightProbability = Random.Range( 0, 20 );
+    //    if ( _lion.fightProbability < 4 )
+    //    {
+    //        _lion.fightEachOther = true;
+    //    }
+    //    else
+    //    {
+    //        _lion.fightEachOther = false;
+    //    }
+
+    //    if ( _lion.fightEachOther )
+    //    {
+    //        Destroy( GetNum._LION[ GetNum.lionsNum - 1 ] );
+    //        Destroy( GetNum._LION[ GetNum.lionsNum - 2 ] );
+    //    }
+    //}
 }

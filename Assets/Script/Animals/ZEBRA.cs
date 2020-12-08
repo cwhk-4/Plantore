@@ -41,7 +41,7 @@ public class ZEBRA : MonoBehaviour
             {
                 goStage.transform.position = ItemMovement._grass.transform.position + new Vector3( 0, 2.0f, 0 );
             }
-            if ( !ItemMovement._item && ItemCountDown.CD < -5 )
+            if ( !ItemMovement._item && ItemCountDown.CD < -7 )
             {
                 goStage.transform.position = new Vector3( 35.0f, 8.0f, 0 );
                 Destroy( _zebra.animals, 5 );

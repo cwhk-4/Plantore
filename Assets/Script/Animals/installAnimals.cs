@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class installAnimals : MonoBehaviour
 {
-    public GameObject[ ] lion;
     public GameObject zebra;
     public GameObject giraffe;
     public GameObject impala;
-    public LION _LION;
+    GameObject[ ] lion;
+    GameObject lionObj;
 
     public static GameObject LIONS;
+    public LION _LION;
     public static bool canMove;
+    public static int lionsNumProbability;
 
     private int zebraNum  = 0;
     private int giraffeNum = 0;
@@ -43,11 +45,13 @@ public class installAnimals : MonoBehaviour
 
     void Start( )
     {
+        lionObj = Resources.Load( "Animals/Prefabs/lion" ) as GameObject;
         LIONS = GameObject.Find( "LIONS" );
         canMove = false;
 
         //
         giraffeProbability = Random.Range( 0, 10 );
+        lionsNumProbability = Random.Range( 1, 21 );
     }
 
     void Update( )
@@ -59,6 +63,7 @@ public class installAnimals : MonoBehaviour
         animalsType( );
         animalsInstall( );
         debugText( );
+        Debug.Log( "lionsNumasdasd" + lionsNumProbability );
     }
 
     void animalsInstall( )
@@ -71,14 +76,23 @@ public class installAnimals : MonoBehaviour
                 _LION = GameObject.FindGameObjectWithTag( "LIONS" ).AddComponent<LION>( );
                 scriptCount = 1;
             }
-            if ( LION.timeToInstallLion )
+
+            if ( GetNum.lionsNum < LION.lionsNUM )
             {
-                canMove = true;
-                for ( int i = 0; i < 4; i++ )
+                if ( LION.timeToInstallLion )
                 {
-                    lion[ i ].SetActive( true );
+                    canMove = true;
+                    for ( int i = 0; i < LION.lionsNUM; i++ )
+                    {
+                        Instantiate( lionObj, new Vector3( 15.0f + i * 2.0f, 0.0f + i * 2.0f, 0.0f ), Quaternion.identity );
+                    }
+                    lion = GameObject.FindGameObjectsWithTag( "lion" );
+                    for ( int e = 0; e < LION.lionsNUM; e++ )
+                    {
+                        lion[ e ].name = "lion" + e;
+                        lion[ e ].transform.parent = GameObject.FindGameObjectWithTag( "LIONS" ).transform;
+                    }
                 }
-                //GameObject.Find( "AnimalsController" ).GetComponent<LION>( ).lionPredationProbability( );
             }
         }
 

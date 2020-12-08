@@ -30,6 +30,9 @@ public class DialogueEvent : MonoBehaviour
 
     public GameObject toStageButton;
 
+    public GameObject _LION;
+    public GameObject _ZEBRA;
+
     private void Start( )
     {
         dialogueWindow = GameObject.FindWithTag( "DialogueWindow" );
@@ -153,12 +156,14 @@ public class DialogueEvent : MonoBehaviour
     //install Animals
     private void installZebra( )
     {
-
+        GameObject OB_LION = Resources.Load( "Animals/Prefabs/zebra" ) as GameObject;
+        Instantiate( OB_LION );
     }
 
     private void installLion( )
     {
-
+        GameObject OB_ZEBRA = Resources.Load( "Animals/Prefabs/lion" ) as GameObject;
+        Instantiate( OB_ZEBRA );
     }
 
     public void changeTool()
