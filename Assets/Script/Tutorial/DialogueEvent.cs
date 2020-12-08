@@ -56,6 +56,9 @@ public class DialogueEvent : MonoBehaviour
 
         toStageButton = GameObject.FindWithTag( "ToStageButton" );
         toStageButton.SetActive( false );
+
+        leftGuide.SetActive( false );
+        rightGuide.SetActive( false );
     }
 
     private void Update( )
@@ -77,6 +80,7 @@ public class DialogueEvent : MonoBehaviour
         {
             if( toolConvertion.getIsCan( ) )
             {
+                closeMouseRightGuide( );
                 checkTool = false;
                 showDialogueWindow( );
             }
@@ -100,17 +104,40 @@ public class DialogueEvent : MonoBehaviour
 
     public void openMenu( )
     {
-
+        showMouseLeftGuide( new Vector2( 840, 190 ) );
     }
 
-    public void showMouseRightGuide( Vector2 toPos )
+    public void clickItemMenu( )
     {
-
+        closeMouseRightGuide( );
+        showMouseLeftGuide( new Vector2( -335, -225 ) );
     }
 
-    public void showMouseLeftGuide( Vector2 toPos )
+    public void clickItem()
     {
+        showMouseLeftGuide( new Vector2( -320, -290 ) );
+    }
 
+    private void showMouseRightGuide( Vector2 toPos )
+    {
+        rightGuide.GetComponent<RectTransform>( ).anchoredPosition = toPos;
+        rightGuide.SetActive( true );
+    }
+
+    private void showMouseLeftGuide( Vector2 toPos )
+    {
+        leftGuide.GetComponent<RectTransform>( ).anchoredPosition = toPos;
+        leftGuide.SetActive( true );
+    }
+
+    public void closeMouseRightGuide( )
+    {
+        rightGuide.SetActive( false );
+    }
+
+    public void closeMouseLeftGuide( )
+    {
+        leftGuide.SetActive( false );
     }
 
     public void showGrass( )
@@ -174,30 +201,41 @@ public class DialogueEvent : MonoBehaviour
     //install Animals
     private void installZebra( )
     {
-        GameObject OB_LION = Resources.Load( "Animals/Prefabs/zebra" ) as GameObject;
-        Instantiate( OB_LION );
+        GameObject OB_ZEBRA = Resources.Load( "Animals/Prefabs/zebra" ) as GameObject;
+        if( GameObject.FindWithTag( "zebra" ) == null )
+        {
+            Instantiate( OB_ZEBRA );
+        }
     }
 
     private void installLion( )
     {
-        GameObject OB_ZEBRA = Resources.Load( "Animals/Prefabs/lion" ) as GameObject;
-        Instantiate( OB_ZEBRA );
+        GameObject OB_LION = Resources.Load( "Animals/Prefabs/lion" ) as GameObject;
+        if( GameObject.FindWithTag( "lion" ) == null)
+        {
+            Instantiate( OB_LION );
+        }
     }
 
     public void changeTool()
     {
         closeDialogueWindow( );
+        //Vector2 pos = new Vector2( Input.mousePosition.x, Input.mousePosition.y );
+        showMouseRightGuide( Vector2.zero );
         checkTool = true;
     }
 
     public void waitForRepair( )
     {
         closeDialogueWindow( );
+        //Vector2 pos = new Vector2( Input.mousePosition.x, Input.mousePosition.y );
+        showMouseLeftGuide( Vector2.zero );
     }
 
     public void repairGrass( )
     {
         spriteRenderer.sprite = originalGrass;
+        closeMouseLeftGuide( );
         isCounting = true;
         timer = 2f;
     }

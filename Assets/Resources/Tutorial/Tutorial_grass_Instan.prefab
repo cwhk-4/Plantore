@@ -94,5 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53513ad45d899424aa2b1975cc381951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grass: {fileID: 6587741821020689999, guid: 3c8535d11147f42209335c747384420e, type: 3}
+  itemToBeInstantiate: {fileID: 6587741821020689999, guid: 3c8535d11147f42209335c747384420e,
+    type: 3}
   storage: {fileID: 0}
