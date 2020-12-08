@@ -57,6 +57,7 @@ public class DialogueControl : MonoBehaviour
 
             case 2:
                 dialogueEvent.openMenu( );
+                dialogueEvent.clickItemMenu( );
                 dialogueEvent.showGrass( );
                 dialogueCount++;
                 break;
