@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 1273403493
   m_SortingLayer: 4
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 81fd5583c4a8944648306767dbef2778, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 895fcf29d595e4711b02aabd4495f267, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,5 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53513ad45d899424aa2b1975cc381951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentGO: {fileID: 0}
-  grass: {fileID: 6587741821020689999, guid: ce09119d3e9d34ea0921daf07ec88d9a, type: 3}
+  itemToBeInstantiate: {fileID: 6587741821020689999, guid: ce09119d3e9d34ea0921daf07ec88d9a,
+    type: 3}
+  storage: {fileID: 0}

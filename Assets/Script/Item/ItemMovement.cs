@@ -104,7 +104,7 @@ public class ItemMovement : MonoBehaviour
 
     public void itemIn( )
     {
-        _grass = GameObject.FindGameObjectWithTag( "Grass" );
+        _grass = GameObject.FindGameObjectWithTag( this.gameObject.tag );
         if ( _grass != null )
         {
             _item = true;

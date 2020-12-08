@@ -128,7 +128,7 @@ public class DialogueEvent : MonoBehaviour
     public void placeGrass( )
     {
         closeDialogueWindow( );
-        itemUIInstantiate.itemInstantiate( );
+        itemUIInstantiate.itemInstantiate( null );
     }
 
     public void grassPlaced( )

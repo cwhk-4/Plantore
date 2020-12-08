@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  distance: 190
 --- !u!1 &6587741819568477541
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +202,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -110}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6587741820147400953
 MonoBehaviour:
@@ -266,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  distance: 135
 --- !u!1 &6587741820429369777
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +387,7 @@ MonoBehaviour:
   slider: {fileID: 6587741820147400953}
   text: {fileID: 6587741819437575037}
   canvas: {fileID: 0}
-  original: {fileID: 21300000, guid: 81fd5583c4a8944648306767dbef2778, type: 3}
+  original: {fileID: 21300000, guid: 895fcf29d595e4711b02aabd4495f267, type: 3}
   driedGrass: {fileID: 21300000, guid: fbd0c291d4ce74395acda1a5a88d32e0, type: 3}
   timer: 20
 --- !u!1 &6587741820716981709
@@ -471,10 +473,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6587741821020689985}
   - component: {fileID: 6587741821020689984}
-  - component: {fileID: 3700460559456111218}
   - component: {fileID: 5053576694663965267}
   - component: {fileID: 6212306845334421298}
   - component: {fileID: -4570675494139798249}
+  - component: {fileID: -831074658628729141}
   m_Layer: 0
   m_Name: grass
   m_TagString: Grass
@@ -536,7 +538,7 @@ SpriteRenderer:
   m_SortingLayerID: 1273403493
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 81fd5583c4a8944648306767dbef2778, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 895fcf29d595e4711b02aabd4495f267, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -547,32 +549,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3700460559456111218
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6587741821020689999}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5, y: 1.665}
-    newSize: {x: 1.5, y: 1.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 1.665}
-  m_EdgeRadius: 0
 --- !u!114 &5053576694663965267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,6 +601,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &-831074658628729141
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6587741821020689999}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.023049355, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.8, y: 3.1}
+    newSize: {x: 1.5, y: 1.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.692437, y: 2.915606}
+  m_EdgeRadius: 0
 --- !u!1 &6587741821024494563
 GameObject:
   m_ObjectHideFlags: 0

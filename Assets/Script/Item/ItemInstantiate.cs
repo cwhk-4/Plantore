@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemInstantiate : MonoBehaviour
 {
     public static GameObject parentGO = null;
-    public GameObject grass;
+    public GameObject itemToBeInstantiate;
     private Vector3 mousePos;
     public ItemStorage storage;
 
@@ -25,7 +25,7 @@ public class ItemInstantiate : MonoBehaviour
                 if( !storage.hvChild )
                 {
                     ItemStorage.isInstantiating = false;
-                    var item = Instantiate( grass, mousePos, Quaternion.identity );
+                    var item = Instantiate( itemToBeInstantiate, mousePos, Quaternion.identity );
                     item.transform.parent = parentGO.transform;
                     Destroy( this.gameObject );
                 }

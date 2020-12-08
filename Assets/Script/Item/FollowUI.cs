@@ -9,22 +9,12 @@ public class FollowUI : MonoBehaviour
     private GameObject canvas;
     public Transform target;
     private Vector3 targetPos;
-    private int distance;
+    [SerializeField]private int distance;
 
     private void Start( )
     {
         canvas = this.transform.parent.gameObject;
         target = canvas.transform.parent;
-
-        if( this.GetComponent<Slider>( ) != null )
-        {
-            distance = 110;
-        }
-
-        if( this.GetComponent<Text>( ) != null )
-        {
-            distance = 160;
-        }
     }
 
     void Update()

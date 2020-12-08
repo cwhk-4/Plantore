@@ -23,6 +23,7 @@ TagManager:
   - DialogueWindow
   - DialogueControl
   - ToStageButton
+  - Wood
   layers:
   - Default
   - TransparentFX
