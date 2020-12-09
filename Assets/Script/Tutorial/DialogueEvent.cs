@@ -104,6 +104,7 @@ public class DialogueEvent : MonoBehaviour
 
     public void openMenu( )
     {
+        closeDialogueWindow( );
         showMouseLeftGuide( new Vector2( 840, 190 ) );
     }
 
