@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class installAnimals : MonoBehaviour
 {
-    public GameObject zebra;
     public GameObject giraffe;
     public GameObject impala;
-    GameObject[ ] lion;
-    GameObject lionObj;
 
+    GameObject[ ] lion;
+    public static GameObject lionObj;
     public static GameObject LIONS;
     public LION _LION;
-    public static bool canMove;
-    public static int lionsNumProbability;
+    GameObject[ ] zebra;
+    public static GameObject zebraObj;
+    public static GameObject ZEBRAS;
+    public ZEBRA _ZEBRA;
 
-    private int zebraNum  = 0;
+    public static int lionsNumProbability;
+    public static int zebrasNumProbability;
+
     private int giraffeNum = 0;
     private int impalaNum = 0;
     private int period;
     private int scriptCount = 0;
+    private int scriptCounts = 0;
 
     //キリン仮確率
     int giraffeProbability;
@@ -47,11 +51,13 @@ public class installAnimals : MonoBehaviour
     {
         lionObj = Resources.Load( "Animals/Prefabs/lion" ) as GameObject;
         LIONS = GameObject.Find( "LIONS" );
-        canMove = false;
+        zebraObj = Resources.Load( "Animals/Prefabs/zebra" ) as GameObject;
+        ZEBRAS = GameObject.Find( "ZEBRAS" );
 
         //
         giraffeProbability = Random.Range( 0, 10 );
         lionsNumProbability = Random.Range( 1, 21 );
+        zebrasNumProbability = Random.Range( 1, 5 );
     }
 
     void Update( )
@@ -62,8 +68,7 @@ public class installAnimals : MonoBehaviour
         periodAnimalsType( );
         animalsType( );
         animalsInstall( );
-        debugText( );
-        Debug.Log( "lionsNumasdasd" + lionsNumProbability );
+        debugText( );   
     }
 
     void animalsInstall( )
@@ -79,19 +84,12 @@ public class installAnimals : MonoBehaviour
 
             if ( GetNum.lionsNum < LION.lionsNUM )
             {
-                if ( LION.timeToInstallLion )
+                for ( int i = 0; i < LION.lionsNUM; i++ )
                 {
-                    canMove = true;
-                    for ( int i = 0; i < LION.lionsNUM; i++ )
-                    {
-                        Instantiate( lionObj, new Vector3( 15.0f + i * 2.0f, 0.0f + i * 2.0f, 0.0f ), Quaternion.identity );
-                    }
+                    Instantiate( lionObj, new Vector3( -15.0f + i * 1.0f, -5.0f + i * 1.0f, 0.0f ), Quaternion.identity );
                     lion = GameObject.FindGameObjectsWithTag( "lion" );
-                    for ( int e = 0; e < LION.lionsNUM; e++ )
-                    {
-                        lion[ e ].name = "lion" + e;
-                        lion[ e ].transform.parent = GameObject.FindGameObjectWithTag( "LIONS" ).transform;
-                    }
+                    lion[ i ].name = "lion" + i;
+                    lion[ i ].transform.parent = GameObject.FindGameObjectWithTag( "LIONS" ).transform;
                 }
             }
         }
@@ -101,10 +99,15 @@ public class installAnimals : MonoBehaviour
         {
             if ( ItemMovement._item )
             {
-                if ( zebraNum == 0 )
+                if ( GetNum.zebrasNum < ZEBRA.zebrasNUM )
                 {
-                    Instantiate( zebra, new Vector3( 15.0f, 0.0f, 0.0f ), Quaternion.identity );
-                    zebraNum = 1;
+                    for ( int i = 0; i < ZEBRA.zebrasNUM; i++ )
+                    {
+                        Instantiate( zebraObj, new Vector3( 15.0f + i * 2.0f, 0.0f + i * 2.0f, 0.0f ), Quaternion.identity );
+                        zebra = GameObject.FindGameObjectsWithTag( "zebra" );
+                        zebra[ i ].name = "zebra" + i;
+                        zebra[ i ].transform.parent = GameObject.FindGameObjectWithTag( "ZEBRAS" ).transform;
+                    }
                 }
             }
         }
@@ -114,6 +117,11 @@ public class installAnimals : MonoBehaviour
         {
             if ( ItemMovement._item && in_animals.IN_ZEBRA )
             {
+                if ( scriptCounts == 0 )
+                {
+                    _ZEBRA = GameObject.FindGameObjectWithTag( "ZEBRAS" ).AddComponent<ZEBRA>( );
+                    scriptCounts = 1;
+                }
                 if ( giraffeProbability > 0 && giraffeNum == 0 )
                 {
                     Instantiate( giraffe, new Vector3( 15.0f, 4.0f, 0.0f ), Quaternion.identity );
@@ -201,8 +209,11 @@ public class installAnimals : MonoBehaviour
         Debug.Log( "period : " + period );
         Debug.Log( "probability : " + LION._lion.predationProbability );
         Debug.Log( "canPredation : " + LION.canPredation );
-        Debug.Log( "lionsNUM : " + GetNum.lionsNum );
+        Debug.Log( "lionsNUM : " + LION.lionsNUM );
+        Debug.Log( "lionsNum : " + GetNum.lionsNum );
+        Debug.Log( "zebrasNUM : " + ZEBRA.zebrasNUM );
+        Debug.Log( "zebrasNum : " + GetNum.zebrasNum );
         Debug.Log( "lionFightProbability : " + LION._lion.fightProbability );
+        Debug.Log( "zebraInstallpro : " + zebrasNumProbability );
     }
-
 }

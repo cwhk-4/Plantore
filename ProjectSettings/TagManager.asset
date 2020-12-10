@@ -24,6 +24,7 @@ TagManager:
   - DialogueControl
   - ToStageButton
   - Wood
+  - ZEBRAS
   layers:
   - Default
   - TransparentFX

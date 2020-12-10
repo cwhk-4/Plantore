@@ -8,8 +8,8 @@ public class ZEBRA : MonoBehaviour
 
     GameObject goStage;
 
+    public static int zebrasNUM;
     private float startTime = 0; 
-    bool canMove;
 
     void Start( )
     {
@@ -17,8 +17,8 @@ public class ZEBRA : MonoBehaviour
         _zebra.animals = this.gameObject;
         _zebra.moveSpeed = 3.0f;
         _zebra.timeOut = 2;
+        _zebra.canMove = false;
 
-        canMove = false;
         goStage = GameObject.Find( "zebraTarget" );
     }
         
@@ -26,12 +26,13 @@ public class ZEBRA : MonoBehaviour
     {
         zebraMove( );
         timeIn( );
+        numsProbability( );
         Debug.Log( "ITEMIN" + ItemMovement._item );
     }
 
     void zebraMove( )
     {
-        if ( canMove )
+        if ( _zebra.canMove )
         {
             if ( _zebra.animals )
             {
@@ -55,8 +56,21 @@ public class ZEBRA : MonoBehaviour
             float timeOver = _zebra.timeOut - ( GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( ) - startTime );
             if ( timeOver <= 0 )
             {
-                canMove = true;
+                _zebra.canMove = true;
             }
+        }
+    }
+    void numsProbability( )
+    {
+        if ( installAnimals.zebrasNumProbability == 1 )
+        {
+            zebrasNUM = 1;
+        }else if ( installAnimals.zebrasNumProbability == 2 )
+        {
+            zebrasNUM = 2;
+        }else
+        {
+            zebrasNUM = 3;
         }
     }
 }

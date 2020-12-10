@@ -16,8 +16,11 @@ public class animalsCollection : MonoBehaviour
         public int Minus;
         public float timeOut;
         public float startTime;
+        public float reviveTime;
         public float moveSpeed;
         public bool fightEachOther;
+        public bool canMove;
+        public bool alive;
     };
     public static animalsSystem allAnimals = new animalsSystem( );
 
@@ -57,33 +60,4 @@ public class animalsCollection : MonoBehaviour
 
     }
 
-    //void animalsType( )
-    //{
-    //        switch ( _type )
-    //        {
-    //            case "LION":
-    //                _predator = PREDATOR.LION;
-    //                break;
-    //            case "ZEBRA":
-    //                _prey = PREY.ZEBRA;
-    //                break;
-    //        }
-    //
-    //    //PREDATOR
-    //    switch ( _predator )
-    //    {
-    //        case PREDATOR.LION:
-    //            thisGame.moveSpeed = 5.0f;
-    //            thisGame.animalsTarget[ 0 ] = animals[ 0 ];
-    //            break;
-    //    }
-    //    //PREY
-    //    switch( _prey )
-    //    {
-    //        case PREY.ZEBRA:
-    //            thisGame.moveSpeed = 3.0f;
-    //            thisGame.animalsTarget[ 1 ] = animals[ 1 ];
-    //            break;
-    //    }
-    //}
 }

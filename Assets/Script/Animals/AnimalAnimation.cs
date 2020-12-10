@@ -13,18 +13,16 @@ public class AnimalAnimation : MonoBehaviour
     private int i = 0;
     private float count = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    void Start( )
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>( );
         path = "Sprite/" + name;
         Debug.Log( "path: " + path );
         sprites = Resources.LoadAll<Sprite>( path );
-        spriteRenderer.sprite = sprites[0];
+        spriteRenderer.sprite = sprites[ 0 ];
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update( )
     {
         count++;
 
