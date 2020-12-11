@@ -9,7 +9,8 @@ public class ZEBRA : MonoBehaviour
     GameObject goStage;
 
     public static int zebrasNUM;
-    private float startTime = 0; 
+    private float startTime = 0;
+    private bool runaway = false;
 
     void Start( )
     {
@@ -40,12 +41,19 @@ public class ZEBRA : MonoBehaviour
             }
             if ( ItemMovement._item )
             {
-                goStage.transform.position = ItemMovement._grass.transform.position + new Vector3( 0, 2.0f, 0 );
+                goStage.transform.position = ItemMovement._grass.transform.position;
             }
-            if ( !ItemMovement._item && ItemCountDown.CD < -7 )
+            if ( this.gameObject.transform.position == LION._lion.animals.transform.position )
+            {
+                runaway = true;
+            }
+            if ( runaway )
             {
                 goStage.transform.position = new Vector3( 35.0f, 8.0f, 0 );
-                Destroy( _zebra.animals, 5 );
+                for ( int e = 0; e < GetNum.zebrasNum; e++ )
+                {
+                    Destroy( GetNum._ZEBRA[ e ], 5 );
+                }
             }
         }
     }
@@ -62,13 +70,19 @@ public class ZEBRA : MonoBehaviour
     }
     void numsProbability( )
     {
-        if ( installAnimals.zebrasNumProbability == 1 )
+        if ( installAnimals.zebrasNumProbability == 0 )
+        {
+            zebrasNUM = 0;
+        }
+        else if ( installAnimals.zebrasNumProbability == 1 )
         {
             zebrasNUM = 1;
-        }else if ( installAnimals.zebrasNumProbability == 2 )
+        }
+        else if ( installAnimals.zebrasNumProbability == 2 )
         {
             zebrasNUM = 2;
-        }else
+        }
+        else
         {
             zebrasNUM = 3;
         }
