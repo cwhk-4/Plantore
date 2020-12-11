@@ -11,7 +11,8 @@ public class AnimalAnimation : MonoBehaviour
     public string name;
     private string path;
     private int i = 0;
-    private float count = 0;
+    private float playCount = 0;
+    private int animationCount = 0;
 
     void Start( )
     {
@@ -24,16 +25,12 @@ public class AnimalAnimation : MonoBehaviour
 
     void Update( )
     {
-        count++;
+        playCount++;
 
-        if( count % 2 == 0 )
+        if( playCount % 2 == 0 )
         {
-            spriteRenderer.sprite = sprites[i];
-            i++;
-            if( i >= sprites.Length - 1)
-            {
-                i = 0;
-            }
+            animationCount++;
+            spriteRenderer.sprite = sprites[animationCount % ( sprites.Length - 1 )];
         }
     }
 }
