@@ -1225,7 +1225,7 @@ MonoBehaviour:
   BlackScreen: {fileID: 161800154}
   Grass: {fileID: 0}
   spriteRenderer: {fileID: 0}
-  originalGrass: {fileID: 21300000, guid: 81fd5583c4a8944648306767dbef2778, type: 3}
+  originalGrass: {fileID: 21300000, guid: 85cee2670572f498bbc0ff08a682678f, type: 3}
   driedGrass: {fileID: 21300000, guid: fbd0c291d4ce74395acda1a5a88d32e0, type: 3}
   cursor: {fileID: 0}
   toolConvertion: {fileID: 0}
@@ -1629,7 +1629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 81fd5583c4a8944648306767dbef2778, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85cee2670572f498bbc0ff08a682678f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
