@@ -27,6 +27,7 @@ public class ItemInstantiate : MonoBehaviour
                     ItemStorage.isInstantiating = false;
                     var item = Instantiate( itemToBeInstantiate, mousePos, Quaternion.identity );
                     item.transform.parent = parentGO.transform;
+                    item.transform.position = parentGO.transform.position;
                     Destroy( this.gameObject );
                 }
             }

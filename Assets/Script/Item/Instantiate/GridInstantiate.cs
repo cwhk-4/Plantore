@@ -21,7 +21,7 @@ public class GridInstantiate : MonoBehaviour
         {
             for( x = 0; x < xGridCount; x++ )
             {
-                Vector3 gridpos = new Vector3( gridWidth * x - 9.6f, gridHeight * y - 5.4f, 0 );
+                Vector3 gridpos = new Vector3( gridWidth * x - 9.6f + gridWidth / 2, gridHeight * y - 5.4f + gridHeight / 2, 0 );
                 var gridInstan = Instantiate( grid, gridpos, Quaternion.identity );
                 gridInstan.transform.parent = this.transform;
             }
