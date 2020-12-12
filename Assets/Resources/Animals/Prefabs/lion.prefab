@@ -96,4 +96,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
   sprites: []
-  name: lion
+  animalName: lion

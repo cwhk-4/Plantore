@@ -107,4 +107,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 44f03aca86e2b4bd794df380295c4dad, type: 3}
   - {fileID: 21300000, guid: d94ff3d65ee2a4c0ab14c225cbfcf0d3, type: 3}
   - {fileID: 21300000, guid: 9c5080c05a94b41c9808b8a2ff8bf00b, type: 3}
-  name: zebra
+  animalName: zebra

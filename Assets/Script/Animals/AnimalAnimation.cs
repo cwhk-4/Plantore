@@ -8,17 +8,15 @@ public class AnimalAnimation : MonoBehaviour
 
     public Sprite[] sprites;
 
-    public string name;
+    [SerializeField] private string animalName;
     private string path;
-    private int i = 0;
     private float playCount = 0;
     private int animationCount = 0;
 
     void Start( )
     {
         spriteRenderer = GetComponent<SpriteRenderer>( );
-        path = "Sprite/" + name;
-        Debug.Log( "path: " + path );
+        path = "Sprite/" + animalName;
         sprites = Resources.LoadAll<Sprite>( path );
         spriteRenderer.sprite = sprites[ 0 ];
     }

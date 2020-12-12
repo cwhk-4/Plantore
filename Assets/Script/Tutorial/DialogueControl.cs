@@ -25,19 +25,25 @@ public class DialogueControl : MonoBehaviour
         {
             if( Input.GetMouseButtonDown( 0 ) )
             {
-                if( dialogueCount <= 9 )
-                {
-                    nextDialogue( );
-                }
-                dialogue.text = DialogueText.getDialogue( dialogueCount );
-
-                if( dialogueCount == 9 )
-                {
-                    dialogueEvent.showToStageButton( );
-                }
+                jumpToNext( );
             }
+            //Debug.Log( "count:" + dialogueCount );
+        }
 
-            Debug.Log( "count:" + dialogueCount );
+    }
+
+    private void jumpToNext( )
+    {
+        if( dialogueCount <= 9 )
+        {
+            nextDialogue( );
+        }
+
+        dialogue.text = DialogueText.getDialogue( dialogueCount );
+
+        if( dialogueCount == 9 )
+        {
+            dialogueEvent.showToStageButton( );
         }
 
     }

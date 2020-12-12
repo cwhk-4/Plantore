@@ -127,4 +127,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6b8d4066179a2446c90ef02d9d2d82a9, type: 3}
   - {fileID: 21300000, guid: 051ca4f1a23ce45f18a9bbaeebc018e6, type: 3}
   - {fileID: 21300000, guid: 6a7efe7e1a47744ee82af9a733324293, type: 3}
-  name: giraffe
+  animalName: giraffe
