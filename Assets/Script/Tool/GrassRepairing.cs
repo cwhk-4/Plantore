@@ -17,11 +17,23 @@ public class GrassRepairing : MonoBehaviour
         itemCountDown = GetComponentInChildren<ItemCountDown>( );
     }
 
+    private void OnMouseOver( )
+    {
+        toolConvertion.setOnGO( );
+        itemCountDown.showGauge( );        
+    }
+
     private void OnMouseDown( )
     {
         if( toolConvertion.getIsCan( ) )
         {
             itemCountDown.repair( );
         }
+    }
+
+    private void OnMouseExit( )
+    {
+        toolConvertion.setExitGO( );
+        itemCountDown.closeGauge( );
     }
 }

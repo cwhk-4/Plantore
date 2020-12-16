@@ -16,33 +16,41 @@ public class ItemCountDown : MonoBehaviour
     public Sprite original;
     public Sprite driedGrass;
 
-    [SerializeField]private float timer = 10;
+    [SerializeField] private float timer = 10;
     private float startTime = 0;
+    private bool isChanged = false;
 
     public static float CD;
 
+    private void Awake( )
+    {
+        canvas = GetComponent<Canvas>( );
+        closeGauge( );
+    }
+
     void Start()
     {
-        parentItem = this.transform.parent.gameObject;
         if( system == null )
         {
             system = GameObject.FindWithTag( "System" );
         }
+
         timeController = system.GetComponent<TimeController>( );
-        startTime = timeController.getNowRealSec( );
-
-        canvas = GetComponent<Canvas>( );
-
+        parentItem = this.transform.parent.gameObject;
         spriteRenderer = GetComponentInParent<SpriteRenderer>( );
         spriteRenderer.sprite = original;
     }
 
     void Update()
     {
+        if( !isChanged )
+        {
+            startTime = timeController.getNowRealSec( );
+            isChanged = true;
+        }
+
         CD = timer - ( timeController.getNowRealSec( ) - startTime );
-
         slider.value = ( CD / timer );
-
         if( slider.value == 0 )
         {
             spriteRenderer.sprite = driedGrass;
@@ -68,4 +76,16 @@ public class ItemCountDown : MonoBehaviour
         startTime = timeController.getNowRealSec( );
         spriteRenderer.sprite = original;
     }
+
+    public float getStartTime()
+    {
+        return startTime;
+    }
+
+    public void setStartTime( float startingTime )
+    {
+        startTime = startingTime;
+        isChanged = true;
+    }
+
 }

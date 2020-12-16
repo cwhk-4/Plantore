@@ -16,7 +16,6 @@ public class ItemMovement : MonoBehaviour
 
     private bool parentHvChild = false;
 
-
     public static GameObject _grass;
     public static bool _item;
 
@@ -44,36 +43,13 @@ public class ItemMovement : MonoBehaviour
 
     private void OnMouseOver( )
     {
-        toolConvertion.setOnGO( );
-
-        itemCountDown.showGauge( );
-
         if( !toolConvertion.getIsCan( ) )
         { 
             if( Input.GetMouseButtonDown( 1 ) )
             {
-                if( isMoving )
-                {
-                    if( !parentHvChild )
-                    {
-                        isMoving = false;
-                        ItemStorage.isMoving = false;
-                        this.transform.parent = parentGO.transform;
-                    }  
-                }
-                else
-                {
-                    isMoving = true;
-                    ItemStorage.isMoving = true;
-                }
+
             }
         }
-    }
-
-    private void OnMouseExit( )
-    {
-        toolConvertion.setExitGO( );
-        itemCountDown.closeGauge( );
     }
 
     private void moveItem( )

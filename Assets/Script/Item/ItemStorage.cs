@@ -57,7 +57,6 @@ public class ItemStorage : MonoBehaviour
     {
         if(isMoving)
         {
-            //contact point
             showAvailability();
         }
     }
