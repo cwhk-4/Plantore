@@ -6,7 +6,10 @@ public class AnimalAnimation : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
 
-    public Sprite[] sprites;
+    public Sprite[] nowAnimation;
+
+    public Sprite[] walk;
+    public Sprite[] eat;
 
     [SerializeField] private string animalName;
     private string path;
@@ -17,8 +20,10 @@ public class AnimalAnimation : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>( );
         path = "Sprite/" + animalName;
-        sprites = Resources.LoadAll<Sprite>( path );
-        spriteRenderer.sprite = sprites[ 0 ];
+        walk = Resources.LoadAll<Sprite>( path + "/Walk");
+        eat = Resources.LoadAll<Sprite>( path + "/Eat" );
+        nowAnimation = walk;
+        spriteRenderer.sprite = nowAnimation[ 0 ];
     }
 
     void Update( )
@@ -28,7 +33,17 @@ public class AnimalAnimation : MonoBehaviour
         if( playCount % 2 == 0 )
         {
             animationCount++;
-            spriteRenderer.sprite = sprites[animationCount % ( sprites.Length - 1 )];
+            spriteRenderer.sprite = nowAnimation[animationCount % ( nowAnimation.Length - 1 )];
         }
+    }
+
+    public void setEat( )
+    {
+        nowAnimation = eat;
+    }
+
+    public void setWalk( )
+    {
+        nowAnimation = walk;
     }
 }
