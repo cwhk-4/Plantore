@@ -39,7 +39,8 @@ public class ItemStorage : MonoBehaviour
         if(isInstantiating)
         {
             showAvailability();
-            
+            UseOtherGrid.setNowOnGrid( this.gameObject.name );
+
             if(!hvChild)
             {
                 ItemInstantiate.setParentGO(this.gameObject);
@@ -50,7 +51,8 @@ public class ItemStorage : MonoBehaviour
     private void OnMouseExit()
     {
         spriteRenderer.color = Color.clear;
-        ItemInstantiate.setParentGO(null);
+        ItemInstantiate.setParentGO( null );
+        UseOtherGrid.setNowOnGrid( null );
     }
 
     private void OnTriggerStay2D(Collider2D other) 
@@ -66,7 +68,7 @@ public class ItemStorage : MonoBehaviour
         spriteRenderer.color = Color.clear;
     }
 
-    private void showAvailability()
+    public void showAvailability()
     {
         if( childGO == null )
         {
@@ -76,5 +78,10 @@ public class ItemStorage : MonoBehaviour
         {
             spriteRenderer.color = notAvailable;
         }
+    }
+
+    public void closeAvailability( )
+    {
+        spriteRenderer.color = Color.clear;
     }
 }

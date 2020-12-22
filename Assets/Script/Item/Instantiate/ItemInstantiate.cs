@@ -65,9 +65,13 @@ public class ItemInstantiate : MonoBehaviour
         ItemStorage.isInstantiating = false;
         if( isChanged )
         {
-            startingTime = startingTime + timeController.getNowRealSec( ) - thisStartTime;
-            Debug.Log( startingTime );
-            itemCountDown.setStartTime( startingTime );
+            startingTime += ( timeController.getNowRealSec( ) - thisStartTime );
         }
+        else
+        {
+            startingTime = timeController.getNowRealSec( );
+        }
+
+        itemCountDown.setStartTime( startingTime );
     }
 }

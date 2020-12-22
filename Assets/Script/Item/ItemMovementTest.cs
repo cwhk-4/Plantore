@@ -34,7 +34,6 @@ public class ItemMovementTest : MonoBehaviour
                 //instantiate
                 Instantiate( InstantiateUI, mousePos, Quaternion.identity );
                 var startTime = GetComponentInChildren<ItemCountDown>( ).getStartTime( );
-                Debug.Log( startTime );
                 InstantiateUI.GetComponent<ItemInstantiate>( ).setGOStartTime( startTime );
                 Destroy( this.gameObject );
             }
