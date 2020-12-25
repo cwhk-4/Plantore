@@ -35,6 +35,13 @@ public class AnimalAnimation : MonoBehaviour
             animationCount++;
             spriteRenderer.sprite = nowAnimation[animationCount % ( nowAnimation.Length - 1 )];
         }
+        if ( ItemMovementTest._grass )
+        {
+            if ( ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position )
+            {
+                nowAnimation = eat;
+            }
+        }
     }
 
     public void setEat( )

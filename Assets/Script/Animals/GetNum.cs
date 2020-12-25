@@ -6,11 +6,13 @@ public class GetNum : MonoBehaviour
 {
     public static GameObject[ ] _LION;
     public static GameObject[ ] _ZEBRA;
+    public static GameObject[ ] _GRAFFE;
 
     public static GameObject[ ] _GRASS;
 
     public static int lionsNum;
     public static int zebrasNum;
+    public static int graffesNum;
 
     public static int grassNum;
     void Start( )
@@ -31,14 +33,12 @@ public class GetNum : MonoBehaviour
         _LION = GameObject.FindGameObjectsWithTag( "lion" );
         lionsNum = _LION.Length;
         
-        Debug.Log( "_LION.length : " + _LION.Length );
     }
     void getZebrasNum( )
     {
         _ZEBRA = GameObject.FindGameObjectsWithTag( "zebra" );
         zebrasNum = _ZEBRA.Length;
 
-        Debug.Log( "_ZEBRA.length : " + _ZEBRA.Length );
     }
 
     void getGrassNum( )
@@ -46,6 +46,12 @@ public class GetNum : MonoBehaviour
         _GRASS = GameObject.FindGameObjectsWithTag( "Grass" );
         grassNum = _GRASS.Length;
 
-        Debug.Log( "_Grass.length : " + _GRASS.Length );
+    }
+
+    void getGraffeNum( )
+    {
+        _GRASS = GameObject.FindGameObjectsWithTag( "Grass" );
+        grassNum = _GRASS.Length;
+
     }
 }

@@ -28,7 +28,6 @@ public class ZEBRA : MonoBehaviour
         zebraMove( );
         timeIn( );
         numsProbability( );
-        Debug.Log( "ITEMIN" + ItemMovement._item );
     }
 
     void zebraMove( )
@@ -39,27 +38,15 @@ public class ZEBRA : MonoBehaviour
             {
                 _zebra.animals.transform.position = Vector3.MoveTowards( _zebra.animals.transform.position, goStage.transform.position, Time.deltaTime * _zebra.moveSpeed );
             }
-            if ( ItemMovement._item )
+            if ( ItemMovementTest._grass )
             {
-                goStage.transform.position = ItemMovement._grass.transform.position;
-            }
-            if ( this.gameObject.transform.position == LION._lion.animals.transform.position )
-            {
-                runaway = true;
-            }
-            if ( runaway )
-            {
-                goStage.transform.position = new Vector3( 35.0f, 8.0f, 0 );
-                for ( int e = 0; e < GetNum.zebrasNum; e++ )
-                {
-                    Destroy( GetNum._ZEBRA[ e ], 5 );
-                }
+                goStage.transform.position = ItemMovementTest._grass.transform.position;
             }
         }
     }
     void timeIn( )
     {
-        if ( ItemMovement._item && installAnimals.in_animals.IN_ZEBRA )
+        if ( ItemMovementTest._grass && installAnimals.in_animals.IN_ZEBRA )
         {
             float timeOver = _zebra.timeOut - ( GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( ) - startTime );
             if ( timeOver <= 0 )

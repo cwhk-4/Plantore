@@ -9,8 +9,6 @@ public class LION : MonoBehaviour
     GameObject goStage;
     GameObject Target;
 
-    private int TRUE;
-
     public static int startProbability;
     public static int lionsNUM;
     public static bool canPredation;
@@ -55,26 +53,6 @@ public class LION : MonoBehaviour
             if ( ZEBRA._zebra.animals )
             {
                 this.gameObject.transform.position = Vector3.MoveTowards( this.gameObject.transform.position, Target.transform.position, _lion.moveSpeed * Time.deltaTime );
-                if ( DEBUG == 0 )
-                {
-                    if ( this.transform.position == goStage.transform.position )
-                    {
-                        canFind = true;
-                        lionPredationProbability( );
-                    }
-                    if ( canFind )
-                    {
-                        Target.transform.position = ZEBRA._zebra.animals.transform.position;
-                    }
-
-                    if ( installAnimals.LIONS.transform.position == ZEBRA._zebra.animals.transform.position )
-                    {
-                        Predation( );
-                        canFind = false;
-                        Target.transform.position = goStage.transform.position;
-                        DEBUG = 1;
-                    }
-                }
             }
         }
     }

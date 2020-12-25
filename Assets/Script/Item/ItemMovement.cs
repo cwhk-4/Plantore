@@ -16,9 +16,6 @@ public class ItemMovement : MonoBehaviour
 
     private bool parentHvChild = false;
 
-    public static GameObject _grass;
-    public static bool _item;
-
     private void Start( )
     {
         cursor = GameObject.FindWithTag( "Cursor" );
@@ -37,8 +34,6 @@ public class ItemMovement : MonoBehaviour
             moveItem( );
             this.transform.parent = tempParent.transform;
         }
-
-        itemIn( );
     }
 
     private void OnMouseOver( )
@@ -75,19 +70,6 @@ public class ItemMovement : MonoBehaviour
                 parentGO = other.gameObject; 
             }
 
-        }
-    }
-
-    public void itemIn( )
-    {
-        _grass = GameObject.FindGameObjectWithTag( this.gameObject.tag );
-        if ( _grass != null )
-        {
-            _item = true;
-        }
-        else
-        {
-            _item = false;
         }
     }
 }
