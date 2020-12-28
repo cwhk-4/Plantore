@@ -7,9 +7,11 @@ public class ZEBRA : MonoBehaviour
     public static animalsCollection.animalsSystem _zebra = new animalsCollection.animalsSystem( );
 
     GameObject goStage;
+    private Vector3 randomPosition;
 
     public static int zebrasNUM;
     private float startTime = 0;
+    private bool canFindGrass = true;
     private bool runaway = false;
 
     void Start( )
@@ -21,6 +23,7 @@ public class ZEBRA : MonoBehaviour
         _zebra.canMove = false;
 
         goStage = GameObject.Find( "zebraTarget" );
+        randomPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
     }
         
     void Update( )
@@ -34,16 +37,34 @@ public class ZEBRA : MonoBehaviour
     {
         if ( _zebra.canMove )
         {
-            if ( _zebra.animals )
-            {
-                _zebra.animals.transform.position = Vector3.MoveTowards( _zebra.animals.transform.position, goStage.transform.position, Time.deltaTime * _zebra.moveSpeed );
-            }
-            if ( ItemMovementTest._grass )
-            {
-                goStage.transform.position = ItemMovementTest._grass.transform.position;
-            }
+            _zebra.animals.transform.position = Vector3.MoveTowards( _zebra.animals.transform.position, goStage.transform.position, Time.deltaTime * _zebra.moveSpeed );
+            changeTarget( );
         }
     }
+
+    void changeTarget( )
+    {
+        if ( ItemMovementTest._grass && !runaway )
+        {
+            goStage.transform.position = ItemMovementTest._grass.transform.position;
+            canFindGrass = true;
+        }
+        if ( ItemMovementTest._grass == null && canFindGrass )
+        {
+            goStage.transform.position = randomPosition;
+            canFindGrass = false;
+        }
+        if ( this.gameObject.transform.position == LION._lion.animals.transform.position )
+        {
+            runaway = true;
+            goStage.transform.position = randomPosition;
+        }
+        if ( ItemMovementTest._grass == null && this.gameObject.transform.position == randomPosition )
+        {
+            runaway = false;
+        }
+    }
+
     void timeIn( )
     {
         if ( ItemMovementTest._grass && installAnimals.in_animals.IN_ZEBRA )

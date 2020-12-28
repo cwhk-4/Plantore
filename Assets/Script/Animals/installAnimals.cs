@@ -62,7 +62,7 @@ public class installAnimals : MonoBehaviour
         periodAnimalsType( );
         animalsType( );
         animalsInstall( );
-        debugText( );   
+        debugText( );
     }
 
     void animalsInstall( )
@@ -73,32 +73,39 @@ public class installAnimals : MonoBehaviour
             _LION = GameObject.FindGameObjectWithTag( "LIONS" ).AddComponent<LION>( );
             scriptCount = 1;
         }
-        if ( GetNum.lionsNum < LION.lionsNUM )
+        if ( lion == null )
         {
-            for ( int i = 0; i < LION.lionsNUM; i++ )
+            if ( GetNum.lionsNum < LION.lionsNUM )
             {
-                Instantiate( lionObj, new Vector3( -8.0f + i * 1.0f, 6.5f + i * 1.0f, 0.0f ), Quaternion.identity );
-                lion = GameObject.FindGameObjectsWithTag( "lion" );
-                lion[ i ].name = "lion" + i;
-                lion[ i ].transform.parent = GameObject.FindGameObjectWithTag( "LIONS" ).transform;
+                for ( int i = 0; i < LION.lionsNUM; i++ )
+                {
+                    Instantiate( lionObj, new Vector3( -8.0f + i * 1.0f, 6.5f + i * 1.0f, 0.0f ), Quaternion.identity );
+                    lion = GameObject.FindGameObjectsWithTag( "lion" );
+                    lion[ i ].name = "lion" + i;
+                    lion[ i ].transform.parent = GameObject.FindGameObjectWithTag( "LIONS" ).transform;
+                }
             }
         }
 
-
         //ZEBRA
+
         if ( scriptCounts == 0 )
         {
             _ZEBRA = GameObject.FindGameObjectWithTag( "ZEBRAS" ).AddComponent<ZEBRA>( );
             scriptCounts = 1;
         }
-        if ( GetNum.zebrasNum < ZEBRA.zebrasNUM )
+
+        if ( zebra == null )
         {
-            for ( int i = 0; i < ZEBRA.zebrasNUM; i++ )
+            if ( GetNum.zebrasNum < ZEBRA.zebrasNUM )
             {
-                Instantiate( zebraObj, new Vector3( -1.5f + i * 1.0f, 6.7f + i * 1.0f, 0.0f ), Quaternion.identity );
-                zebra = GameObject.FindGameObjectsWithTag( "zebra" );
-                zebra[ i ].name = "zebra" + i;
-                zebra[ i ].transform.parent = GameObject.FindGameObjectWithTag( "ZEBRAS" ).transform;
+                for ( int i = 0; i < ZEBRA.zebrasNUM; i++ )
+                {
+                    Instantiate( zebraObj, new Vector3( -1.5f + i * 1.0f, 6.7f + i * 1.0f, 0.0f ), Quaternion.identity );
+                    zebra = GameObject.FindGameObjectsWithTag( "zebra" );
+                    zebra[ i ].name = "zebra" + i;
+                    zebra[ i ].transform.parent = GameObject.FindGameObjectWithTag( "ZEBRAS" ).transform;
+                }
             }
         }
     }

@@ -31,27 +31,23 @@ public class GetNum : MonoBehaviour
     void getLionsNum( )
     {
         _LION = GameObject.FindGameObjectsWithTag( "lion" );
-        lionsNum = _LION.Length;
-        
+        lionsNum = _LION.Length;  
     }
     void getZebrasNum( )
     {
         _ZEBRA = GameObject.FindGameObjectsWithTag( "zebra" );
         zebrasNum = _ZEBRA.Length;
-
     }
 
     void getGrassNum( )
     {
         _GRASS = GameObject.FindGameObjectsWithTag( "Grass" );
         grassNum = _GRASS.Length;
-
     }
 
     void getGraffeNum( )
     {
         _GRASS = GameObject.FindGameObjectsWithTag( "Grass" );
         grassNum = _GRASS.Length;
-
     }
 }
