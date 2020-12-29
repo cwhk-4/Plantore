@@ -22,35 +22,45 @@ public class AnimalAnimation : MonoBehaviour
         path = "Sprite/" + animalName;
         walk = Resources.LoadAll<Sprite>( path + "/Walk");
         eat = Resources.LoadAll<Sprite>( path + "/Eat" );
-        nowAnimation = walk;
+        setWalk( );
         spriteRenderer.sprite = nowAnimation[ 0 ];
     }
 
-    void Update( )
+    void FixedUpdate( )
     {
         playCount++;
 
-        if( playCount % 2 == 0 )
-        {
+        //if( playCount % 2 == 0 )
+        //{
             animationCount++;
             spriteRenderer.sprite = nowAnimation[animationCount % ( nowAnimation.Length - 1 )];
-        }
-        //if ( ItemMovementTest._grass )
-        //{
-        //    if ( ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position )
-        //    {
-        //        nowAnimation = eat;
-        //    }
         //}
+
+        if( ItemMovementTest._grass )
+        {
+            if( ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position )
+            {
+                nowAnimation = eat;
+            }
+        }
+
     }
 
     public void setEat( )
     {
-        nowAnimation = eat;
+        if( nowAnimation != eat )
+        {
+            animationCount = 0;
+            nowAnimation = eat;
+        }
     }
 
     public void setWalk( )
     {
-        nowAnimation = walk;
+        if( nowAnimation != walk )
+        {
+            animationCount = 0;
+            nowAnimation = walk;
+        }
     }
 }
