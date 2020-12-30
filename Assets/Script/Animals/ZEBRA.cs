@@ -7,23 +7,26 @@ public class ZEBRA : MonoBehaviour
     public static animalsCollection.animalsSystem _zebra = new animalsCollection.animalsSystem( );
 
     GameObject goStage;
-    private Vector3 randomPosition;
+    public animalsTimeController _zebraTimeController;
+    private Vector3 newPosition;
 
     public static int zebrasNUM;
-    private float startTime = 0;
+    private float timeToGo;
     private bool canFindGrass = true;
     private bool runaway = false;
 
+    //
+    bool scriptCount = false;
+    private int timeControllerIn = 0;
+
     void Start( )
     {
-        startTime = GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( );
         _zebra.animals = this.gameObject;
         _zebra.moveSpeed = 3.0f;
-        _zebra.timeOut = 2;
         _zebra.canMove = false;
 
         goStage = GameObject.Find( "zebraTarget" );
-        randomPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
+        newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
     }
         
     void Update( )
@@ -51,28 +54,42 @@ public class ZEBRA : MonoBehaviour
         }
         if ( ItemMovementTest._grass == null && canFindGrass )
         {
-            goStage.transform.position = randomPosition;
+            newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
+            goStage.transform.position = newPosition;
             canFindGrass = false;
         }
         if ( this.gameObject.transform.position == LION._lion.animals.transform.position )
         {
+            newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
             runaway = true;
-            goStage.transform.position = randomPosition;
+            goStage.transform.position = newPosition;
         }
-        if ( ItemMovementTest._grass == null && this.gameObject.transform.position == randomPosition )
+        if ( ItemMovementTest._grass == null && this.gameObject.transform.position == newPosition )
         {
             runaway = false;
+            scriptCount = false;
+            _zebra.canMove = false;
+            timeControllerIn = 0;
         }
     }
 
     void timeIn( )
     {
-        if ( ItemMovementTest._grass && installAnimals.in_animals.IN_ZEBRA )
+        if ( ItemMovementTest._grass && installAnimals.in_animals.IN_ZEBRA && timeControllerIn == 0 )
         {
-            float timeOver = _zebra.timeOut - ( GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( ) - startTime );
-            if ( timeOver <= 0 )
+            if ( !scriptCount )
+            {
+                _zebraTimeController = this.gameObject.AddComponent<animalsTimeController>( );
+                scriptCount = true;
+            }
+            timeToGo = GameObject.Find( "ZEBRAS" ).GetComponent<animalsTimeController>( ).changeTime( );
+
+            if ( timeToGo < 0 )
             {
                 _zebra.canMove = true;
+                Destroy( this.gameObject.GetComponent<animalsTimeController>( ) );
+                timeControllerIn = 1;
+                timeToGo = 0;
             }
         }
     }

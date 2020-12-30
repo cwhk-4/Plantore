@@ -73,6 +73,7 @@ public class installAnimals : MonoBehaviour
             _LION = GameObject.FindGameObjectWithTag( "LIONS" ).AddComponent<LION>( );
             scriptCount = 1;
         }
+        
         if ( lion == null )
         {
             if ( GetNum.lionsNum < LION.lionsNUM )

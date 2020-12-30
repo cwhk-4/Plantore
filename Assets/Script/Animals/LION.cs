@@ -8,15 +8,20 @@ public class LION : MonoBehaviour
 
     GameObject Target;
     GameObject goStage;
+    public animalsTimeController _lionTimeController;
 
     public static int startProbability;
     public static int lionsNUM;
     public static bool canPredation;
     private float startTime = 0;
+    private float timeToGo;
 
     //
     private Vector3 newPosition;
     private bool goPredation;
+    //
+    bool scriptCount = false;
+    private int timeControllerIn = 0;
 
     void Start( )
     {
@@ -43,9 +48,7 @@ public class LION : MonoBehaviour
         lionMove( );
         timeIn( );
         numsProbability( );
-        Debug.Log( "nowPredation" + _lion.predationProbability );
-        Debug.Log( canPredation );
-        Debug.Log( ( startProbability - ( 4 - GetNum.lionsNum ) * _lion.Minus ) );
+        Debug.Log( Target.transform.position );
     }
 
     void lionMove( )
@@ -75,9 +78,17 @@ public class LION : MonoBehaviour
             }
             if ( this.gameObject.transform.position == newPosition && ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position )
             {
-                goPredation = true;
                 Target.transform.position = goStage.transform.position;
+                goPredation = true;
+                scriptCount = false;
+                _lion.canMove = false;
+                timeControllerIn = 0;
             }
+        }else if ( goPredation )
+        {
+            newPosition = new Vector3( Random.Range( -10, 10 ), 7.0f, 0.0f );
+            Target.transform.position = newPosition;
+            goPredation = false;
         }
     }
 
@@ -101,16 +112,23 @@ public class LION : MonoBehaviour
 
     void timeIn( )
     {
-        if ( ZEBRA._zebra.animals && installAnimals.in_animals.IN_LION )
+        if ( ItemMovementTest._grass )
         {
-            float timeOver = _lion.timeOut - ( GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( ) - startTime );
-            if ( timeOver <= 0 )
+            if ( ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position && installAnimals.in_animals.IN_LION && timeControllerIn == 0 )
             {
-                _lion.canMove = true;
-            }
-            else
-            {
-                _lion.canMove = false;
+                if ( !scriptCount )
+                {
+                    _lionTimeController = this.gameObject.AddComponent<animalsTimeController>( );
+                    scriptCount = true;
+                }
+                timeToGo = GameObject.Find( "LIONS" ).GetComponent<animalsTimeController>( ).changeTime( );
+                if ( timeToGo < 0 )
+                {
+                    _lion.canMove = true;
+                    Destroy( this.gameObject.GetComponent<animalsTimeController>( ) );
+                    timeControllerIn = 1;
+                    timeToGo = 0;
+                }
             }
         }
     }
@@ -148,7 +166,7 @@ public class LION : MonoBehaviour
     }
 
     //
-    ////level3
+    ////level 3
     //
     //void infighting( )
     //{

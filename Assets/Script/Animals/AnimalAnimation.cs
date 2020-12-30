@@ -36,13 +36,13 @@ public class AnimalAnimation : MonoBehaviour
             spriteRenderer.sprite = nowAnimation[animationCount % ( nowAnimation.Length - 1 )];
         //}
 
-        if( ItemMovementTest._grass )
-        {
-            if( ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position )
-            {
-                nowAnimation = eat;
-            }
-        }
+        //if( ItemMovementTest._grass )
+        //{
+        //    if( ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position )
+        //    {
+        //        nowAnimation = eat;
+        //    }
+        //}
 
     }
 
