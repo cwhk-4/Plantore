@@ -16,8 +16,6 @@ TagManager:
   - Temp Parent
   - GRASS
   - LIONS
-  - giraffe
-  - impala
   - Dialogue
   - Menu
   - DialogueWindow
@@ -25,6 +23,8 @@ TagManager:
   - ToStageButton
   - Wood
   - ZEBRAS
+  - GIRAFFES
+  - giraffe
   layers:
   - Default
   - TransparentFX

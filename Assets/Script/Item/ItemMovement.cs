@@ -16,6 +16,9 @@ public class ItemMovement : MonoBehaviour
 
     private bool parentHvChild = false;
 
+    //new Test
+    public static GameObject _wood;
+
     private void Start( )
     {
         cursor = GameObject.FindWithTag( "Cursor" );
@@ -71,5 +74,10 @@ public class ItemMovement : MonoBehaviour
             }
 
         }
+    }
+
+    void findItem( )
+    {
+        _wood = GameObject.FindGameObjectWithTag( "Wood" );
     }
 }

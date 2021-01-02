@@ -48,7 +48,6 @@ public class LION : MonoBehaviour
         lionMove( );
         timeIn( );
         numsProbability( );
-        Debug.Log( Target.transform.position );
     }
 
     void lionMove( )
@@ -114,7 +113,7 @@ public class LION : MonoBehaviour
     {
         if ( ItemMovementTest._grass )
         {
-            if ( ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position && installAnimals.in_animals.IN_LION && timeControllerIn == 0 )
+            if ( ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position && InstallAnimals.in_animals.in_lion && timeControllerIn == 0 )
             {
                 if ( !scriptCount )
                 {
@@ -137,26 +136,26 @@ public class LION : MonoBehaviour
     {
         if ( canPredation )
         {
-            Destroy( GetNum._ZEBRA[ GetNum.zebrasNum - 1 ] );
+            Destroy( GetNum._zebra[ GetNum.zebrasNum - 1 ] );
         }
         else
         {
-            Destroy( GetNum._LION[ GetNum.lionsNum - 1 ] );
+            Destroy( GetNum._lion[ GetNum.lionsNum - 1 ] );
         }
     }
 
     void numsProbability( )
     {
-        if ( installAnimals.lionsNumProbability == 0)
+        if ( InstallAnimals.lionsNumProbability == 0)
         {
             lionsNUM = 0;
-        }else if ( installAnimals.lionsNumProbability <= 1 )
+        }else if ( InstallAnimals.lionsNumProbability <= 1 )
         {
             lionsNUM = 1;
-        }else if ( installAnimals.lionsNumProbability <= 4 )
+        }else if ( InstallAnimals.lionsNumProbability <= 4 )
         {
             lionsNUM = 2;
-        }else if ( installAnimals.lionsNumProbability <= 8 )
+        }else if ( InstallAnimals.lionsNumProbability <= 8 )
         {
             lionsNUM = 3;
         }else

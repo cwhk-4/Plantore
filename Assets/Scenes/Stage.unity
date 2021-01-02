@@ -1057,8 +1057,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 208801436}
-  - component: {fileID: 208801435}
   - component: {fileID: 208801437}
+  - component: {fileID: 208801435}
   m_Layer: 0
   m_Name: Animals
   m_TagString: Untagged
@@ -1078,10 +1078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5dde9c21981854a898bb51a0a815d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  giraffe: {fileID: 4776594033630795429, guid: c5eeb9c56e832584fb30d5e0dd04b329, type: 3}
-  impala: {fileID: 6857162317061243718, guid: 4e90759fb8a341946b59f7e3cf2ca6e3, type: 3}
-  _LION: {fileID: 0}
-  _ZEBRA: {fileID: 0}
+  impala: {fileID: 0}
 --- !u!4 &208801436
 Transform:
   m_ObjectHideFlags: 0
@@ -1095,6 +1092,7 @@ Transform:
   m_Children:
   - {fileID: 1678961849}
   - {fileID: 734873193}
+  - {fileID: 407688552}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1420,6 +1418,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358791469}
   m_CullTransparentMesh: 0
+--- !u!1 &407688551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 407688552}
+  - component: {fileID: 407688553}
+  m_Layer: 0
+  m_Name: GIRAFFES
+  m_TagString: GIRAFFES
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &407688552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407688551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 208801436}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &407688553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407688551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2dbd9a19e9bd8f48b37b86df69dfb31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _giraffeTimeController: {fileID: 0}
 --- !u!1 &426105259
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,6 +2438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 734873193}
+  - component: {fileID: 734873194}
   m_Layer: 0
   m_Name: ZEBRAS
   m_TagString: ZEBRAS
@@ -2417,6 +2460,19 @@ Transform:
   m_Father: {fileID: 208801436}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &734873194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734873192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20cacec8fbeb9e0408af7d2f5c573731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _zebraTimeController: {fileID: 0}
 --- !u!1 &740670205
 GameObject:
   m_ObjectHideFlags: 0
@@ -10082,6 +10138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1678961849}
+  - component: {fileID: 1678961850}
   m_Layer: 0
   m_Name: LIONS
   m_TagString: LIONS
@@ -10103,6 +10160,19 @@ Transform:
   m_Father: {fileID: 208801436}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1678961850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678961848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 146dc9e26a2795c42811209ba9298af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lionTimeController: {fileID: 0}
 --- !u!1 &1681539042
 GameObject:
   m_ObjectHideFlags: 0

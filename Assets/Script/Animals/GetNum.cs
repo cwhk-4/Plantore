@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class GetNum : MonoBehaviour
 {
-    public static GameObject[ ] _LION;
-    public static GameObject[ ] _ZEBRA;
-    public static GameObject[ ] _GRAFFE;
+    public static GameObject[ ] _lion;
+    public static GameObject[ ] _zebra;
+    public static GameObject[ ] _giraffe;
 
-    public static GameObject[ ] _GRASS;
+    public static GameObject[ ] _grass;
 
     public static int lionsNum;
     public static int zebrasNum;
-    public static int graffesNum;
+    public static int giraffesNum;
 
     public static int grassNum;
+
     void Start( )
     {
 
@@ -26,28 +27,30 @@ public class GetNum : MonoBehaviour
         getLionsNum( );
         getZebrasNum( );
         getGrassNum( );
+        getGiraffeNum( );
     }
 
     void getLionsNum( )
     {
-        _LION = GameObject.FindGameObjectsWithTag( "lion" );
-        lionsNum = _LION.Length;  
+        _lion = GameObject.FindGameObjectsWithTag( "lion" );
+        lionsNum = _lion.Length;  
     }
     void getZebrasNum( )
     {
-        _ZEBRA = GameObject.FindGameObjectsWithTag( "zebra" );
-        zebrasNum = _ZEBRA.Length;
+        _zebra = GameObject.FindGameObjectsWithTag( "zebra" );
+        zebrasNum = _zebra.Length;
+    }
+
+    void getGiraffeNum( )
+    {
+        _giraffe = GameObject.FindGameObjectsWithTag( "giraffe" );
+        giraffesNum = _giraffe.Length;
     }
 
     void getGrassNum( )
     {
-        _GRASS = GameObject.FindGameObjectsWithTag( "Grass" );
-        grassNum = _GRASS.Length;
+        _grass = GameObject.FindGameObjectsWithTag( "Grass" );
+        grassNum = _grass.Length;
     }
 
-    void getGraffeNum( )
-    {
-        _GRASS = GameObject.FindGameObjectsWithTag( "Grass" );
-        grassNum = _GRASS.Length;
-    }
 }

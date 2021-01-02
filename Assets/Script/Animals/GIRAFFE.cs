@@ -1,62 +1,68 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class GIRAFFE : MonoBehaviour
-//{
-//    public static animalsCollection.animalsSystem _giraffe = new animalsCollection.animalsSystem( );
+public class GIRAFFE : MonoBehaviour
+{
+    public static animalsCollection.animalsSystem _giraffe = new animalsCollection.animalsSystem( );
 
-//    GameObject goStage;
+    GameObject goStage;
+    public animalsTimeController _giraffeTimeController;
+    private Vector3 newPosition;
 
-//    private float startTime = 0;
-//    bool canMove;
+    public static int giraffesNUM;
+    private float timeToGo;
+    private bool canFindItem = true;
+    private bool runaway = false;
 
-//    void Start()
-//    {
-//        startTime = GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( );
-//        _giraffe.animals = this.gameObject;
-//        _giraffe.moveSpeed = 4.0f;
-//        _giraffe.timeOut = 4;
+    //
+    private bool scriptCount = false;
+    private int timeControllerIn = 0;
 
-//        canMove = false;
-//        goStage = GameObject.Find( "giraffeTarget" );
-//    }
+    void Start( )
+    {
+        _giraffe.animals = this.gameObject;
+        _giraffe.moveSpeed = 4.0f;
+        _giraffe.canMove = false;
 
-//    void Update()
-//    {
-//        giraffeMove( );
-//        timeIn( );
-//    }
+        goStage = GameObject.Find( "giraffeTarget" );
+        newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
+    }
 
-//    void giraffeMove( )
-//    {
-//        if ( canMove )
-//        {
-//            if( _giraffe.animals )
-//            {
-//                _giraffe.animals.transform.position = Vector3.MoveTowards( _giraffe.animals.transform.position, goStage.transform.position, Time.deltaTime * 3.0f );
-//            }
-//            if ( ItemMovement._item )
-//            {
-//                goStage.transform.position = ItemMovement._grass.transform.position - new Vector3( 0, 2.0f, 0 );
-//            }
-//            if ( !ItemMovement._item && ItemCountDown.CD < -2 )
-//            {
-//                goStage.transform.position = new Vector3( 35.0f, -5.0f, 0 );
-//                Destroy( _giraffe.animals, 5 );
-//            }
-//        }
-//    }
+    void Update( )
+    {
+        giraffeMove( );
+        timeIn( );
+        numsProbability( );
+    }
 
-//    void timeIn( )
-//    {
-//        if ( ItemMovement._item && installAnimals.in_animals.IN_GIRAFFE )
-//        {
-//            float timeOver = _giraffe.timeOut - ( GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( ) - startTime );
-//            if ( timeOver <= 0 )
-//            {
-//                canMove = true;
-//            }
-//        }
-//    }
-//}
+    void giraffeMove( )
+    {
+        if ( _giraffe.canMove )
+        {
+            _giraffe.animals.transform.position = Vector3.MoveTowards( _giraffe.animals.transform.position, goStage.transform.position, Time.deltaTime * _giraffe.moveSpeed );
+            changeTarget( );
+        }
+    }
+
+    void changeTarget( )
+    {
+
+    }
+
+    void timeIn( )
+    {
+
+    }
+
+    void numsProbability( )
+    {
+        if ( InstallAnimals.giraffesNumProbability == 1 )
+        {
+            giraffesNUM = 1;
+        }else if ( InstallAnimals.giraffesNumProbability == 2 )
+        {
+            giraffesNUM = 2;
+        }
+    }
+}

@@ -2,42 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class installAnimals : MonoBehaviour
+public class InstallAnimals : MonoBehaviour
 {
-    public GameObject giraffe;
     public GameObject impala;
 
     GameObject[ ] lion;
     public static GameObject lionObj;
     public static GameObject LIONS;
-    public LION _LION;
     GameObject[ ] zebra;
     public static GameObject zebraObj;
     public static GameObject ZEBRAS;
-    public ZEBRA _ZEBRA;
+    GameObject[ ] giraffe;
+    public static GameObject giraffeObj;
+    public static GameObject GIRAFFES;
 
     public static int lionsNumProbability;
     public static int zebrasNumProbability;
+    public static int giraffesNumProbability;
 
-    private int giraffeNum = 0;
-    private int impalaNum = 0;
     private int period;
-    private int scriptCount = 0;
-    private int scriptCounts = 0;
 
     //キリン仮確率
-    int giraffeProbability;
 
     public struct Animals
     {
-        public bool IN_LION_ENVIRONMENT;
+        public bool in_lion_environment;
 
-        public bool IN_LION_PERIOD;
+        public bool in_lion_period;
 
-        public bool IN_LION;
-        public bool IN_ZEBRA;
-        public bool IN_GIRAFFE;
-        public bool IN_IMPALA;
+        public bool in_lion;
+        public bool in_zebra;
+        public bool in_giraffe;
+        public bool in_impala;
     };
     public static Animals in_animals = new Animals( );
 
@@ -47,11 +43,13 @@ public class installAnimals : MonoBehaviour
         LIONS = GameObject.Find( "LIONS" );
         zebraObj = Resources.Load( "Animals/Prefabs/zebra" ) as GameObject;
         ZEBRAS = GameObject.Find( "ZEBRAS" );
+        giraffeObj = Resources.Load( "Animals/Prefabs/giraffe" ) as GameObject;
+        GIRAFFES = GameObject.Find( "GIRAFFES" );
 
         //
-        giraffeProbability = Random.Range( 0, 10 );
         lionsNumProbability = Random.Range( 1, 21 );
         zebrasNumProbability = Random.Range( 1, 5 );
+        giraffesNumProbability = Random.Range( 1, 3 );
     }
 
     void Update( )
@@ -63,16 +61,12 @@ public class installAnimals : MonoBehaviour
         animalsType( );
         animalsInstall( );
         debugText( );
+        Debug.Log( giraffesNumProbability );
     }
 
     void animalsInstall( )
     {
         //LION
-        if ( scriptCount == 0 )
-        {
-            _LION = GameObject.FindGameObjectWithTag( "LIONS" ).AddComponent<LION>( );
-            scriptCount = 1;
-        }
         
         if ( lion == null )
         {
@@ -90,12 +84,6 @@ public class installAnimals : MonoBehaviour
 
         //ZEBRA
 
-        if ( scriptCounts == 0 )
-        {
-            _ZEBRA = GameObject.FindGameObjectWithTag( "ZEBRAS" ).AddComponent<ZEBRA>( );
-            scriptCounts = 1;
-        }
-
         if ( zebra == null )
         {
             if ( GetNum.zebrasNum < ZEBRA.zebrasNUM )
@@ -109,20 +97,22 @@ public class installAnimals : MonoBehaviour
                 }
             }
         }
-    }
 
         //GIRAFFE
-        //if ( in_animals.IN_GIRAFFE )
-        //{
-        //    if ( ItemMovement._item && in_animals.IN_ZEBRA )
-        //    {
-        //        if ( giraffeProbability > 0 && giraffeNum == 0 )
-        //        {
-        //            Instantiate( giraffe, new Vector3( 15.0f, 4.0f, 0.0f ), Quaternion.identity );
-        //            giraffeNum = 1;
-        //        }
-        //    }
-        //}
+        if ( giraffe == null )
+        {
+            if ( GetNum.giraffesNum < GIRAFFE.giraffesNUM )
+            {
+                for ( int i = 0; i < GIRAFFE.giraffesNUM; i++ )
+                {
+                    Instantiate( giraffeObj, new Vector3( -1.5f + i * 1.0f, 6.7f + i * 1.0f, 0.0f ), Quaternion.identity );
+                    giraffe = GameObject.FindGameObjectsWithTag( "giraffe" );
+                    giraffe[ i ].name = "giraffe" + i;
+                    giraffe[ i ].transform.parent = GameObject.FindGameObjectWithTag( "GIRAFFES" ).transform;
+                }
+            }
+        }
+    }
 
         //IMPALA
         //if ( ItemMovement._item && in_animals.IN_IMPALA )
@@ -140,22 +130,22 @@ public class installAnimals : MonoBehaviour
         switch ( _environment )
         {
             case environment.ENVIRONMENT.GRASSLAND:
-                in_animals.IN_LION_ENVIRONMENT = true;
-                in_animals.IN_ZEBRA = true;
-                in_animals.IN_GIRAFFE = true;
-                in_animals.IN_IMPALA = true;
+                in_animals.in_lion_environment = true;
+                in_animals.in_zebra = true;
+                in_animals.in_giraffe = true;
+                in_animals.in_impala = true;
                 break;
             case environment.ENVIRONMENT.ROCKY:
-                in_animals.IN_LION_ENVIRONMENT = true;
-                in_animals.IN_ZEBRA = false;
-                in_animals.IN_GIRAFFE = false;
-                in_animals.IN_IMPALA = false;
+                in_animals.in_lion_environment = true;
+                in_animals.in_zebra = false;
+                in_animals.in_giraffe = false;
+                in_animals.in_impala = false;
                 break;
             case environment.ENVIRONMENT.OTHER:
-                in_animals.IN_LION_ENVIRONMENT = false;
-                in_animals.IN_ZEBRA = false;
-                in_animals.IN_GIRAFFE = false;
-                in_animals.IN_IMPALA = false;
+                in_animals.in_lion_environment = false;
+                in_animals.in_zebra = false;
+                in_animals.in_giraffe = false;
+                in_animals.in_impala = false;
                 break;
         }
     }
@@ -165,31 +155,31 @@ public class installAnimals : MonoBehaviour
         switch ( period )
         {
             case 1:
-                in_animals.IN_LION_PERIOD = true;
+                in_animals.in_lion_period = true;
                 break;
             case 2:
-                in_animals.IN_LION_PERIOD = false;
+                in_animals.in_lion_period = false;
                 break;
             case 3:
-                in_animals.IN_LION_PERIOD = true;
+                in_animals.in_lion_period = true;
                 break;
             case 4:
-                in_animals.IN_LION_PERIOD = false;
+                in_animals.in_lion_period = false;
                 break;
             case 5:
-                in_animals.IN_LION_PERIOD = false;
+                in_animals.in_lion_period = false;
                 break;
             case 6:
-                in_animals.IN_LION_PERIOD = false;
+                in_animals.in_lion_period = false;
                 break;
         }
     }
 
     void animalsType( )
     {
-        if ( in_animals.IN_LION_ENVIRONMENT && in_animals.IN_LION_PERIOD )
+        if ( in_animals.in_lion_environment && in_animals.in_lion_period )
         {
-            in_animals.IN_LION = true;
+            in_animals.in_lion = true;
         }
     }
 

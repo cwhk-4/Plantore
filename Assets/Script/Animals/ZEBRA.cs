@@ -16,7 +16,7 @@ public class ZEBRA : MonoBehaviour
     private bool runaway = false;
 
     //
-    bool scriptCount = false;
+    private bool scriptCount = false;
     private int timeControllerIn = 0;
 
     void Start( )
@@ -75,7 +75,7 @@ public class ZEBRA : MonoBehaviour
 
     void timeIn( )
     {
-        if ( ItemMovementTest._grass && installAnimals.in_animals.IN_ZEBRA && timeControllerIn == 0 )
+        if ( ItemMovementTest._grass && InstallAnimals.in_animals.in_zebra && timeControllerIn == 0 )
         {
             if ( !scriptCount )
             {
@@ -95,15 +95,15 @@ public class ZEBRA : MonoBehaviour
     }
     void numsProbability( )
     {
-        if ( installAnimals.zebrasNumProbability == 0 )
+        if ( InstallAnimals.zebrasNumProbability == 0 )
         {
             zebrasNUM = 0;
         }
-        else if ( installAnimals.zebrasNumProbability == 1 )
+        else if ( InstallAnimals.zebrasNumProbability == 1 )
         {
             zebrasNUM = 1;
         }
-        else if ( installAnimals.zebrasNumProbability == 2 )
+        else if ( InstallAnimals.zebrasNumProbability == 2 )
         {
             zebrasNUM = 2;
         }
