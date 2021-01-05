@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 788965816321542743}
   - component: {fileID: 6446701097770961035}
-  - component: {fileID: -2114316998469961007}
   - component: {fileID: 9190838799171186669}
   m_Layer: 0
   m_Name: giraffe
-  m_TagString: Dialogue
+  m_TagString: giraffe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,19 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-2114316998469961007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4776594033630795429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2dbd9a19e9bd8f48b37b86df69dfb31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _giraffeTimeController: {fileID: 0}
 --- !u!114 &9190838799171186669
 MonoBehaviour:
   m_ObjectHideFlags: 0

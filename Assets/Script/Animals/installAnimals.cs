@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InstallAnimals : MonoBehaviour
 {
-    public GameObject impala;
 
     GameObject[ ] lion;
     public static GameObject lionObj;
@@ -15,10 +14,14 @@ public class InstallAnimals : MonoBehaviour
     GameObject[ ] giraffe;
     public static GameObject giraffeObj;
     public static GameObject GIRAFFES;
+    GameObject[ ] impala;
+    public static GameObject impalaObj;
+    public static GameObject IMPALAS;
 
     public static int lionsNumProbability;
     public static int zebrasNumProbability;
     public static int giraffesNumProbability;
+    public static int impalasNumProbability;
 
     private int period;
 
@@ -45,11 +48,14 @@ public class InstallAnimals : MonoBehaviour
         ZEBRAS = GameObject.Find( "ZEBRAS" );
         giraffeObj = Resources.Load( "Animals/Prefabs/giraffe" ) as GameObject;
         GIRAFFES = GameObject.Find( "GIRAFFES" );
+        impalaObj = Resources.Load( "Animals/Prefabs/impala" ) as GameObject;
+        IMPALAS = GameObject.Find( "IMPALAS" );
 
         //
         lionsNumProbability = Random.Range( 1, 21 );
         zebrasNumProbability = Random.Range( 1, 5 );
         giraffesNumProbability = Random.Range( 1, 3 );
+        impalasNumProbability = Random.Range( 1, 11 );
     }
 
     void Update( )
@@ -60,8 +66,6 @@ public class InstallAnimals : MonoBehaviour
         periodAnimalsType( );
         animalsType( );
         animalsInstall( );
-        debugText( );
-        Debug.Log( giraffesNumProbability );
     }
 
     void animalsInstall( )
@@ -105,24 +109,29 @@ public class InstallAnimals : MonoBehaviour
             {
                 for ( int i = 0; i < GIRAFFE.giraffesNUM; i++ )
                 {
-                    Instantiate( giraffeObj, new Vector3( -1.5f + i * 1.0f, 6.7f + i * 1.0f, 0.0f ), Quaternion.identity );
+                    Instantiate( giraffeObj, new Vector3( 3.25f + i * 1.0f, 7.9f + i * 1.0f, 0.0f ), Quaternion.identity );
                     giraffe = GameObject.FindGameObjectsWithTag( "giraffe" );
                     giraffe[ i ].name = "giraffe" + i;
                     giraffe[ i ].transform.parent = GameObject.FindGameObjectWithTag( "GIRAFFES" ).transform;
                 }
             }
         }
-    }
 
         //IMPALA
-        //if ( ItemMovement._item && in_animals.IN_IMPALA )
-        //{
-        //    if ( impalaNum == 0 && GetNum.grassNum >= 3 )
-        //    {
-        //        Instantiate( impala, new Vector3( 15.0f, 8.0f, 0.0f ), Quaternion.identity );
-        //        impalaNum = 1;
-        //    }
-        //}
+        if ( impala == null )
+        {
+            if ( GetNum.impalasNum < IMPALA.impalasNUM )
+            {
+                for ( int i = 0; i < IMPALA.impalasNUM; i++ )
+                {
+                    Instantiate( impalaObj, new Vector3( 5.0f + i * 1.0f, 6.5f + i * 1.0f, 0.0f ), Quaternion.identity );
+                    impala = GameObject.FindGameObjectsWithTag( "impala" );
+                    impala[ i ].name = "impala" + i;
+                    impala[ i ].transform.parent = GameObject.FindGameObjectWithTag( "IMPALAS" ).transform;
+                }
+            }
+        }
+    }
 
     //環境と動物関係
     void environmentAnimalsType( environment.ENVIRONMENT _environment )
@@ -181,10 +190,5 @@ public class InstallAnimals : MonoBehaviour
         {
             in_animals.in_lion = true;
         }
-    }
-
-    void debugText( )
-    {
-        
     }
 }

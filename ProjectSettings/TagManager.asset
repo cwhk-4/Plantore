@@ -25,6 +25,8 @@ TagManager:
   - ZEBRAS
   - GIRAFFES
   - giraffe
+  - impala
+  - IMPALAS
   layers:
   - Default
   - TransparentFX

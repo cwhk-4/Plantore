@@ -9,14 +9,14 @@ public class animalsTimeController : MonoBehaviour
     private float startTime = 0;
     private int timeReset;
 
-    void Start()
+    void Start( )
     {
         startTime = GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( );
         animalsType = this.gameObject;
         timeReset = 0;
     }
 
-    void Update()
+    void Update( )
     {
         changeAnimalsType( );
     }
@@ -30,6 +30,9 @@ public class animalsTimeController : MonoBehaviour
                 break;
             case "ZEBRAS":
                 timeOut = 2.0f;
+                break;
+            case "GIRAFFE":
+                timeOut = 3.0f;
                 break;
             case "IMPALAS":
                 timeOut = 3.0f;
