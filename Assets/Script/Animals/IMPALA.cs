@@ -23,7 +23,6 @@ public class IMPALA : MonoBehaviour
     {
         _impala.animals = this.gameObject;
         _impala.moveSpeed = 2.0f;
-        _impala.timeOut = 3;
         _impala.canMove = false;
 
         goStage = GameObject.Find( "impalaTarget" );

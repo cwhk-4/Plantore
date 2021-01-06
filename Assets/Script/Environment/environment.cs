@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class environment : MonoBehaviour
 {
-    
+    public static int nowLevel = 1;
     public struct IN_ENVIRONMENT
     {
         public string environmentType;
@@ -29,6 +29,7 @@ public class environment : MonoBehaviour
     {
         environmentType( _environment );
         changeEnvironment( );
+        changeLevel( );
     }
 
     void environmentType( ENVIRONMENT _environment )
@@ -52,13 +53,18 @@ public class environment : MonoBehaviour
         {
             _environment = ENVIRONMENT.GRASSLAND;
         }
+    }
+
+    //
+    void changeLevel( )
+    {
         if ( Input.GetKeyDown( KeyCode.W ) )
         {
-            _environment = ENVIRONMENT.ROCKY;
+            nowLevel = 2;
         }
-        if ( Input.GetKeyDown( KeyCode.P ) )
+        if ( Input.GetKeyDown( KeyCode.E ) )
         {
-            _environment = ENVIRONMENT.OTHER;
+            nowLevel = 1;
         }
     }
 }

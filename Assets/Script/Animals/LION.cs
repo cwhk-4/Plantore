@@ -10,10 +10,7 @@ public class LION : MonoBehaviour
     GameObject goStage;
     public animalsTimeController _lionTimeController;
 
-    public static int startProbability;
     public static int lionsNUM;
-    public static bool canPredation;
-    private float startTime = 0;
     private float timeToGo;
 
     //
@@ -25,18 +22,15 @@ public class LION : MonoBehaviour
 
     void Start( )
     {
-        startTime = GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( );
         _lion.animals = this.gameObject;
         _lion.moveSpeed = 4.0f;
         _lion.Minus = 5;
-        _lion.timeOut = 5.0f;
-        _lion.reviveTime = 60;
+        _lion.startPredationProbability = 30;
         _lion.canMove = false;
+        _lion.canPredation = false;
         _lion.predationProbability = Random.Range( 0, 9 );
 
-        canPredation = false;
         goPredation = true;
-        startProbability = 30;
         Target = GameObject.Find( "LIONTARGET" );
         goStage = GameObject.Find( "lionTarget" );
         Target.transform.position = goStage.transform.position;
@@ -94,13 +88,13 @@ public class LION : MonoBehaviour
     public void lionPredationProbability( )
     {
         _lion.predationProbability = Random.Range( 0, 100 );
-        if ( _lion.predationProbability < ( startProbability - ( 4 - GetNum.lionsNum ) * _lion.Minus ) )
+        if ( _lion.predationProbability < ( _lion.startPredationProbability - ( 4 - GetNum.lionsNum ) * _lion.Minus ) )
         {
-            canPredation = true;
+            _lion.canPredation = true;
         }
         else
         {
-            canPredation = false;
+            _lion.canPredation = false;
         }
         //if ( GetNum.lionsNum == 4 )
         //{
@@ -134,7 +128,7 @@ public class LION : MonoBehaviour
 
     void Predation( )
     {
-        if ( canPredation )
+        if ( _lion.canPredation )
         {
             Destroy( GetNum._zebra[ GetNum.zebrasNum - 1 ] );
         }

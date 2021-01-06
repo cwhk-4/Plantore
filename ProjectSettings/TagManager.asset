@@ -27,6 +27,14 @@ TagManager:
   - giraffe
   - impala
   - IMPALAS
+  - spottedhyena
+  - SPOTTEDHYENAS
+  - africanwilddog
+  - AFRICANWILDDOGS
+  - bluewildebeest
+  - BLUEWILDEBEESTS
+  - whiterhino
+  - WHITERHINOS
   layers:
   - Default
   - TransparentFX

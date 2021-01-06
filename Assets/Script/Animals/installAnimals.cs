@@ -7,21 +7,29 @@ public class InstallAnimals : MonoBehaviour
 
     GameObject[ ] lion;
     public static GameObject lionObj;
-    public static GameObject LIONS;
     GameObject[ ] zebra;
     public static GameObject zebraObj;
-    public static GameObject ZEBRAS;
     GameObject[ ] giraffe;
     public static GameObject giraffeObj;
-    public static GameObject GIRAFFES;
     GameObject[ ] impala;
     public static GameObject impalaObj;
-    public static GameObject IMPALAS;
+    GameObject[ ] spottedhyena;
+    public static GameObject spottedhyenaObj;
+    GameObject[ ] africanwilddog;
+    public static GameObject africanwilddogObj;
+    GameObject[ ] bluewildebeest;
+    public static GameObject bluewildebeestObj;
+    GameObject[ ] whiterhino;
+    public static GameObject whiterhinoObj;
 
     public static int lionsNumProbability;
     public static int zebrasNumProbability;
     public static int giraffesNumProbability;
     public static int impalasNumProbability;
+    public static int spottedhyenasNumProbability;
+    public static int africanwilddogsNumProbability;
+    public static int bluewildebeestsNumProbability;
+    public static int whiterhinosNumProbability;
 
     private int period;
 
@@ -37,26 +45,35 @@ public class InstallAnimals : MonoBehaviour
         public bool in_zebra;
         public bool in_giraffe;
         public bool in_impala;
+        public bool in_spottedhyena;
+        public bool in_africanwinddog;
+        public bool in_whiterhino;
+        public bool in_bluewildebeest;
     };
     public static Animals in_animals = new Animals( );
 
     void Start( )
     {
+        //
         lionObj = Resources.Load( "Animals/Prefabs/lion" ) as GameObject;
-        LIONS = GameObject.Find( "LIONS" );
         zebraObj = Resources.Load( "Animals/Prefabs/zebra" ) as GameObject;
-        ZEBRAS = GameObject.Find( "ZEBRAS" );
         giraffeObj = Resources.Load( "Animals/Prefabs/giraffe" ) as GameObject;
-        GIRAFFES = GameObject.Find( "GIRAFFES" );
         impalaObj = Resources.Load( "Animals/Prefabs/impala" ) as GameObject;
-        IMPALAS = GameObject.Find( "IMPALAS" );
+        spottedhyenaObj = Resources.Load( "Animals/Prefabs/spottedhyena" ) as GameObject;
+        africanwilddogObj = Resources.Load( "Animals/Prefabs/africanwilddog" ) as GameObject;
+        whiterhinoObj = Resources.Load( "Animals/Prefabs/whiterhino" ) as GameObject;
+        bluewildebeestObj = Resources.Load( "Animals/Prefabs/bluewildebeest" ) as GameObject;
 
         //
         lionsNumProbability = Random.Range( 1, 21 );
         zebrasNumProbability = Random.Range( 1, 5 );
         giraffesNumProbability = Random.Range( 1, 3 );
         impalasNumProbability = Random.Range( 1, 11 );
-    }
+        spottedhyenasNumProbability = Random.Range( 1, 11 );
+        africanwilddogsNumProbability = Random.Range( 1, 11 );
+        bluewildebeestsNumProbability = Random.Range( 1, 11 );
+        whiterhinosNumProbability = Random.Range( 1, 11 );
+}
 
     void Update( )
     {
@@ -71,63 +88,128 @@ public class InstallAnimals : MonoBehaviour
     void animalsInstall( )
     {
         //LION
-        
-        if ( lion == null )
+        if ( environment.nowLevel == 1 )
         {
-            if ( GetNum.lionsNum < LION.lionsNUM )
+            if ( lion == null )
             {
-                for ( int i = 0; i < LION.lionsNUM; i++ )
+                if ( GetNum.lionsNum < LION.lionsNUM )
                 {
-                    Instantiate( lionObj, new Vector3( -8.0f + i * 1.0f, 6.5f + i * 1.0f, 0.0f ), Quaternion.identity );
-                    lion = GameObject.FindGameObjectsWithTag( "lion" );
-                    lion[ i ].name = "lion" + i;
-                    lion[ i ].transform.parent = GameObject.FindGameObjectWithTag( "LIONS" ).transform;
+                    for ( int i = 0; i < LION.lionsNUM; i++ )
+                    {
+                        Instantiate( lionObj, new Vector3( -8.0f + i * 1.0f, 6.5f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        lion = GameObject.FindGameObjectsWithTag( "lion" );
+                        lion[ i ].name = "lion" + i;
+                        lion[ i ].transform.parent = GameObject.FindGameObjectWithTag( "LIONS" ).transform;
+                    }
+                }
+            }
+
+            //ZEBRA
+
+            if ( zebra == null )
+            {
+                if ( GetNum.zebrasNum < ZEBRA.zebrasNUM )
+                {
+                    for ( int i = 0; i < ZEBRA.zebrasNUM; i++ )
+                    {
+                        Instantiate( zebraObj, new Vector3( -1.5f + i * 1.0f, 6.7f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        zebra = GameObject.FindGameObjectsWithTag( "zebra" );
+                        zebra[ i ].name = "zebra" + i;
+                        zebra[ i ].transform.parent = GameObject.FindGameObjectWithTag( "ZEBRAS" ).transform;
+                    }
+                }
+            }
+
+            //GIRAFFE
+            if ( giraffe == null )
+            {
+                if ( GetNum.giraffesNum < GIRAFFE.giraffesNUM )
+                {
+                    for ( int i = 0; i < GIRAFFE.giraffesNUM; i++ )
+                    {
+                        Instantiate( giraffeObj, new Vector3( 3.25f + i * 1.0f, 7.9f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        giraffe = GameObject.FindGameObjectsWithTag( "giraffe" );
+                        giraffe[ i ].name = "giraffe" + i;
+                        giraffe[ i ].transform.parent = GameObject.FindGameObjectWithTag( "GIRAFFES" ).transform;
+                    }
+                }
+            }
+
+            //IMPALA
+            if ( impala == null )
+            {
+                if ( GetNum.impalasNum < IMPALA.impalasNUM )
+                {
+                    for ( int i = 0; i < IMPALA.impalasNUM; i++ )
+                    {
+                        Instantiate( impalaObj, new Vector3( 5.0f + i * 1.0f, 6.5f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        impala = GameObject.FindGameObjectsWithTag( "impala" );
+                        impala[ i ].name = "impala" + i;
+                        impala[ i ].transform.parent = GameObject.FindGameObjectWithTag( "IMPALAS" ).transform;
+                    }
                 }
             }
         }
 
-        //ZEBRA
-
-        if ( zebra == null )
+        if ( environment.nowLevel == 2 )
         {
-            if ( GetNum.zebrasNum < ZEBRA.zebrasNUM )
+            //SPOTTEDHYENA
+            if ( spottedhyena == null )
             {
-                for ( int i = 0; i < ZEBRA.zebrasNUM; i++ )
+                if ( GetNum.spottedhyenasNum < SPOTTEDHYENA._spottedhyena.animalsNUM )
                 {
-                    Instantiate( zebraObj, new Vector3( -1.5f + i * 1.0f, 6.7f + i * 1.0f, 0.0f ), Quaternion.identity );
-                    zebra = GameObject.FindGameObjectsWithTag( "zebra" );
-                    zebra[ i ].name = "zebra" + i;
-                    zebra[ i ].transform.parent = GameObject.FindGameObjectWithTag( "ZEBRAS" ).transform;
+                    for ( int i = 0; i < SPOTTEDHYENA._spottedhyena.animalsNUM; i++ )
+                    {
+                        Instantiate( spottedhyenaObj, new Vector3( 3.0f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        spottedhyena = GameObject.FindGameObjectsWithTag( "spottedhyena" );
+                        spottedhyena[ i ].name = "spottedhyena" + i;
+                        spottedhyena[ i ].transform.parent = GameObject.FindGameObjectWithTag( "SPOTTEDHYENAS" ).transform;
+                    }
                 }
             }
-        }
 
-        //GIRAFFE
-        if ( giraffe == null )
-        {
-            if ( GetNum.giraffesNum < GIRAFFE.giraffesNUM )
+            //AFRICANWILDDOG
+            if ( africanwilddog == null )
             {
-                for ( int i = 0; i < GIRAFFE.giraffesNUM; i++ )
+                if ( GetNum.africanwilddogsNum < AFRICANWILDDOG._africanwilddog.animalsNUM )
                 {
-                    Instantiate( giraffeObj, new Vector3( 3.25f + i * 1.0f, 7.9f + i * 1.0f, 0.0f ), Quaternion.identity );
-                    giraffe = GameObject.FindGameObjectsWithTag( "giraffe" );
-                    giraffe[ i ].name = "giraffe" + i;
-                    giraffe[ i ].transform.parent = GameObject.FindGameObjectWithTag( "GIRAFFES" ).transform;
+                    for ( int i = 0; i < AFRICANWILDDOG._africanwilddog.animalsNUM; i++ )
+                    {
+                        Instantiate( africanwilddogObj, new Vector3( 0.0f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        africanwilddog = GameObject.FindGameObjectsWithTag( "africanwilddog" );
+                        africanwilddog[ i ].name = "africanwilddog" + i;
+                        africanwilddog[ i ].transform.parent = GameObject.FindGameObjectWithTag( "AFRICANWILDDOGS" ).transform;
+                    }
                 }
             }
-        }
 
-        //IMPALA
-        if ( impala == null )
-        {
-            if ( GetNum.impalasNum < IMPALA.impalasNUM )
+            //BLUEWILDEBEEST
+            if ( bluewildebeest == null )
             {
-                for ( int i = 0; i < IMPALA.impalasNUM; i++ )
+                if ( GetNum.bluewildebeestsNum < BLUEWILDEBEEST._bluewildebeest.animalsNUM )
                 {
-                    Instantiate( impalaObj, new Vector3( 5.0f + i * 1.0f, 6.5f + i * 1.0f, 0.0f ), Quaternion.identity );
-                    impala = GameObject.FindGameObjectsWithTag( "impala" );
-                    impala[ i ].name = "impala" + i;
-                    impala[ i ].transform.parent = GameObject.FindGameObjectWithTag( "IMPALAS" ).transform;
+                    for ( int i = 0; i < BLUEWILDEBEEST._bluewildebeest.animalsNUM; i++ )
+                    {
+                        Instantiate( bluewildebeestObj, new Vector3( 0.0f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        bluewildebeest = GameObject.FindGameObjectsWithTag( "bluewildebeest" );
+                        bluewildebeest[ i ].name = "bluewildebeest" + i;
+                        bluewildebeest[ i ].transform.parent = GameObject.FindGameObjectWithTag( "BLUEWILDEBEESTS" ).transform;
+                    }
+                }
+            }
+
+            //WHITERHINO
+            if ( whiterhino == null )
+            {
+                if ( GetNum.whiterhinosNum < WHITERHINO._whiterhino.animalsNUM )
+                {
+                    for ( int i = 0; i < WHITERHINO._whiterhino.animalsNUM; i++ )
+                    {
+                        Instantiate( whiterhinoObj, new Vector3( 0.0f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        whiterhino = GameObject.FindGameObjectsWithTag( "whiterhino" );
+                        whiterhino[ i ].name = "whiterhino" + i;
+                        whiterhino[ i ].transform.parent = GameObject.FindGameObjectWithTag( "WHITERHINOS" ).transform;
+                    }
                 }
             }
         }
@@ -143,18 +225,21 @@ public class InstallAnimals : MonoBehaviour
                 in_animals.in_zebra = true;
                 in_animals.in_giraffe = true;
                 in_animals.in_impala = true;
+                in_animals.in_spottedhyena = true;
                 break;
             case environment.ENVIRONMENT.ROCKY:
                 in_animals.in_lion_environment = true;
                 in_animals.in_zebra = false;
                 in_animals.in_giraffe = false;
                 in_animals.in_impala = false;
+                in_animals.in_spottedhyena = true;
                 break;
             case environment.ENVIRONMENT.OTHER:
                 in_animals.in_lion_environment = false;
                 in_animals.in_zebra = false;
                 in_animals.in_giraffe = false;
                 in_animals.in_impala = false;
+                in_animals.in_spottedhyena = false;
                 break;
         }
     }
