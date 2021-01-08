@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8744345257413906249}
   - component: {fileID: 9191642960112624324}
-  - component: {fileID: 861461081903344954}
-  - component: {fileID: 1809538977328673823}
+  - component: {fileID: 2517572193639628009}
   m_Layer: 0
   m_Name: wood_Instan
-  m_TagString: Untagged
+  m_TagString: Instantiate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &861461081903344954
+--- !u!114 &2517572193639628009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,25 +91,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2677645459600782132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53513ad45d899424aa2b1975cc381951, type: 3}
+  m_Script: {fileID: 11500000, guid: 631f77a4d55cd4dea9b98a889100f7f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeController: {fileID: 0}
-  itemToBeInstantiate: {fileID: 6404313856828975443, guid: 1788f08434af446d7bf8a9851f3d4577,
+  ItemToInstantiate: {fileID: 6404313856828975443, guid: 1788f08434af446d7bf8a9851f3d4577,
     type: 3}
-  itemCountDown: {fileID: 0}
-  storage: {fileID: 0}
-  isChanged: 0
---- !u!114 &1809538977328673823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677645459600782132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70abd8f09fc384452a824866bf71e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisGOName: Wood

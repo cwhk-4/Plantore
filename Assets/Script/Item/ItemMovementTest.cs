@@ -12,20 +12,12 @@ public class ItemMovementTest : MonoBehaviour
 
     public GameObject InstantiateUI;
 
-    //testNew
-    public static GameObject _grass;
-
     private void Start( )
     {
         cursor = GameObject.FindWithTag( "Cursor" );
         toolConvertion = cursor.GetComponent<ToolConvertion>( );
 
         itemCountDown = GetComponentInChildren<ItemCountDown>( );
-    }
-
-    private void Update( )
-    {
-        findItem( );
     }
 
     private void OnMouseOver( )
@@ -42,15 +34,10 @@ public class ItemMovementTest : MonoBehaviour
                 //instantiate
                 Instantiate( InstantiateUI, mousePos, Quaternion.identity );
                 var startTime = GetComponentInChildren<ItemCountDown>( ).getStartTime( );
-                InstantiateUI.GetComponent<ItemInstantiate>( ).setGOStartTime( startTime );
+                //caution
+                //setStartTime
                 Destroy( this.gameObject );
             }
         }
-    }
-
-    //
-    void findItem( )
-    {
-        _grass = GameObject.FindGameObjectWithTag( "Grass" );
     }
 }

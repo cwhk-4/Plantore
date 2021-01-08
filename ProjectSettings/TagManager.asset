@@ -16,6 +16,8 @@ TagManager:
   - Temp Parent
   - GRASS
   - LIONS
+  - giraffe
+  - impala
   - Dialogue
   - Menu
   - DialogueWindow
@@ -23,18 +25,10 @@ TagManager:
   - ToStageButton
   - Wood
   - ZEBRAS
-  - GIRAFFES
-  - giraffe
-  - impala
-  - IMPALAS
-  - spottedhyena
-  - SPOTTEDHYENAS
-  - africanwilddog
-  - AFRICANWILDDOGS
-  - bluewildebeest
-  - BLUEWILDEBEESTS
-  - whiterhino
-  - WHITERHINOS
+  - InstantiateMoveControl
+  - Instantiate
+  - ItemExtraGrid
+  - GridAvailability
   layers:
   - Default
   - TransparentFX
