@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5095705009213696833}
   - component: {fileID: 5095705009213696846}
-  - component: {fileID: 5095705009213696847}
+  - component: {fileID: -5466219252775203450}
   m_Layer: 0
   m_Name: Tutorial_grass_Instan
-  m_TagString: Untagged
+  m_TagString: Instantiate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5095705009213696847
+--- !u!114 &-5466219252775203450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,9 +92,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5095705009213696844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53513ad45d899424aa2b1975cc381951, type: 3}
+  m_Script: {fileID: 11500000, guid: 631f77a4d55cd4dea9b98a889100f7f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToBeInstantiate: {fileID: 6587741821020689999, guid: 3c8535d11147f42209335c747384420e,
+  ItemToInstantiate: {fileID: 6587741821020689999, guid: 3c8535d11147f42209335c747384420e,
     type: 3}
-  storage: {fileID: 0}

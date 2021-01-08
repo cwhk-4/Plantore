@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AnimalAnimation : MonoBehaviour
 {
@@ -30,11 +28,11 @@ public class AnimalAnimation : MonoBehaviour
     {
         playCount++;
 
-        if( playCount % 2 == 0 )
-        {
+        /*if( playCount % 2 == 0 )
+        {*/
             animationCount++;
             spriteRenderer.sprite = nowAnimation[animationCount % ( nowAnimation.Length - 1 )];
-        }
+        
     }
 
     public void setEat( )
