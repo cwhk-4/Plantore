@@ -30,6 +30,7 @@ public class AnimalAnimation : MonoBehaviour
     {
         playCount++;
 
+<<<<<<< HEAD
         //if( playCount % 2 == 0 )
         //{
             animationCount++;
@@ -44,6 +45,13 @@ public class AnimalAnimation : MonoBehaviour
         //    }
         //}
 
+=======
+        if( playCount % 2 == 0 )
+        {
+            animationCount++;
+            spriteRenderer.sprite = nowAnimation[animationCount % ( nowAnimation.Length - 1 )];
+        }
+>>>>>>> parent of 283bb49... new item movement and instantiate
     }
 
     public void setEat( )

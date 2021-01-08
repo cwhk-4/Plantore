@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 6635785051055847888}
   - component: {fileID: 5273807686959015287}
   - component: {fileID: -466134543406482304}
+  - component: {fileID: 3463854948725058951}
   - component: {fileID: -7241237760169532279}
-  - component: {fileID: -3274497314081653458}
-  - component: {fileID: -8900175048160093826}
   m_Layer: 0
   m_Name: grid
   m_TagString: Grid
@@ -50,7 +49,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -112,6 +110,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.8, y: 3.1}
   m_EdgeRadius: 0
+--- !u!114 &3463854948725058951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032335502587972046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61e3d527c48e4729869e70d55c81265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  childGO: {fileID: 0}
+  hvChild: 0
+  available: {r: 0.39607844, g: 1, b: 0, a: 0.2509804}
+  notAvailable: {r: 1, g: 0.21960784, b: 0.33333334, a: 0.2509804}
 --- !u!50 &-7241237760169532279
 Rigidbody2D:
   serializedVersion: 4
@@ -133,33 +148,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-3274497314081653458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7032335502587972046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96929d059d80f43509499850da36dfdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  availabilityControl: {fileID: 231864698209044662, guid: f7bd4990377cb49ec9234bf77a3ec4c0,
-    type: 3}
-  imController: {fileID: 426352089535223524, guid: 349121db03bf449b984c69b9d509acd4,
-    type: 3}
---- !u!114 &-8900175048160093826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7032335502587972046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d75e5f85e3614f9882abc3bfb525aab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  available: {r: 0.03875971, g: 1, b: 0, a: 0.23529412}
-  notAvailble: {r: 1, g: 0, b: 0, a: 0.23529412}

@@ -66,7 +66,7 @@ public class ItemMovement : MonoBehaviour
     {
         if(other.gameObject.tag == "Grid")
         {
-            //parentHvChild = other.gameObject.GetComponent<ItemStorage>().hvChild;
+            parentHvChild = other.gameObject.GetComponent<ItemStorage>().hvChild;
 
             if(!parentHvChild)
             {

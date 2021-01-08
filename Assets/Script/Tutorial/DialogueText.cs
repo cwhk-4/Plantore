@@ -53,6 +53,10 @@ public class DialogueText : MonoBehaviour
             str = "かんきょうを置いて、新しい動物を発見して\n" +
                     "はってんさせ、たくさんの動物を発見しましょう！";
             break;
+
+            default:
+            str = null;
+            break;
         }
 
         return str;

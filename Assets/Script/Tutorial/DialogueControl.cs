@@ -27,6 +27,7 @@ public class DialogueControl : MonoBehaviour
             {
                 jumpToNext( );
             }
+            //Debug.Log( "count:" + dialogueCount );
         }
 
     }

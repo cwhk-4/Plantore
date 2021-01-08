@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DialogueEvent : MonoBehaviour
@@ -196,6 +198,8 @@ public class DialogueEvent : MonoBehaviour
         spriteRenderer.sprite = driedGrass;
     }
 
+    //caution
+    //install Animals
     private void installZebra( )
     {
         GameObject OB_ZEBRA = Resources.Load( "Animals/Prefabs/zebra" ) as GameObject;

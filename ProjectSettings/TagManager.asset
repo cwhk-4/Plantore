@@ -25,10 +25,6 @@ TagManager:
   - ToStageButton
   - Wood
   - ZEBRAS
-  - InstantiateMoveControl
-  - Instantiate
-  - ItemExtraGrid
-  - GridAvailability
   layers:
   - Default
   - TransparentFX
