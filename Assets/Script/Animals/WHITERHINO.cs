@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WHITERHINO : MonoBehaviour
 {
+    /*
     public static animalsCollection.animalsSystem _whiterhino = new animalsCollection.animalsSystem( );
     void Start()
     {
@@ -41,4 +42,5 @@ public class WHITERHINO : MonoBehaviour
                 break;
         }
     }
+    */
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GIRAFFE : MonoBehaviour
 {
+    /*
     public static animalsCollection.animalsSystem _giraffe = new animalsCollection.animalsSystem( );
 
     GameObject goStage;
@@ -104,4 +105,6 @@ public class GIRAFFE : MonoBehaviour
             giraffesNUM = 2;
         }
     }
+
+    */
 }

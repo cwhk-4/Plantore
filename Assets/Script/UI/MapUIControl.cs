@@ -4,31 +4,26 @@ using UnityEngine;
 
 public class MapUIControl : MonoBehaviour
 {
-    public GameObject Map;
-    public Transform camPos;
+    [SerializeField] private GameObject Map;
+    [SerializeField] private Transform camPos;
 
-    [SerializeField]
-    private const float Height = 10.8f;
-    [SerializeField]
-    private const float Width = 19.2f;
+    [SerializeField] private const float Height = 10.8f;
+    [SerializeField] private const float Width = 19.2f;
 
-    public GameObject MapInfo;
-    public MapLevel mapLevel;
-    [SerializeField]
-    private int level;
+    [SerializeField] private MapLevel mapLevel;
+    [SerializeField] private int level;
 
-    public Vector3 Map1;
-    public Vector3 Map2;
-    public Vector3 Map3;
-    public Vector3 Map4;
+    [SerializeField] private Vector3 Map1;
+    [SerializeField] private Vector3 Map2;
+    [SerializeField] private Vector3 Map3;
+    [SerializeField] private Vector3 Map4;
 
-    public GameObject level1Block;
-    public GameObject level2Block;
-    public GameObject level3Block;
+    [SerializeField] private GameObject level1Block;
+    [SerializeField] private GameObject level2Block;
+    [SerializeField] private GameObject level3Block;
 
     void Start()
     {
-        mapLevel = MapInfo.GetComponent<MapLevel>( );
         Map1 = camPos.position;
         Map2 = new Vector3(camPos.position.x, camPos.position.y + Height, camPos.position.z);
         Map3 = new Vector3(camPos.position.x + Width, camPos.position.y + Height, camPos.position.z);

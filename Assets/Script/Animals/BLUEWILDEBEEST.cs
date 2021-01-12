@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BLUEWILDEBEEST : MonoBehaviour
 {
+    /*
     public static animalsCollection.animalsSystem _bluewildebeest = new animalsCollection.animalsSystem( );
     void Start()
     {
@@ -45,4 +46,5 @@ public class BLUEWILDEBEEST : MonoBehaviour
                 break;
         }
     }
+    */
 }

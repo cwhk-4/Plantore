@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IMPALA : MonoBehaviour
 {
+    /*
     public static animalsCollection.animalsSystem _impala = new animalsCollection.animalsSystem( );
 
     GameObject goStage;
@@ -117,4 +118,5 @@ public class IMPALA : MonoBehaviour
             impalasNUM = 1;
         }
     }
+    */
 }

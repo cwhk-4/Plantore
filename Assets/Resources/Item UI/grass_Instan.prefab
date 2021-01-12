@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5095705009213696833}
   - component: {fileID: 5095705009213696846}
-  - component: {fileID: 5095705009213696847}
+  - component: {fileID: 6694930938755820529}
   m_Layer: 0
   m_Name: grass_Instan
-  m_TagString: Untagged
+  m_TagString: Instantiate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1273403493
-  m_SortingLayer: 4
+  m_SortingLayerID: 92946567
+  m_SortingLayer: 3
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 85cee2670572f498bbc0ff08a682678f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5095705009213696847
+--- !u!114 &6694930938755820529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,9 +92,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5095705009213696844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53513ad45d899424aa2b1975cc381951, type: 3}
+  m_Script: {fileID: 11500000, guid: 631f77a4d55cd4dea9b98a889100f7f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToBeInstantiate: {fileID: 6587741821020689999, guid: ce09119d3e9d34ea0921daf07ec88d9a,
-    type: 3}
-  storage: {fileID: 0}
+  ItemToInstantiate: {fileID: 6587741821020689999, guid: ce09119d3e9d34ea0921daf07ec88d9a, type: 3}

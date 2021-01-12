@@ -4,27 +4,22 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - System
-  - Environment
-  - Cursor
-  - Grass
-  - lion
-  - zebra
-  - tag
-  - UI
+  - ItemExtraGrid
   - Grid
-  - Temp Parent
-  - GRASS
-  - LIONS
-  - giraffe
-  - impala
-  - Dialogue
-  - Menu
-  - DialogueWindow
-  - DialogueControl
-  - ToStageButton
   - Wood
-  - ZEBRAS
+  - Grass
+  - zebra
+  - giraffe
+  - spottedhyena
+  - africanwilddog
+  - lion
+  - impala
+  - bluewildebeest
+  - whiterhino
+  - Instantiate
+  - InstantiateMoveControl
+  - GridAvailability
+  - Cursor
   layers:
   - Default
   - TransparentFX
@@ -62,18 +57,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Size
-    uniqueID: 2183070823
+  - name: Background
+    uniqueID: 2379652547
     locked: 0
-  - name: Map
-    uniqueID: 1361345399
-    locked: 0
-  - name: Sky
-    uniqueID: 664790985
+  - name: Grid
+    uniqueID: 3666640037
     locked: 0
   - name: Item
-    uniqueID: 1273403493
+    uniqueID: 92946567
     locked: 0
   - name: Animal
-    uniqueID: 2508120485
+    uniqueID: 1017343613
     locked: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AFRICANWILDDOG : MonoBehaviour
 {
+    /*
     public static animalsCollection.animalsSystem _africanwilddog = new animalsCollection.animalsSystem( );
 
     void Start( )
@@ -45,4 +46,5 @@ public class AFRICANWILDDOG : MonoBehaviour
                 break;
         }
     }
+    */
 }

@@ -12,6 +12,11 @@ public class MapLevel : MonoBehaviour
         return level;
     }
 
+    public void setMapLevel( int input )
+    {
+        level = input;
+    }
+
     public void loadMapLevel( int levelLoaded)
     {
         level = levelLoaded;

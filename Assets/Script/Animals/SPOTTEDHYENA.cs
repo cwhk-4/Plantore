@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SPOTTEDHYENA : MonoBehaviour
 {
+    /*
     public static animalsCollection.animalsSystem _spottedhyena = new animalsCollection.animalsSystem( );
     void Start()
     {
@@ -46,4 +47,5 @@ public class SPOTTEDHYENA : MonoBehaviour
                 break;
         }
     }
+    */
 }

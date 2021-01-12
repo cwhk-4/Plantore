@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LION : MonoBehaviour
 {
+    /*
     public static animalsCollection.animalsSystem _lion = new animalsCollection.animalsSystem( );
 
     GameObject Target;
@@ -179,4 +180,6 @@ public class LION : MonoBehaviour
     //        Destroy( GetNum._LION[ GetNum.lionsNum - 2 ] );
     //    }
     //}
+
+    */
 }

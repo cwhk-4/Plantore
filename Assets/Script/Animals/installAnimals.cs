@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InstallAnimals : MonoBehaviour
 {
-
+    /*
     GameObject[ ] lion;
     public static GameObject lionObj;
     GameObject[ ] zebra;
@@ -276,4 +276,5 @@ public class InstallAnimals : MonoBehaviour
             in_animals.in_lion = true;
         }
     }
+    */
 }

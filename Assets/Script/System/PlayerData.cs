@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    public GameObject MapInfo;
-
-    public TimeController TimeController;
-    public MapLevel MapLevel;
+    [SerializeField] private TimeController TimeController;
+    [SerializeField] private MapLevel MapLevel;
 
     public float nowTime;
     public int mapLevel;
@@ -15,7 +13,6 @@ public class PlayerData : MonoBehaviour
     private void Start( )
     {
         TimeController = GetComponent<TimeController>( );
-        MapLevel = MapInfo.GetComponent<MapLevel>( );
     }
 
     public void getPlayerData( )

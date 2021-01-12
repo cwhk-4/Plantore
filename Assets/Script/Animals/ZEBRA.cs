@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ZEBRA : MonoBehaviour
 {
+    /*
     public static animalsCollection.animalsSystem _zebra = new animalsCollection.animalsSystem( );
 
     GameObject goStage;
@@ -112,4 +113,5 @@ public class ZEBRA : MonoBehaviour
             zebrasNUM = 3;
         }
     }
+    */
 }
