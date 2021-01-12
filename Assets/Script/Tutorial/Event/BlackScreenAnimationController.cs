@@ -5,26 +5,21 @@ using UnityEngine.UI;
 
 public class BlackScreenAnimationController : MonoBehaviour
 {
-    public DialogueEvent dialogueEvent;
+    [SerializeField] private DialogueEvent dialogueEvent;
 
     private RawImage rawImage;
     public Color color = Color.black;
 
-    public GameObject loadingText;
+    [SerializeField] private GameObject loadingText;
 
-    [SerializeField]
-    private float fadingTime = 1f;
+    [SerializeField] private float fadingTime = 1f;
 
-    [SerializeField]
-    private float blackoutTime = 3f;
+    [SerializeField] private float blackoutTime = 3f;
 
     public bool show = true;
 
     private void Start( )
     {
-        dialogueEvent = GameObject.FindWithTag( "DialogueControl" ).GetComponent<DialogueEvent>( );
-
-        loadingText = this.transform.GetChild( 0 ).gameObject;
         loadingText.SetActive( false );
 
         rawImage = GetComponent<RawImage>( );

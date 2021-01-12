@@ -43,15 +43,19 @@ public class InstantiateItem : MonoBehaviour
                 imController.InstanWoodExtraGrid( );
             }
 
-            if( imController.GetIsMoving( ) )
+            if( name != "Tutorial_grass(Clone)" )
             {
-                var timeDelayed = timeController.getNowRealSec( ) - thisStartingTime;
-                item.GetComponent<CountDown>( ).setStartingTime( imController.GetStartingTime( ) + timeDelayed );
-                Debug.Log( timeDelayed );
-            }
-            else
-            {
-                item.GetComponent<CountDown>( ).setStartingTime( timeController.getNowRealSec( ) );
+                if( imController.GetIsMoving( ) )
+                {
+                    var timeDelayed = timeController.getNowRealSec( ) - thisStartingTime;
+                    item.GetComponent<CountDown>( ).setStartingTime( imController.GetStartingTime( ) + timeDelayed );
+                    Debug.Log( timeDelayed );
+                }
+                else
+                {
+                    item.GetComponent<CountDown>( ).setStartingTime( timeController.getNowRealSec( ) );
+                }
+
             }
 
             Destroy( gameObject );
