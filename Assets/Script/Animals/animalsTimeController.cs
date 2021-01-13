@@ -23,7 +23,7 @@ public class animalsTimeController : MonoBehaviour
 
     void changeAnimalsType( )
     {
-        switch( animalsType.tag )
+        switch( animalsType.name )
         {
             case "LIONS":
                 timeOut = 3.0f;

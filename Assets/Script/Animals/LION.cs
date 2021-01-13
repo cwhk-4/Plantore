@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LION : MonoBehaviour
 {
-    /*
+    
     public static animalsCollection.animalsSystem _lion = new animalsCollection.animalsSystem( );
 
     GameObject Target;
@@ -18,7 +18,7 @@ public class LION : MonoBehaviour
     private Vector3 newPosition;
     private bool goPredation;
     //
-    bool scriptCount = false;
+    private bool scriptCount = false;
     private int timeControllerIn = 0;
 
     void Start( )
@@ -43,6 +43,8 @@ public class LION : MonoBehaviour
         lionMove( );
         timeIn( );
         numsProbability( );
+
+        Debug.Log( scriptCount );
     }
 
     void lionMove( )
@@ -56,9 +58,9 @@ public class LION : MonoBehaviour
 
     void changeTarget( )
     {
-        if ( ItemMovementTest._grass )
+        if ( MoveItem._item )
         {
-            if ( this.gameObject.transform.position == goStage.transform.position && goPredation && ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position )
+            if ( this.gameObject.transform.position == goStage.transform.position && goPredation && ZEBRA._zebra.animals.transform.position == MoveItem._item.transform.position )
             {
                 Target.transform.position = ZEBRA._zebra.animals.transform.position;
                 lionPredationProbability( );
@@ -70,7 +72,7 @@ public class LION : MonoBehaviour
                 Predation( );
                 goPredation = false;
             }
-            if ( this.gameObject.transform.position == newPosition && ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position )
+            if ( this.gameObject.transform.position == newPosition && ZEBRA._zebra.animals.transform.position == MoveItem._item.transform.position )
             {
                 Target.transform.position = goStage.transform.position;
                 goPredation = true;
@@ -106,9 +108,9 @@ public class LION : MonoBehaviour
 
     void timeIn( )
     {
-        if ( ItemMovementTest._grass )
+        if ( MoveItem._item )
         {
-            if ( ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position && InstallAnimals.in_animals.in_lion && timeControllerIn == 0 )
+            if ( ZEBRA._zebra.animals.transform.position == MoveItem._item.transform.position && InstallAnimals.in_animals.in_lion && timeControllerIn == 0 )
             {
                 if ( !scriptCount )
                 {
@@ -181,5 +183,5 @@ public class LION : MonoBehaviour
     //    }
     //}
 
-    */
+    
 }

@@ -20,6 +20,7 @@ TagManager:
   - InstantiateMoveControl
   - GridAvailability
   - Cursor
+  - LIONS
   layers:
   - Default
   - TransparentFX

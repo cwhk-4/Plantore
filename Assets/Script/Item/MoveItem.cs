@@ -6,6 +6,9 @@ public class MoveItem : MonoBehaviour
     [SerializeField] private GameObject itemToBeInstantiate;
     [SerializeField] private int xCount = 8;
 
+    //
+    public static GameObject _item;
+
     void Start( )
     {
         imController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
@@ -25,5 +28,15 @@ public class MoveItem : MonoBehaviour
         }
 
         Destroy( gameObject );
+    }
+
+    private void Update( )
+    {
+        findItem( );
+    }
+
+    public void findItem( )
+    {
+        _item = this.gameObject;
     }
 }

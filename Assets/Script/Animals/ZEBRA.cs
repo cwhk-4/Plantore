@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZEBRA : MonoBehaviour
 {
-    /*
+    
     public static animalsCollection.animalsSystem _zebra = new animalsCollection.animalsSystem( );
 
     GameObject goStage;
@@ -32,8 +32,8 @@ public class ZEBRA : MonoBehaviour
         
     void Update( )
     {
-        zebraMove( );
         timeIn( );
+        zebraMove( );
         numsProbability( );
     }
 
@@ -48,12 +48,12 @@ public class ZEBRA : MonoBehaviour
 
     void changeTarget( )
     {
-        if ( ItemMovementTest._grass && !runaway )
+        if ( MoveItem._item && !runaway )
         {
-            goStage.transform.position = ItemMovementTest._grass.transform.position;
+            goStage.transform.position = MoveItem._item.transform.position;
             canFindGrass = true;
         }
-        if ( ItemMovementTest._grass == null && canFindGrass )
+        if ( MoveItem._item == null && canFindGrass )
         {
             newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
             goStage.transform.position = newPosition;
@@ -65,7 +65,7 @@ public class ZEBRA : MonoBehaviour
             runaway = true;
             goStage.transform.position = newPosition;
         }
-        if ( ItemMovementTest._grass == null && this.gameObject.transform.position == newPosition )
+        if ( MoveItem._item == null && this.gameObject.transform.position == newPosition )
         {
             runaway = false;
             scriptCount = false;
@@ -76,7 +76,7 @@ public class ZEBRA : MonoBehaviour
 
     void timeIn( )
     {
-        if ( ItemMovementTest._grass && InstallAnimals.in_animals.in_zebra && timeControllerIn == 0 )
+        if ( MoveItem._item && InstallAnimals.in_animals.in_zebra == true && timeControllerIn == 0 )
         {
             if ( !scriptCount )
             {
@@ -94,6 +94,7 @@ public class ZEBRA : MonoBehaviour
             }
         }
     }
+
     void numsProbability( )
     {
         if ( InstallAnimals.zebrasNumProbability == 0 )
@@ -113,5 +114,4 @@ public class ZEBRA : MonoBehaviour
             zebrasNUM = 3;
         }
     }
-    */
 }
