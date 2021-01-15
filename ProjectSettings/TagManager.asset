@@ -21,6 +21,7 @@ TagManager:
   - GridAvailability
   - Cursor
   - LIONS
+  - ZEBRAS
   layers:
   - Default
   - TransparentFX

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ZEBRA : MonoBehaviour
 {
-    
+
     public static animalsCollection.animalsSystem _zebra = new animalsCollection.animalsSystem( );
 
     GameObject goStage;
     public animalsTimeController _zebraTimeController;
+    public GetNum _zebrasNum;
     private Vector3 newPosition;
 
     public static int zebrasNUM;
@@ -20,6 +21,8 @@ public class ZEBRA : MonoBehaviour
     private bool scriptCount = false;
     private int timeControllerIn = 0;
 
+    public static int findsNum;
+
     void Start( )
     {
         _zebra.animals = this.gameObject;
@@ -29,12 +32,13 @@ public class ZEBRA : MonoBehaviour
         goStage = GameObject.Find( "zebraTarget" );
         newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
     }
-        
+
     void Update( )
     {
         timeIn( );
         zebraMove( );
         numsProbability( );
+        findNum( );
     }
 
     void zebraMove( )
@@ -113,5 +117,10 @@ public class ZEBRA : MonoBehaviour
         {
             zebrasNUM = 3;
         }
+    }
+
+    void findNum( )
+    {
+        findsNum = this.gameObject.GetComponent<GetNum>( ).getAnimalsNum( );
     }
 }
