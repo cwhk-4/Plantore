@@ -5,7 +5,7 @@ public class TimeDisplayBarAnimation : MonoBehaviour
 {
     [SerializeField] private bool isOpen;
     [SerializeField] private bool isMoving;
-    [SerializeField] private GameObject openButton;
+    [SerializeField] private RectTransform timeBarRect;
     [SerializeField] private RectTransform buttonRect;
     [SerializeField] private float toPosX;
     [SerializeField] private float originalPosX;
@@ -15,7 +15,6 @@ public class TimeDisplayBarAnimation : MonoBehaviour
     {
         isOpen = false;
         isMoving = false;
-        buttonRect = openButton.GetComponent<RectTransform>( );
     }
 
     private void Update( )
@@ -24,21 +23,23 @@ public class TimeDisplayBarAnimation : MonoBehaviour
         {
             if( isOpen )
             {
-                buttonRect.anchoredPosition = new Vector2( buttonRect.anchoredPosition.x - movingSpeed, buttonRect.anchoredPosition.y );
+                timeBarRect.anchoredPosition = new Vector2( timeBarRect.anchoredPosition.x - movingSpeed, timeBarRect.anchoredPosition.y );
             }
             else
             {
-                buttonRect.anchoredPosition = new Vector2( buttonRect.anchoredPosition.x + movingSpeed, buttonRect.anchoredPosition.y );
+                timeBarRect.anchoredPosition = new Vector2( timeBarRect.anchoredPosition.x + movingSpeed, timeBarRect.anchoredPosition.y );
             }
 
-            if( isOpen && buttonRect.anchoredPosition.x <= toPosX)
+            if( isOpen && timeBarRect.anchoredPosition.x <= toPosX)
             {
                 isMoving = false;
+                buttonRect.rotation = new Quaternion( 0, 0, 180, 0 );
             }
 
-            if( !isOpen && buttonRect.anchoredPosition.x >= originalPosX )
+            if( !isOpen && timeBarRect.anchoredPosition.x >= originalPosX )
             {
                 isMoving = false;
+                buttonRect.rotation = new Quaternion( 0, 0, 0, 0 );
             }
         }
     }

@@ -9431,8 +9431,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isMoving: 0
-  openButton: {fileID: 2076833820}
-  buttonRect: {fileID: 0}
+  timeBarRect: {fileID: 2076833821}
+  buttonRect: {fileID: 1930502376}
   toPosX: -537
   originalPosX: -37.5
   movingSpeed: 10

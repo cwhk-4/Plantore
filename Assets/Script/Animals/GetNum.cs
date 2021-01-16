@@ -17,14 +17,10 @@ public class GetNum : MonoBehaviour
     void Update( )
     {
         animalType( );
-        getAnimalsNum( );
-        Debug.Log( animalsNum );
     }
 
     public int getAnimalsNum( )
     {
-        _animals = GameObject.FindGameObjectsWithTag( animalName );
-        animalsNum = _animals.Length;
         return animalsNum;
     }
 
@@ -39,5 +35,7 @@ public class GetNum : MonoBehaviour
                 animalName = "zebra";
                 break;
         }
+        _animals = GameObject.FindGameObjectsWithTag( animalName );
+        animalsNum = _animals.Length;
     }
 }
