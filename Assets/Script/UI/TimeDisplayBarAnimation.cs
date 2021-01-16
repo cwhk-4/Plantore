@@ -15,6 +15,7 @@ public class TimeDisplayBarAnimation : MonoBehaviour
     {
         isOpen = false;
         isMoving = false;
+        timeBarRect.anchoredPosition = new Vector2( originalPosX, timeBarRect.anchoredPosition.y );
     }
 
     private void Update( )
@@ -34,12 +35,14 @@ public class TimeDisplayBarAnimation : MonoBehaviour
             {
                 isMoving = false;
                 buttonRect.rotation = new Quaternion( 0, 0, 180, 0 );
+                timeBarRect.anchoredPosition = new Vector2( toPosX, timeBarRect.anchoredPosition.y );
             }
 
             if( !isOpen && timeBarRect.anchoredPosition.x >= originalPosX )
             {
                 isMoving = false;
                 buttonRect.rotation = new Quaternion( 0, 0, 0, 0 );
+                timeBarRect.anchoredPosition = new Vector2( originalPosX, timeBarRect.anchoredPosition.y );
             }
         }
     }
