@@ -5,12 +5,12 @@ public class TimeDisplay : MonoBehaviour
 {
     public TimeController timeController;
 
-    public Text dayDisplay;
-    public Text periodDisplay;
-    public Text timeDisplay;
-    public Text AMPMDisplay;
+    //public Text dayDisplay;
+    [SerializeField] private Text periodDisplay;
+    [SerializeField] private Text timeDisplay;
+    [SerializeField] private Text AMPMDisplay;
 
-    private int day;                    //start from 1
+    //private int day;                    //start from 1
     private int period;                 //same
     private string periodText;
     private string period_AMPM_Text;
@@ -28,20 +28,15 @@ public class TimeDisplay : MonoBehaviour
     [SerializeField] private int toHour = 6;
     [SerializeField] private int count = 100;
 
-    void Awake( )
-    {
-        timeController = GetComponent<TimeController>( );
-    }
-
     void FixedUpdate( )
     {
-        day = timeController.getNowGameDay( );
+        //day = timeController.getNowGameDay( );
         gameHour = timeController.getNowGameHour();
         period = timeController.getNowGamePeriod( );
         realSec = timeController.getNowRealSec( );
         totalGameHour = ( int )timeController.getTotalNowGameHour( );
 
-        displayDay( );
+        //displayDay( );
         displayPeriod( );
         displayAMPMPeriod( );
         displayTime( );
@@ -51,10 +46,10 @@ public class TimeDisplay : MonoBehaviour
 
     }
 
-    private void displayDay( )
-    {
-        dayDisplay.text = ( "Day " + day );
-    }
+    //private void displayDay( )
+    //{
+    //    dayDisplay.text = ( "Day " + day );
+    //}
 
     private void displayPeriod( )
     {
@@ -179,6 +174,7 @@ public class TimeDisplay : MonoBehaviour
 
     private int gameNowMin( )
     {
+        //caution
         displayMin = ( int )( ( ( realSec - 1 ) - ( ( int )totalGameHour * timeController.getSecToMinCount( ) * timeController.getMinToHourCount( ) ) ) / toHour * count );
 
         //Debug.Log( displayMin );
