@@ -5,20 +5,20 @@ public class LION : MonoBehaviour
 
     public static animalsCollection.animalsSystem _lion = new animalsCollection.animalsSystem( );
 
-    GameObject Target;
-    GameObject goStage;
-    public animalsTimeController _lionTimeController;
-
-    public static int lionsNUM;
-    private float timeToGo;
-
-    //
+    [SerializeField] private GameObject Target;
+    private GameObject goStage;
     private Vector3 newPosition;
-    private bool goPredation;
-    //
-    private bool scriptCount = false;
-    private int timeControllerIn = 0;
+
+    public animalsTimeController _lionTimeController;
+    
+    public static GameObject[ ] lion;
+    public static int lionsNUM;
     public static int findsNum;
+    
+    private int timeControllerIn = 0;
+    private float timeToGo;
+    private bool goPredation;
+    private bool scriptCount = false;
 
     void Start( )
     {
@@ -40,9 +40,10 @@ public class LION : MonoBehaviour
     void Update( )
     {
         lionMove( );
-        //timeIn( );
+        timeIn( );
         numsProbability( );
         findNum( );
+        getAnimalsType( );
     }
 
     void lionMove( )
@@ -50,7 +51,7 @@ public class LION : MonoBehaviour
         if ( _lion.canMove )
         {
             this.gameObject.transform.position = Vector3.MoveTowards( this.gameObject.transform.position, Target.transform.position, _lion.moveSpeed * Time.deltaTime );
-            //changeTarget( );
+            changeTarget( );
         }
     }
 
@@ -67,7 +68,7 @@ public class LION : MonoBehaviour
             {
                 newPosition = new Vector3( Random.Range( -10, 10 ), 7.0f, 0.0f );
                 Target.transform.position = newPosition;
-                //Predation( );
+                Predation( );
                 goPredation = false;
             }
             if ( this.gameObject.transform.position == newPosition && ZEBRA._zebra.animals.transform.position == MoveItem._item.transform.position )
@@ -128,17 +129,17 @@ public class LION : MonoBehaviour
         }
     }
 
-    //void Predation( )
-    //{
-    //    if ( _lion.canPredation )
-    //    {
-    //        Destroy( GetNum._zebra[ GetNum.zebrasNum - 1 ] );
-    //    }
-    //    else
-    //    {
-    //        Destroy( GetNum._lion[ GetNum.lionsNum - 1 ] );
-    //    }
-    //}
+    void Predation( )
+    {
+        if ( _lion.canPredation )
+        {
+            Destroy( lion[ findsNum - 1] );
+        }
+        else
+        {
+            Destroy( ZEBRA.zebra[ ZEBRA.zebrasNUM - 1 ] );
+        }
+    }
 
     void numsProbability( )
     {
@@ -167,6 +168,11 @@ public class LION : MonoBehaviour
     void findNum( )
     {
         findsNum = this.gameObject.GetComponent<GetNum>( ).getAnimalsNum( );
+    }
+
+    void getAnimalsType( )
+    {
+        lion = this.gameObject.GetComponent<GetNum>( )._animals;
     }
 
     //

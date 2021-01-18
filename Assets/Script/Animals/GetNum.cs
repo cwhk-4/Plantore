@@ -1,18 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GetNum : MonoBehaviour
 {
 
-    private GameObject[ ] _animals;
+    [SerializeField] public GameObject[ ] _animals;
 
-    private int animalsNum;
-    private string animalName;
-
-    void Start( )
-    {
-    }
+    [SerializeField] private int animalsNum;
+    [SerializeField] private string animalName;
 
     void Update( )
     {
@@ -24,7 +18,7 @@ public class GetNum : MonoBehaviour
         return animalsNum;
     }
 
-    private void animalType( )
+    private void animalType(  )
     {
         switch ( this.gameObject.tag )
         {

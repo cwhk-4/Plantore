@@ -2,9 +2,6 @@
 
 public class animalsCollection : MonoBehaviour
 {
-
-    public static GameObject[ ] animals = new GameObject[ 2 ];
-
     public struct animalsSystem
     {
         public  GameObject animals;

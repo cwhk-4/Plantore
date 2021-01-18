@@ -7,21 +7,21 @@ public class ZEBRA : MonoBehaviour
 
     public static animalsCollection.animalsSystem _zebra = new animalsCollection.animalsSystem( );
 
-    GameObject goStage;
-    public animalsTimeController _zebraTimeController;
-    public GetNum _zebrasNum;
+    private GameObject goStage;
     private Vector3 newPosition;
 
+    public animalsTimeController _zebraTimeController;
+
+    public static GameObject[ ] zebra;
     public static int zebrasNUM;
+    public static int findsNum;
+    
+    private int timeControllerIn = 0;
     private float timeToGo;
     private bool canFindGrass = true;
     private bool runaway = false;
-
-    //
     private bool scriptCount = false;
-    private int timeControllerIn = 0;
 
-    public static int findsNum;
 
     void Start( )
     {
@@ -35,10 +35,11 @@ public class ZEBRA : MonoBehaviour
 
     void Update( )
     {
-        timeIn( );
         zebraMove( );
+        timeIn( );
         numsProbability( );
         findNum( );
+        getAnimalsType( );
     }
 
     void zebraMove( )
@@ -122,5 +123,10 @@ public class ZEBRA : MonoBehaviour
     void findNum( )
     {
         findsNum = this.gameObject.GetComponent<GetNum>( ).getAnimalsNum( );
+    }
+
+    void getAnimalsType( )
+    {
+        zebra = this.gameObject.GetComponent<GetNum>( )._animals;
     }
 }
