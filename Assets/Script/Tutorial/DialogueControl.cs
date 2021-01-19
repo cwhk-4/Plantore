@@ -3,8 +3,8 @@ using TMPro;
 
 public class DialogueControl : MonoBehaviour
 {
-    public TMP_Text dialogue;
-    public DialogueEvent dialogueEvent;
+    [SerializeField] private TMP_Text dialogue;
+    [SerializeField] private DialogueEvent dialogueEvent;
 
     private int dialogueCount = 1;
 
