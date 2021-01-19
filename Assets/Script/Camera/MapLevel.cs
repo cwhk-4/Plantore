@@ -1,11 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MapLevel : MonoBehaviour
 {
-    [SerializeField]
-    private int level = 1;
+    [SerializeField] private int level = 1;
+
+    [SerializeField] private MissionTextDisplay MissionText;
+
+    private void Awake( )
+    {
+        MissionText.MapLevelChanged( level );
+    }
 
     public int getMapLevel()
     {
@@ -15,6 +19,7 @@ public class MapLevel : MonoBehaviour
     public void setMapLevel( int input )
     {
         level = input;
+        MissionText.MapLevelChanged( level ); 
     }
 
     public void loadMapLevel( int levelLoaded)
