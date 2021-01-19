@@ -244,7 +244,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zebraTimeController: {fileID: 0}
-  _zebrasNum: {fileID: 0}
 --- !u!114 &149477212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5bbf934ab3a0fd44a86380c8386fc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animals: []
+  animalsNum: 0
+  animalName: 
 --- !u!1 &156054424
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146dc9e26a2795c42811209ba9298af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Target: {fileID: 0}
   _lionTimeController: {fileID: 0}
 --- !u!114 &917010524
 MonoBehaviour:
@@ -742,6 +745,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5bbf934ab3a0fd44a86380c8386fc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animals: []
+  animalsNum: 0
+  animalName: 
 --- !u!1 &918747570
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ZEBRA : MonoBehaviour
 {
 
-    public static animalsCollection.animalsSystem _zebra = new animalsCollection.animalsSystem( );
+    public static AnimalsCollection.animalsSystem _zebra = new AnimalsCollection.animalsSystem( );
 
     private GameObject goStage;
     private Vector3 newPosition;
@@ -28,18 +26,23 @@ public class ZEBRA : MonoBehaviour
         _zebra.animals = this.gameObject;
         _zebra.moveSpeed = 3.0f;
         _zebra.canMove = false;
+        _zebra.needTurn = false;
 
         goStage = GameObject.Find( "zebraTarget" );
         newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
     }
 
-    void Update( )
+    private void FixedUpdate( )
     {
         zebraMove( );
+    }
+    private void Update( )
+    {
         timeIn( );
         numsProbability( );
         findNum( );
         getAnimalsType( );
+        setTurnScale( );
     }
 
     void zebraMove( )
@@ -120,13 +123,25 @@ public class ZEBRA : MonoBehaviour
         }
     }
 
-    void findNum( )
+    private void findNum( )
     {
         findsNum = this.gameObject.GetComponent<GetNum>( ).getAnimalsNum( );
     }
 
-    void getAnimalsType( )
+    private void getAnimalsType( )
     {
         zebra = this.gameObject.GetComponent<GetNum>( )._animals;
+    }
+
+    private void setTurnScale( )
+    {
+        if ( goStage.transform.position.x > _zebra.animals.transform.position.x )
+        {
+            _zebra.needTurn = true;
+        }
+        else
+        {
+            _zebra.needTurn = false;
+        }
     }
 }

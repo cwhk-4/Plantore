@@ -3,7 +3,7 @@
 public class LION : MonoBehaviour
 {
 
-    public static animalsCollection.animalsSystem _lion = new animalsCollection.animalsSystem( );
+    public static AnimalsCollection.animalsSystem _lion = new AnimalsCollection.animalsSystem( );
 
     [SerializeField] private GameObject Target;
     private GameObject goStage;
@@ -37,9 +37,13 @@ public class LION : MonoBehaviour
         newPosition = new Vector3( Random.Range( -10, 10 ), 7.0f, 0.0f );
     }
 
-    void Update( )
+    private void FixedUpdate( )
     {
         lionMove( );
+    }
+
+    void Update( )
+    {
         timeIn( );
         numsProbability( );
         findNum( );

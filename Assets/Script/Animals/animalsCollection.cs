@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class animalsCollection : MonoBehaviour
+public class AnimalsCollection : MonoBehaviour
 {
     public struct animalsSystem
     {
@@ -17,6 +17,7 @@ public class animalsCollection : MonoBehaviour
 
         public bool canPredation;
         public bool fightEachOther;
+        public bool needTurn;
     };
     public static animalsSystem allAnimals = new animalsSystem( );
 
