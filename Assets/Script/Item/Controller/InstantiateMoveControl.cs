@@ -24,11 +24,13 @@ public class InstantiateMoveControl : MonoBehaviour
 
     public void FinishInstantiate( )
     {
-        if( isInstantiating )
+        var isInstantiate = isInstantiating;
+        isInstantiating = false;
+
+        if( isInstantiate )
         {
             MissionControl.PlacedItem( );
         }
-        isInstantiating = false;
     }
 
     public bool GetIsInstantiating( )
