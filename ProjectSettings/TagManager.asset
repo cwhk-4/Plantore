@@ -30,6 +30,7 @@ TagManager:
   - DialogueWindow
   - Menu
   - MissionController
+  - DriedGrass
   layers:
   - Default
   - TransparentFX

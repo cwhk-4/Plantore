@@ -31,7 +31,10 @@ public class ItemBase : MonoBehaviour
                 {
                     if( toolConvertion.getIsCan( ) )
                     {
-                        Repair( );
+                        if(countDown.getCD() <= 0)
+                        {
+                            Repair( );
+                        }
                     }
                 }
             }

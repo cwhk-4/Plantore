@@ -10,16 +10,28 @@ public class MissionControl : MonoBehaviour
     [SerializeField] private TMP_Text mission2Num;
     [SerializeField] private TMP_Text mission3Num;
 
-    [SerializeField] private int AnimalFound = 0;
-    [SerializeField] private int ItemPlaced = 0;
-    [SerializeField] private int ItemFixed = 0;
-    [SerializeField] private int HippoRhinoFound = 0;
+    [SerializeField] private GameObject[] missionCheckBox = new GameObject[3];
+
+    [SerializeField] private Sprite uncheckedBox;
+    [SerializeField] private Sprite checkedBox;
+
     [SerializeField] private bool Rhino = false;
     [SerializeField] private bool Hippo = false;
-    [SerializeField] private int Hunting = 0;
-    [SerializeField] private int EventCleared = 0;
 
-    private int NowStartingMission = 0;
+    [SerializeField] private int[] missionTotalNum = new int[6];
+    [SerializeField] private int[] missionNowNum = new int[6];
+    [SerializeField] private bool[] missionCompleted = new bool[6];
+
+    [SerializeField] private int NowStartingMission = 0;
+
+    private void Start( )
+    {
+        for( int i = 0; i < missionTotalNum.Length - 1; i++ )
+        {
+            missionTotalNum[i] = missions.GetValue( i ).totalNum;
+            missionCompleted[i] = false;
+        }
+    }
 
     public void SetNowStartingMission( int num )
     {
@@ -31,47 +43,47 @@ public class MissionControl : MonoBehaviour
     {
         if( NowStartingMission == 0 )
         {
-            mission1Num.text = AnimalFound.ToString( );
-            mission2Num.text = ItemPlaced.ToString( );
-            mission3Num.text = ItemFixed.ToString( );
+            mission1Num.text = missionNowNum[0].ToString( );
+            mission2Num.text = missionNowNum[1].ToString( );
+            mission3Num.text = missionNowNum[2].ToString( );
         }
 
         if( NowStartingMission == 3 )
         {
-            mission1Num.text = HippoRhinoFound.ToString( );
-            mission2Num.text = Hunting.ToString( );
-            mission3Num.text = EventCleared.ToString( );
+            mission1Num.text = missionNowNum[3].ToString( );
+            mission2Num.text = missionNowNum[4].ToString( );
+            mission3Num.text = missionNowNum[5].ToString( );
         }
     }
 
     public void FoundAnimal( )
     {
-        AnimalFound++;
+        missionNowNum[0]++;
         if( NowStartingMission == 0 )
         {
-            mission1Num.text = AnimalFound.ToString( );
+            mission1Num.text = missionNowNum[0].ToString( );
         }
-        checkMissionFinished( );
+        checkMissionCompleted( 0 );
     }
 
     public void PlacedItem( )
     {
-        ItemPlaced++;
+        missionNowNum[1]++;
         if( NowStartingMission == 0 )
         {
-            mission2Num.text = ItemPlaced.ToString( );
+            mission2Num.text = missionNowNum[1].ToString( );
         }
-        checkMissionFinished( );
+        checkMissionCompleted( 1 );
     }
 
     public void FixedItem( )
     {
-        ItemFixed++;
+        missionNowNum[2]++;
         if( NowStartingMission == 0 )
         {
-            mission3Num.text = ItemFixed.ToString( );
+            mission3Num.text = missionNowNum[2].ToString( );
         }
-        checkMissionFinished( );
+        checkMissionCompleted( 2 );
     }
 
     public void FoundHippo( )
@@ -94,55 +106,53 @@ public class MissionControl : MonoBehaviour
 
     private void FoundHippoRhino( )
     {
-        HippoRhinoFound++;
+        missionNowNum[3]++;
         if( NowStartingMission == 3 )
         {
-            mission1Num.text = HippoRhinoFound.ToString( );
+            mission1Num.text = missionNowNum[3].ToString( );
         }
+        checkMissionCompleted( 3 );
     }
 
     public void HuntingHappened( )
     {
-        Hunting++;
+        missionNowNum[4]++;
         if( NowStartingMission == 3 )
         {
-            mission2Num.text = Hunting.ToString( );
+            mission2Num.text = missionNowNum[4].ToString( );
         }
+        checkMissionCompleted( 4 );
     }
 
     public void ClearedEvent( )
     {
-        EventCleared++;
+        missionNowNum[5]++;
         if( NowStartingMission == 3 )
         {
-            mission3Num.text = Hunting.ToString( );
+            mission3Num.text = missionNowNum[5].ToString( );
         }
+        checkMissionCompleted( 5 );
     }
 
-    private void checkMissionFinished()
+    private void checkMissionCompleted( int input )
     {
-        if( NowStartingMission == 0 )
+        if( missionNowNum[input] >= missionTotalNum[input] )
         {
-            var mission1Num = missions.GetValue( 0 ).totalNum;
-            var mission2Num = missions.GetValue( 1 ).totalNum;
-            var mission3Num = missions.GetValue( 2 ).totalNum;
-
-            if( AnimalFound == mission1Num && ItemPlaced == mission2Num && ItemFixed == mission3Num )
-            {
-                MapLevel.setMapLevel( 2 ); 
-            }
-        }
-
-        if( NowStartingMission == 1 )
-        {
-            var mission1Num = missions.GetValue( 3 ).totalNum;
-            var mission2Num = missions.GetValue( 4 ).totalNum;
-            var mission3Num = missions.GetValue( 5 ).totalNum;
-
-            if( HippoRhinoFound == mission1Num && Hunting == mission2Num && EventCleared == mission3Num )
-            {
-                MapLevel.setMapLevel( 3 );
-            }
+            missionCompleted[input] = true;
+            //check Box
+            checkLevelMissionCompleted( );
         }
     }
+
+    private void checkLevelMissionCompleted( )
+    {
+        var startingNum = NowStartingMission;
+
+        if( missionCompleted[startingNum] && missionCompleted[startingNum + 1] && missionCompleted[startingNum + 2] )
+        {
+            Debug.Log( startingNum / 3 + 2 );
+            MapLevel.setMapLevel( startingNum / 3 + 2 );
+        }
+    }
+
 }

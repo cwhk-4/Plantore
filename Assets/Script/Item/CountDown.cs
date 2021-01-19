@@ -50,6 +50,8 @@ public class CountDown : MonoBehaviour
             if( spriteRenderer.sprite != timeOutImage)
             {
                 spriteRenderer.sprite = timeOutImage;
+                gameObject.tag = "DriedGrass";
+
             }
         }
         else
@@ -57,6 +59,7 @@ public class CountDown : MonoBehaviour
             if( spriteRenderer.sprite != original )
             {
                 spriteRenderer.sprite = original;
+                gameObject.tag = "Grass";
             }
         }
     }
@@ -84,5 +87,10 @@ public class CountDown : MonoBehaviour
     public void setStartingTime( float time )
     {
         startingTime = time;
+    }
+
+    public float getCD( )
+    {
+        return CD;
     }
 }
