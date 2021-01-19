@@ -2,6 +2,7 @@
 
 public class ItemBase : MonoBehaviour
 {
+    [SerializeField] private MissionControl MissionControl;
     [SerializeField] private InstantiateMoveControl imController;
     [SerializeField] private ToolConvertion toolConvertion;
     private CountDown countDown;
@@ -13,6 +14,7 @@ public class ItemBase : MonoBehaviour
     {
         imController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
         toolConvertion = GameObject.FindWithTag( "Cursor" ).GetComponent<ToolConvertion>( );
+        MissionControl = GameObject.FindWithTag( "MissionController" ).GetComponent<MissionControl>( );
         countDown = GetComponent<CountDown>( );
         moveItem = GetComponent<MoveItem>( );
         isOnMouse = false;
@@ -25,7 +27,7 @@ public class ItemBase : MonoBehaviour
             if( !imController.GetIsInstantiating( ) || !imController.GetIsMoving( ) )
             {
 
-                if( Input.GetMouseButton( 0 ) )
+                if( Input.GetMouseButtonDown( 0 ) )
                 {
                     if( toolConvertion.getIsCan( ) )
                     {
@@ -34,7 +36,7 @@ public class ItemBase : MonoBehaviour
                 }
             }
 
-            if( Input.GetMouseButton( 1 ) )
+            if( Input.GetMouseButtonDown( 1 ) )
             {
                 MoveGrass( );
             }
@@ -44,6 +46,7 @@ public class ItemBase : MonoBehaviour
     private void Repair( )
     {
         countDown.ResetStartingTime( );
+        MissionControl.FixedItem( );
     }
 
     private void MoveGrass( )

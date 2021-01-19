@@ -22,6 +22,14 @@ TagManager:
   - Cursor
   - LIONS
   - ZEBRAS
+  - System
+  - ToStageButton
+  - DialogueControl
+  - Dialogue
+  - UI
+  - DialogueWindow
+  - Menu
+  - MissionController
   layers:
   - Default
   - TransparentFX

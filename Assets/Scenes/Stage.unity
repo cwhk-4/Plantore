@@ -942,9 +942,10 @@ GameObject:
   - component: {fileID: 310321036}
   - component: {fileID: 310321037}
   - component: {fileID: 310321038}
+  - component: {fileID: 310321039}
   m_Layer: 0
   m_Name: MissionController
-  m_TagString: Untagged
+  m_TagString: MissionController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1001,6 +1002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missions: {fileID: 310321037}
+  MissionControl: {fileID: 310321039}
   Mission1Num: {fileID: 105335766}
   Mission1: {fileID: 337512227}
   Mission2Num: {fileID: 2069858062}
@@ -1008,6 +1010,26 @@ MonoBehaviour:
   Mission3Num: {fileID: 1579769918}
   Mission3: {fileID: 896259991}
   MapLevel: 0
+--- !u!114 &310321039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310321035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9eca8f49259944baa085ec80531ef02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mission1Num: {fileID: 95181113}
+  mission2Num: {fileID: 67097031}
+  mission3Num: {fileID: 332696728}
+  AnimalFound: 0
+  ItemPlaced: 0
+  ItemFixed: 0
+  HippoRhinoFound: 0
+  Hunting: 0
 --- !u!1 &332696726
 GameObject:
   m_ObjectHideFlags: 0
@@ -11180,6 +11202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeController: {fileID: 1790710736}
+  MissionControl: {fileID: 310321039}
   isInstantiating: 0
   isMoving: 0
   startingTime: 0

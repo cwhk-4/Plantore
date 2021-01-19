@@ -4,6 +4,7 @@ using TMPro;
 public class MissionTextDisplay : MonoBehaviour
 {
     [SerializeField] private MissionsList missions;
+    [SerializeField] private MissionControl MissionControl;
 
     [SerializeField] private TMP_Text Mission1Num;
     [SerializeField] private TMP_Text Mission1;
@@ -49,5 +50,6 @@ public class MissionTextDisplay : MonoBehaviour
         }
 
         setText( MissionStartingNum );
+        MissionControl.SetNowStartingMission( MissionStartingNum );
     }
 }

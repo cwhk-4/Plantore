@@ -3,6 +3,7 @@
 public class InstantiateMoveControl : MonoBehaviour
 {
     [SerializeField] private TimeController timeController;
+    [SerializeField] private MissionControl MissionControl;
 
     [SerializeField] private bool isInstantiating = false;
     [SerializeField] private bool isMoving = false;
@@ -23,6 +24,10 @@ public class InstantiateMoveControl : MonoBehaviour
 
     public void FinishInstantiate( )
     {
+        if( isInstantiating )
+        {
+            MissionControl.PlacedItem( );
+        }
         isInstantiating = false;
     }
 

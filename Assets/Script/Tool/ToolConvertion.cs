@@ -8,7 +8,6 @@ public class ToolConvertion : MonoBehaviour
     private bool isOnGO = false;
 
     public GameObject grass = null;
-    //public ItemMovement itemMovement;
 
     void Start()
     {

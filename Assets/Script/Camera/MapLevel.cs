@@ -19,7 +19,7 @@ public class MapLevel : MonoBehaviour
     public void setMapLevel( int input )
     {
         level = input;
-        MissionText.MapLevelChanged( level ); 
+        MissionText.MapLevelChanged( level );
     }
 
     public void loadMapLevel( int levelLoaded)
