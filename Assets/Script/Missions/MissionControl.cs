@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MissionControl : MonoBehaviour
 {
@@ -31,12 +32,15 @@ public class MissionControl : MonoBehaviour
             missionTotalNum[i] = missions.GetValue( i ).totalNum;
             missionCompleted[i] = false;
         }
+
+        clearMissionBox( );
     }
 
     public void SetNowStartingMission( int num )
     {
         NowStartingMission = num;
         setMissionNum( );
+        clearMissionBox( );
     }
 
     private void setMissionNum( )
@@ -139,8 +143,28 @@ public class MissionControl : MonoBehaviour
         if( missionNowNum[input] >= missionTotalNum[input] )
         {
             missionCompleted[input] = true;
-            //check Box
+            checkMissionBox( input );
             checkLevelMissionCompleted( );
+        }
+    }
+
+    private void checkMissionBox( int input )
+    {
+        if( missionCompleted[input] )
+        {
+            missionCheckBox[input % 3].GetComponent<Image>( ).sprite = checkedBox;
+        }
+        else
+        {
+            missionCheckBox[input % 3].GetComponent<Image>( ).sprite = uncheckedBox;
+        }
+    }
+
+    private void clearMissionBox( )
+    {
+        for( int i = 0; i < 3; i++ )
+        {
+            checkMissionBox( NowStartingMission + i );
         }
     }
 
@@ -150,7 +174,7 @@ public class MissionControl : MonoBehaviour
 
         if( missionCompleted[startingNum] && missionCompleted[startingNum + 1] && missionCompleted[startingNum + 2] )
         {
-            Debug.Log( startingNum / 3 + 2 );
+            //set Mission Finished Animation
             MapLevel.setMapLevel( startingNum / 3 + 2 );
         }
     }
