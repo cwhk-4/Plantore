@@ -57,4 +57,16 @@ public class MissionTextBoxAnimation : MonoBehaviour
             isMoving = true;
         }
     }
+
+    public void CloseMenu( )
+    {
+        isOpen = false;
+        isMoving = true;
+    }
+
+    public void OpenMenu( )
+    {
+        isOpen = true;
+        isMoving = true;
+    }
 }

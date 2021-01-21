@@ -6,6 +6,7 @@ public class MissionControl : MonoBehaviour
 {
     [SerializeField] private MissionsList missions;
     [SerializeField] private MapLevel MapLevel;
+    [SerializeField] private MissionTextBoxAnimation MissionAnimation;
 
     [SerializeField] private TMP_Text mission1Num;
     [SerializeField] private TMP_Text mission2Num;
@@ -25,6 +26,13 @@ public class MissionControl : MonoBehaviour
 
     [SerializeField] private int NowStartingMission = 0;
 
+    [SerializeField] private RectTransform MissionClearBoard;
+    [SerializeField] private float AnimationSpeed;
+    private int ToMapLevel = 1;
+    private bool ShowMission = false;
+    private bool CloseMission = false;
+    private bool MissionShown = false;
+
     private void Start( )
     {
         for( int i = 0; i < missionTotalNum.Length - 1; i++ )
@@ -34,6 +42,49 @@ public class MissionControl : MonoBehaviour
         }
 
         clearMissionBox( );
+
+        MissionClearBoard.localScale = Vector3.zero;
+        MissionClearBoard.gameObject.SetActive( false );
+    }
+
+    private void Update( )
+    {
+        if( ShowMission )
+        {
+            MissionClearBoard.localScale =
+                new Vector3( MissionClearBoard.localScale.x + AnimationSpeed,
+                MissionClearBoard.localScale.y + AnimationSpeed,
+                MissionClearBoard.localScale.z + AnimationSpeed);
+
+            if( MissionClearBoard.localScale == Vector3.one )
+            {
+                ShowMission = false;
+                MissionShown = true;
+                MapLevel.setMapLevel( ToMapLevel );
+            }
+        }
+
+        if( CloseMission )
+        {
+            MissionClearBoard.localScale =
+                new Vector3( MissionClearBoard.localScale.x - AnimationSpeed,
+                MissionClearBoard.localScale.y - AnimationSpeed,
+                MissionClearBoard.localScale.z - AnimationSpeed);
+
+            if( MissionClearBoard.localScale == Vector3.zero )
+            {
+                CloseMission = false;
+                MissionShown = false;
+            }
+        }
+
+        if( MissionShown )
+        {
+            if( Input.GetMouseButtonDown( 0 ) )
+            {
+                CloseMission = true;
+            }
+        }
     }
 
     public void SetNowStartingMission( int num )
@@ -150,13 +201,15 @@ public class MissionControl : MonoBehaviour
 
     private void checkMissionBox( int input )
     {
+        Debug.Log( input );
+
         if( missionCompleted[input] )
         {
-            missionCheckBox[input % 3].GetComponent<Image>( ).sprite = checkedBox;
+            missionCheckBox[input - NowStartingMission ].GetComponent<Image>( ).sprite = checkedBox;
         }
         else
         {
-            missionCheckBox[input % 3].GetComponent<Image>( ).sprite = uncheckedBox;
+            missionCheckBox[input - NowStartingMission ].GetComponent<Image>( ).sprite = uncheckedBox;
         }
     }
 
@@ -174,9 +227,16 @@ public class MissionControl : MonoBehaviour
 
         if( missionCompleted[startingNum] && missionCompleted[startingNum + 1] && missionCompleted[startingNum + 2] )
         {
-            //set Mission Finished Animation
-            MapLevel.setMapLevel( startingNum / 3 + 2 );
+            MissionCleared( startingNum / 3 + 2 );
         }
+    }
+
+    private void MissionCleared( int ToLevel )
+    {
+        ToMapLevel = ToLevel;
+        MissionAnimation.CloseMenu( );
+        ShowMission = true;
+        MissionClearBoard.gameObject.SetActive( true );
     }
 
 }
