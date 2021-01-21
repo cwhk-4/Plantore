@@ -48,6 +48,12 @@ public class TurnGraph : MonoBehaviour
             case "zebra":
                 needTurn = ZEBRA._zebra.needTurn;
                 break;
+            case "giraffe":
+                needTurn = GIRAFFE._giraffe.needTurn;
+                break;
+            case "impala":
+                needTurn = IMPALA._impala.needTurn;
+                break;
         }
     }
 }

@@ -9,7 +9,7 @@ public class LION : MonoBehaviour
     private GameObject goStage;
     private Vector3 newPosition;
 
-    public animalsTimeController _lionTimeController;
+    public AnimalsTimeController _lionTimeController;
     
     public static GameObject[ ] lion;
     public static int lionsNUM;
@@ -28,6 +28,7 @@ public class LION : MonoBehaviour
         _lion.startPredationProbability = 30;
         _lion.canMove = false;
         _lion.canPredation = false;
+        _lion.needTurn = false;
         _lion.predationProbability = Random.Range( 0, 9 );
 
         goPredation = true;
@@ -48,6 +49,7 @@ public class LION : MonoBehaviour
         numsProbability( );
         findNum( );
         getAnimalsType( );
+        setTurnScale( );
     }
 
     void lionMove( )
@@ -118,14 +120,14 @@ public class LION : MonoBehaviour
             {
                 if ( !scriptCount )
                 {
-                    _lionTimeController = this.gameObject.AddComponent<animalsTimeController>( );
+                    _lionTimeController = this.gameObject.AddComponent<AnimalsTimeController>( );
                     scriptCount = true;
                 }
-                timeToGo = GameObject.Find( "LIONS" ).GetComponent<animalsTimeController>( ).changeTime( );
+                timeToGo = GameObject.Find( "LIONS" ).GetComponent<AnimalsTimeController>( ).changeTime( );
                 if ( timeToGo < 0 )
                 {
                     _lion.canMove = true;
-                    Destroy( this.gameObject.GetComponent<animalsTimeController>( ) );
+                    Destroy( this.gameObject.GetComponent<AnimalsTimeController>( ) );
                     timeControllerIn = 1;
                     timeToGo = 0;
                 }
@@ -177,6 +179,18 @@ public class LION : MonoBehaviour
     void getAnimalsType( )
     {
         lion = this.gameObject.GetComponent<GetNum>( )._animals;
+    }
+
+    void setTurnScale( )
+    {
+        if ( Target.transform.position.x >= _lion.animals.transform.position.x )
+        {
+            _lion.needTurn = true;
+        }
+        else
+        {
+            _lion.needTurn = false;
+        }
     }
 
     //

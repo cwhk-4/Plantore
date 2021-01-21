@@ -31,6 +31,8 @@ TagManager:
   - Menu
   - MissionController
   - DriedGrass
+  - GIRAFFES
+  - IMPALAS
   layers:
   - Default
   - TransparentFX

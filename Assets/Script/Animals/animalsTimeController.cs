@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class animalsTimeController : MonoBehaviour
+public class AnimalsTimeController : MonoBehaviour
 {
     private GameObject animalsType;
     public static float timeOut;

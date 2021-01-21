@@ -8,13 +8,13 @@ public class ZEBRA : MonoBehaviour
     private GameObject goStage;
     private Vector3 newPosition;
 
-    public animalsTimeController _zebraTimeController;
+    public AnimalsTimeController _zebraTimeController;
 
     public static GameObject[ ] zebra;
     public static int zebrasNUM;
     public static int findsNum;
     
-    private int timeControllerIn = 0;
+    private int timeControllerIn;
     private float timeToGo;
     private bool canFindGrass = true;
     private bool runaway = false;
@@ -88,15 +88,15 @@ public class ZEBRA : MonoBehaviour
         {
             if ( !scriptCount )
             {
-                _zebraTimeController = this.gameObject.AddComponent<animalsTimeController>( );
+                _zebraTimeController = this.gameObject.AddComponent<AnimalsTimeController>( );
                 scriptCount = true;
             }
-            timeToGo = GameObject.Find( "ZEBRAS" ).GetComponent<animalsTimeController>( ).changeTime( );
+            timeToGo = GameObject.Find( "ZEBRAS" ).GetComponent<AnimalsTimeController>( ).changeTime( );
 
             if ( timeToGo < 0 )
             {
                 _zebra.canMove = true;
-                Destroy( this.gameObject.GetComponent<animalsTimeController>( ) );
+                Destroy( this.gameObject.GetComponent<AnimalsTimeController>( ) );
                 timeControllerIn = 1;
                 timeToGo = 0;
             }
@@ -135,7 +135,7 @@ public class ZEBRA : MonoBehaviour
 
     private void setTurnScale( )
     {
-        if ( goStage.transform.position.x > _zebra.animals.transform.position.x )
+        if ( goStage.transform.position.x >= _zebra.animals.transform.position.x )
         {
             _zebra.needTurn = true;
         }

@@ -28,6 +28,12 @@ public class GetNum : MonoBehaviour
             case "ZEBRAS":
                 animalName = "zebra";
                 break;
+            case "GIRAFFES":
+                animalName = "giraffe";
+                break;
+            case "IMPALAS":
+                animalName = "impala";
+                break;
         }
         _animals = GameObject.FindGameObjectsWithTag( animalName );
         animalsNum = _animals.Length;

@@ -4,37 +4,45 @@ using UnityEngine;
 
 public class IMPALA : MonoBehaviour
 {
-    /*
-    public static animalsCollection.animalsSystem _impala = new animalsCollection.animalsSystem( );
+    public static AnimalsCollection.animalsSystem _impala = new AnimalsCollection.animalsSystem( );
 
     GameObject goStage;
-    public animalsTimeController _impalaTimeController;
+    public AnimalsTimeController _impalaTimeController;
     private Vector3 newPosition;
 
+    public static GameObject[ ] impala;
     public static int impalasNUM;
+    public static int findsNum;
+
+    private int timeControllerIn = 0;
     private float timeToGo;
     private bool canFindItem = true;
     private bool runaway = false;
-
-    //
     private bool scriptCount = false;
-    private int timeControllerIn = 0;
 
     void Start( )
     {
         _impala.animals = this.gameObject;
         _impala.moveSpeed = 2.0f;
         _impala.canMove = false;
+        _impala.needTurn = false;
 
         goStage = GameObject.Find( "impalaTarget" );
         newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
     }
 
-    void Update( )
+    private void FixedUpdate( )
     {
         impalaMove( );
+    }
+
+    void Update( )
+    {
         timeIn( );
         numsProbability( );
+        findNum( );
+        getAnimalsType( );
+        setTurnScale( );
     }
 
     void impalaMove( )
@@ -48,12 +56,12 @@ public class IMPALA : MonoBehaviour
 
     void changeTarget( )
     {
-        if ( ItemMovementTest._grass && !runaway )
+        if ( MoveItem._item && !runaway )
         {
-            goStage.transform.position = ItemMovementTest._grass.transform.position;
+            goStage.transform.position = MoveItem._item.transform.position;
             canFindItem = true;
         }
-        if ( ItemMovementTest._grass == null && canFindItem )
+        if ( MoveItem._item == null && canFindItem )
         {
             newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
             goStage.transform.position = newPosition;
@@ -65,7 +73,7 @@ public class IMPALA : MonoBehaviour
             runaway = true;
             goStage.transform.position = newPosition;
         }
-        if ( ItemMovementTest._grass == null && this.gameObject.transform.position == newPosition )
+        if ( MoveItem._item == null && this.gameObject.transform.position == newPosition )
         {
             runaway = false;
             scriptCount = false;
@@ -76,23 +84,33 @@ public class IMPALA : MonoBehaviour
 
     void timeIn( )
     {
-        if ( ItemMovementTest._grass && InstallAnimals.in_animals.in_impala && timeControllerIn == 0 )
+        if ( MoveItem._item && InstallAnimals.in_animals.in_impala && timeControllerIn == 0 )
         {
             if ( !scriptCount )
             {
-                _impalaTimeController = this.gameObject.AddComponent<animalsTimeController>( );
+                _impalaTimeController = this.gameObject.AddComponent<AnimalsTimeController>( );
                 scriptCount = true;
             }
-            timeToGo = GameObject.Find( "IMPALAS" ).GetComponent<animalsTimeController>( ).changeTime( );
+            timeToGo = GameObject.Find( "IMPALAS" ).GetComponent<AnimalsTimeController>( ).changeTime( );
 
             if ( timeToGo < 0 )
             {
                 _impala.canMove = true;
-                Destroy( this.gameObject.GetComponent<animalsTimeController>( ) );
+                Destroy( this.gameObject.GetComponent<AnimalsTimeController>( ) );
                 timeControllerIn = 1;
                 timeToGo = 0;
             }
         }
+    }
+
+    private void findNum( )
+    {
+        findsNum = this.gameObject.GetComponent<GetNum>( ).getAnimalsNum( );
+    }
+
+    private void getAnimalsType( )
+    {
+        impala = this.gameObject.GetComponent<GetNum>( )._animals;
     }
 
     void numsProbability( )
@@ -118,5 +136,16 @@ public class IMPALA : MonoBehaviour
             impalasNUM = 1;
         }
     }
-    */
+
+    private void setTurnScale( )
+    {
+        if ( goStage.transform.position.x >= _impala.animals.transform.position.x )
+        {
+            _impala.needTurn = true;
+        }
+        else
+        {
+            _impala.needTurn = false;
+        }
+    }
 }
