@@ -33,6 +33,10 @@ TagManager:
   - DriedGrass
   - GIRAFFES
   - IMPALAS
+  - AFRICANWILDDOGS
+  - BLUEWILDEBEESTS
+  - SPOTTEDHYENAS
+  - WHITERHINOS
   layers:
   - Default
   - TransparentFX

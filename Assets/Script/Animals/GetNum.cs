@@ -34,6 +34,18 @@ public class GetNum : MonoBehaviour
             case "IMPALAS":
                 animalName = "impala";
                 break;
+            case "WHITERHINOS":
+                animalName = "whiterhino";
+                break;
+            case "BLUEWILDEBEESTS":
+                animalName = "bluewildebeest";
+                break;
+            case "AFRICANWILDDOGS":
+                animalName = "africanwilddog";
+                break;
+            case "SPOTTEDHYENAS":
+                animalName = "spottedhyena";
+                break;
         }
         _animals = GameObject.FindGameObjectsWithTag( animalName );
         animalsNum = _animals.Length;

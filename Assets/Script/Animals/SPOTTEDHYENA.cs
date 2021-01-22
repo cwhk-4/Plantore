@@ -1,11 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SPOTTEDHYENA : MonoBehaviour
 {
-    /*
-    public static animalsCollection.animalsSystem _spottedhyena = new animalsCollection.animalsSystem( );
+    public static AnimalsCollection.animalsSystem _spottedhyena = new AnimalsCollection.animalsSystem( );
+
+    public static GameObject[ ] spottedhyena;
+    public static int spottedhyenasNum;
+    public static int findsNum;
+
     void Start()
     {
         
@@ -14,6 +16,18 @@ public class SPOTTEDHYENA : MonoBehaviour
     void Update()
     {
         numsProbability( );
+        findNum( );
+        getAnimalsType( );
+    }
+
+    private void findNum( )
+    {
+        findsNum = this.gameObject.GetComponent<GetNum>( ).getAnimalsNum( );
+    }
+
+    private void getAnimalsType( )
+    {
+        spottedhyena = this.gameObject.GetComponent<GetNum>( )._animals;
     }
 
     void numsProbability( )
@@ -47,5 +61,4 @@ public class SPOTTEDHYENA : MonoBehaviour
                 break;
         }
     }
-    */
 }

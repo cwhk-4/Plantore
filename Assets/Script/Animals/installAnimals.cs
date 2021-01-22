@@ -141,7 +141,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < IMPALA.impalasNUM; i++ )
                     {
-                        Instantiate( impalaObj, new Vector3( 5.0f + i * 1.0f, 6.5f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( impalaObj, new Vector3( 6.0f + i * 1.0f, 6.5f + i * 1.0f, 0.0f ), Quaternion.identity );
                         impala = GameObject.FindGameObjectsWithTag( "impala" );
                         impala[ i ].name = "impala" + i;
                         impala[ i ].transform.parent = GameObject.FindGameObjectWithTag( "IMPALAS" ).transform;
@@ -151,66 +151,67 @@ public class InstallAnimals : MonoBehaviour
         }
 
         //if ( environment.nowLevel == 2 )
-        //{
-        //    //SPOTTEDHYENA
-        //    if ( spottedhyena == null )
-        //    {
-        //        if ( GetNum.spottedhyenasNum < SPOTTEDHYENA._spottedhyena.animalsNUM )
-        //        {
-        //            for ( int i = 0; i < SPOTTEDHYENA._spottedhyena.animalsNUM; i++ )
-        //            {
-        //                Instantiate( spottedhyenaObj, new Vector3( 3.0f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
-        //                spottedhyena = GameObject.FindGameObjectsWithTag( "spottedhyena" );
-        //                spottedhyena[ i ].name = "spottedhyena" + i;
-        //                spottedhyena[ i ].transform.parent = GameObject.FindGameObjectWithTag( "SPOTTEDHYENAS" ).transform;
-        //            }
-        //        }
-        //    }
+        {
+            //SPOTTEDHYENA
+            if ( spottedhyena == null )
+            {
+                if ( SPOTTEDHYENA.spottedhyenasNum < SPOTTEDHYENA._spottedhyena.animalsNUM )
+                {
+                    for ( int i = 0; i < SPOTTEDHYENA._spottedhyena.animalsNUM; i++ )
+                    {
+                        Instantiate( spottedhyenaObj, new Vector3( -8.0f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        spottedhyena = GameObject.FindGameObjectsWithTag( "spottedhyena" );
+                        spottedhyena[ i ].name = "spottedhyena" + i;
+                        spottedhyena[ i ].transform.parent = GameObject.FindGameObjectWithTag( "SPOTTEDHYENAS" ).transform;
+                    }
+                }
+            }
 
-        //    //AFRICANWILDDOG
-        //    if ( africanwilddog == null )
-        //    {
-        //        if ( GetNum.africanwilddogsNum < AFRICANWILDDOG._africanwilddog.animalsNUM )
-        //        {
-        //            for ( int i = 0; i < AFRICANWILDDOG._africanwilddog.animalsNUM; i++ )
-        //            {
-        //                Instantiate( africanwilddogObj, new Vector3( 0.0f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
-        //                africanwilddog = GameObject.FindGameObjectsWithTag( "africanwilddog" );
-        //                africanwilddog[ i ].name = "africanwilddog" + i;
-        //                africanwilddog[ i ].transform.parent = GameObject.FindGameObjectWithTag( "AFRICANWILDDOGS" ).transform;
-        //            }
-        //        }
-        //    }
+            //AFRICANWILDDOG
+            if ( africanwilddog == null )
+            {
+                if ( AFRICANWILDDOG.africanwilddogsNum < AFRICANWILDDOG._africanwilddog.animalsNUM )
+                {
+                    for ( int i = 0; i < AFRICANWILDDOG._africanwilddog.animalsNUM; i++ )
+                    {
+                        Instantiate( africanwilddogObj, new Vector3( -1.5f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        africanwilddog = GameObject.FindGameObjectsWithTag( "africanwilddog" );
+                        africanwilddog[ i ].name = "africanwilddog" + i;
+                        africanwilddog[ i ].transform.parent = GameObject.FindGameObjectWithTag( "AFRICANWILDDOGS" ).transform;
+                    }
+                }
+            }
 
-        //    //BLUEWILDEBEEST
-        //    if ( bluewildebeest == null )
-        //    {
-        //        if ( GetNum.bluewildebeestsNum < BLUEWILDEBEEST._bluewildebeest.animalsNUM )
-        //        {
-        //            for ( int i = 0; i < BLUEWILDEBEEST._bluewildebeest.animalsNUM; i++ )
-        //            {
-        //                Instantiate( bluewildebeestObj, new Vector3( 0.0f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
-        //                bluewildebeest = GameObject.FindGameObjectsWithTag( "bluewildebeest" );
-        //                bluewildebeest[ i ].name = "bluewildebeest" + i;
-        //                bluewildebeest[ i ].transform.parent = GameObject.FindGameObjectWithTag( "BLUEWILDEBEESTS" ).transform;
-        //            }
-        //        }
-        //    }
+            //BLUEWILDEBEEST
+            if ( bluewildebeest == null )
+            {
+                if ( BLUEWILDEBEEST.bluewildebeestsNum < BLUEWILDEBEEST._bluewildebeest.animalsNUM )
+                {
+                    for ( int i = 0; i < BLUEWILDEBEEST._bluewildebeest.animalsNUM; i++ )
+                    {
+                        Instantiate( bluewildebeestObj, new Vector3( 3.25f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        bluewildebeest = GameObject.FindGameObjectsWithTag( "bluewildebeest" );
+                        bluewildebeest[ i ].name = "bluewildebeest" + i;
+                        bluewildebeest[ i ].transform.parent = GameObject.FindGameObjectWithTag( "BLUEWILDEBEESTS" ).transform;
+                    }
+                }
+            }
 
-        //    //WHITERHINO
-        //    if ( whiterhino == null )
-        //    {
-        //        if ( GetNum.whiterhinosNum < WHITERHINO._whiterhino.animalsNUM )
-        //        {
-        //            for ( int i = 0; i < WHITERHINO._whiterhino.animalsNUM; i++ )
-        //            {
-        //                Instantiate( whiterhinoObj, new Vector3( 0.0f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
-        //                whiterhino = GameObject.FindGameObjectsWithTag( "whiterhino" );
-        //                whiterhino[ i ].name = "whiterhino" + i;
-        //                whiterhino[ i ].transform.parent = GameObject.FindGameObjectWithTag( "WHITERHINOS" ).transform;
-        //            }
-        //        }
-        //    }
+            //WHITERHINO
+            if ( whiterhino == null )
+            {
+                if ( WHITERHINO.whiterhinosNum < WHITERHINO._whiterhino.animalsNUM )
+                {
+                    for ( int i = 0; i < WHITERHINO._whiterhino.animalsNUM; i++ )
+                    {
+                        Instantiate( whiterhinoObj, new Vector3( 7.0f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        whiterhino = GameObject.FindGameObjectsWithTag( "whiterhino" );
+                        whiterhino[ i ].name = "whiterhino" + i;
+                        whiterhino[ i ].transform.parent = GameObject.FindGameObjectWithTag( "WHITERHINOS" ).transform;
+                    }
+                }
+            }
+        }
     }
 
 

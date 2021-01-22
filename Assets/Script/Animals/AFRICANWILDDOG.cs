@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AFRICANWILDDOG : MonoBehaviour
 {
-    /*
-    public static animalsCollection.animalsSystem _africanwilddog = new animalsCollection.animalsSystem( );
+    public static AnimalsCollection.animalsSystem _africanwilddog = new AnimalsCollection.animalsSystem( );
+
+    public static GameObject[ ] africanwilddog;
+    public static int africanwilddogsNum;
+    public static int findsNum;
 
     void Start( )
     {
@@ -15,6 +16,18 @@ public class AFRICANWILDDOG : MonoBehaviour
     void Update( )
     {
         numsProbability( );
+        findNum( );
+        getAnimalsType( );
+    }
+
+    private void findNum( )
+    {
+        findsNum = this.gameObject.GetComponent<GetNum>( ).getAnimalsNum( );
+    }
+
+    private void getAnimalsType( )
+    {
+        africanwilddog = this.gameObject.GetComponent<GetNum>( )._animals;
     }
 
     void numsProbability( )
@@ -46,5 +59,4 @@ public class AFRICANWILDDOG : MonoBehaviour
                 break;
         }
     }
-    */
 }

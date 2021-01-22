@@ -1,20 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WHITERHINO : MonoBehaviour
 {
-    /*
-    public static animalsCollection.animalsSystem _whiterhino = new animalsCollection.animalsSystem( );
+    public static AnimalsCollection.animalsSystem _whiterhino = new AnimalsCollection.animalsSystem( );
+
+    public static GameObject[ ] whiterhino;
+    public static int whiterhinosNum;
+    public static int findsNum;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
+        findNum( );
+        getAnimalsType( );
         numsProbability( );
+    }
+
+    private void findNum( )
+    {
+        findsNum = this.gameObject.GetComponent<GetNum>( ).getAnimalsNum( );
+    }
+
+    private void getAnimalsType( )
+    {
+        whiterhino = this.gameObject.GetComponent<GetNum>( )._animals;
     }
 
     void numsProbability( )
@@ -42,5 +55,5 @@ public class WHITERHINO : MonoBehaviour
                 break;
         }
     }
-    */
+
 }

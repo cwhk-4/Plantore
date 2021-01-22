@@ -1,11 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BLUEWILDEBEEST : MonoBehaviour
 {
-    /*
-    public static animalsCollection.animalsSystem _bluewildebeest = new animalsCollection.animalsSystem( );
+    public static AnimalsCollection.animalsSystem _bluewildebeest = new AnimalsCollection.animalsSystem( );
+
+    public static GameObject[ ] bluewildebeest;
+    public static int bluewildebeestsNum;
+    public static int findsNum;
+
     void Start()
     {
         
@@ -14,7 +16,19 @@ public class BLUEWILDEBEEST : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        findNum( );
+        getAnimalsType( );
         numsProbability( );
+    }
+
+    private void findNum( )
+    {
+        findsNum = this.gameObject.GetComponent<GetNum>( ).getAnimalsNum( );
+    }
+
+    private void getAnimalsType( )
+    {
+        bluewildebeest = this.gameObject.GetComponent<GetNum>( )._animals;
     }
 
     void numsProbability( )
@@ -46,5 +60,5 @@ public class BLUEWILDEBEEST : MonoBehaviour
                 break;
         }
     }
-    */
+
 }

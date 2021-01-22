@@ -54,6 +54,18 @@ public class TurnGraph : MonoBehaviour
             case "impala":
                 needTurn = IMPALA._impala.needTurn;
                 break;
+            case "spottedhyena":
+                needTurn = SPOTTEDHYENA._spottedhyena.needTurn;
+                break;
+            case "africanwilddog":
+                needTurn = AFRICANWILDDOG._africanwilddog.needTurn;
+                break;
+            case "bluewildebeest":
+                needTurn = BLUEWILDEBEEST._bluewildebeest.needTurn;
+                break;
+            case "whiterhino":
+                needTurn = WHITERHINO._whiterhino.needTurn;
+                break;
         }
     }
 }
