@@ -2,7 +2,7 @@
 
 public class MissionsList : MonoBehaviour
 {
-	[SerializeField] private SubClass[] Missions = new SubClass[6];
+	[SerializeField] private SubClass[] Missions = new SubClass[5];
 
     private void Awake( )
     {
@@ -21,9 +21,10 @@ public class MissionsList : MonoBehaviour
 		Missions[4].totalNum = 1;
 		Missions[4].MissionText = "肉食動物が草食動物を狩る";
 
-		Missions[5].totalNum = 1;
-		Missions[5].MissionText = "イベントをクリアする";
-	}
+		//caution
+        //Missions[5].totalNum = 1;
+        //Missions[5].MissionText = "イベントをクリアする";
+    }
 
     public void SetValue( int index, SubClass subClass )
 	{

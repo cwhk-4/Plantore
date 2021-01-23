@@ -28,21 +28,21 @@ public class AnimalAnimation : MonoBehaviour
     {
         playCount++;
 
-        //if( playCount % 2 == 0 )
-        //{
+        if( playCount % 3 == 0 )
+        {
             animationCount++;
             spriteRenderer.sprite = nowAnimation[animationCount % ( nowAnimation.Length - 1 )];
-        //}
+        }
 
-        //if( ItemMovementTest._grass )
-        //{
-        //    if( ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position )
-        //    {
-        //        nowAnimation = eat;
-        //    }
-        //}
+    //if( ItemMovementTest._grass )
+    //{
+    //    if( ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position )
+    //    {
+    //        nowAnimation = eat;
+    //    }
+    //}
 
-    }
+}
 
     public void setEat( )
     {
