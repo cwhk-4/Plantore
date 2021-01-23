@@ -205,11 +205,11 @@ public class MissionControl : MonoBehaviour
 
         if( missionCompleted[input] )
         {
-            missionCheckBox[input - NowStartingMission ].GetComponent<Image>( ).sprite = checkedBox;
+            missionCheckBox[input % 3].GetComponent<Image>( ).sprite = checkedBox;
         }
         else
         {
-            missionCheckBox[input - NowStartingMission ].GetComponent<Image>( ).sprite = uncheckedBox;
+            missionCheckBox[input % 3].GetComponent<Image>( ).sprite = uncheckedBox;
         }
     }
 
