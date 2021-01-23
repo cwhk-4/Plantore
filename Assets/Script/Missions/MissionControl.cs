@@ -77,14 +77,6 @@ public class MissionControl : MonoBehaviour
                 MissionShown = false;
             }
         }
-
-        if( MissionShown )
-        {
-            if( Input.GetMouseButtonDown( 0 ) )
-            {
-                CloseMission = true;
-            }
-        }
     }
 
     public void SetNowStartingMission( int num )
@@ -239,4 +231,11 @@ public class MissionControl : MonoBehaviour
         MissionClearBoard.gameObject.SetActive( true );
     }
 
+    public void CloseMissionClearBoard( )
+    {
+        if( MissionShown )
+        {
+            CloseMission = true;
+        }
+    }
 }

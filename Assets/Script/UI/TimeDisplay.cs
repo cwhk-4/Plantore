@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TimeDisplay : MonoBehaviour
 {
     public TimeController timeController;
 
     //public Text dayDisplay;
-    [SerializeField] private Text periodDisplay;
-    [SerializeField] private Text timeDisplay;
-    [SerializeField] private Text AMPMDisplay;
+    [SerializeField] private TMP_Text PeriodText;
+    [SerializeField] private TMP_Text TimeText;
+    [SerializeField] private TMP_Text AMPMText;
 
     //private int day;                    //start from 1
     private int period;                 //same
@@ -96,7 +97,7 @@ public class TimeDisplay : MonoBehaviour
                 break;
         }
 
-        periodDisplay.text = ( periodText );
+        PeriodText.text = periodText;
     }
 
     /*
@@ -144,7 +145,7 @@ public class TimeDisplay : MonoBehaviour
 
     private void displayAMPMPeriod( )
     {
-        AMPMDisplay.text = ( period_AMPM_Text );
+        AMPMText.text = ( period_AMPM_Text );
     }
 
     private void displayTime( )
@@ -153,7 +154,7 @@ public class TimeDisplay : MonoBehaviour
 
         int displayMin = gameNowMin( );
 
-        timeDisplay.text = ( displayHr + ":" + displayMin  + "0");
+        TimeText.text = ( displayHr + ":" + displayMin  + "0");
     }
 
     private int gameNowHour( )
