@@ -134,5 +134,4 @@ public class GIRAFFE : MonoBehaviour
             _giraffe.needTurn = false;
         }
     }
-
 }

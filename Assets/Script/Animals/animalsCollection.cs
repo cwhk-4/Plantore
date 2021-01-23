@@ -4,7 +4,7 @@ public class AnimalsCollection : MonoBehaviour
 {
     public struct animalsSystem
     {
-        public  GameObject animals;
+        public GameObject animals;
         public bool canMove;
         public int animalsNUM;
         public int Minus;
@@ -18,6 +18,7 @@ public class AnimalsCollection : MonoBehaviour
         public bool canPredation;
         public bool fightEachOther;
         public bool needTurn;
+        public bool foundAnimal;
     };
     public static animalsSystem allAnimals = new animalsSystem( );
 

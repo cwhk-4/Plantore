@@ -37,6 +37,6 @@ public class MoveItem : MonoBehaviour
 
     public void findItem( )
     {
-        _item = this.gameObject;
+        _item = GameObject.FindGameObjectWithTag( "Grass" );
     }
 }

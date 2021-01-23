@@ -905,6 +905,7 @@ GameObject:
   - component: {fileID: 149477210}
   - component: {fileID: 149477211}
   - component: {fileID: 149477212}
+  - component: {fileID: 149477213}
   m_Layer: 0
   m_Name: ZEBRAS
   m_TagString: ZEBRAS
@@ -954,6 +955,19 @@ MonoBehaviour:
   _animals: []
   animalsNum: 0
   animalName: 
+--- !u!114 &149477213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149477209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cf6b01d720e974c9c714db86c7e1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getThisAnimal: {fileID: 310321039}
 --- !u!1 &156054424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,7 +2232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652667994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1956758732}
@@ -2277,7 +2291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674720648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1956758732}
@@ -2740,6 +2754,7 @@ GameObject:
   - component: {fileID: 917010522}
   - component: {fileID: 917010523}
   - component: {fileID: 917010524}
+  - component: {fileID: 917010525}
   m_Layer: 0
   m_Name: LIONS
   m_TagString: LIONS
@@ -2790,6 +2805,19 @@ MonoBehaviour:
   _animals: []
   animalsNum: 0
   animalName: 
+--- !u!114 &917010525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917010521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cf6b01d720e974c9c714db86c7e1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getThisAnimal: {fileID: 310321039}
 --- !u!1 &918747570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2840,6 +2868,7 @@ GameObject:
   - component: {fileID: 1001411495}
   - component: {fileID: 1001411497}
   - component: {fileID: 1001411496}
+  - component: {fileID: 1001411498}
   m_Layer: 0
   m_Name: IMPALAS
   m_TagString: IMPALAS
@@ -2889,6 +2918,19 @@ MonoBehaviour:
   _animals: []
   animalsNum: 0
   animalName: 
+--- !u!114 &1001411498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001411494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cf6b01d720e974c9c714db86c7e1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getThisAnimal: {fileID: 310321039}
 --- !u!1 &1085240555
 GameObject:
   m_ObjectHideFlags: 0
@@ -11389,7 +11431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187334635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1956758732}
@@ -12719,7 +12761,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632923055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1956758732}
@@ -13679,6 +13721,7 @@ GameObject:
   - component: {fileID: 1987555618}
   - component: {fileID: 1987555619}
   - component: {fileID: 1987555620}
+  - component: {fileID: 1987555621}
   m_Layer: 0
   m_Name: GIRAFFES
   m_TagString: GIRAFFES
@@ -13728,6 +13771,19 @@ MonoBehaviour:
   _animals: []
   animalsNum: 0
   animalName: 
+--- !u!114 &1987555621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987555617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cf6b01d720e974c9c714db86c7e1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getThisAnimal: {fileID: 310321039}
 --- !u!1 &2011851574
 GameObject:
   m_ObjectHideFlags: 0
