@@ -30,6 +30,10 @@ public class InstantiateItem : MonoBehaviour
 
             switch( name )
             {
+                case "grass_Instan(Clone)":
+                    available = true;
+                    break;
+
                 case "wood_Instan(Clone)":
                     available = imController.checkWoodGrid( );
                     break;
