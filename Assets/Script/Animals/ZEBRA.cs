@@ -9,7 +9,6 @@ public class ZEBRA : MonoBehaviour
     private Vector3 newPosition;
 
     public AnimalsTimeController _zebraTimeController;
-    private MissionControl _foundZebra;
 
     public static GameObject[ ] zebra;
     public static int zebrasNUM;

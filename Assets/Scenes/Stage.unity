@@ -3628,8 +3628,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1001411495}
-  - component: {fileID: 1001411497}
   - component: {fileID: 1001411496}
+  - component: {fileID: 1001411497}
   - component: {fileID: 1001411498}
   m_Layer: 0
   m_Name: IMPALAS

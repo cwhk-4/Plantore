@@ -2,6 +2,7 @@
 
 public class InstallAnimals : MonoBehaviour
 {
+    [SerializeField] private int nowMapLevel;
     //
     GameObject[ ] lion;
     public static GameObject lionObj;
@@ -19,8 +20,6 @@ public class InstallAnimals : MonoBehaviour
     public static GameObject bluewildebeestObj;
     GameObject[ ] whiterhino;
     public static GameObject whiterhinoObj;
-
-    GameObject[ ] animal;
 
     public static int lionsNumProbability;
     public static int zebrasNumProbability;
@@ -76,6 +75,7 @@ public class InstallAnimals : MonoBehaviour
 
     void Update( )
     {
+        nowMapLevel = GameObject.Find( "MapInfo" ).GetComponent<MapLevel>( ).getMapLevel( );
         period = GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowGamePeriod( );
 
         environmentAnimalsType( environment._environment );
@@ -150,7 +150,7 @@ public class InstallAnimals : MonoBehaviour
             }
         }
 
-        //if ( environment.nowLevel == 2 )
+        if ( nowMapLevel == 2 )
         {
             //SPOTTEDHYENA
             if ( spottedhyena == null )
