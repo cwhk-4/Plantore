@@ -37,6 +37,7 @@ TagManager:
   - BLUEWILDEBEESTS
   - SPOTTEDHYENAS
   - WHITERHINOS
+  - Grassland
   layers:
   - Default
   - TransparentFX

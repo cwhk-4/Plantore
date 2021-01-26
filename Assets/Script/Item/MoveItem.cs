@@ -27,6 +27,12 @@ public class MoveItem : MonoBehaviour
             Destroy( transform.parent.parent.GetChild( extraGridNum ).GetChild( 0 ).gameObject );
         }
 
+        if( name == "grassland(Clone)" )
+        {
+            var extraGridNum = transform.parent.GetSiblingIndex( ) - 1;
+            Destroy( transform.parent.parent.GetChild( extraGridNum ).GetChild( 0 ).gameObject );
+        }
+
         Destroy( gameObject );
     }
 

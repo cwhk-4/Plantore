@@ -84,10 +84,38 @@ public class InstantiateMoveControl : MonoBehaviour
         var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
         item.transform.SetParent( GridInstan.transform.GetChild( nowGridNum + xCount ) );
         item.transform.position = GridInstan.transform.GetChild( nowGridNum + xCount ).position;
+        item.tag = "WoodExtra";
+    }
+
+    public void InstanGrasslandExtraGrid( )
+    {
+        var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
+        item.transform.SetParent( GridInstan.transform.GetChild( nowGridNum - 1 ) );
+        item.transform.position = GridInstan.transform.GetChild( nowGridNum - 1 ).position;
+        item.tag = "GrasslandExtra";
+    }
+
+    public void InstantiateExtraGrid( string GO_NAME )
+    {
+        switch( GO_NAME )
+        {
+            case "wood_Instan(Clone)":
+                InstanWoodExtraGrid( );
+                break;
+
+            case "grassland_Instan(Clone)":
+                InstanGrasslandExtraGrid( );
+                break;
+        }
     }
 
     public bool checkWoodGrid( )
     {
         return GridInstan.transform.GetChild( nowGridNum + xCount ).childCount == 0;
+    }
+
+    public bool checkGrasslandGrid( )
+    {
+        return GridInstan.transform.GetChild( nowGridNum - 1 ).childCount == 0;
     }
 }

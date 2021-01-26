@@ -34,13 +34,21 @@ public class InstantiateItem : MonoBehaviour
                 }
             }
 
+            if( name == "grassland_Instan(Clone)" )
+            {
+                if( !imController.checkGrasslandGrid( ) )
+                {
+                    return;
+                }
+            }
+
             var item = Instantiate( ItemToInstantiate, mousePos, Quaternion.identity );
             item.transform.SetParent( parentGO.transform );
             item.transform.position = parentGO.transform.position;
 
-            if( name == "wood_Instan(Clone)" )
+            if( name != "grass_Instan(Clone)" )
             {
-                imController.InstanWoodExtraGrid( );
+                imController.InstantiateExtraGrid( name );
             }
 
             if( name != "Tutorial_grass(Clone)" )

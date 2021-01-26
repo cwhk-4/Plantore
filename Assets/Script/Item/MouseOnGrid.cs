@@ -29,7 +29,6 @@ public class MouseOnGrid : MonoBehaviour
             }
         }
 
-
         if( transform.childCount != 0 )
         {
             if( transform.GetChild( 0 ).name != "ExtraGrid(Clone)" && transform.GetChild( 0 ).name != "Tutorial_grass(Clone)" )

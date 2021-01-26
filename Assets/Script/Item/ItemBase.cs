@@ -8,7 +8,7 @@ public class ItemBase : MonoBehaviour
     private CountDown countDown;
     private MoveItem moveItem;
 
-    private bool isOnMouse;
+    [SerializeField]private bool isOnMouse;
 
     void Start( )
     {
@@ -26,7 +26,6 @@ public class ItemBase : MonoBehaviour
         {
             if( !imController.GetIsInstantiating( ) || !imController.GetIsMoving( ) )
             {
-
                 if( Input.GetMouseButtonDown( 0 ) )
                 {
                     if( toolConvertion.getIsCan( ) )
@@ -41,7 +40,7 @@ public class ItemBase : MonoBehaviour
 
             if( Input.GetMouseButtonDown( 1 ) )
             {
-                MoveGrass( );
+                MoveItem( );
             }
         }
     }
@@ -52,7 +51,7 @@ public class ItemBase : MonoBehaviour
         MissionControl.FixedItem( );
     }
 
-    private void MoveGrass( )
+    private void MoveItem( )
     {
         moveItem.StartMoving( countDown.getStartTime( ) );
     }
