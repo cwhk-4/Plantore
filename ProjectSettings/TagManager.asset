@@ -38,6 +38,10 @@ TagManager:
   - SPOTTEDHYENAS
   - WHITERHINOS
   - Grassland
+  - GrasslandExtra
+  - WoodExtra
+  - Marsh
+  - MarshExtra
   layers:
   - Default
   - TransparentFX

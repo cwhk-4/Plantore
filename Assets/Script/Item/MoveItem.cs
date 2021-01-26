@@ -33,6 +33,18 @@ public class MoveItem : MonoBehaviour
             Destroy( transform.parent.parent.GetChild( extraGridNum ).GetChild( 0 ).gameObject );
         }
 
+        if( name == "marsh(Clone)" )
+        {
+            var extraGridNumA = transform.parent.GetSiblingIndex( ) - 1;
+            Destroy( transform.parent.parent.GetChild( extraGridNumA ).GetChild( 0 ).gameObject );
+
+            var extraGridNumB = transform.parent.GetSiblingIndex( ) + xCount;
+            Destroy( transform.parent.parent.GetChild( extraGridNumB ).GetChild( 0 ).gameObject );
+
+            var extraGridNumC = transform.parent.GetSiblingIndex( ) + xCount - 1;
+            Destroy( transform.parent.parent.GetChild( extraGridNumC ).GetChild( 0 ).gameObject );
+        }
+
         Destroy( gameObject );
     }
 
