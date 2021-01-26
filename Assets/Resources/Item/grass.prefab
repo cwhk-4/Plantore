@@ -547,7 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 6587741820147400953}
   text: {fileID: 6587741819437575037}
-  Timer: 5
+  Timer: 30
   original: {fileID: 21300000, guid: 85cee2670572f498bbc0ff08a682678f, type: 3}
   timeOutImage: {fileID: 21300000, guid: fbd0c291d4ce74395acda1a5a88d32e0, type: 3}
 --- !u!114 &-1329336550253494381
