@@ -42,6 +42,14 @@ public class InstantiateItem : MonoBehaviour
                 }
             }
 
+            if( name == "marsh_Instan(Clone)" )
+            {
+                if( !imController.checkMarshGrid( ) )
+                {
+                    return;
+                }
+            }
+
             var item = Instantiate( ItemToInstantiate, mousePos, Quaternion.identity );
             item.transform.SetParent( parentGO.transform );
             item.transform.position = parentGO.transform.position;

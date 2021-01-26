@@ -140,4 +140,22 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         return GridInstan.transform.GetChild( nowGridNum - 1 ).childCount == 0;
     }
+
+    public bool checkMarshGrid( )
+    {
+        var flag = false;
+
+        if( GridInstan.transform.GetChild( nowGridNum - 1 ).childCount == 0 )
+        {
+            if( GridInstan.transform.GetChild( nowGridNum + xCount ).childCount == 0 )
+            {
+                if( GridInstan.transform.GetChild( nowGridNum + xCount - 1 ).childCount == 0 )
+                {
+                    flag = true;
+                }
+            }
+        }
+
+        return flag;
+    }
 }

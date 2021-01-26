@@ -57,6 +57,13 @@ public class AvailabilityControl : MonoBehaviour
             {
                 Grids[onGridNum - 1].GetComponent<GridColorControl>( ).EnableAvailability( );
             }
+
+            if( imController.getGOName( ) == "marsh_Instan(Clone)" )
+            {
+                Grids[onGridNum - 1].GetComponent<GridColorControl>( ).EnableAvailability( );
+                Grids[onGridNum + xCount].GetComponent<GridColorControl>( ).EnableAvailability( );
+                Grids[onGridNum + xCount - 1].GetComponent<GridColorControl>( ).EnableAvailability( );
+            }
         }
     }
 
@@ -74,6 +81,13 @@ public class AvailabilityControl : MonoBehaviour
             if( imController.getGOName( ) == "grassland_Instan(Clone)" )
             {
                 Grids[lastGridNum - 1].GetComponent<GridColorControl>( ).DisableAvailability( );
+            }
+
+            if( imController.getGOName( ) == "marsh_Instan(Clone)" )
+            {
+                Grids[lastGridNum - 1].GetComponent<GridColorControl>( ).DisableAvailability( );
+                Grids[lastGridNum + xCount].GetComponent<GridColorControl>( ).DisableAvailability( );
+                Grids[lastGridNum + xCount - 1].GetComponent<GridColorControl>( ).DisableAvailability( );
             }
         }
     }
