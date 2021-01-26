@@ -42,6 +42,7 @@ TagManager:
   - WoodExtra
   - Marsh
   - MarshExtra
+  - Map
   layers:
   - Default
   - TransparentFX

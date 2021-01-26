@@ -4,6 +4,7 @@ public class InstantiateMoveControl : MonoBehaviour
 {
     [SerializeField] private TimeController timeController;
     [SerializeField] private MissionControl MissionControl;
+    [SerializeField] private MapLevel MapLevel;
 
     [SerializeField] private bool isInstantiating = false;
     [SerializeField] private bool isMoving = false;
@@ -16,6 +17,8 @@ public class InstantiateMoveControl : MonoBehaviour
     [SerializeField] private int nowGridNum;
     [SerializeField] private int xCount;
     [SerializeField] private GameObject extraGrid;
+
+    private int mapLevel;
 
     public void StartInstantiate( )
     {
@@ -133,23 +136,26 @@ public class InstantiateMoveControl : MonoBehaviour
 
     public bool checkWoodGrid( )
     {
-        return GridInstan.transform.GetChild( nowGridNum + xCount ).childCount == 0;
+        var GridNum = nowGridNum + xCount;
+
+        return GridInstan.transform.GetChild( GridNum ).childCount == 0 && checkOutOfRange( GridNum );
     }
 
     public bool checkGrasslandGrid( )
     {
-        return GridInstan.transform.GetChild( nowGridNum - 1 ).childCount == 0;
+        var GridNum = nowGridNum - 1;
+        return GridInstan.transform.GetChild( GridNum ).childCount == 0 && checkOutOfRange( GridNum );
     }
 
     public bool checkMarshGrid( )
     {
         var flag = false;
 
-        if( GridInstan.transform.GetChild( nowGridNum - 1 ).childCount == 0 )
+        if( GridInstan.transform.GetChild( nowGridNum - 1 ).childCount == 0 && checkOutOfRange( nowGridNum - 1 ) )
         {
-            if( GridInstan.transform.GetChild( nowGridNum + xCount ).childCount == 0 )
+            if( GridInstan.transform.GetChild( nowGridNum + xCount ).childCount == 0 && checkOutOfRange( nowGridNum + xCount ) )
             {
-                if( GridInstan.transform.GetChild( nowGridNum + xCount - 1 ).childCount == 0 )
+                if( GridInstan.transform.GetChild( nowGridNum + xCount - 1 ).childCount == 0 && checkOutOfRange( nowGridNum + xCount - 1 ) )
                 {
                     flag = true;
                 }
@@ -157,5 +163,23 @@ public class InstantiateMoveControl : MonoBehaviour
         }
 
         return flag;
+    }
+
+    private bool checkOutOfRange( int GridNum )
+    {
+        mapLevel = MapLevel.getMapLevel( );
+
+        var x = 3 + mapLevel;
+        var y = 2 + mapLevel;
+
+        if( GridNum % xCount < x )
+        {
+            if( GridNum / xCount < y )
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

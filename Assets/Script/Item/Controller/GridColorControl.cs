@@ -5,8 +5,11 @@ using UnityEngine;
 public class GridColorControl : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+
     [SerializeField] private Color available;
     [SerializeField] private Color notAvailble;
+
+    private int xCount;
 
     void Start()
     {
@@ -14,15 +17,27 @@ public class GridColorControl : MonoBehaviour
         spriteRenderer.color = Color.clear;
     }
 
+    public void setXCount( int count )
+    {
+        xCount = count;
+    }
+
     public void EnableAvailability( )
     {
-        if( this.transform.childCount != 0 )
+        if( CheckRange( ) )
         {
-            spriteRenderer.color = notAvailble;
+            if( this.transform.childCount != 0 )
+            {
+                spriteRenderer.color = notAvailble;
+            }
+            else
+            {
+                spriteRenderer.color = available;
+            }
         }
         else
         {
-            spriteRenderer.color = available;
+            DisableAvailability( );
         }
     }
 
@@ -30,4 +45,25 @@ public class GridColorControl : MonoBehaviour
     {
         spriteRenderer.color = Color.clear;
     }
+
+    private bool CheckRange( )
+    {
+        var mapLevel = GameObject.FindWithTag("Map").GetComponent<MapLevel>().getMapLevel( );
+        var GridNum = this.transform.GetSiblingIndex( );
+
+        var x = 3 + mapLevel;
+        var y = 2 + mapLevel;
+
+        if( GridNum % xCount < x )
+        {
+            if( GridNum / xCount < y )
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
 }

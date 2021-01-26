@@ -10,7 +10,7 @@ public class GridInstantiate : MonoBehaviour
     private int x;
     private int y;
 
-    private int xGridCount = 8;
+    private int xGridCount = 7;
     private int yGridCount = 6;
 
     private float gridWidth = 4.8f;
@@ -32,6 +32,7 @@ public class GridInstantiate : MonoBehaviour
 
                 var gridName = "x" + x + "y" + y;
                 gridInstan.name = gridName;
+                gridInstan.GetComponent<GridColorControl>( ).setXCount( xGridCount );
 
                 availabilityControl.SetGrid( totalGridCount, gridInstan );
                 totalGridCount++;

@@ -26,28 +26,26 @@ public class InstantiateItem : MonoBehaviour
 
         if( Input.GetMouseButton( 0 ) && parentGO != null)
         {
-            if( name == "wood_Instan(Clone)" )
+            var available = false;
+
+            switch( name )
             {
-                if( !imController.checkWoodGrid( ) )
-                {
-                    return;
-                }
+                case "wood_Instan(Clone)":
+                    available = imController.checkWoodGrid( );
+                    break;
+
+                case "grassland_Instan(Clone)":
+                    available = imController.checkGrasslandGrid( );
+                    break;
+
+                case "marsh_Instan(Clone)":
+                    available = imController.checkMarshGrid( );
+                    break;
             }
 
-            if( name == "grassland_Instan(Clone)" )
+            if( !available )
             {
-                if( !imController.checkGrasslandGrid( ) )
-                {
-                    return;
-                }
-            }
-
-            if( name == "marsh_Instan(Clone)" )
-            {
-                if( !imController.checkMarshGrid( ) )
-                {
-                    return;
-                }
+                return;
             }
 
             var item = Instantiate( ItemToInstantiate, mousePos, Quaternion.identity );
