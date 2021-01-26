@@ -29,7 +29,7 @@ public class AnimalsTimeController : MonoBehaviour
             case "ZEBRAS":
                 timeOut = 2.0f;
                 break;
-            case "GIRAFFE":
+            case "GIRAFFES":
                 timeOut = 3.0f;
                 break;
             case "IMPALAS":

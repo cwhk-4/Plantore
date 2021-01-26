@@ -4,7 +4,8 @@ public class GIRAFFE : MonoBehaviour
 {
     public static AnimalsCollection.animalsSystem _giraffe = new AnimalsCollection.animalsSystem( );
 
-    GameObject goStage;
+    private GameObject goStage;
+    private GameObject item;
     private Vector3 newPosition;
 
     public AnimalsTimeController _giraffeTimeController;
@@ -42,6 +43,7 @@ public class GIRAFFE : MonoBehaviour
         findNum( );
         getAnimalsType( );
         setTurnScale( );
+        item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
     }
 
     void giraffeMove( )
@@ -55,12 +57,12 @@ public class GIRAFFE : MonoBehaviour
 
     void changeTarget( )
     {
-        if ( MoveItem._item && !runaway )
+        if ( item && !runaway )
         {
-            goStage.transform.position = MoveItem._item.transform.position;
+            goStage.transform.position = item.transform.position;
             canFindItem = true;
         }
-        if ( MoveItem._item == null && canFindItem )
+        if ( item == null && canFindItem )
         {
             newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
             goStage.transform.position = newPosition;
@@ -72,7 +74,7 @@ public class GIRAFFE : MonoBehaviour
             runaway = true;
             goStage.transform.position = newPosition;
         }
-        if ( MoveItem._item == null && this.gameObject.transform.position == newPosition )
+        if ( item == null && this.gameObject.transform.position == newPosition )
         {
             runaway = false;
             scriptCount = false;
@@ -83,7 +85,7 @@ public class GIRAFFE : MonoBehaviour
 
     void timeIn( )
     {
-        if ( MoveItem._item && InstallAnimals.in_animals.in_giraffe && timeControllerIn == 0 )
+        if ( item && InstallAnimals.in_animals.in_giraffe && timeControllerIn == 0 )
         {
             if ( !scriptCount )
             {

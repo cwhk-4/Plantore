@@ -63,9 +63,9 @@ public class LION : MonoBehaviour
 
     void changeTarget( )
     {
-        if ( MoveItem._item )
+        if ( GameObject.FindGameObjectWithTag("ZEBRAS").GetComponent<ZEBRA>( ).getItem( ) )
         {
-            if ( this.gameObject.transform.position == goStage.transform.position && goPredation && ZEBRA._zebra.animals.transform.position == MoveItem._item.transform.position )
+            if ( this.gameObject.transform.position == goStage.transform.position && goPredation && GameObject.FindGameObjectWithTag( "ZEBRAS" ).GetComponent<ZEBRA>( ).itemAndAnimalPosition( ) )
             {
                 Target.transform.position = ZEBRA._zebra.animals.transform.position;
                 lionPredationProbability( );
@@ -77,7 +77,7 @@ public class LION : MonoBehaviour
                 Predation( );
                 goPredation = false;
             }
-            if ( this.gameObject.transform.position == newPosition && ZEBRA._zebra.animals.transform.position == MoveItem._item.transform.position )
+            if ( this.gameObject.transform.position == newPosition && GameObject.FindGameObjectWithTag( "ZEBRAS" ).GetComponent<ZEBRA>( ).itemAndAnimalPosition( ) )
             {
                 Target.transform.position = goStage.transform.position;
                 goPredation = true;
@@ -114,9 +114,9 @@ public class LION : MonoBehaviour
 
     void timeIn( )
     {
-        if ( MoveItem._item )
+        if ( GameObject.FindGameObjectWithTag( "ZEBRAS" ).GetComponent<ZEBRA>( ).getItem( ) )
         {
-            if ( ZEBRA._zebra.animals.transform.position == MoveItem._item.transform.position && InstallAnimals.in_animals.in_lion && timeControllerIn == 0 )
+            if ( GameObject.FindGameObjectWithTag( "ZEBRAS" ).GetComponent<ZEBRA>( ).itemAndAnimalPosition( ) && InstallAnimals.in_animals.in_lion && timeControllerIn == 0 )
             {
                 if ( !scriptCount )
                 {

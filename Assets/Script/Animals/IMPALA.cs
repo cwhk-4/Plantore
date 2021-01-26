@@ -6,7 +6,8 @@ public class IMPALA : MonoBehaviour
 {
     public static AnimalsCollection.animalsSystem _impala = new AnimalsCollection.animalsSystem( );
 
-    GameObject goStage;
+    private GameObject goStage;
+    private GameObject item;
     public AnimalsTimeController _impalaTimeController;
     private Vector3 newPosition;
 
@@ -16,6 +17,7 @@ public class IMPALA : MonoBehaviour
 
     private int timeControllerIn = 0;
     private float timeToGo;
+    private int itemsNum;
     private bool canFindItem = true;
     private bool runaway = false;
     private bool scriptCount = false;
@@ -43,6 +45,9 @@ public class IMPALA : MonoBehaviour
         findNum( );
         getAnimalsType( );
         setTurnScale( );
+        itemsNum = this.gameObject.GetComponent<FindItemType>( ).getItemsNum( );
+        item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
+        
     }
 
     void impalaMove( )
@@ -56,12 +61,12 @@ public class IMPALA : MonoBehaviour
 
     void changeTarget( )
     {
-        if ( MoveItem._item && !runaway )
+        if ( item && !runaway )
         {
-            goStage.transform.position = MoveItem._item.transform.position;
+            goStage.transform.position = item.transform.position;
             canFindItem = true;
         }
-        if ( MoveItem._item == null && canFindItem )
+        if ( item == null && canFindItem )
         {
             newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
             goStage.transform.position = newPosition;
@@ -73,7 +78,7 @@ public class IMPALA : MonoBehaviour
             runaway = true;
             goStage.transform.position = newPosition;
         }
-        if ( MoveItem._item == null && this.gameObject.transform.position == newPosition )
+        if ( item == null && this.gameObject.transform.position == newPosition )
         {
             runaway = false;
             scriptCount = false;
@@ -84,7 +89,7 @@ public class IMPALA : MonoBehaviour
 
     void timeIn( )
     {
-        if ( MoveItem._item && InstallAnimals.in_animals.in_impala && timeControllerIn == 0 )
+        if ( itemsNum == 3 && InstallAnimals.in_animals.in_impala && timeControllerIn == 0 )
         {
             if ( !scriptCount )
             {
