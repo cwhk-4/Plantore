@@ -35,15 +35,15 @@ public class InstantiateItem : MonoBehaviour
                     break;
 
                 case "wood_Instan(Clone)":
-                    available = imController.checkWoodGrid( );
+                    available = imController.CheckWoodGrid( );
                     break;
 
                 case "grassland_Instan(Clone)":
-                    available = imController.checkGrasslandGrid( );
+                    available = imController.CheckGrasslandGrid( );
                     break;
 
                 case "marsh_Instan(Clone)":
-                    available = imController.checkMarshGrid( );
+                    available = imController.CheckMarshGrid( );
                     break;
             }
 

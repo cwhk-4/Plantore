@@ -134,28 +134,28 @@ public class InstantiateMoveControl : MonoBehaviour
         }
     }
 
-    public bool checkWoodGrid( )
+    public bool CheckWoodGrid( )
     {
         var GridNum = nowGridNum + xCount;
 
-        return GridInstan.transform.GetChild( GridNum ).childCount == 0 && checkOutOfRange( GridNum );
+        return GridInstan.transform.GetChild( GridNum ).childCount == 0 && CheckOutOfRange( GridNum );
     }
 
-    public bool checkGrasslandGrid( )
+    public bool CheckGrasslandGrid( )
     {
         var GridNum = nowGridNum - 1;
-        return GridInstan.transform.GetChild( GridNum ).childCount == 0 && checkOutOfRange( GridNum );
+        return GridInstan.transform.GetChild( GridNum ).childCount == 0 && CheckOutOfRange( GridNum );
     }
 
-    public bool checkMarshGrid( )
+    public bool CheckMarshGrid( )
     {
         var flag = false;
 
-        if( GridInstan.transform.GetChild( nowGridNum - 1 ).childCount == 0 && checkOutOfRange( nowGridNum - 1 ) )
+        if( GridInstan.transform.GetChild( nowGridNum - 1 ).childCount == 0 && CheckOutOfRange( nowGridNum - 1 ) )
         {
-            if( GridInstan.transform.GetChild( nowGridNum + xCount ).childCount == 0 && checkOutOfRange( nowGridNum + xCount ) )
+            if( GridInstan.transform.GetChild( nowGridNum + xCount ).childCount == 0 && CheckOutOfRange( nowGridNum + xCount ) )
             {
-                if( GridInstan.transform.GetChild( nowGridNum + xCount - 1 ).childCount == 0 && checkOutOfRange( nowGridNum + xCount - 1 ) )
+                if( GridInstan.transform.GetChild( nowGridNum + xCount - 1 ).childCount == 0 && CheckOutOfRange( nowGridNum + xCount - 1 ) )
                 {
                     flag = true;
                 }
@@ -165,7 +165,7 @@ public class InstantiateMoveControl : MonoBehaviour
         return flag;
     }
 
-    private bool checkOutOfRange( int GridNum )
+    private bool CheckOutOfRange( int GridNum )
     {
         mapLevel = MapLevel.getMapLevel( );
 
