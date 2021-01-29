@@ -6,6 +6,7 @@ public class IMPALA : MonoBehaviour
 {
     public static AnimalsCollection.animalsSystem _impala = new AnimalsCollection.animalsSystem( );
 
+    private GameObject MapLevel;
     private GameObject goStage;
     private GameObject item;
     public AnimalsTimeController _impalaTimeController;
@@ -29,13 +30,17 @@ public class IMPALA : MonoBehaviour
         _impala.canMove = false;
         _impala.needTurn = false;
 
+        MapLevel = GameObject.Find( "MapInfo" );
         goStage = GameObject.Find( "impalaTarget" );
         newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
     }
 
     private void FixedUpdate( )
     {
-        impalaMove( );
+        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 1 )
+        {
+            impalaMove( );
+        }
     }
 
     void Update( )

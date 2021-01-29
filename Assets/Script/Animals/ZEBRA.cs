@@ -2,9 +2,9 @@
 
 public class ZEBRA : MonoBehaviour
 {
-
     public static AnimalsCollection.animalsSystem _zebra = new AnimalsCollection.animalsSystem( );
 
+    private GameObject MapLevel;
     private GameObject goStage;
     private GameObject item;
     private Vector3 newPosition;
@@ -30,13 +30,17 @@ public class ZEBRA : MonoBehaviour
         _zebra.canMove = false;
         _zebra.needTurn = false;
 
+        MapLevel = GameObject.Find( "MapInfo" );
         goStage = GameObject.Find( "zebraTarget" );
         newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
     }
 
     private void FixedUpdate( )
     {
-        zebraMove( );
+        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 1 )
+        {
+            zebraMove( );
+        }
     }
     private void Update( )
     {
@@ -97,7 +101,7 @@ public class ZEBRA : MonoBehaviour
                         _zebraTimeController = this.gameObject.AddComponent<AnimalsTimeController>( );
                         scriptCount = true;
                     }
-                    timeToGo = GameObject.Find( "ZEBRAS" ).GetComponent<AnimalsTimeController>( ).changeTime( );
+                    timeToGo = this.gameObject.GetComponent<AnimalsTimeController>( ).changeTime( );
 
                     if ( timeToGo < 0 )
                     {
@@ -158,6 +162,9 @@ public class ZEBRA : MonoBehaviour
         if ( this.gameObject.transform.position == item.transform.position )
         {
             onItem = true;
+        }else
+        {
+            onItem = false;
         }
         return onItem;
     }

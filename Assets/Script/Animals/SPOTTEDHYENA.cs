@@ -8,16 +8,117 @@ public class SPOTTEDHYENA : MonoBehaviour
     public static int spottedhyenasNum;
     public static int findsNum;
 
+    public GameObject TargetAnimals;
+    public GameObject item;
+    private GameObject target;
+    private Vector3 newPosition;
+    private bool goPredation;
+
     void Start()
     {
-        
+        _spottedhyena.animals = this.gameObject;
+        _spottedhyena.moveSpeed = 5.0f;
+        _spottedhyena.startPredationProbability = 60;
+        _spottedhyena.Minus = 5;
+        _spottedhyena.canMove = false;
+        _spottedhyena.canPredation = false;
+        _spottedhyena.needTurn = false;
+        _spottedhyena.predationProbability = Random.Range( 0, 11 );
+
+        goPredation = true;
+        target = GameObject.Find( "spottedhyenaTarget" );
+        newPosition = new Vector3( Random.Range( -10, 10 ), 12.0f, 0.0f );
+    }
+
+    private void FixedUpdate( )
+    {
+        wilddogMove( );
     }
 
     void Update()
     {
+        timeIn( );
         numsProbability( );
         findNum( );
         getAnimalsType( );
+        setTurnScale( );
+        item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
+    }
+
+    private void wilddogMove( )
+    {
+        if ( _spottedhyena.canMove )
+        {
+            this.gameObject.transform.position = Vector3.MoveTowards( this.gameObject.transform.position, target.transform.position, _spottedhyena.moveSpeed * Time.deltaTime );
+            changeTarget( );
+        }
+    }
+
+    private void changeTarget( )
+    {
+        if ( TargetAnimals.GetComponent<BLUEWILDEBEEST>( ).getItem( ) )
+        {
+            if ( goPredation && TargetAnimals.GetComponent<BLUEWILDEBEEST>( ).itemAndAnimalPosition( ) )
+            {
+                target.transform.position = BLUEWILDEBEEST._bluewildebeest.animals.transform.position;
+                spottedhyenaPredationProbability( );
+            }
+            if ( this.gameObject.transform.position == BLUEWILDEBEEST._bluewildebeest.animals.transform.position )
+            {
+                newPosition = new Vector3( Random.Range( -10, 10 ), 12.0f, 0.0f );
+                target.transform.position = newPosition;
+                Predation( );
+                goPredation = false;
+            }
+            if ( this.gameObject.transform.position == newPosition && TargetAnimals.GetComponent<BLUEWILDEBEEST>( ).itemAndAnimalPosition( ) )
+            {
+                goPredation = true;
+                _spottedhyena.canMove = false;
+            }
+        }
+        else if ( goPredation )
+        {
+            newPosition = new Vector3( Random.Range( -10, 10 ), 7.0f, 0.0f );
+            target.transform.position = newPosition;
+            goPredation = false;
+        }
+    }
+
+    public void spottedhyenaPredationProbability( )
+    {
+        _spottedhyena.predationProbability = Random.Range( 0, 100 );
+        if ( _spottedhyena.predationProbability < ( _spottedhyena.startPredationProbability - ( 6 - findsNum ) * _spottedhyena.Minus ) )
+        {
+            _spottedhyena.canPredation = true;
+        }
+        else
+        {
+            _spottedhyena.canPredation = false;
+        }
+        //if ( GetNum.lionsNum == 4 )
+        //{
+        //    infighting( );
+        //}
+    }
+
+    private void Predation( )
+    {
+        if ( !_spottedhyena.canPredation )
+        {
+            Destroy( spottedhyena[ findsNum - 1 ] );
+        }
+        else
+        {
+            Destroy( BLUEWILDEBEEST.bluewildebeest[ BLUEWILDEBEEST.findsNum - 1 ] );
+        }
+    }
+
+    private void timeIn( )
+    {
+        if ( item && TargetAnimals.GetComponent<BLUEWILDEBEEST>( ).itemAndAnimalPosition( ) && InstallAnimals.in_animals.in_spottedhyena )
+        {
+            _spottedhyena.canMove = true;
+        }
     }
 
     private void findNum( )
@@ -59,6 +160,18 @@ public class SPOTTEDHYENA : MonoBehaviour
             case 10:
                 _spottedhyena.animalsNUM = 6;
                 break;
+        }
+    }
+
+    private void setTurnScale( )
+    {
+        if ( target.transform.position.x >= _spottedhyena.animals.transform.position.x )
+        {
+            _spottedhyena.needTurn = true;
+        }
+        else
+        {
+            _spottedhyena.needTurn = false;
         }
     }
 }

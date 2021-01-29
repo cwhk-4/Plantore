@@ -4,6 +4,7 @@ public class GIRAFFE : MonoBehaviour
 {
     public static AnimalsCollection.animalsSystem _giraffe = new AnimalsCollection.animalsSystem( );
 
+    private GameObject MapLevel;
     private GameObject goStage;
     private GameObject item;
     private Vector3 newPosition;
@@ -27,13 +28,17 @@ public class GIRAFFE : MonoBehaviour
         _giraffe.canMove = false;
         _giraffe.needTurn = false;
 
+        MapLevel = GameObject.Find( "MapInfo" );
         goStage = GameObject.Find( "giraffeTarget" );
         newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
     }
 
     private void FixedUpdate( )
     {
-        giraffeMove( );
+        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 1 )
+        {
+            giraffeMove( );
+        }
     }
 
     void Update( )

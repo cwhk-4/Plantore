@@ -47,15 +47,4 @@ public class AnimalsCollection : MonoBehaviour
         NONE,
     }
     public static PREY _prey = PREY.NONE;
-
-    void Start( )
-    {
-
-    }
-
-    void Update( )
-    {
-
-    }
-
 }

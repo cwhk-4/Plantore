@@ -968,9 +968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fe25f3d67ada740b5db3ad1a24b053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowItem: {fileID: 0}
-  itemsNum: []
-  nowMapLevel: 0
 --- !u!114 &149477215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1414,6 +1411,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224350767}
   m_CullTransparentMesh: 0
+--- !u!1 &227239472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 227239473}
+  m_Layer: 0
+  m_Name: bluewildebeestTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &227239473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227239472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1240495518}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &310321035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2454,6 +2481,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580896319}
   m_CullTransparentMesh: 0
+--- !u!1 &588846067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 588846068}
+  m_Layer: 0
+  m_Name: spottedhyenaTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &588846068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588846067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1240495518}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &593433487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2804,6 +2861,8 @@ GameObject:
   - component: {fileID: 652667995}
   - component: {fileID: 652667997}
   - component: {fileID: 652667996}
+  - component: {fileID: 652667998}
+  - component: {fileID: 652667999}
   m_Layer: 0
   m_Name: SPOTTEDHYENAS
   m_TagString: SPOTTEDHYENAS
@@ -2819,7 +2878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652667994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
+  m_LocalPosition: {x: -8, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1956758732}
@@ -2852,6 +2911,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935c360906be96b4fb18257bb35573a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TargetAnimals: {fileID: 1632923055}
+  item: {fileID: 0}
+--- !u!114 &652667998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652667994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ea621d81e796c43add0cfb568b80d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &652667999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652667994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe25f3d67ada740b5db3ad1a24b053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &674720648
 GameObject:
   m_ObjectHideFlags: 0
@@ -2863,6 +2948,8 @@ GameObject:
   - component: {fileID: 674720649}
   - component: {fileID: 674720651}
   - component: {fileID: 674720650}
+  - component: {fileID: 674720652}
+  - component: {fileID: 674720653}
   m_Layer: 0
   m_Name: WHITERHINOS
   m_TagString: WHITERHINOS
@@ -2878,7 +2965,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674720648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
+  m_LocalPosition: {x: 7, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1956758732}
@@ -2909,6 +2996,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c17db5acfedf964fb87128daf34ecec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &674720652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674720648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe25f3d67ada740b5db3ad1a24b053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &674720653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674720648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ea621d81e796c43add0cfb568b80d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &680392549
@@ -3182,6 +3293,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825879029}
   m_CullTransparentMesh: 0
+--- !u!1 &834316311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 834316312}
+  m_Layer: 0
+  m_Name: whiterhinoTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &834316312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834316311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1240495518}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &887987667
 GameObject:
   m_ObjectHideFlags: 0
@@ -3691,6 +3832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
+  TargetAnimals: {fileID: 149477209}
   _lionTimeController: {fileID: 0}
 --- !u!1 &918747570
 GameObject:
@@ -3856,9 +3998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fe25f3d67ada740b5db3ad1a24b053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowItem: {fileID: 0}
-  itemsNum: []
-  nowMapLevel: 0
 --- !u!114 &1001411497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12519,6 +12658,7 @@ GameObject:
   - component: {fileID: 1187334636}
   - component: {fileID: 1187334638}
   - component: {fileID: 1187334637}
+  - component: {fileID: 1187334639}
   m_Layer: 0
   m_Name: AFRICANWILDDOGS
   m_TagString: AFRICANWILDDOGS
@@ -12534,7 +12674,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187334635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
+  m_LocalPosition: {x: -1.5, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1956758732}
@@ -12565,6 +12705,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d6756b180eddfa42bf3455116f6bb8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetAnimals: {fileID: 674720648}
+--- !u!114 &1187334639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187334635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ea621d81e796c43add0cfb568b80d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1204504127
@@ -12863,6 +13016,10 @@ Transform:
   - {fileID: 794687716}
   - {fileID: 1918271589}
   - {fileID: 1647673728}
+  - {fileID: 1720908084}
+  - {fileID: 227239473}
+  - {fileID: 834316312}
+  - {fileID: 588846068}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13956,6 +14113,8 @@ GameObject:
   - component: {fileID: 1632923056}
   - component: {fileID: 1632923058}
   - component: {fileID: 1632923057}
+  - component: {fileID: 1632923059}
+  - component: {fileID: 1632923060}
   m_Layer: 0
   m_Name: BLUEWILDEBEESTS
   m_TagString: BLUEWILDEBEESTS
@@ -13971,7 +14130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632923055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
+  m_LocalPosition: {x: 3.25, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1956758732}
@@ -14002,6 +14161,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebe9ebcb08afce3469ff72cc411ecc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherAnimals: {fileID: 674720648}
+--- !u!114 &1632923059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632923055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe25f3d67ada740b5db3ad1a24b053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1632923060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632923055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ea621d81e796c43add0cfb568b80d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1633804535
@@ -14063,6 +14247,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1240495518}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1720908083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1720908084}
+  m_Layer: 0
+  m_Name: africanwilddogTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1720908084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720908083}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1240495518}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1739783202
 GameObject:
@@ -14897,6 +15111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nowMapLevel: 0
+  MapLevel: {fileID: 888104866}
+  System: {fileID: 1790710734}
 --- !u!114 &1956758734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15069,9 +15285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fe25f3d67ada740b5db3ad1a24b053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowItem: {fileID: 0}
-  itemsNum: []
-  nowMapLevel: 0
 --- !u!114 &1987555623
 MonoBehaviour:
   m_ObjectHideFlags: 0

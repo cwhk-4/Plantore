@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class FindItemType : MonoBehaviour
 {
-    [SerializeField]private GameObject nowItem;
-    [SerializeField] private GameObject[ ] itemsNum;
-    [SerializeField] private int nowMapLevel;
-    void Start()
+    private GameObject MapLevel;
+    private GameObject nowItem;
+    private GameObject[ ] itemsNum;
+    private int nowMapLevel;
+    void Start( )
     {
-        
+        MapLevel = GameObject.Find( "MapInfo" );
     }
 
-    void Update()
+    void Update( )
     {
         changeItemType( );
-        nowMapLevel = GameObject.Find( "MapInfo" ).GetComponent<MapLevel>( ).getMapLevel( );
+        nowMapLevel = MapLevel.GetComponent<MapLevel>( ).getMapLevel( );
     }
 
     private void changeItemType( )
@@ -38,6 +39,16 @@ public class FindItemType : MonoBehaviour
             case "IMPALAS":
                 nowItem = GameObject.FindGameObjectWithTag( "Grass" );
                 itemsNum = GameObject.FindGameObjectsWithTag( "Grass" );
+                break;
+            case "BLUEWILDEBEESTS":
+                nowItem = GameObject.FindGameObjectWithTag( "Grass" );
+                break;
+            case "WHITERHINOS":
+                nowItem = GameObject.FindGameObjectWithTag( "Grass" ); ;
+                itemsNum = GameObject.FindGameObjectsWithTag( "Grass" );
+                break;
+            case "SPOTTEDHYENAS":
+                nowItem = GameObject.FindGameObjectWithTag( "Grassland" );
                 break;
         }
     }

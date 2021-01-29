@@ -3,6 +3,8 @@
 public class InstallAnimals : MonoBehaviour
 {
     [SerializeField] private int nowMapLevel;
+    public GameObject MapLevel;
+    public GameObject System;
     //
     GameObject[ ] lion;
     public static GameObject lionObj;
@@ -75,8 +77,8 @@ public class InstallAnimals : MonoBehaviour
 
     void Update( )
     {
-        nowMapLevel = GameObject.Find( "MapInfo" ).GetComponent<MapLevel>( ).getMapLevel( );
-        period = GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowGamePeriod( );
+        nowMapLevel = MapLevel.GetComponent<MapLevel>( ).getMapLevel( );
+        period = System.GetComponent<TimeController>( ).getNowGamePeriod( );
 
         environmentAnimalsType( environment._environment );
         periodAnimalsType( );
@@ -227,6 +229,10 @@ public class InstallAnimals : MonoBehaviour
                 in_animals.in_giraffe = true;
                 in_animals.in_impala = true;
                 in_animals.in_spottedhyena = true;
+                in_animals.in_bluewildebeest = true;
+                in_animals.in_whiterhino = true;
+                in_animals.in_africanwinddog = true;
+                in_animals.in_spottedhyena = true;
                 break;
             case environment.ENVIRONMENT.ROCKY:
                 in_animals.in_lion_environment = true;
@@ -234,12 +240,20 @@ public class InstallAnimals : MonoBehaviour
                 in_animals.in_giraffe = false;
                 in_animals.in_impala = false;
                 in_animals.in_spottedhyena = true;
+                in_animals.in_bluewildebeest = false;
+                in_animals.in_whiterhino = false;
+                in_animals.in_africanwinddog = false;
+                in_animals.in_spottedhyena = true;
                 break;
             case environment.ENVIRONMENT.OTHER:
                 in_animals.in_lion_environment = false;
                 in_animals.in_zebra = false;
                 in_animals.in_giraffe = false;
                 in_animals.in_impala = false;
+                in_animals.in_spottedhyena = false;
+                in_animals.in_bluewildebeest = false;
+                in_animals.in_whiterhino = false;
+                in_animals.in_africanwinddog = false;
                 in_animals.in_spottedhyena = false;
                 break;
         }

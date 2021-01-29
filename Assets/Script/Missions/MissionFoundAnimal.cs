@@ -1,17 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MissionFoundAnimal : MonoBehaviour
 {
     [SerializeField]private MissionControl getThisAnimal;
     private float foundpositionY = 4.0f; 
     private bool plusMissionNum = true;
-
-    void Start()
-    {
-        
-    }
 
     void Update( )
     {
