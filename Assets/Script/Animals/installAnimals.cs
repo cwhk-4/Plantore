@@ -97,7 +97,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < LION.lionsNUM; i++ )
                     {
-                        Instantiate( lionObj, new Vector3( -8.0f + i * 1.0f, 6.5f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( lionObj, new Vector3( -4.0f - i * 1.0f, 9.5f - i * 1.0f, 0.0f ), Quaternion.identity );
                         lion = GameObject.FindGameObjectsWithTag( "lion" );
                         lion[ i ].name = "lion" + i;
                         lion[ i ].transform.parent = GameObject.Find( "LIONS" ).transform;
@@ -113,7 +113,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < ZEBRA.zebrasNUM; i++ )
                     {
-                        Instantiate( zebraObj, new Vector3( -1.5f + i * 1.0f, 6.7f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( zebraObj, new Vector3( 0.5f - i * 1.0f, 9.7f - i * 1.0f, 0.0f ), Quaternion.identity );
                         zebra = GameObject.FindGameObjectsWithTag( "zebra" );
                         zebra[ i ].name = "zebra" + i;
                         zebra[ i ].transform.parent = GameObject.Find( "ZEBRAS" ).transform;
@@ -128,7 +128,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < GIRAFFE.giraffesNUM; i++ )
                     {
-                        Instantiate( giraffeObj, new Vector3( 3.25f + i * 1.0f, 7.9f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( giraffeObj, new Vector3( 4.5f - i * 1.0f, 9.0f - i * 1.0f, 0.0f ), Quaternion.identity );
                         giraffe = GameObject.FindGameObjectsWithTag( "giraffe" );
                         giraffe[ i ].name = "giraffe" + i;
                         giraffe[ i ].transform.parent = GameObject.FindGameObjectWithTag( "GIRAFFES" ).transform;
@@ -143,7 +143,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < IMPALA.impalasNUM; i++ )
                     {
-                        Instantiate( impalaObj, new Vector3( 6.0f + i * 1.0f, 6.5f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( impalaObj, new Vector3( 10.0f - i * 1.0f, 10.0f - i * 1.0f, 0.0f ), Quaternion.identity );
                         impala = GameObject.FindGameObjectsWithTag( "impala" );
                         impala[ i ].name = "impala" + i;
                         impala[ i ].transform.parent = GameObject.FindGameObjectWithTag( "IMPALAS" ).transform;
@@ -152,7 +152,7 @@ public class InstallAnimals : MonoBehaviour
             }
         }
 
-        if ( nowMapLevel == 2 )
+        if ( nowMapLevel == 1 )
         {
             //SPOTTEDHYENA
             if ( spottedhyena == null )
@@ -161,7 +161,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < SPOTTEDHYENA._spottedhyena.animalsNUM; i++ )
                     {
-                        Instantiate( spottedhyenaObj, new Vector3( -8.0f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( spottedhyenaObj, new Vector3( -8.0f - i * 1.0f, 16.0f - i * 1.0f, 0.0f ), Quaternion.identity );
                         spottedhyena = GameObject.FindGameObjectsWithTag( "spottedhyena" );
                         spottedhyena[ i ].name = "spottedhyena" + i;
                         spottedhyena[ i ].transform.parent = GameObject.FindGameObjectWithTag( "SPOTTEDHYENAS" ).transform;
@@ -176,7 +176,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < AFRICANWILDDOG._africanwilddog.animalsNUM; i++ )
                     {
-                        Instantiate( africanwilddogObj, new Vector3( -1.5f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( africanwilddogObj, new Vector3( -1.5f - i * 1.0f, 16.0f - i * 1.0f, 0.0f ), Quaternion.identity );
                         africanwilddog = GameObject.FindGameObjectsWithTag( "africanwilddog" );
                         africanwilddog[ i ].name = "africanwilddog" + i;
                         africanwilddog[ i ].transform.parent = GameObject.FindGameObjectWithTag( "AFRICANWILDDOGS" ).transform;
@@ -191,7 +191,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < BLUEWILDEBEEST._bluewildebeest.animalsNUM; i++ )
                     {
-                        Instantiate( bluewildebeestObj, new Vector3( 3.25f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( bluewildebeestObj, new Vector3( 3.25f - i * 1.0f, 16.0f - i * 1.0f, 0.0f ), Quaternion.identity );
                         bluewildebeest = GameObject.FindGameObjectsWithTag( "bluewildebeest" );
                         bluewildebeest[ i ].name = "bluewildebeest" + i;
                         bluewildebeest[ i ].transform.parent = GameObject.FindGameObjectWithTag( "BLUEWILDEBEESTS" ).transform;
@@ -206,7 +206,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < WHITERHINO._whiterhino.animalsNUM; i++ )
                     {
-                        Instantiate( whiterhinoObj, new Vector3( 7.0f + i * 1.0f, 12.0f + i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( whiterhinoObj, new Vector3( 7.0f - i * 1.0f, 16.0f - i * 1.0f, 0.0f ), Quaternion.identity );
                         whiterhino = GameObject.FindGameObjectsWithTag( "whiterhino" );
                         whiterhino[ i ].name = "whiterhino" + i;
                         whiterhino[ i ].transform.parent = GameObject.FindGameObjectWithTag( "WHITERHINOS" ).transform;

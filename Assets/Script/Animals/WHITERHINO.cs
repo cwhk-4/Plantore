@@ -4,6 +4,7 @@ public class WHITERHINO : MonoBehaviour
 {
     public static AnimalsCollection.animalsSystem _whiterhino = new AnimalsCollection.animalsSystem( );
 
+    private GameObject MapLevel;
     private GameObject target;
     private GameObject item;
     private Vector3 newPosition;
@@ -24,6 +25,7 @@ public class WHITERHINO : MonoBehaviour
         _whiterhino.canMove = false;
         _whiterhino.needTurn = false;
 
+        MapLevel = GameObject.Find( "MapInfo" );
         target = GameObject.Find( "whiterhinoTarget" );
         newPosition = new Vector3( 15.0f, Random.Range( -10, 12 ), 0.0f );
     }
@@ -40,8 +42,11 @@ public class WHITERHINO : MonoBehaviour
         getAnimalsType( );
         numsProbability( );
         setTurnScale( );
-        itemsNum = this.gameObject.GetComponent<FindItemType>( ).getItemsNum( );
-        item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
+        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 2 )
+        {
+            itemsNum = this.gameObject.GetComponent<FindItemType>( ).getItemsNum( );
+            item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
+        }
     }
 
     private void whiterhinoMove( )
