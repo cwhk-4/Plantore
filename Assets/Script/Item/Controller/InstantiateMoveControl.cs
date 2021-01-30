@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class InstantiateMoveControl : MonoBehaviour
 {
@@ -18,7 +19,26 @@ public class InstantiateMoveControl : MonoBehaviour
     [SerializeField] private int xCount;
     [SerializeField] private GameObject extraGrid;
 
+    [SerializeField] private Button RubbishBin;
+
     private int mapLevel;
+
+    private void Start( )
+    {
+        RubbishBin.gameObject.SetActive( false );
+    }
+
+    private void Update( )
+    {
+        if( isInstantiating || isMoving )
+        {
+            RubbishBin.gameObject.SetActive( true );
+        }
+        else
+        {
+            RubbishBin.gameObject.SetActive( false );
+        }
+    }
 
     public void StartInstantiate( )
     {

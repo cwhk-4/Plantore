@@ -85,6 +85,11 @@ public class InstantiateItem : MonoBehaviour
         parentGO = parent;
     }
 
+    public GameObject getParentGO( )
+    {
+        return parentGO;
+    }
+
     private void OnDestroy( )
     {
         imController.FinishInstantiate( );
