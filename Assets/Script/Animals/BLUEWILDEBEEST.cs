@@ -29,12 +29,6 @@ public class BLUEWILDEBEEST : MonoBehaviour
         newPosition = new Vector3( 14.0f, Random.Range( -10, 12 ), 0.0f );
     }
 
-
-    private void FixedUpdate( )
-    {
-        bluewildebeestMove( );
-    }
-
     void Update()
     {
         timeIn( );
@@ -42,6 +36,7 @@ public class BLUEWILDEBEEST : MonoBehaviour
         getAnimalsType( );
         numsProbability( );
         setTurnScale( );
+        bluewildebeestMove( );
         item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
     }
 

@@ -38,8 +38,10 @@ public class InstallAnimals : MonoBehaviour
     public struct Animals
     {
         public bool in_lion_environment;
+        public bool in_spottedhyena_environment;
 
         public bool in_lion_period;
+        public bool in_spottedhyena_period;
 
         public bool in_lion;
         public bool in_zebra;
@@ -232,7 +234,7 @@ public class InstallAnimals : MonoBehaviour
                 in_animals.in_bluewildebeest = true;
                 in_animals.in_whiterhino = true;
                 in_animals.in_africanwinddog = true;
-                in_animals.in_spottedhyena = true;
+                in_animals.in_spottedhyena_environment = true;
                 break;
             case environment.ENVIRONMENT.ROCKY:
                 in_animals.in_lion_environment = true;
@@ -243,7 +245,7 @@ public class InstallAnimals : MonoBehaviour
                 in_animals.in_bluewildebeest = false;
                 in_animals.in_whiterhino = false;
                 in_animals.in_africanwinddog = false;
-                in_animals.in_spottedhyena = true;
+                in_animals.in_spottedhyena_environment = true;
                 break;
             case environment.ENVIRONMENT.OTHER:
                 in_animals.in_lion_environment = false;
@@ -254,7 +256,7 @@ public class InstallAnimals : MonoBehaviour
                 in_animals.in_bluewildebeest = false;
                 in_animals.in_whiterhino = false;
                 in_animals.in_africanwinddog = false;
-                in_animals.in_spottedhyena = false;
+                in_animals.in_spottedhyena_environment = false;
                 break;
         }
     }
@@ -265,21 +267,27 @@ public class InstallAnimals : MonoBehaviour
         {
             case 1:
                 in_animals.in_lion_period = true;
+                in_animals.in_spottedhyena_period = false;
                 break;
             case 2:
                 in_animals.in_lion_period = false;
+                in_animals.in_spottedhyena_period = true;
                 break;
             case 3:
                 in_animals.in_lion_period = true;
+                in_animals.in_spottedhyena_period = false;
                 break;
             case 4:
                 in_animals.in_lion_period = false;
+                in_animals.in_spottedhyena_period = true;
                 break;
             case 5:
                 in_animals.in_lion_period = false;
+                in_animals.in_spottedhyena_period = true;
                 break;
             case 6:
                 in_animals.in_lion_period = false;
+                in_animals.in_spottedhyena_period = false;
                 break;
         }
     }
@@ -289,6 +297,10 @@ public class InstallAnimals : MonoBehaviour
         if ( in_animals.in_lion_environment && in_animals.in_lion_period )
         {
             in_animals.in_lion = true;
+        }
+        if ( in_animals.in_spottedhyena_environment && in_animals.in_spottedhyena_period )
+        {
+            in_animals.in_spottedhyena = true;
         }
     }
 

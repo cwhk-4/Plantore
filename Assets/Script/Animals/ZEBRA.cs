@@ -35,13 +35,6 @@ public class ZEBRA : MonoBehaviour
         newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
     }
 
-    private void FixedUpdate( )
-    {
-        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 1 )
-        {
-            zebraMove( );
-        }
-    }
     private void Update( )
     {
         timeIn( );
@@ -49,6 +42,10 @@ public class ZEBRA : MonoBehaviour
         findNum( );
         getAnimalsType( );
         setTurnScale( );
+        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 1 )
+        {
+            zebraMove( );
+        }
         item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
     }
 

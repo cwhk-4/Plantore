@@ -30,11 +30,6 @@ public class SPOTTEDHYENA : MonoBehaviour
         newPosition = new Vector3( Random.Range( -10, 10 ), 12.0f, 0.0f );
     }
 
-    private void FixedUpdate( )
-    {
-        wilddogMove( );
-    }
-
     void Update()
     {
         timeIn( );
@@ -42,6 +37,7 @@ public class SPOTTEDHYENA : MonoBehaviour
         findNum( );
         getAnimalsType( );
         setTurnScale( );
+        wilddogMove( );
         item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
     }
 

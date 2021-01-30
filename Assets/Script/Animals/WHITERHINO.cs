@@ -18,7 +18,7 @@ public class WHITERHINO : MonoBehaviour
     public static int whiterhinosNum;
     public static int findsNum;
 
-    void Start()
+    void Start( )
     {
         _whiterhino.animals = this.gameObject;
         _whiterhino.moveSpeed = 3.0f;
@@ -30,11 +30,6 @@ public class WHITERHINO : MonoBehaviour
         newPosition = new Vector3( 15.0f, Random.Range( -10, 12 ), 0.0f );
     }
 
-    private void FixedUpdate( )
-    {
-        whiterhinoMove( );
-    }
-
     void Update( )
     {
         timeIn( );
@@ -42,6 +37,7 @@ public class WHITERHINO : MonoBehaviour
         getAnimalsType( );
         numsProbability( );
         setTurnScale( );
+        whiterhinoMove( );
         if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 2 )
         {
             itemsNum = this.gameObject.GetComponent<FindItemType>( ).getItemsNum( );

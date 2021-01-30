@@ -39,11 +39,6 @@ public class LION : MonoBehaviour
         newPosition = new Vector3( Random.Range( -10, 10 ), 7.0f, 0.0f );
     }
 
-    private void FixedUpdate( )
-    {
-        lionMove( );
-    }
-
     void Update( )
     {
         timeIn( );
@@ -51,6 +46,7 @@ public class LION : MonoBehaviour
         findNum( );
         getAnimalsType( );
         setTurnScale( );
+        lionMove( );
     }
 
     void lionMove( )

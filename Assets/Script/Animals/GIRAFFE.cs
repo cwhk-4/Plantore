@@ -33,14 +33,6 @@ public class GIRAFFE : MonoBehaviour
         newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
     }
 
-    private void FixedUpdate( )
-    {
-        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 1 )
-        {
-            giraffeMove( );
-        }
-    }
-
     void Update( )
     {
         timeIn( );
@@ -48,6 +40,10 @@ public class GIRAFFE : MonoBehaviour
         findNum( );
         getAnimalsType( );
         setTurnScale( );
+        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 1 )
+        {
+            giraffeMove( );
+        }
         item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
     }
 
