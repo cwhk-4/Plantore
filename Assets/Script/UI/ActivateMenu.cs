@@ -1,18 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ActivateMenu: MonoBehaviour
 {
     public GameObject Menu;
+    public GameObject OpenButton;
+    public GameObject CloseButton;
 
-    public void disableMenuButton()
+    private void Start( )
     {
-        Menu.SetActive( false );
+        OpenButton.SetActive( true );
+        CloseButton.SetActive( false );
     }
 
-    public void enableMenuButton()
+    public void CloseMenu()
+    {
+        Menu.SetActive( false );
+        CloseButton.SetActive( false );
+        OpenButton.SetActive( true );
+    }
+
+    public void OpenMenu()
     {
         Menu.SetActive( true );
+        CloseButton.SetActive( true );
+        OpenButton.SetActive( false );
     }
 }

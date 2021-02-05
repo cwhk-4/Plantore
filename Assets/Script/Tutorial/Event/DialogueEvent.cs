@@ -35,7 +35,7 @@ public class DialogueEvent : MonoBehaviour
     private void Start( )
     {
         showDialogueWindow( );
-        activateMenu.disableMenuButton( );
+        activateMenu.CloseMenu( );
         dialogueControl = GetComponent<DialogueControl>( );
 
         BlackScreen.SetActive( false );
@@ -127,13 +127,13 @@ public class DialogueEvent : MonoBehaviour
     public void showGrass( )
     {
         closeDialogueWindow( );
-        activateMenu.enableMenuButton( );
+        activateMenu.OpenMenu( );
     }
 
     public void grassClicked( )
     {
         showDialogueWindow( );
-        activateMenu.disableMenuButton( );
+        activateMenu.CloseMenu( );
     }
 
     public void placeGrass( )

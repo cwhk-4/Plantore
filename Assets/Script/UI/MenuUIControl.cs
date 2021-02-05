@@ -1,28 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MenuUIControl : MonoBehaviour
 {
     public GameObject Menu;
+    public GameObject OpenButton;
+    public GameObject CloseButton;
 
-    void Start()
+    private void Start( )
     {
-        closeMenu();
-        Time.timeScale = 1;
+        closeMenu( );
     }
 
     public void openMenu()
     {
-        Menu.SetActive( true );
+        //Menu.SetActive( true );
+        CloseButton.SetActive( true );
+        OpenButton.SetActive( false );
         Time.timeScale = 0;
     }
 
     public void closeMenu()
     {
-        Menu.SetActive(false);
+        //Menu.SetActive(false);
+        CloseButton.SetActive( false );
+        OpenButton.SetActive( true );
         Time.timeScale = 1;
     }
-
-
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3222397553726266672}
   - component: {fileID: 3222397553726266673}
   - component: {fileID: -6033823604492833870}
+  - component: {fileID: 7650550378130284518}
   m_Layer: 0
   m_Name: africanwilddog
   m_TagString: africanwilddog
@@ -95,3 +96,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ea621d81e796c43add0cfb568b80d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7650550378130284518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222397553726266674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0966d236daa40c0b9cf33e95fbd060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  nowAnimation: []
+  walk: []
+  eat: []
+  animalName: africanwilddog

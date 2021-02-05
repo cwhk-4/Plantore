@@ -34,6 +34,7 @@ public class PopUpAnimation : MonoBehaviour
             {
                 IsShowing = false;
                 BoardShown = true;
+                Time.timeScale = 0;
             }
         }
 
@@ -49,12 +50,15 @@ public class PopUpAnimation : MonoBehaviour
                 IsClosing = false;
                 BoardShown = false;
                 TargetBoard.gameObject.SetActive( false );
+                Time.timeScale = 1;
             }
         }
     }
 
     public void BoardButtonClick( )
     {
+        BoardShown = TargetBoard.gameObject.activeSelf;
+
         if( BoardShown )
         {
             IsClosing = true;

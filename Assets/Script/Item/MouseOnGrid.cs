@@ -17,16 +17,7 @@ public class MouseOnGrid : MonoBehaviour
         {
             availabilityControl.OnGrid( transform.GetSiblingIndex( ) );
 
-            if( transform.childCount == 0 )
-            {
-                GameObject.FindWithTag( "Instantiate" ).GetComponent<InstantiateItem>( )
-                                           .SetParentGO( this.gameObject );
-            }
-            else
-            {
-                GameObject.FindWithTag( "Instantiate" ).GetComponent<InstantiateItem>( )
-                                        .SetParentGO( null );
-            }
+            GameObject.FindWithTag( "Instantiate" ).GetComponent<InstantiateItem>( ).SetParentGO( this.gameObject );
         }
 
         if( transform.childCount != 0 )

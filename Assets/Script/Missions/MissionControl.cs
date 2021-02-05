@@ -224,7 +224,6 @@ public class MissionControl : MonoBehaviour
     private void MissionCleared( int ToLevel )
     {
         ToMapLevel = ToLevel;
-        MissionAnimation.CloseMenu( );
         ShowMission = true;
         MissionClearBoard.gameObject.SetActive( true );
     }
