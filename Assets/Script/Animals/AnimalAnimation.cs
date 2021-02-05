@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class AnimalAnimation : MonoBehaviour
 {
@@ -31,17 +32,8 @@ public class AnimalAnimation : MonoBehaviour
         if( playCount % 3 == 0 )
         {
             animationCount++;
-            spriteRenderer.sprite = nowAnimation[animationCount % ( nowAnimation.Length - 1 )];
+            spriteRenderer.sprite = nowAnimation[animationCount % nowAnimation.Length];
         }
-
-    //if( ItemMovementTest._grass )
-    //{
-    //    if( ZEBRA._zebra.animals.transform.position == ItemMovementTest._grass.transform.position )
-    //    {
-    //        nowAnimation = eat;
-    //    }
-    //}
-
 }
 
     public void setEat( )
@@ -49,6 +41,7 @@ public class AnimalAnimation : MonoBehaviour
         if( nowAnimation != eat )
         {
             animationCount = 0;
+            Array.Resize( ref nowAnimation, eat.Length );
             nowAnimation = eat;
         }
     }
@@ -58,6 +51,7 @@ public class AnimalAnimation : MonoBehaviour
         if( nowAnimation != walk )
         {
             animationCount = 0;
+            Array.Resize( ref nowAnimation, walk.Length );
             nowAnimation = walk;
         }
     }
