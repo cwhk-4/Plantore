@@ -26,7 +26,12 @@ public class InstantiateItem : MonoBehaviour
 
         if( Input.GetMouseButton( 0 ) && parentGO != null)
         {
-            var available = false;
+            var available = imController.CheckThisGrid( );
+
+            if( !available )
+            {
+                return;
+            }
 
             switch( name )
             {

@@ -34,14 +34,14 @@ public class TimeDisplayBarAnimation : MonoBehaviour
             if( isOpen && timeBarRect.anchoredPosition.x <= toPosX)
             {
                 isMoving = false;
-                buttonRect.rotation = new Quaternion( 0, 0, 180, 0 );
+                buttonRect.rotation = new Quaternion( 0, 0, 0, 0 );
                 timeBarRect.anchoredPosition = new Vector2( toPosX, timeBarRect.anchoredPosition.y );
             }
 
             if( !isOpen && timeBarRect.anchoredPosition.x >= originalPosX )
             {
                 isMoving = false;
-                buttonRect.rotation = new Quaternion( 0, 0, 0, 0 );
+                buttonRect.rotation = new Quaternion( 0, 0, 180, 0 );
                 timeBarRect.anchoredPosition = new Vector2( originalPosX, timeBarRect.anchoredPosition.y );
             }
         }

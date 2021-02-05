@@ -193,8 +193,6 @@ public class MissionControl : MonoBehaviour
 
     private void checkMissionBox( int input )
     {
-        Debug.Log( input );
-
         if( missionCompleted[input] )
         {
             missionCheckBox[input % 3].GetComponent<Image>( ).sprite = checkedBox;

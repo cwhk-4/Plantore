@@ -9,6 +9,7 @@ public class MoveItem : MonoBehaviour
     void Start( )
     {
         imController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
+        xCount = imController.GetXCount( );
     }
 
     public void StartMoving( float time )

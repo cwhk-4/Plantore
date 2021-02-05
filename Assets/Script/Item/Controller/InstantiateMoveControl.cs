@@ -102,6 +102,11 @@ public class InstantiateMoveControl : MonoBehaviour
         xCount = num;
     }
 
+    public int GetXCount( )
+    {
+        return xCount;
+    }
+
     public void InstanWoodExtraGrid( )
     {
         var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
@@ -152,6 +157,13 @@ public class InstantiateMoveControl : MonoBehaviour
                 InstanMarshExtraGrid( );
                 break;
         }
+    }
+
+    public bool CheckThisGrid( )
+    {
+        var GridNum = nowGridNum;
+
+        return GridInstan.transform.GetChild( GridNum ).childCount == 0 && CheckOutOfRange( GridNum );
     }
 
     public bool CheckWoodGrid( )

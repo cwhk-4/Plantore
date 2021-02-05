@@ -1,81 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class PopUpAnimation : MonoBehaviour
 {
-    [SerializeField] private Button[] buttons;
-    [SerializeField] private RawImage[] rawImages;
-    [SerializeField] private Image[] images;
+    [SerializeField] private RectTransform TargetBoard;
+    [SerializeField] private float AnimationRate;
+    private float AnimationSpeed;
 
-    private RectTransform[] buttonRect;
-    private RectTransform[] rawImageRect;
-    private RectTransform[] ImageRect;
+    private bool IsShowing = false;
+    private bool IsClosing = false;
+    private bool BoardShown = false;
 
-    [SerializeField] private float animationSpeed = 10f;
-
-    private bool isOpen = false;
-    private bool isMoving = false;
-
-    private void Start( )
+    // Start is called before the first frame update
+    void Start()
     {
-        isOpen = false;
-        isMoving = false;
-
-        buttonRect = new RectTransform[buttons.Length];
-        for( int i = 0; i < buttons.Length; i++ )
-        {
-            buttonRect[i] = buttons[i].gameObject.GetComponent<RectTransform>( );
-        }
+        TargetBoard.localScale = Vector3.zero;
+        TargetBoard.gameObject.SetActive( false );
+        AnimationSpeed = ( 1 / AnimationRate );
     }
 
-    private void Update( )
+    // Update is called once per frame
+    void Update()
     {
-        if( isMoving )
+        if( IsShowing )
         {
-            if( isOpen )
+            TargetBoard.localScale =
+                new Vector3( TargetBoard.localScale.x + AnimationSpeed,
+                TargetBoard.localScale.y + AnimationSpeed,
+                TargetBoard.localScale.z + AnimationSpeed );
+
+            if( TargetBoard.localScale == Vector3.one )
             {
-                for( int i = 0; i < buttons.Length; i++ )
-                {
-                }
-
-                //MissionClearBoard.localScale =
-                //    new Vector3( MissionClearBoard.localScale.x + AnimationSpeed,
-                //    MissionClearBoard.localScale.y + AnimationSpeed,
-                //    MissionClearBoard.localScale.z + AnimationSpeed );
-
-                //if( MissionClearBoard.localScale == Vector3.one )
-                //{
-                //    isMoving = false;
-                //}
+                IsShowing = false;
+                BoardShown = true;
             }
+        }
 
-            if( !isOpen )
+        if( IsClosing )
+        {
+            TargetBoard.localScale =
+                new Vector3( TargetBoard.localScale.x - AnimationSpeed,
+                TargetBoard.localScale.y - AnimationSpeed,
+                TargetBoard.localScale.z - AnimationSpeed );
+
+            if( TargetBoard.localScale == Vector3.zero )
             {
-                //MissionClearBoard.localScale =
-                //    new Vector3( MissionClearBoard.localScale.x - AnimationSpeed,
-                //    MissionClearBoard.localScale.y - AnimationSpeed,
-                //    MissionClearBoard.localScale.z - AnimationSpeed );
-
-                //if( MissionClearBoard.localScale == Vector3.zero )
-                //{
-                //    isMoving = false;
-                //}
+                IsClosing = false;
+                BoardShown = false;
+                TargetBoard.gameObject.SetActive( false );
             }
         }
     }
 
-    public void OpenBox( )
+    public void BoardButtonClick( )
     {
-        isOpen = true;
-        isMoving = true;
-    }
-
-    public void CloseBox( )
-    {
-        isOpen = false;
-        isMoving = true;
+        if( BoardShown )
+        {
+            IsClosing = true;
+        }
+        else
+        {
+            IsShowing = true;
+            TargetBoard.localScale = Vector3.zero;
+            TargetBoard.gameObject.SetActive( true );
+        }
     }
 }
