@@ -21,7 +21,6 @@ public class DialogueEvent : MonoBehaviour
     [SerializeField] private Sprite originalGrass;
     [SerializeField] private Sprite driedGrass;
 
-
     private bool checkTool = false;
 
     [SerializeField] private GameObject toStageButton;
@@ -35,7 +34,7 @@ public class DialogueEvent : MonoBehaviour
     private void Start( )
     {
         showDialogueWindow( );
-        activateMenu.CloseMenu( );
+        activateMenu.InitUI( );
         dialogueControl = GetComponent<DialogueControl>( );
 
         BlackScreen.SetActive( false );

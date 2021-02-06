@@ -8,8 +8,7 @@ public class ActivateMenu: MonoBehaviour
 
     private void Start( )
     {
-        OpenButton.SetActive( true );
-        CloseButton.SetActive( false );
+        Menu.SetActive( false );
     }
 
     public void CloseMenu()
@@ -24,5 +23,12 @@ public class ActivateMenu: MonoBehaviour
         Menu.SetActive( true );
         CloseButton.SetActive( true );
         OpenButton.SetActive( false );
+    }
+
+    public void InitUI( )
+    {
+        OpenButton.SetActive( false );
+        CloseButton.SetActive( false );
+        Menu.SetActive( false );
     }
 }

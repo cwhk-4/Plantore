@@ -10,7 +10,6 @@ public class DialogueControl : MonoBehaviour
 
     private void Start( )
     {
-        dialogue = GameObject.FindWithTag( "Dialogue" ).GetComponent<TMP_Text>( );
         dialogueEvent = GetComponent<DialogueEvent>( );
 
         dialogue.text = DialogueText.getDialogue( dialogueCount );
