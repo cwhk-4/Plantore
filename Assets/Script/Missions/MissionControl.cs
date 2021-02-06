@@ -8,6 +8,7 @@ public class MissionControl : MonoBehaviour
     [SerializeField] private MapLevel MapLevel;
     [SerializeField] private MissionTextBoxAnimation MissionAnimation;
 
+
     [SerializeField] private TMP_Text mission1Num;
     [SerializeField] private TMP_Text mission2Num;
     [SerializeField] private TMP_Text mission3Num;
@@ -28,6 +29,7 @@ public class MissionControl : MonoBehaviour
 
     [SerializeField] private RectTransform MissionClearBoard;
     [SerializeField] private float AnimationSpeed;
+
     private int ToMapLevel = 1;
     private bool ShowMission = false;
     private bool CloseMission = false;
