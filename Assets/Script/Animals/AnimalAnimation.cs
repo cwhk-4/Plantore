@@ -15,6 +15,8 @@ public class AnimalAnimation : MonoBehaviour
     private float playCount = 0;
     private int animationCount = 0;
 
+    private float Delay;
+
     void Start( )
     {
         spriteRenderer = GetComponent<SpriteRenderer>( );
@@ -23,16 +25,24 @@ public class AnimalAnimation : MonoBehaviour
         eat = Resources.LoadAll<Sprite>( path + "/Eat" );
         setWalk( );
         spriteRenderer.sprite = nowAnimation[ 0 ];
+        Delay = UnityEngine.Random.Range( 0f, 5f );
     }
 
     void FixedUpdate( )
     {
-        playCount++;
-
-        if( playCount % 3 == 0 )
+        if( Delay >= 0 )
         {
-            animationCount++;
-            spriteRenderer.sprite = nowAnimation[animationCount % nowAnimation.Length];
+            Delay -= Time.fixedDeltaTime;
+        }
+        else
+        {
+            playCount++;
+
+            if( playCount % 3 == 0 )
+            {
+                animationCount++;
+                spriteRenderer.sprite = nowAnimation[animationCount % nowAnimation.Length];
+            }
         }
 }
 

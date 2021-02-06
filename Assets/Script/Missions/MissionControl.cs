@@ -223,9 +223,19 @@ public class MissionControl : MonoBehaviour
 
     private void MissionCleared( int ToLevel )
     {
-        ToMapLevel = ToLevel;
-        ShowMission = true;
-        MissionClearBoard.gameObject.SetActive( true );
+        if( ToLevel == 2 )
+        {
+            ToMapLevel = ToLevel;
+            ShowMission = true;
+            MissionClearBoard.gameObject.SetActive( true );
+        }
+        else
+        {
+            if( ToLevel == 3 )
+            {
+                TrialEnd( );
+            }
+        }
     }
 
     public void CloseMissionClearBoard( )
@@ -234,5 +244,10 @@ public class MissionControl : MonoBehaviour
         {
             CloseMission = true;
         }
+    }
+
+    private void TrialEnd( )
+    {
+
     }
 }
