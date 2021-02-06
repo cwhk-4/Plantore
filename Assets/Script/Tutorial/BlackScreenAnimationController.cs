@@ -16,6 +16,8 @@ public class BlackScreenAnimationController : MonoBehaviour
 
     public bool show = true;
 
+    private bool isToStage = false;
+
     private void Start( )
     {
         loadingText.SetActive( false );
@@ -67,5 +69,17 @@ public class BlackScreenAnimationController : MonoBehaviour
             loadingText.SetActive( false );
         }
 
+        if( isToStage )
+        {
+            if( color.a >= 1 )
+            {
+                dialogueEvent.finishedTutorial( );
+            }
+        }
+    }
+
+    public void setToStage( )
+    {
+        isToStage = true;
     }
 }

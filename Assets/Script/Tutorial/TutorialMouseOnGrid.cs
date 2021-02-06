@@ -17,7 +17,7 @@ public class TutorialMouseOnGrid : MonoBehaviour
         {
             availabilityControl.OnGrid( transform.GetSiblingIndex( ) );
 
-            GameObject.FindWithTag( "Instantiate" ).GetComponent<InstantiateItem>( ).SetParentGO( this.gameObject );
+            FindObjectOfType<TutorialInstantiateItem>( ).SetParentGO( gameObject );
         }
 
         if( transform.childCount != 0 )
@@ -36,8 +36,7 @@ public class TutorialMouseOnGrid : MonoBehaviour
 
         if( imController.GetIsInstantiating( ) || imController.GetIsMoving( ) )
         {
-            GameObject.FindWithTag( "Instantiate" ).GetComponent<InstantiateItem>( )
-                           .SetParentGO( null );
+            FindObjectOfType<TutorialInstantiateItem>( ).SetParentGO( null );
         }
 
         if( transform.childCount != 0 )

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5095705009213696833}
   - component: {fileID: 5095705009213696846}
-  - component: {fileID: -1370245773288331024}
+  - component: {fileID: 2310685939330512414}
   m_Layer: 0
   m_Name: Tutorial_grass_Instan
   m_TagString: Instantiate
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1273403493
-  m_SortingLayer: 0
+  m_SortingLayerID: 92946567
+  m_SortingLayer: 3
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 85cee2670572f498bbc0ff08a682678f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1370245773288331024
+--- !u!114 &2310685939330512414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5095705009213696844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 631f77a4d55cd4dea9b98a889100f7f3, type: 3}
+  m_Script: {fileID: 11500000, guid: dd84a8d8fa41544c7823e72eba3e9e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ItemToInstantiate: {fileID: 6587741821020689999, guid: 3c8535d11147f42209335c747384420e, type: 3}

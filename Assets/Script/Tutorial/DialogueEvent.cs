@@ -6,7 +6,8 @@ public class DialogueEvent : MonoBehaviour
     [SerializeField] private GameObject dialogueWindow;
 
     [SerializeField] private ActivateMenu activateMenu;
-    [SerializeField] private ItemUIInstantiate itemUIInstantiate;
+    [SerializeField] private PopUpAnimation popUp;
+    [SerializeField] private TutorialInstanFromUI itemUIInstantiate;
     [SerializeField] private ToolConvertion toolConvertion;
 
     [SerializeField] private DialogueControl dialogueControl;
@@ -39,8 +40,8 @@ public class DialogueEvent : MonoBehaviour
 
         BlackScreen.SetActive( false );
         toStageButton.SetActive( false );
-        leftGuide.SetActive( false );
-        rightGuide.SetActive( false );
+        closeMouseRightGuide( );
+        closeMouseLeftGuide( );
     }
 
     private void Update( )
@@ -126,13 +127,13 @@ public class DialogueEvent : MonoBehaviour
     public void showGrass( )
     {
         closeDialogueWindow( );
-        activateMenu.OpenMenu( );
+        activateMenu.CloseMenu( );
     }
 
     public void grassClicked( )
     {
         showDialogueWindow( );
-        activateMenu.CloseMenu( );
+        popUp.BoardButtonClick();
     }
 
     public void placeGrass( )
@@ -229,5 +230,11 @@ public class DialogueEvent : MonoBehaviour
     public void finishedTutorial( )
     {
         SceneManager.LoadScene( "Stage" );
+    }
+
+    public void ToStage( )
+    {
+        showBlackScreen( );
+        BlackScreen.GetComponent<BlackScreenAnimationController>( ).setToStage( );
     }
 }

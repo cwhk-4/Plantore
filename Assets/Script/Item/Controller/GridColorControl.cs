@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GridColorControl : MonoBehaviour
 {
@@ -48,7 +47,13 @@ public class GridColorControl : MonoBehaviour
 
     private bool CheckRange( )
     {
-        var mapLevel = GameObject.FindWithTag("Map").GetComponent<MapLevel>().getMapLevel( );
+        var mapLevel = 1;
+
+        if( SceneManager.GetActiveScene( ).name == "Stage" )
+        {
+            mapLevel = FindObjectOfType<MapLevel>( ).getMapLevel( );
+        }
+
         var GridNum = this.transform.GetSiblingIndex( );
 
         var x = 3 + mapLevel;
