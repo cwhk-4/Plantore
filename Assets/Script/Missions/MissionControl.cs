@@ -6,8 +6,7 @@ public class MissionControl : MonoBehaviour
 {
     [SerializeField] private MissionsList missions;
     [SerializeField] private MapLevel MapLevel;
-    [SerializeField] private MissionTextBoxAnimation MissionAnimation;
-
+    [SerializeField] private TrialEnd trial;
 
     [SerializeField] private TMP_Text mission1Num;
     [SerializeField] private TMP_Text mission2Num;
@@ -250,6 +249,6 @@ public class MissionControl : MonoBehaviour
 
     private void TrialEnd( )
     {
-
+        trial.ShowEnd( );
     }
 }
