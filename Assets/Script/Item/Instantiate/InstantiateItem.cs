@@ -24,6 +24,11 @@ public class InstantiateItem : MonoBehaviour
         mousePos = new Vector3( mousePos.x, mousePos.y, 0 );
         transform.position = mousePos;
 
+        if( parentGO == null )
+        {
+            return;
+        }
+
         if( Input.GetMouseButton( 0 ) && parentGO.transform.childCount == 0)
         {
             var available = imController.CheckThisGrid( );
