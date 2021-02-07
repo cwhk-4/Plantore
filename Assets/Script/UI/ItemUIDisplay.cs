@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemUIDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject[] ItemUI;
     [SerializeField] private MapLevel map;
 
-    private int MapLevel;
+    [SerializeField] private int MapLevel;
 
     void Start()
     {
@@ -21,9 +19,9 @@ public class ItemUIDisplay : MonoBehaviour
         SetItemDisplayLevel( );
     }
 
-    private void SetItemDisplayLevel( )
+    public void SetItemDisplayLevel( )
     {
-        for( int i = 0; i < ItemUI.Length - 1; i++ )
+        for( int i = 0; i <= ItemUI.Length - 1; i++ )
         {
             ItemUI[i].SetActive( false );
         }

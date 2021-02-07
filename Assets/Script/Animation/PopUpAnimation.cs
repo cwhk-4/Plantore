@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PopUpAnimation : MonoBehaviour
 {
@@ -12,7 +10,6 @@ public class PopUpAnimation : MonoBehaviour
     private bool IsClosing = false;
     private bool BoardShown = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         TargetBoard.localScale = Vector3.zero;
@@ -20,7 +17,6 @@ public class PopUpAnimation : MonoBehaviour
         AnimationSpeed = ( 1 / AnimationRate );
     }
 
-    // Update is called once per frame
     void Update()
     {
         if( IsShowing )

@@ -1,29 +1,45 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuUIControl : MonoBehaviour
 {
-    public GameObject Menu;
-    public GameObject OpenButton;
-    public GameObject CloseButton;
+    [SerializeField] private GameObject Menu;
+    [SerializeField] Image MenuButton;
+
+    [SerializeField] private Sprite Open;
+    [SerializeField] private Sprite Close;
 
     private void Start( )
     {
-        closeMenu( );
+        Menu.SetActive( false );
+        CloseMenu( );
     }
 
-    public void openMenu()
+    public void MenuButtonClick( )
     {
-        //Menu.SetActive( true );
-        CloseButton.SetActive( true );
-        OpenButton.SetActive( false );
-        Time.timeScale = 0;
+        if( Menu.activeSelf )
+        {
+            CloseMenu( );
+        }
+        else
+        {
+            OpenMenu( );
+        }
     }
 
-    public void closeMenu()
+    public void CloseMenu( )
     {
-        //Menu.SetActive(false);
-        CloseButton.SetActive( false );
-        OpenButton.SetActive( true );
-        Time.timeScale = 1;
+        MenuButton.sprite = Close;
+    }
+
+    public void OpenMenu( )
+    {
+        MenuButton.sprite = Open;
+    }
+
+    public void InitUI( )
+    {
+        MenuButton.gameObject.SetActive( false );
+        Menu.SetActive( false );
     }
 }

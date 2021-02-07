@@ -4,24 +4,27 @@ using UnityEngine.EventSystems;
 
 public class EnvironmentButtonOnSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private RawImage ParentImage;
+    private Image image;
 
-    [SerializeField] private Texture OnSelectImage;
-    [SerializeField] private Texture NormalImage;
+    [SerializeField] private Sprite OnSelectImage;
+    [SerializeField] private Sprite NormalImage;
 
-    void Start()
+    private void Start( )
     {
-        ParentImage = GetComponentInParent<RawImage>( );
+        image = GetComponent<Image>( );
+        image.sprite = NormalImage;
     }
 
     public void OnPointerExit( PointerEventData eventData )
     {
-        ParentImage.texture = NormalImage;
+        image.sprite = NormalImage;
+        image.SetNativeSize( );
     }
 
     public void OnPointerEnter( PointerEventData eventData )
     {
-        ParentImage.texture = OnSelectImage;
+        image.sprite = OnSelectImage;
+        image.SetNativeSize( );
     }
 
 }

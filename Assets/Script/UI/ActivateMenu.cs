@@ -2,33 +2,33 @@
 
 public class ActivateMenu: MonoBehaviour
 {
-    public GameObject Menu;
-    public GameObject OpenButton;
-    public GameObject CloseButton;
+    [SerializeField] private GameObject Menu;
+    [SerializeField] private GameObject MenuButton;
 
     private void Start( )
     {
-        Menu.SetActive( false );
+        CloseMenu( );
     }
 
     public void CloseMenu()
     {
         Menu.SetActive( false );
-        CloseButton.SetActive( false );
-        OpenButton.SetActive( true );
     }
 
     public void OpenMenu()
     {
         Menu.SetActive( true );
-        CloseButton.SetActive( true );
-        OpenButton.SetActive( false );
+    }
+
+    public void CloseAllUI()
+    {
+        Menu.SetActive( false );
+        MenuButton.SetActive( false );
     }
 
     public void InitUI( )
     {
-        OpenButton.SetActive( false );
-        CloseButton.SetActive( false );
         Menu.SetActive( false );
+        MenuButton.SetActive( true );
     }
 }
