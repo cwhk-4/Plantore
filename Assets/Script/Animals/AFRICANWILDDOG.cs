@@ -12,6 +12,7 @@ public class AFRICANWILDDOG : MonoBehaviour
     private GameObject target;
     private Vector3 newPosition;
     private bool goPredation;
+    private bool hunting = false;
 
 
     void Start( )
@@ -38,6 +39,7 @@ public class AFRICANWILDDOG : MonoBehaviour
         getAnimalsType( );
         setTurnScale( );
         wilddogMove( );
+        Debug.Log( hunting );
     }
 
     private void wilddogMove( )
@@ -61,6 +63,7 @@ public class AFRICANWILDDOG : MonoBehaviour
             }
             if ( this.gameObject.transform.position == WHITERHINO._whiterhino.animals.transform.position )
             {
+                hunting = true;
                 newPosition = new Vector3( Random.Range( -10, 10 ), 12.0f, 0.0f );
                 target.transform.position = newPosition;
                 Predation( );
@@ -91,10 +94,6 @@ public class AFRICANWILDDOG : MonoBehaviour
         {
             _africanwilddog.canPredation = false;
         }
-        //if ( GetNum.lionsNum == 4 )
-        //{
-        //    infighting( );
-        //}
     }
 
     private void Predation( )
@@ -170,5 +169,10 @@ public class AFRICANWILDDOG : MonoBehaviour
         {
             _africanwilddog.needTurn = false;
         }
+    }
+
+    public bool huntingHappened( )
+    {
+        return hunting;
     }
 }

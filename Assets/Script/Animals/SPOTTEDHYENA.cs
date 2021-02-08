@@ -13,6 +13,7 @@ public class SPOTTEDHYENA : MonoBehaviour
     private GameObject target;
     private Vector3 newPosition;
     private bool goPredation;
+    private bool hunting = false;
 
     void Start()
     {
@@ -65,6 +66,7 @@ public class SPOTTEDHYENA : MonoBehaviour
                 target.transform.position = newPosition;
                 Predation( );
                 goPredation = false;
+                hunting = true;
             }
             if ( this.gameObject.transform.position == newPosition && TargetAnimals.GetComponent<BLUEWILDEBEEST>( ).itemAndAnimalPosition( ) )
             {
@@ -91,10 +93,6 @@ public class SPOTTEDHYENA : MonoBehaviour
         {
             _spottedhyena.canPredation = false;
         }
-        //if ( GetNum.lionsNum == 4 )
-        //{
-        //    infighting( );
-        //}
     }
 
     private void Predation( )
@@ -169,5 +167,10 @@ public class SPOTTEDHYENA : MonoBehaviour
         {
             _spottedhyena.needTurn = false;
         }
+    }
+
+    public bool huntingHappened( )
+    {
+        return hunting;
     }
 }

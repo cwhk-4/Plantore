@@ -947,7 +947,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 608.5, y: -398.5}
+  m_AnchoredPosition: {x: 640, y: -454.42856}
   m_SizeDelta: {x: 650, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &140141555
@@ -2044,7 +2044,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 608.5, y: -242.5}
+  m_AnchoredPosition: {x: 640, y: -273.57144}
   m_SizeDelta: {x: 650, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &337512227
@@ -2179,7 +2179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 608.5, y: -164.5}
+  m_AnchoredPosition: {x: 640, y: -183.14285}
   m_SizeDelta: {x: 400, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &423266162
@@ -3237,6 +3237,7 @@ GameObject:
   - component: {fileID: 652667996}
   - component: {fileID: 652667998}
   - component: {fileID: 652667999}
+  - component: {fileID: 652668000}
   m_Layer: 0
   m_Name: SPOTTEDHYENAS
   m_TagString: SPOTTEDHYENAS
@@ -3311,6 +3312,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fe25f3d67ada740b5db3ad1a24b053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &652668000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652667994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cf6b01d720e974c9c714db86c7e1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getThisAnimal: {fileID: 310321039}
 --- !u!1 &674720648
 GameObject:
   m_ObjectHideFlags: 0
@@ -3324,6 +3338,7 @@ GameObject:
   - component: {fileID: 674720650}
   - component: {fileID: 674720652}
   - component: {fileID: 674720653}
+  - component: {fileID: 674720654}
   m_Layer: 0
   m_Name: WHITERHINOS
   m_TagString: WHITERHINOS
@@ -3396,6 +3411,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ea621d81e796c43add0cfb568b80d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &674720654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674720648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cf6b01d720e974c9c714db86c7e1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getThisAnimal: {fileID: 310321039}
 --- !u!1 &680392549
 GameObject:
   m_ObjectHideFlags: 0
@@ -3838,7 +3866,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 608.5, y: -554.5}
+  m_AnchoredPosition: {x: 640, y: -635.2857}
   m_SizeDelta: {x: 650, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &896259991
@@ -4419,7 +4447,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 608.5, y: -86.5}
+  m_AnchoredPosition: {x: 640, y: -92.71429}
   m_SizeDelta: {x: 500, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &958636844
@@ -13723,6 +13751,7 @@ GameObject:
   - component: {fileID: 1187334638}
   - component: {fileID: 1187334637}
   - component: {fileID: 1187334639}
+  - component: {fileID: 1187334640}
   m_Layer: 0
   m_Name: AFRICANWILDDOGS
   m_TagString: AFRICANWILDDOGS
@@ -13784,6 +13813,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ea621d81e796c43add0cfb568b80d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1187334640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187334635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cf6b01d720e974c9c714db86c7e1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getThisAnimal: {fileID: 310321039}
 --- !u!1 &1204504127
 GameObject:
   m_ObjectHideFlags: 0
@@ -15066,7 +15108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 608.5, y: -320.5}
+  m_AnchoredPosition: {x: 640, y: -364}
   m_SizeDelta: {x: 580, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1399271593
@@ -17996,7 +18038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 608.5, y: -476.5}
+  m_AnchoredPosition: {x: 640, y: -544.8571}
   m_SizeDelta: {x: 580, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2013051971
