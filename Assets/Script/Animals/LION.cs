@@ -69,7 +69,7 @@ public class LION : MonoBehaviour
             }
             if ( this.gameObject.transform.position == ZEBRA._zebra.animals.transform.position )
             {
-                newPosition = new Vector3( Random.Range( -10, 10 ), 7.0f, 0.0f );
+                newPosition = new Vector3( Random.Range( -10, 10 ), 16.0f, 0.0f );
                 Target.transform.position = newPosition;
                 Predation( );
                 goPredation = false;
@@ -85,7 +85,7 @@ public class LION : MonoBehaviour
         }
         else if ( goPredation )
         {
-            newPosition = new Vector3( Random.Range( -10, 10 ), 7.0f, 0.0f );
+            newPosition = new Vector3( Random.Range( -10, 10 ), 16.0f, 0.0f );
             Target.transform.position = newPosition;
             goPredation = false;
         }

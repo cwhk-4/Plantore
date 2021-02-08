@@ -65,13 +65,13 @@ public class GIRAFFE : MonoBehaviour
         }
         if ( item == null && canFindItem )
         {
-            newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
+            newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
             goStage.transform.position = newPosition;
             canFindItem = false;
         }
         if ( this.gameObject.transform.position == LION._lion.animals.transform.position )
         {
-            newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
+            newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
             runaway = true;
             goStage.transform.position = newPosition;
         }

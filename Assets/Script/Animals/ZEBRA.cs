@@ -67,13 +67,13 @@ public class ZEBRA : MonoBehaviour
         }
         if ( item == null && canFindGrass )
         {
-            newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
+            newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
             goStage.transform.position = newPosition;
             canFindGrass = false;
         }
         if ( this.gameObject.transform.position == LION._lion.animals.transform.position )
         {
-            newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
+            newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
             runaway = true;
             goStage.transform.position = newPosition;
         }

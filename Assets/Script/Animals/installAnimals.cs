@@ -31,6 +31,8 @@ public class InstallAnimals : MonoBehaviour
     public static int africanwilddogsNumProbability;
     public static int bluewildebeestsNumProbability;
     public static int whiterhinosNumProbability;
+
+    private bool changedPosition = false;
     //
 
     private int period;
@@ -86,6 +88,11 @@ public class InstallAnimals : MonoBehaviour
         periodAnimalsType( );
         animalsType( );
         animalsInstall( );
+        if ( !changedPosition )
+        {
+            lionsPosition( );
+            changedPosition = true;
+        }
     }
 
     void animalsInstall( )
@@ -99,7 +106,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < LION.lionsNUM; i++ )
                     {
-                        Instantiate( lionObj, new Vector3( -4.0f - i * 1.0f, 9.5f - i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( lionObj, new Vector3( -8.0f, 8.0f , 0.0f ), Quaternion.identity );
                         lion = GameObject.FindGameObjectsWithTag( "lion" );
                         lion[ i ].name = "lion" + i;
                         lion[ i ].transform.parent = GameObject.Find( "LIONS" ).transform;
@@ -115,7 +122,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < ZEBRA.zebrasNUM; i++ )
                     {
-                        Instantiate( zebraObj, new Vector3( 0.5f - i * 1.0f, 9.7f - i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( zebraObj, new Vector3( 0.5f - i * 2.0f, 9.7f - i * 2.0f, 0.0f ), Quaternion.identity );
                         zebra = GameObject.FindGameObjectsWithTag( "zebra" );
                         zebra[ i ].name = "zebra" + i;
                         zebra[ i ].transform.parent = GameObject.Find( "ZEBRAS" ).transform;
@@ -130,7 +137,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < GIRAFFE.giraffesNUM; i++ )
                     {
-                        Instantiate( giraffeObj, new Vector3( 4.5f - i * 1.0f, 9.0f - i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( giraffeObj, new Vector3( 4.5f - i * 2.0f, 9.0f - i * 2.0f, 0.0f ), Quaternion.identity );
                         giraffe = GameObject.FindGameObjectsWithTag( "giraffe" );
                         giraffe[ i ].name = "giraffe" + i;
                         giraffe[ i ].transform.parent = GameObject.FindGameObjectWithTag( "GIRAFFES" ).transform;
@@ -303,5 +310,32 @@ public class InstallAnimals : MonoBehaviour
             in_animals.in_spottedhyena = true;
         }
     }
+
+    private void lionsPosition( )
+    {
+        if ( LION.lionsNUM == 1 )
+        {
+            lion[ 0 ].transform.position = new Vector3( -9.0f, 10f, 0.0f );
+        }
+        if ( LION.lionsNUM == 2 )
+        {
+            lion[ 0 ].transform.position= new Vector3( -9.0f, 10f, 0.0f );
+            lion[ 1 ].transform.position = new Vector3( -7.0f, 7.5f, 0.0f );
+        }
+        if ( LION.lionsNUM == 3 )
+        {
+            lion[ 0 ].transform.position = new Vector3( -9.0f, 10f, 0.0f );
+            lion[ 1 ].transform.position = new Vector3( -7.0f, 7.5f, 0.0f );
+            lion[ 2 ].transform.position = new Vector3( -11.0f, 6.5f, 0.0f );
+        }
+        if ( LION.lionsNUM == 4 )
+        {
+            lion[ 0 ].transform.position = new Vector3( -9.0f, 10f, 0.0f );
+            lion[ 1 ].transform.position = new Vector3( -7.0f, 7.5f, 0.0f );
+            lion[ 2 ].transform.position = new Vector3( -11.0f, 6.5f, 0.0f );
+            lion[ 3 ].transform.position = new Vector3( -10.0f, 8.5f, 0.0f );
+        }
+    }
+
 
 }
