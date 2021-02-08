@@ -43,7 +43,7 @@ public class ItemUIScroll : MonoBehaviour
 
     public void LeftButtonClicked( )
     {
-        if( ScrollTransform.localPosition.x < 400f )
+        if( ScrollTransform.localPosition.x == -400f )
         {
             ToLeft = true;
             StartingValue = ScrollTransform.localPosition.x;
@@ -52,7 +52,7 @@ public class ItemUIScroll : MonoBehaviour
 
     public void RightButtonClick( )
     {
-        if( ScrollTransform.localPosition.x > -400f )
+        if( ScrollTransform.localPosition.x == 400f )
         {
             ToRight = true;
             StartingValue = ScrollTransform.localPosition.x;

@@ -35,7 +35,7 @@ public class DialogueEvent : MonoBehaviour
     private void Start( )
     {
         showDialogueWindow( );
-        activateMenu.InitUI( );
+        activateMenu.CloseAllUI( );
         dialogueControl = GetComponent<DialogueControl>( );
 
         BlackScreen.SetActive( false );
@@ -88,6 +88,7 @@ public class DialogueEvent : MonoBehaviour
     public void openMenu( )
     {
         closeDialogueWindow( );
+        activateMenu.InitUI( );
         showMouseLeftGuide( new Vector2( 840, 190 ) );
     }
 
@@ -99,7 +100,7 @@ public class DialogueEvent : MonoBehaviour
 
     public void clickItem()
     {
-        showMouseLeftGuide( new Vector2( -320, -290 ) );
+        showMouseLeftGuide( new Vector2( -75, -390 ) );
     }
 
     private void showMouseRightGuide( Vector2 toPos )
