@@ -82,6 +82,10 @@ public class GIRAFFE : MonoBehaviour
             _giraffe.canMove = false;
             timeControllerIn = 0;
         }
+        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) != 1 )
+        {
+            newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
+        }
     }
 
     void timeIn( )

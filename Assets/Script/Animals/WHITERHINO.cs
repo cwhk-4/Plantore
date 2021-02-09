@@ -9,7 +9,12 @@ public class WHITERHINO : MonoBehaviour
     private GameObject item;
     private Vector3 newPosition;
 
+    public AnimalsTimeController _whiterhinoTimeController;
+
     private int itemsNum;
+    private int timeControllerIn;
+    private float timeToGo;
+    private bool scriptCount = false;
     private bool onItem = false;
     private bool runaway = false;
     private bool canFindItem = true;
@@ -77,14 +82,29 @@ public class WHITERHINO : MonoBehaviour
         {
             runaway = false;
             _whiterhino.canMove = false;
+            scriptCount = false;
+            timeControllerIn = 0;
         }
     }
 
     private void timeIn( )
     {
-        if ( itemsNum == 2 && InstallAnimals.in_animals.in_whiterhino )
+        if ( itemsNum >= 2 && InstallAnimals.in_animals.in_whiterhino && timeControllerIn == 0 )
         {
-            _whiterhino.canMove = true;
+            if ( !scriptCount )
+            {
+                _whiterhinoTimeController = this.gameObject.AddComponent<AnimalsTimeController>( );
+                scriptCount = true;
+            }
+            timeToGo = GameObject.Find( "WHITERHINOS" ).GetComponent<AnimalsTimeController>( ).changeTime( );
+
+            if ( timeToGo < 0 )
+            {
+                _whiterhino.canMove = true;
+                Destroy( this.gameObject.GetComponent<AnimalsTimeController>( ) );
+                timeControllerIn = 1;
+                timeToGo = 0;
+            }
         }
     }
 

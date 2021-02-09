@@ -24,16 +24,22 @@ public class AnimalsTimeController : MonoBehaviour
         switch( animalsType.name )
         {
             case "LIONS":
-                timeOut = 3.0f;
+                timeOut = 5.0f;
                 break;
             case "ZEBRAS":
-                timeOut = 2.0f;
+                timeOut = 10.0f;
                 break;
             case "GIRAFFES":
-                timeOut = 3.0f;
+                timeOut = 15.0f;
                 break;
             case "IMPALAS":
-                timeOut = 3.0f;
+                timeOut = 6.0f;
+                break;
+            case "WHITERHINOS":
+                timeOut = 10.0f;
+                break;
+            case "BLUEWILDEBEESTS":
+                timeOut = 15.0f;
                 break;
         }
     }

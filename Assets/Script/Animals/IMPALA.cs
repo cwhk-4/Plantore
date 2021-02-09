@@ -86,11 +86,15 @@ public class IMPALA : MonoBehaviour
             _impala.canMove = false;
             timeControllerIn = 0;
         }
+        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) != 1 )
+        {
+            newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
+        }
     }
 
     void timeIn( )
     {
-        if ( itemsNum == 3 && InstallAnimals.in_animals.in_impala && timeControllerIn == 0 )
+        if ( itemsNum >= 3 && InstallAnimals.in_animals.in_impala && timeControllerIn == 0 )
         {
             if ( !scriptCount )
             {
