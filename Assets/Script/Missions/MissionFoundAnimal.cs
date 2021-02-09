@@ -30,6 +30,11 @@ public class MissionFoundAnimal : MonoBehaviour
             getThisAnimal.FoundRhino( );
             findRhino = false;
         }
+        if ( this.gameObject.name == "SPOTTEDHYENAS" && this.gameObject.transform.position.y < foundpositionY && findHippo )
+        {
+            getThisAnimal.FoundHippo( );
+            findHippo = false;
+        }
     }
 
     private void Hunting( )

@@ -41,9 +41,13 @@ public class InstallAnimals : MonoBehaviour
     {
         public bool in_lion_environment;
         public bool in_spottedhyena_environment;
+        public bool in_africanwinddog_environment;
+        public bool in_whiterhino_environment; 
 
         public bool in_lion_period;
         public bool in_spottedhyena_period;
+        public bool in_africanwinddog_period;
+        public bool in_whiterhino_period;
 
         public bool in_lion;
         public bool in_zebra;
@@ -88,10 +92,16 @@ public class InstallAnimals : MonoBehaviour
         periodAnimalsType( );
         animalsType( );
         animalsInstall( );
+        //
         if ( !changedPosition )
         {
             lionsPosition( );
             zebrasPosition( );
+            impalasPosition( );
+            africanwilddogsPosition( );
+            spottedhyenasPosition( );
+            whiterhinosPosition( );
+            bluewildebeestsPosition( );
             changedPosition = true;
         }
     }
@@ -123,7 +133,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < ZEBRA.zebrasNUM; i++ )
                     {
-                        Instantiate( zebraObj, new Vector3( 0.5f - i * 2.0f, 9.7f - i * 2.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( zebraObj, new Vector3( 0.5f, 9.7f, 0.0f ), Quaternion.identity );
                         zebra = GameObject.FindGameObjectsWithTag( "zebra" );
                         zebra[ i ].name = "zebra" + i;
                         zebra[ i ].transform.parent = GameObject.Find( "ZEBRAS" ).transform;
@@ -138,7 +148,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < GIRAFFE.giraffesNUM; i++ )
                     {
-                        Instantiate( giraffeObj, new Vector3( 4.5f - i * 2.0f, 9.0f - i * 2.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( giraffeObj, new Vector3( 4.5f+ 1 * i , 8.0f + 2.4f * i, 0.0f ), Quaternion.identity );
                         giraffe = GameObject.FindGameObjectsWithTag( "giraffe" );
                         giraffe[ i ].name = "giraffe" + i;
                         giraffe[ i ].transform.parent = GameObject.FindGameObjectWithTag( "GIRAFFES" ).transform;
@@ -153,7 +163,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < IMPALA.impalasNUM; i++ )
                     {
-                        Instantiate( impalaObj, new Vector3( 10.0f - i * 1.0f, 10.0f - i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( impalaObj, new Vector3( 10.0f, 10.0f, 0.0f ), Quaternion.identity );
                         impala = GameObject.FindGameObjectsWithTag( "impala" );
                         impala[ i ].name = "impala" + i;
                         impala[ i ].transform.parent = GameObject.FindGameObjectWithTag( "IMPALAS" ).transform;
@@ -171,7 +181,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < SPOTTEDHYENA._spottedhyena.animalsNUM; i++ )
                     {
-                        Instantiate( spottedhyenaObj, new Vector3( -8.0f - i * 1.0f, 16.0f - i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( spottedhyenaObj, new Vector3( -8.0f, 16.0f, 0.0f ), Quaternion.identity );
                         spottedhyena = GameObject.FindGameObjectsWithTag( "spottedhyena" );
                         spottedhyena[ i ].name = "spottedhyena" + i;
                         spottedhyena[ i ].transform.parent = GameObject.FindGameObjectWithTag( "SPOTTEDHYENAS" ).transform;
@@ -186,7 +196,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < AFRICANWILDDOG._africanwilddog.animalsNUM; i++ )
                     {
-                        Instantiate( africanwilddogObj, new Vector3( -1.5f - i * 1.0f, 16.0f - i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( africanwilddogObj, new Vector3( -1.5f, 16.0f, 0.0f ), Quaternion.identity );
                         africanwilddog = GameObject.FindGameObjectsWithTag( "africanwilddog" );
                         africanwilddog[ i ].name = "africanwilddog" + i;
                         africanwilddog[ i ].transform.parent = GameObject.FindGameObjectWithTag( "AFRICANWILDDOGS" ).transform;
@@ -201,7 +211,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < BLUEWILDEBEEST._bluewildebeest.animalsNUM; i++ )
                     {
-                        Instantiate( bluewildebeestObj, new Vector3( 3.25f - i * 1.0f, 16.0f - i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( bluewildebeestObj, new Vector3( 3.25f, 16.0f, 0.0f ), Quaternion.identity );
                         bluewildebeest = GameObject.FindGameObjectsWithTag( "bluewildebeest" );
                         bluewildebeest[ i ].name = "bluewildebeest" + i;
                         bluewildebeest[ i ].transform.parent = GameObject.FindGameObjectWithTag( "BLUEWILDEBEESTS" ).transform;
@@ -216,7 +226,7 @@ public class InstallAnimals : MonoBehaviour
                 {
                     for ( int i = 0; i < WHITERHINO._whiterhino.animalsNUM; i++ )
                     {
-                        Instantiate( whiterhinoObj, new Vector3( 7.0f - i * 1.0f, 16.0f - i * 1.0f, 0.0f ), Quaternion.identity );
+                        Instantiate( whiterhinoObj, new Vector3( 7.0f, 16.0f, 0.0f ), Quaternion.identity );
                         whiterhino = GameObject.FindGameObjectsWithTag( "whiterhino" );
                         whiterhino[ i ].name = "whiterhino" + i;
                         whiterhino[ i ].transform.parent = GameObject.FindGameObjectWithTag( "WHITERHINOS" ).transform;
@@ -238,33 +248,33 @@ public class InstallAnimals : MonoBehaviour
                 in_animals.in_zebra = true;
                 in_animals.in_giraffe = true;
                 in_animals.in_impala = true;
-                in_animals.in_spottedhyena = true;
+                in_animals.in_spottedhyena_environment = true;
                 in_animals.in_bluewildebeest = true;
-                in_animals.in_whiterhino = true;
-                in_animals.in_africanwinddog = true;
+                in_animals.in_whiterhino_environment = true;
+                in_animals.in_africanwinddog_environment = true;
                 in_animals.in_spottedhyena_environment = true;
                 break;
             case environment.ENVIRONMENT.ROCKY:
                 in_animals.in_lion_environment = true;
-                in_animals.in_zebra = false;
-                in_animals.in_giraffe = false;
-                in_animals.in_impala = false;
-                in_animals.in_spottedhyena = true;
-                in_animals.in_bluewildebeest = false;
-                in_animals.in_whiterhino = false;
-                in_animals.in_africanwinddog = false;
+                in_animals.in_zebra = true;
+                in_animals.in_giraffe = true;
+                in_animals.in_impala = true;
+                in_animals.in_spottedhyena_environment = true;
+                in_animals.in_bluewildebeest = true;
+                in_animals.in_whiterhino_environment = true;
+                in_animals.in_africanwinddog_environment = true;
                 in_animals.in_spottedhyena_environment = true;
                 break;
             case environment.ENVIRONMENT.OTHER:
-                in_animals.in_lion_environment = false;
-                in_animals.in_zebra = false;
-                in_animals.in_giraffe = false;
-                in_animals.in_impala = false;
-                in_animals.in_spottedhyena = false;
-                in_animals.in_bluewildebeest = false;
-                in_animals.in_whiterhino = false;
-                in_animals.in_africanwinddog = false;
-                in_animals.in_spottedhyena_environment = false;
+                in_animals.in_lion_environment = true;
+                in_animals.in_zebra = true;
+                in_animals.in_giraffe = true;
+                in_animals.in_impala = true;
+                in_animals.in_spottedhyena_environment = true;
+                in_animals.in_bluewildebeest = true;
+                in_animals.in_whiterhino_environment = true;
+                in_animals.in_africanwinddog_environment = true;
+                in_animals.in_spottedhyena_environment = true;
                 break;
         }
     }
@@ -275,27 +285,39 @@ public class InstallAnimals : MonoBehaviour
         {
             case 1:
                 in_animals.in_lion_period = true;
-                in_animals.in_spottedhyena_period = false;
+                in_animals.in_spottedhyena_period = true;
+                in_animals.in_africanwinddog_period = false;
+                in_animals.in_whiterhino_period = false;
                 break;
             case 2:
                 in_animals.in_lion_period = false;
-                in_animals.in_spottedhyena_period = true;
+                in_animals.in_spottedhyena_period = false;
+                in_animals.in_africanwinddog_period = true;
+                in_animals.in_whiterhino_period = true;
                 break;
             case 3:
                 in_animals.in_lion_period = true;
                 in_animals.in_spottedhyena_period = false;
+                in_animals.in_africanwinddog_period = true;
+                in_animals.in_whiterhino_period = true;
                 break;
             case 4:
                 in_animals.in_lion_period = false;
                 in_animals.in_spottedhyena_period = true;
+                in_animals.in_africanwinddog_period = true;
+                in_animals.in_whiterhino_period = false;
                 break;
             case 5:
                 in_animals.in_lion_period = false;
-                in_animals.in_spottedhyena_period = true;
+                in_animals.in_spottedhyena_period = false;
+                in_animals.in_africanwinddog_period = false;
+                in_animals.in_whiterhino_period = true;
                 break;
             case 6:
                 in_animals.in_lion_period = false;
-                in_animals.in_spottedhyena_period = false;
+                in_animals.in_spottedhyena_period = true;
+                in_animals.in_africanwinddog_period = false;
+                in_animals.in_whiterhino_period = false;
                 break;
         }
     }
@@ -310,49 +332,211 @@ public class InstallAnimals : MonoBehaviour
         {
             in_animals.in_spottedhyena = true;
         }
+        if ( in_animals.in_africanwinddog_environment && in_animals.in_africanwinddog_period )
+        {
+            in_animals.in_africanwinddog = true;
+        }
+        if ( in_animals.in_whiterhino_environment && in_animals.in_whiterhino_period )
+        {
+            in_animals.in_whiterhino = true;
+        }
     }
 
     private void lionsPosition( )
     {
         if ( LION.lionsNUM == 1 )
         {
-            lion[ 0 ].transform.position = new Vector3( -9.0f, 10f, 0.0f );
+            lion[ 0 ].transform.position = new Vector3( -5.0f, 10.4f, 0.0f );
         }
         if ( LION.lionsNUM == 2 )
         {
-            lion[ 0 ].transform.position= new Vector3( -9.0f, 10f, 0.0f );
-            lion[ 1 ].transform.position = new Vector3( -7.0f, 7.5f, 0.0f );
+            lion[ 0 ].transform.position = new Vector3( -5.0f, 10.4f, 0.0f );
+            lion[ 1 ].transform.position = new Vector3( -3.0f, 7.5f, 0.0f );
         }
         if ( LION.lionsNUM == 3 )
         {
-            lion[ 0 ].transform.position = new Vector3( -9.0f, 10f, 0.0f );
-            lion[ 1 ].transform.position = new Vector3( -7.0f, 7.5f, 0.0f );
-            lion[ 2 ].transform.position = new Vector3( -11.0f, 6.5f, 0.0f );
+            lion[ 0 ].transform.position = new Vector3( -5.0f, 10.4f, 0.0f );
+            lion[ 1 ].transform.position = new Vector3( -3.0f, 7.5f, 0.0f );
+            lion[ 2 ].transform.position = new Vector3( -7.0f, 6.5f, 0.0f );
         }
         if ( LION.lionsNUM == 4 )
         {
-            lion[ 0 ].transform.position = new Vector3( -9.0f, 10f, 0.0f );
-            lion[ 1 ].transform.position = new Vector3( -7.0f, 7.5f, 0.0f );
-            lion[ 2 ].transform.position = new Vector3( -11.0f, 6.5f, 0.0f );
-            lion[ 3 ].transform.position = new Vector3( -10.0f, 8.5f, 0.0f );
+            lion[ 0 ].transform.position = new Vector3( -5.0f, 10.4f, 0.0f );
+            lion[ 1 ].transform.position = new Vector3( -3.0f, 7.5f, 0.0f );
+            lion[ 2 ].transform.position = new Vector3( -7.0f, 6.5f, 0.0f );
+            lion[ 3 ].transform.position = new Vector3( -6.0f, 8.5f, 0.0f );
         }
     }
     private void zebrasPosition( )
     {
-        if ( ZEBRA.zebrasNUM== 1 )
+        if ( ZEBRA.zebrasNUM == 1 )
         {
-            zebra[ 0 ].transform.position = new Vector3( -0.5f, 7.5f, 0.0f );
+            zebra[ 0 ].transform.position = new Vector3( 1.5f, 7.5f, 0.0f );
         }
         if ( ZEBRA.zebrasNUM == 2 )
         {
-            zebra[ 0 ].transform.position = new Vector3( -0.5f, 7.5f, 0.0f );
-            zebra[ 1 ].transform.position = new Vector3( -2.5f, 9.2f, 0.0f );
+            zebra[ 0 ].transform.position = new Vector3( 1.5f, 7.5f, 0.0f );
+            zebra[ 1 ].transform.position = new Vector3( -0.5f, 9.2f, 0.0f );
         }
         if ( ZEBRA.zebrasNUM == 3 )
         {
-            zebra[ 0 ].transform.position = new Vector3( -0.5f, 7.5f, 0.0f );
-            zebra[ 1 ].transform.position = new Vector3( -2.5f, 9.2f, 0.0f );
-            zebra[ 2 ].transform.position = new Vector3( 0.5f, 9.7f, 0.0f );
+            zebra[ 0 ].transform.position = new Vector3( 1.5f, 7.5f, 0.0f );
+            zebra[ 1 ].transform.position = new Vector3( -0.5f, 9.2f, 0.0f );
+            zebra[ 2 ].transform.position = new Vector3( 2.5f, 9.7f, 0.0f );
+        }
+    }
+    private void impalasPosition( )
+    {
+        if ( IMPALA.impalasNUM == 1 )
+        {
+            impala[ 0 ].transform.position = new Vector3( 10.0f, 10f, 0.0f );
+        }
+        if ( IMPALA.impalasNUM == 2 )
+        {
+            impala[ 0 ].transform.position = new Vector3( 10.0f, 10f, 0.0f );
+            impala[ 1 ].transform.position = new Vector3( 11.5f, 7.0f, 0.0f );
+        }
+        if ( IMPALA.impalasNUM == 3 )
+        {
+            impala[ 0 ].transform.position = new Vector3( 10.0f, 10f, 0.0f );
+            impala[ 1 ].transform.position = new Vector3( 11.5f, 7.0f, 0.0f );
+            impala[ 2 ].transform.position = new Vector3( 8.0f, 6.5f, 0.0f );
+        }
+        if ( IMPALA.impalasNUM == 4 )
+        {
+            impala[ 0 ].transform.position = new Vector3( 10.0f, 10f, 0.0f );
+            impala[ 1 ].transform.position = new Vector3( 11.5f, 7.0f, 0.0f );
+            impala[ 2 ].transform.position = new Vector3( 8.0f, 6.5f, 0.0f );
+            impala[ 3 ].transform.position = new Vector3( 9.0f, 8.2f, 0.0f );
+        }
+    }
+    private void africanwilddogsPosition( )
+    {
+        if ( AFRICANWILDDOG._africanwilddog.animalsNUM == 1 )
+        {
+            africanwilddog[ 0 ].transform.position = new Vector3( -1.5f, 16f, 0.0f );
+        }
+        if ( AFRICANWILDDOG._africanwilddog.animalsNUM == 2 )
+        {
+            africanwilddog[ 0 ].transform.position = new Vector3( -1.5f, 16f, 0.0f );
+            africanwilddog[ 1 ].transform.position = new Vector3( -3.5f, 16f, 0.0f );
+        }
+        if ( AFRICANWILDDOG._africanwilddog.animalsNUM == 3 )
+        {
+            africanwilddog[ 0 ].transform.position = new Vector3( -1.5f, 16f, 0.0f );
+            africanwilddog[ 1 ].transform.position = new Vector3( -3.5f, 16f, 0.0f );
+            africanwilddog[ 2 ].transform.position = new Vector3( -1.5f, 14.0f, 0.0f );
+        }
+        if ( AFRICANWILDDOG._africanwilddog.animalsNUM == 4 )
+        {
+            africanwilddog[ 0 ].transform.position = new Vector3( -1.5f, 16f, 0.0f );
+            africanwilddog[ 1 ].transform.position = new Vector3( -3.5f, 16f, 0.0f );
+            africanwilddog[ 2 ].transform.position = new Vector3( -1.5f, 14.0f, 0.0f );
+            africanwilddog[ 3 ].transform.position = new Vector3( -4.0f, 14.0f, 0.0f );
+        }
+        if ( AFRICANWILDDOG._africanwilddog.animalsNUM == 5 )
+        {
+            africanwilddog[ 0 ].transform.position = new Vector3( -1.5f, 16f, 0.0f );
+            africanwilddog[ 1 ].transform.position = new Vector3( -3.5f, 16f, 0.0f );
+            africanwilddog[ 2 ].transform.position = new Vector3( -1.5f, 14.0f, 0.0f );
+            africanwilddog[ 3 ].transform.position = new Vector3( -4.0f, 14.0f, 0.0f );
+            africanwilddog[ 4 ].transform.position = new Vector3( -2.5f, 13.0f, 0.0f );
+        }
+    }
+    //-8 16
+    private void spottedhyenasPosition( )
+    {
+        if ( SPOTTEDHYENA._spottedhyena.animalsNUM == 1 )
+        {
+            spottedhyena[ 0 ].transform.position = new Vector3( -10.0f, 16f, 0.0f );
+        }
+        if ( SPOTTEDHYENA._spottedhyena.animalsNUM == 2 )
+        {
+            spottedhyena[ 0 ].transform.position = new Vector3( -10.0f, 16f, 0.0f );
+            spottedhyena[ 1 ].transform.position = new Vector3( -8.0f, 14.7f, 0.0f );
+        }
+        if ( SPOTTEDHYENA._spottedhyena.animalsNUM == 3 )
+        {
+            spottedhyena[ 0 ].transform.position = new Vector3( -10.0f, 16f, 0.0f );
+            spottedhyena[ 1 ].transform.position = new Vector3( -8.0f, 14.7f, 0.0f );
+            spottedhyena[ 2 ].transform.position = new Vector3( -8.5f, 13.3f, 0.0f );
+        }
+        if ( SPOTTEDHYENA._spottedhyena.animalsNUM == 4 )
+        {
+            spottedhyena[ 0 ].transform.position = new Vector3( -10.0f, 16f, 0.0f );
+            spottedhyena[ 1 ].transform.position = new Vector3( -8.0f, 14.7f, 0.0f );
+            spottedhyena[ 2 ].transform.position = new Vector3( -8.5f, 13.3f, 0.0f );
+            spottedhyena[ 3 ].transform.position = new Vector3( -10.2f, 14.0f, 0.0f );
+        }
+        if ( SPOTTEDHYENA._spottedhyena.animalsNUM == 5 )
+        {
+            spottedhyena[ 0 ].transform.position = new Vector3( -10.0f, 16f, 0.0f );
+            spottedhyena[ 1 ].transform.position = new Vector3( -8.0f, 14.7f, 0.0f );
+            spottedhyena[ 2 ].transform.position = new Vector3( -8.5f, 13.3f, 0.0f );
+            spottedhyena[ 3 ].transform.position = new Vector3( -10.2f, 14.0f, 0.0f );
+            spottedhyena[ 4 ].transform.position = new Vector3( -7.6f, 16.0f, 0.0f );
+        }
+        if ( SPOTTEDHYENA._spottedhyena.animalsNUM == 6 )
+        {
+            spottedhyena[ 0 ].transform.position = new Vector3( -10.0f, 16f, 0.0f );
+            spottedhyena[ 1 ].transform.position = new Vector3( -8.0f, 14.7f, 0.0f );
+            spottedhyena[ 2 ].transform.position = new Vector3( -8.5f, 13.3f, 0.0f );
+            spottedhyena[ 3 ].transform.position = new Vector3( -10.2f, 14.0f, 0.0f );
+            spottedhyena[ 4 ].transform.position = new Vector3( -7.6f, 16.0f, 0.0f );
+            spottedhyena[ 5 ].transform.position = new Vector3( -6.5f, 13.5f, 0.0f );
+        }
+    }
+    //3 7 16
+    private void whiterhinosPosition( )
+    {
+        if ( WHITERHINO._whiterhino.animalsNUM == 1 )
+        {
+            whiterhino[ 0 ].transform.position = new Vector3( 9.2f, 18.4f, 0.0f );
+        }
+        if ( WHITERHINO._whiterhino.animalsNUM == 2 )
+        {
+            whiterhino[ 0 ].transform.position = new Vector3( 9.2f, 18.4f, 0.0f );
+            whiterhino[ 1 ].transform.position = new Vector3( 7.0f, 16.0f, 0.0f );
+        }
+        if ( WHITERHINO._whiterhino.animalsNUM == 3 )
+        {
+            whiterhino[ 0 ].transform.position = new Vector3( 9.2f, 18.4f, 0.0f );
+            whiterhino[ 1 ].transform.position = new Vector3( 7.0f, 16.0f, 0.0f );
+            whiterhino[ 2 ].transform.position = new Vector3( 11.15f, 15.3f, 0.0f );
+        }
+    }
+    //5 3.25 16
+    private void bluewildebeestsPosition( )
+    {
+        if ( BLUEWILDEBEEST._bluewildebeest.animalsNUM == 1 )
+        {
+            bluewildebeest[ 0 ].transform.position = new Vector3( 4.55f, 18.1f, 0.0f );
+        }
+        if ( BLUEWILDEBEEST._bluewildebeest.animalsNUM == 2 )
+        {
+            bluewildebeest[ 0 ].transform.position = new Vector3( 4.55f, 18.1f, 0.0f );
+            bluewildebeest[ 1 ].transform.position = new Vector3( 2.1f, 17.0f, 0.0f );
+        }
+        if ( BLUEWILDEBEEST._bluewildebeest.animalsNUM == 3 )
+        {
+            bluewildebeest[ 0 ].transform.position = new Vector3( 4.55f, 18.1f, 0.0f );
+            bluewildebeest[ 1 ].transform.position = new Vector3( 2.1f, 17.0f, 0.0f );
+            bluewildebeest[ 2 ].transform.position = new Vector3( 0f, 19.6f, 0.0f );
+        }
+        if ( BLUEWILDEBEEST._bluewildebeest.animalsNUM == 4 )
+        {
+            bluewildebeest[ 0 ].transform.position = new Vector3( 4.55f, 18.1f, 0.0f );
+            bluewildebeest[ 1 ].transform.position = new Vector3( 2.1f, 17.0f, 0.0f );
+            bluewildebeest[ 2 ].transform.position = new Vector3( 0f, 19.6f, 0.0f );
+            bluewildebeest[ 3 ].transform.position = new Vector3( 3.0f, 14.6f, 0.0f );
+        }
+        if ( BLUEWILDEBEEST._bluewildebeest.animalsNUM == 5 )
+        {
+            bluewildebeest[ 0 ].transform.position = new Vector3( 4.55f, 18.1f, 0.0f );
+            bluewildebeest[ 1 ].transform.position = new Vector3( 2.1f, 17.0f, 0.0f );
+            bluewildebeest[ 2 ].transform.position = new Vector3( 0f, 19.6f, 0.0f );
+            bluewildebeest[ 3 ].transform.position = new Vector3( 3.0f, 14.6f, 0.0f );
+            bluewildebeest[ 4 ].transform.position = new Vector3( 0.75f, 13.7f, 0.0f );
         }
     }
 }
