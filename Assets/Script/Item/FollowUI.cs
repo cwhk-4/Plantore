@@ -10,6 +10,7 @@ public class FollowUI : MonoBehaviour
     public Transform target;
     private Vector3 targetPos;
     [SerializeField]private int distance;
+    [SerializeField] private int xdistance;
 
     private void Start( )
     {
@@ -20,7 +21,7 @@ public class FollowUI : MonoBehaviour
     void Update()
     {
         targetPos = Camera.main.WorldToScreenPoint( target.position );
-        targetPos = new Vector3( targetPos.x, targetPos.y - distance, targetPos.z );
+        targetPos = new Vector3( targetPos.x + xdistance, targetPos.y - distance, targetPos.z );
         this.transform.position = targetPos;
     }
 }
