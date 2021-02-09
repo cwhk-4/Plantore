@@ -26,8 +26,9 @@ public class MissionControl : MonoBehaviour
 
     [SerializeField] private int NowStartingMission = 0;
 
-    [SerializeField] private RectTransform MissionClearBoard;
+    [SerializeField] private RectTransform[] MissionClearBoard;
     [SerializeField] private float AnimationSpeed;
+    private int DisplayBoardNum;
 
     private int ToMapLevel = 1;
     private bool ShowMission = false;
@@ -44,20 +45,24 @@ public class MissionControl : MonoBehaviour
 
         clearMissionBox( );
 
-        MissionClearBoard.localScale = Vector3.zero;
-        MissionClearBoard.gameObject.SetActive( false );
+        for( int i = 0; i < MissionClearBoard.Length; i++ )
+        {
+            MissionClearBoard[i].localScale = Vector3.zero;
+            MissionClearBoard[i].gameObject.SetActive( false );
+
+        }
     }
 
     private void Update( )
     {
         if( ShowMission )
         {
-            MissionClearBoard.localScale =
-                new Vector3( MissionClearBoard.localScale.x + AnimationSpeed,
-                MissionClearBoard.localScale.y + AnimationSpeed,
-                MissionClearBoard.localScale.z + AnimationSpeed);
+            MissionClearBoard[DisplayBoardNum].localScale =
+                new Vector3( MissionClearBoard[DisplayBoardNum].localScale.x + AnimationSpeed,
+                MissionClearBoard[DisplayBoardNum].localScale.y + AnimationSpeed,
+                MissionClearBoard[DisplayBoardNum].localScale.z + AnimationSpeed);
 
-            if( MissionClearBoard.localScale == Vector3.one )
+            if( MissionClearBoard[DisplayBoardNum].localScale == Vector3.one )
             {
                 ShowMission = false;
                 MissionShown = true;
@@ -67,12 +72,12 @@ public class MissionControl : MonoBehaviour
 
         if( CloseMission )
         {
-            MissionClearBoard.localScale =
-                new Vector3( MissionClearBoard.localScale.x - AnimationSpeed,
-                MissionClearBoard.localScale.y - AnimationSpeed,
-                MissionClearBoard.localScale.z - AnimationSpeed);
+            MissionClearBoard[DisplayBoardNum].localScale =
+                new Vector3( MissionClearBoard[DisplayBoardNum].localScale.x - AnimationSpeed,
+                MissionClearBoard[DisplayBoardNum].localScale.y - AnimationSpeed,
+                MissionClearBoard[DisplayBoardNum].localScale.z - AnimationSpeed);
 
-            if( MissionClearBoard.localScale == Vector3.zero )
+            if( MissionClearBoard[DisplayBoardNum].localScale == Vector3.zero )
             {
                 CloseMission = false;
                 MissionShown = false;
@@ -87,21 +92,17 @@ public class MissionControl : MonoBehaviour
         clearMissionBox( );
     }
 
+    public void InitMissionBox( )
+    {
+        clearMissionBox( );
+        setMissionNum( );
+    }
+
     private void setMissionNum( )
     {
-        if( NowStartingMission == 0 )
-        {
-            mission1Num.text = missionNowNum[0].ToString( );
-            mission2Num.text = missionNowNum[1].ToString( );
-            mission3Num.text = missionNowNum[2].ToString( );
-        }
-
-        if( NowStartingMission == 3 )
-        {
-            mission1Num.text = missionNowNum[3].ToString( );
-            mission2Num.text = missionNowNum[4].ToString( );
-            mission3Num.text = missionNowNum[5].ToString( );
-        }
+        mission1Num.text = missionNowNum[NowStartingMission].ToString( );
+        mission2Num.text = missionNowNum[NowStartingMission + 1].ToString( );
+        mission3Num.text = missionNowNum[NowStartingMission + 2].ToString( );
     }
 
     public void FoundAnimal( )
@@ -216,9 +217,20 @@ public class MissionControl : MonoBehaviour
     {
         var startingNum = NowStartingMission;
 
-        if( missionCompleted[startingNum] && missionCompleted[startingNum + 1] && missionCompleted[startingNum + 2] )
+        //we are special ver
+        if( startingNum == 3 )
         {
-            MissionCleared( startingNum / 3 + 2 );
+            if( missionCompleted[startingNum] && missionCompleted[startingNum + 1] )
+            {
+                MissionCleared( 3 );
+            }
+        }
+        else
+        {
+            if( missionCompleted[startingNum] && missionCompleted[startingNum + 1] && missionCompleted[startingNum + 2] )
+            {
+                MissionCleared( 2 );
+            }
         }
     }
 
@@ -228,13 +240,16 @@ public class MissionControl : MonoBehaviour
         {
             ToMapLevel = ToLevel;
             ShowMission = true;
-            MissionClearBoard.gameObject.SetActive( true );
+            MissionClearBoard[0].gameObject.SetActive( true );
+            DisplayBoardNum = 0;
         }
         else
         {
             if( ToLevel == 3 )
             {
-                TrialEnd( );
+                ShowMission = true;
+                MissionClearBoard[1].gameObject.SetActive( true );
+                DisplayBoardNum = 1;
             }
         }
     }
@@ -247,7 +262,7 @@ public class MissionControl : MonoBehaviour
         }
     }
 
-    private void TrialEnd( )
+    public void TrialEnd( )
     {
         trial.ShowEnd( );
     }

@@ -27,4 +27,10 @@ public class EnvironmentButtonOnSelect : MonoBehaviour, IPointerEnterHandler, IP
         image.SetNativeSize( );
     }
 
+    public void ReturnToDef( )
+    {
+        image.sprite = NormalImage;
+        image.SetNativeSize( );
+    }
+
 }
