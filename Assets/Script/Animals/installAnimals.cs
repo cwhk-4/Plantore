@@ -91,6 +91,7 @@ public class InstallAnimals : MonoBehaviour
         if ( !changedPosition )
         {
             lionsPosition( );
+            zebrasPosition( );
             changedPosition = true;
         }
     }
@@ -336,6 +337,22 @@ public class InstallAnimals : MonoBehaviour
             lion[ 3 ].transform.position = new Vector3( -10.0f, 8.5f, 0.0f );
         }
     }
-
-
+    private void zebrasPosition( )
+    {
+        if ( ZEBRA.zebrasNUM== 1 )
+        {
+            zebra[ 0 ].transform.position = new Vector3( -0.5f, 7.5f, 0.0f );
+        }
+        if ( ZEBRA.zebrasNUM == 2 )
+        {
+            zebra[ 0 ].transform.position = new Vector3( -0.5f, 7.5f, 0.0f );
+            zebra[ 1 ].transform.position = new Vector3( -2.5f, 9.2f, 0.0f );
+        }
+        if ( ZEBRA.zebrasNUM == 3 )
+        {
+            zebra[ 0 ].transform.position = new Vector3( -0.5f, 7.5f, 0.0f );
+            zebra[ 1 ].transform.position = new Vector3( -2.5f, 9.2f, 0.0f );
+            zebra[ 2 ].transform.position = new Vector3( 0.5f, 9.7f, 0.0f );
+        }
+    }
 }
