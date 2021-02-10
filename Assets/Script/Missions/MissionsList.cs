@@ -16,7 +16,7 @@ public class MissionsList : MonoBehaviour
 		Missions[2].MissionText = "かんきょうを3回なおす";
 
 		Missions[3].totalNum = 2;
-		Missions[3].MissionText = "シロサイ,カバをみつける";
+		Missions[3].MissionText = "シロサイ,ハイエナをみつける";
 
 		Missions[4].totalNum = 1;
 		Missions[4].MissionText = "肉食動物が草食動物を狩る";

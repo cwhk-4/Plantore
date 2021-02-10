@@ -21,6 +21,11 @@ public class DebugCmd : MonoBehaviour
             {
                 SceneManager.LoadSceneAsync( "Stage" );
             }
+
+            if( Input.GetKey( KeyCode.X ) )
+            {
+                Application.Quit( );
+            }
         }
     }
 }

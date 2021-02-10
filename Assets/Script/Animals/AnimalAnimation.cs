@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AnimalAnimation : MonoBehaviour
 {
@@ -25,12 +26,19 @@ public class AnimalAnimation : MonoBehaviour
         eat = Resources.LoadAll<Sprite>( path + "/Eat" );
         setWalk( );
         spriteRenderer.sprite = nowAnimation[ 0 ];
-        Delay = UnityEngine.Random.Range( 0f, 5f );
+        if( SceneManager.GetActiveScene( ).name == "Tutorial" )
+        {
+            Delay = 0;
+        }
+        else
+        {
+            Delay = UnityEngine.Random.Range( 0f, 5f );
+        }
     }
 
     void FixedUpdate( )
     {
-        if( Delay >= 0 )
+        if( Delay > 0 )
         {
             Delay -= Time.fixedDeltaTime;
         }

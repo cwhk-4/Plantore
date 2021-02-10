@@ -244,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   distance: 200
+  xdistance: 0
 --- !u!1 &6228983461691411177
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +347,7 @@ MonoBehaviour:
   text: {fileID: 6228983461436864473}
   Timer: 30
   original: {fileID: 21300000, guid: 5cc823ce0746c426b939adbdb97e9514, type: 3}
-  timeOutImage: {fileID: 21300000, guid: fbd0c291d4ce74395acda1a5a88d32e0, type: 3}
+  timeOutImage: {fileID: 21300000, guid: 4a657390870a146a794c6b238aaac6ea, type: 3}
 --- !u!114 &6228983461691411191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,3 +618,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   distance: 170
+  xdistance: 0

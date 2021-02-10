@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class DialogueEvent : MonoBehaviour
 {
+    [SerializeField] private Camera cam;
     [SerializeField] private GameObject dialogueWindow;
 
     [SerializeField] private ActivateMenu activateMenu;
@@ -134,7 +135,6 @@ public class DialogueEvent : MonoBehaviour
     public void grassClicked( )
     {
         showDialogueWindow( );
-        popUp.BoardButtonClick();
     }
 
     public void placeGrass( )
@@ -187,7 +187,9 @@ public class DialogueEvent : MonoBehaviour
         //GameObject OB_ZEBRA = Resources.Load( "Animals/Prefabs/zebra" ) as GameObject;
         if( GameObject.FindWithTag( "zebra" ) == null )
         {
-            Instantiate( _ZEBRA );
+            var grass = GameObject.FindWithTag( "Grass" ).transform.position;
+            var zebra = Instantiate( _ZEBRA );
+            zebra.transform.position = new Vector3( grass.x + 2, grass.y, grass.z );
         }
     }
 
@@ -196,23 +198,32 @@ public class DialogueEvent : MonoBehaviour
         //GameObject OB_LION = Resources.Load( "Animals/Prefabs/lion" ) as GameObject;
         if( GameObject.FindWithTag( "lion" ) == null)
         {
-            Instantiate( _LION );
+            var zebra = GameObject.FindWithTag( "zebra" ).transform.position;
+            var lion = Instantiate( _LION );
+            lion.transform.position = new Vector3( zebra.x + 1, zebra.y + 1, zebra.z );
         }
     }
 
     public void changeTool()
     {
         closeDialogueWindow( );
-        //Vector2 pos = new Vector2( Input.mousePosition.x, Input.mousePosition.y );
-        showMouseRightGuide( Vector2.zero );
+
+        var grass = GameObject.FindWithTag( "Grass" ).transform.position;
+        showMouseRightGuide(
+            new Vector2(
+                cam.WorldToScreenPoint( new Vector2( grass.x + 2.1f, grass.y - 1.55f) ).x - 960,
+                cam.WorldToScreenPoint( new Vector2( grass.x + 2.1f, grass.y - 1.55f ) ).y - 540 ) );
         checkTool = true;
     }
 
     public void waitForRepair( )
     {
         closeDialogueWindow( );
-        //Vector2 pos = new Vector2( Input.mousePosition.x, Input.mousePosition.y );
-        showMouseLeftGuide( Vector2.zero );
+        var grass = GameObject.FindWithTag( "Grass" ).transform.position;
+        showMouseLeftGuide(
+            new Vector2(
+                cam.WorldToScreenPoint( new Vector2( grass.x + 2.1f, grass.y - 1.55f ) ).x - 960,
+                cam.WorldToScreenPoint( new Vector2( grass.x + 2.1f, grass.y - 1.55f ) ).y - 540 ) );
     }
 
     public void repairGrass( )
