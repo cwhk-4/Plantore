@@ -57,27 +57,60 @@ public class MissionControl : MonoBehaviour
     {
         if( ShowMission )
         {
-            MissionClearBoard[DisplayBoardNum].localScale =
-                new Vector3( MissionClearBoard[DisplayBoardNum].localScale.x + AnimationSpeed,
-                MissionClearBoard[DisplayBoardNum].localScale.y + AnimationSpeed,
-                MissionClearBoard[DisplayBoardNum].localScale.z + AnimationSpeed);
+            if( DisplayBoardNum != -1 )
+            {
+                if( MissionClearBoard[DisplayBoardNum].localScale.x >= 1 )
+                {
+                    MissionClearBoard[DisplayBoardNum].localScale = Vector3.one;
+                }
+                else
+                {
+                    MissionClearBoard[DisplayBoardNum].localScale =
+                        new Vector3( MissionClearBoard[DisplayBoardNum].localScale.x + AnimationSpeed,
+                        MissionClearBoard[DisplayBoardNum].localScale.y + AnimationSpeed,
+                        MissionClearBoard[DisplayBoardNum].localScale.z + AnimationSpeed );
+                }
 
-            if( MissionClearBoard[DisplayBoardNum].localScale == Vector3.one )
+                if( MissionClearBoard[DisplayBoardNum].localScale == Vector3.one )
+                {
+                    ShowMission = false;
+                    MissionShown = true;
+                    MapLevel.setMapLevel( ToMapLevel );
+                    DisplayBoardNum = -1;
+                }
+            }
+            else
             {
                 ShowMission = false;
                 MissionShown = true;
-                MapLevel.setMapLevel( ToMapLevel );
             }
         }
 
         if( CloseMission )
         {
-            MissionClearBoard[DisplayBoardNum].localScale =
-                new Vector3( MissionClearBoard[DisplayBoardNum].localScale.x - AnimationSpeed,
-                MissionClearBoard[DisplayBoardNum].localScale.y - AnimationSpeed,
-                MissionClearBoard[DisplayBoardNum].localScale.z - AnimationSpeed);
+            if( DisplayBoardNum != -1 )
+            {
+                if( MissionClearBoard[DisplayBoardNum].localScale.x <= 0 )
+                {
+                    MissionClearBoard[DisplayBoardNum].localScale = Vector3.zero;
+                }
+                else
+                {
+                    MissionClearBoard[DisplayBoardNum].localScale =
+                        new Vector3( MissionClearBoard[DisplayBoardNum].localScale.x - AnimationSpeed,
+                        MissionClearBoard[DisplayBoardNum].localScale.y - AnimationSpeed,
+                        MissionClearBoard[DisplayBoardNum].localScale.z - AnimationSpeed );
+                }
 
-            if( MissionClearBoard[DisplayBoardNum].localScale == Vector3.zero )
+                if( MissionClearBoard[DisplayBoardNum].localScale == Vector3.zero )
+                {
+                    CloseMission = false;
+                    MissionShown = false;
+                    MissionClearBoard[DisplayBoardNum].gameObject.SetActive( false );
+                    DisplayBoardNum = -1;
+                }
+            }
+            else
             {
                 CloseMission = false;
                 MissionShown = false;
@@ -254,11 +287,12 @@ public class MissionControl : MonoBehaviour
         }
     }
 
-    public void CloseMissionClearBoard( )
+    public void CloseMissionClearBoard( int boardNum )
     {
         if( MissionShown )
         {
             CloseMission = true;
+            DisplayBoardNum = boardNum;
         }
     }
 

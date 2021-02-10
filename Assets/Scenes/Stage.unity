@@ -16952,7 +16952,7 @@ MonoBehaviour:
       - m_Target: {fileID: 310321039}
         m_TargetAssemblyTypeName: MissionControl, Assembly-CSharp
         m_MethodName: CloseMissionClearBoard
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17550,6 +17550,7 @@ GameObject:
   - component: {fileID: 1790710736}
   - component: {fileID: 1790710737}
   - component: {fileID: 1790710738}
+  - component: {fileID: 1790710739}
   m_Layer: 0
   m_Name: System
   m_TagString: Untagged
@@ -17628,6 +17629,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1170163bed5457793cf831b9da937b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1790710739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790710734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac421902a25b41139d003c2203e1c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MissionControl: {fileID: 310321039}
 --- !u!1 &1790946571
 GameObject:
   m_ObjectHideFlags: 0
