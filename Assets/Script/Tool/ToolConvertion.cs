@@ -7,8 +7,6 @@ public class ToolConvertion : MonoBehaviour
     private bool isCan = false;
     private bool isOnGO = false;
 
-    public GameObject grass = null;
-
     void Start()
     {
         isCan = false;
