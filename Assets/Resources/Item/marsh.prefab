@@ -447,7 +447,7 @@ MonoBehaviour:
   text: {fileID: 3505927593707313778}
   Timer: 30
   original: {fileID: 21300000, guid: b94f83478f7f34acf93ec59b2172f1b3, type: 3}
-  timeOutImage: {fileID: 21300000, guid: fbd0c291d4ce74395acda1a5a88d32e0, type: 3}
+  timeOutImage: {fileID: 21300000, guid: 9a8d36086fcb844e782af9040735209b, type: 3}
 --- !u!114 &6652426450643470656
 MonoBehaviour:
   m_ObjectHideFlags: 0

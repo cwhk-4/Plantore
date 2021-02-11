@@ -135,6 +135,7 @@ public class DialogueEvent : MonoBehaviour
     public void grassClicked( )
     {
         showDialogueWindow( );
+        activateMenu.CloseAllUI( );
     }
 
     public void placeGrass( )
