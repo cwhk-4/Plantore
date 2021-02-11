@@ -21,6 +21,8 @@ public class InstantiateMoveControl : MonoBehaviour
 
     [SerializeField] private Button RubbishBin;
 
+    [SerializeField] private GameObject StageUI;
+
     private int mapLevel;
 
     private void Start( )
@@ -40,9 +42,15 @@ public class InstantiateMoveControl : MonoBehaviour
         }
     }
 
+    private void SetUIActive( bool flag )
+    {
+        StageUI.SetActive( flag );
+    }
+
     public void StartInstantiate( )
     {
         isInstantiating = true;
+        SetUIActive( false );
     }
 
     public void FinishInstantiate( )
@@ -54,6 +62,8 @@ public class InstantiateMoveControl : MonoBehaviour
         {
             MissionControl.PlacedItem( );
         }
+
+        SetUIActive( true );
     }
 
     public bool GetIsInstantiating( )
@@ -65,11 +75,13 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         isMoving = true;
         startingTime = time;
+        SetUIActive( false );
     }
 
     public void FinishMoving( )
     {
         isMoving = false;
+        SetUIActive( true );
     }
 
     public bool GetIsMoving( )

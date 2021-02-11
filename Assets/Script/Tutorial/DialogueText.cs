@@ -9,7 +9,7 @@ public class DialogueText : MonoBehaviour
         switch( dialogueNum )
         {
             case 1:
-            str = "動物箱庭にようこそ!\n\n" +
+            str = "プラントアへようこそ!\n\n" +
                     "動物を箱庭に招き入れて自分だけの箱庭を完成させましょう!";
             break;
 
@@ -39,7 +39,7 @@ public class DialogueText : MonoBehaviour
 
             case 7:
             str = "どうぐになりましたね！\n\n" +
-                    "それでは枯れた草を左クリック長押しで修繕しましょう";
+                    "それでは枯れた草を左クリックで修繕しましょう";
             break;
 
             case 8:
@@ -55,5 +55,4 @@ public class DialogueText : MonoBehaviour
 
         return str;
     }
-
 }
