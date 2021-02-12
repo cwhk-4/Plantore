@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TilemapColorControl : MonoBehaviour
 {
-    public GameObject System;
     public TimeController TimeController;
-
     public Tilemap tilemap;
+
     public Color color;
     public Color toColor;
     public Color morning;
@@ -23,8 +20,6 @@ public class TilemapColorControl : MonoBehaviour
 
     private void Start( )
     {
-        TimeController = System.GetComponent<TimeController>( );
-        tilemap = GetComponent<Tilemap>( );
         getPeriodColor( );
         color = toColor;
     }

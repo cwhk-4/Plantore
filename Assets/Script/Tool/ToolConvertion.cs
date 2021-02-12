@@ -11,6 +11,7 @@ public class ToolConvertion : MonoBehaviour
     {
         isCan = false;
         canhotSpot = new Vector2( 0f , wateringCan.height / 3 * 2 );
+        Cursor.SetCursor( null, Vector2.zero, CursorMode.Auto );
     }
 
     void Update()
