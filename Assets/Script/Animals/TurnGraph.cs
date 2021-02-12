@@ -66,6 +66,9 @@ public class TurnGraph : MonoBehaviour
             case "whiterhino":
                 needTurn = WHITERHINO._whiterhino.needTurn;
                 break;
+            case "hippo":
+                needTurn = HIPPO._hippo.needTurn;
+                break;
         }
     }
 }

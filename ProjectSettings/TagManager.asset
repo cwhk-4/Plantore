@@ -43,6 +43,8 @@ TagManager:
   - Marsh
   - MarshExtra
   - Map
+  - HIPPOS
+  - hippo
   layers:
   - Default
   - TransparentFX

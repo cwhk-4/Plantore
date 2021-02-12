@@ -48,6 +48,9 @@ public class FindItemType : MonoBehaviour
             case "SPOTTEDHYENAS":
                 nowItem = GameObject.FindGameObjectWithTag( "Grassland" );
                 break;
+            case "HIPPOS":
+                nowItem = GameObject.FindGameObjectWithTag( "Marsh" );
+                break;
         }
     }
 

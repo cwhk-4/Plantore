@@ -41,6 +41,9 @@ public class AnimalsTimeController : MonoBehaviour
             case "BLUEWILDEBEESTS":
                 timeOut = 15.0f;
                 break;
+            case "HIPPOS":
+                timeOut = 6.0f;
+                break;
         }
     }
 

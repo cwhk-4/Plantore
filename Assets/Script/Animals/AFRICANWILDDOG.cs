@@ -112,7 +112,7 @@ public class AFRICANWILDDOG : MonoBehaviour
     {
         if ( TargetAnimals.GetComponent<WHITERHINO>( ).getItem( ) )
         {
-            if ( TargetAnimals.GetComponent<WHITERHINO>( ).itemAndAnimalPosition( ) && InstallAnimals.in_animals.in_africanwinddog )
+            if ( TargetAnimals.GetComponent<WHITERHINO>( ).itemAndAnimalPosition( ) && InstallAnimals.in_animals.in_africanwilddog )
             {
                 _africanwilddog.canMove = true;
             }

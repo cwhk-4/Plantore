@@ -22,6 +22,8 @@ public class InstallAnimals : MonoBehaviour
     public static GameObject bluewildebeestObj;
     GameObject[ ] whiterhino;
     public static GameObject whiterhinoObj;
+    GameObject[ ] hippo;
+    public static GameObject hippoObj;
 
     public static int lionsNumProbability;
     public static int zebrasNumProbability;
@@ -31,6 +33,7 @@ public class InstallAnimals : MonoBehaviour
     public static int africanwilddogsNumProbability;
     public static int bluewildebeestsNumProbability;
     public static int whiterhinosNumProbability;
+    public static int hipposNumProbability;
 
     private bool changedPosition = false;
     //
@@ -41,22 +44,25 @@ public class InstallAnimals : MonoBehaviour
     {
         public bool in_lion_environment;
         public bool in_spottedhyena_environment;
-        public bool in_africanwinddog_environment;
-        public bool in_whiterhino_environment; 
+        public bool in_africanwilddog_environment;
+        public bool in_whiterhino_environment;
+        public bool in_hippo_environment;
 
         public bool in_lion_period;
         public bool in_spottedhyena_period;
-        public bool in_africanwinddog_period;
+        public bool in_africanwilddog_period;
         public bool in_whiterhino_period;
+        public bool in_hippo_period;
 
         public bool in_lion;
         public bool in_zebra;
         public bool in_giraffe;
         public bool in_impala;
         public bool in_spottedhyena;
-        public bool in_africanwinddog;
+        public bool in_africanwilddog;
         public bool in_whiterhino;
         public bool in_bluewildebeest;
+        public bool in_hippo;
     };
     public static Animals in_animals = new Animals( );
 
@@ -71,6 +77,7 @@ public class InstallAnimals : MonoBehaviour
         africanwilddogObj = Resources.Load( "Animal/Prefabs/africanwilddog" ) as GameObject;
         whiterhinoObj = Resources.Load( "Animal/Prefabs/whiterhino" ) as GameObject;
         bluewildebeestObj = Resources.Load( "Animal/Prefabs/bluewildebeest" ) as GameObject;
+        hippoObj = Resources.Load( "Animal/Prefabs/hippo" ) as GameObject;
 
         //
         lionsNumProbability = Random.Range( 1, 21 );
@@ -81,6 +88,7 @@ public class InstallAnimals : MonoBehaviour
         africanwilddogsNumProbability = Random.Range( 1, 11 );
         bluewildebeestsNumProbability = Random.Range( 1, 11 );
         whiterhinosNumProbability = Random.Range( 1, 11 );
+        hipposNumProbability = Random.Range( 1, 3 );
     }
 
     void Update( )
@@ -102,6 +110,7 @@ public class InstallAnimals : MonoBehaviour
             spottedhyenasPosition( );
             whiterhinosPosition( );
             bluewildebeestsPosition( );
+            hippoPosition( );
             changedPosition = true;
         }
     }
@@ -233,6 +242,21 @@ public class InstallAnimals : MonoBehaviour
                     }
                 }
             }
+
+            //HIPPO
+            if ( hippo == null )
+            {
+                if ( HIPPO.hipposNum < HIPPO._hippo.animalsNUM )
+                {
+                    for ( int i = 0; i < HIPPO._hippo.animalsNUM; i++ )
+                    {
+                        Instantiate( hippoObj, new Vector3( 7.0f, 16.0f, 0.0f ), Quaternion.identity );
+                        hippo = GameObject.FindGameObjectsWithTag( "hippo" );
+                        hippo[ i ].name = "hippo" + i;
+                        hippo[ i ].transform.parent = GameObject.FindGameObjectWithTag( "HIPPOS" ).transform;
+                    }
+                }
+            }
         }
     }
 
@@ -251,8 +275,9 @@ public class InstallAnimals : MonoBehaviour
                 in_animals.in_spottedhyena_environment = true;
                 in_animals.in_bluewildebeest = true;
                 in_animals.in_whiterhino_environment = true;
-                in_animals.in_africanwinddog_environment = true;
+                in_animals.in_africanwilddog_environment = true;
                 in_animals.in_spottedhyena_environment = true;
+                in_animals.in_hippo_environment = true;
                 break;
             case environment.ENVIRONMENT.ROCKY:
                 in_animals.in_lion_environment = true;
@@ -262,8 +287,9 @@ public class InstallAnimals : MonoBehaviour
                 in_animals.in_spottedhyena_environment = true;
                 in_animals.in_bluewildebeest = true;
                 in_animals.in_whiterhino_environment = true;
-                in_animals.in_africanwinddog_environment = true;
+                in_animals.in_africanwilddog_environment = true;
                 in_animals.in_spottedhyena_environment = true;
+                in_animals.in_hippo_environment = true;
                 break;
             case environment.ENVIRONMENT.OTHER:
                 in_animals.in_lion_environment = true;
@@ -273,8 +299,9 @@ public class InstallAnimals : MonoBehaviour
                 in_animals.in_spottedhyena_environment = true;
                 in_animals.in_bluewildebeest = true;
                 in_animals.in_whiterhino_environment = true;
-                in_animals.in_africanwinddog_environment = true;
+                in_animals.in_africanwilddog_environment = true;
                 in_animals.in_spottedhyena_environment = true;
+                in_animals.in_hippo_environment = true;
                 break;
         }
     }
@@ -286,38 +313,44 @@ public class InstallAnimals : MonoBehaviour
             case 1:
                 in_animals.in_lion_period = true;
                 in_animals.in_spottedhyena_period = true;
-                in_animals.in_africanwinddog_period = false;
+                in_animals.in_africanwilddog_period = false;
                 in_animals.in_whiterhino_period = false;
+                in_animals.in_hippo_period = true;
                 break;
             case 2:
                 in_animals.in_lion_period = false;
                 in_animals.in_spottedhyena_period = false;
-                in_animals.in_africanwinddog_period = true;
+                in_animals.in_africanwilddog_period = true;
                 in_animals.in_whiterhino_period = true;
+                in_animals.in_hippo_period = true;
                 break;
             case 3:
                 in_animals.in_lion_period = true;
                 in_animals.in_spottedhyena_period = false;
-                in_animals.in_africanwinddog_period = true;
+                in_animals.in_africanwilddog_period = true;
                 in_animals.in_whiterhino_period = true;
+                in_animals.in_hippo_period = true;
                 break;
             case 4:
                 in_animals.in_lion_period = false;
                 in_animals.in_spottedhyena_period = true;
-                in_animals.in_africanwinddog_period = true;
+                in_animals.in_africanwilddog_period = true;
                 in_animals.in_whiterhino_period = false;
+                in_animals.in_hippo_period = true;
                 break;
             case 5:
                 in_animals.in_lion_period = false;
                 in_animals.in_spottedhyena_period = false;
-                in_animals.in_africanwinddog_period = false;
+                in_animals.in_africanwilddog_period = false;
                 in_animals.in_whiterhino_period = true;
+                in_animals.in_hippo_period = true;
                 break;
             case 6:
                 in_animals.in_lion_period = false;
                 in_animals.in_spottedhyena_period = true;
-                in_animals.in_africanwinddog_period = false;
+                in_animals.in_africanwilddog_period = false;
                 in_animals.in_whiterhino_period = false;
+                in_animals.in_hippo_period = true;
                 break;
         }
     }
@@ -332,13 +365,17 @@ public class InstallAnimals : MonoBehaviour
         {
             in_animals.in_spottedhyena = true;
         }
-        if ( in_animals.in_africanwinddog_environment && in_animals.in_africanwinddog_period )
+        if ( in_animals.in_africanwilddog_environment && in_animals.in_africanwilddog_period )
         {
-            in_animals.in_africanwinddog = true;
+            in_animals.in_africanwilddog = true;
         }
         if ( in_animals.in_whiterhino_environment && in_animals.in_whiterhino_period )
         {
             in_animals.in_whiterhino = true;
+        }
+        if ( in_animals.in_hippo_environment && in_animals.in_hippo_period )
+        {
+            in_animals.in_hippo = true;
         }
     }
 
@@ -537,6 +574,19 @@ public class InstallAnimals : MonoBehaviour
             bluewildebeest[ 2 ].transform.position = new Vector3( 0f, 19.6f, 0.0f );
             bluewildebeest[ 3 ].transform.position = new Vector3( 3.0f, 14.6f, 0.0f );
             bluewildebeest[ 4 ].transform.position = new Vector3( 0.75f, 13.7f, 0.0f );
+        }
+    }
+    //15, 14,4
+    private void hippoPosition( )
+    {
+        if ( HIPPO._hippo.animalsNUM == 1 )
+        {
+            hippo[ 0 ].transform.position = new Vector3( 14.6f, 17.9f, 0.0f );
+        }
+        if ( HIPPO._hippo.animalsNUM == 2 )
+        {
+            hippo[ 0 ].transform.position = new Vector3( 14.6f, 17.9f, 0.0f );
+            hippo[ 1 ].transform.position = new Vector3( 18.0f, 16.0f, 0.0f );
         }
     }
 }
