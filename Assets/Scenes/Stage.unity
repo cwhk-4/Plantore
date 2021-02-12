@@ -4185,6 +4185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 888104867}
   - component: {fileID: 888104868}
+  - component: {fileID: 888104869}
   m_Layer: 0
   m_Name: MapInfo
   m_TagString: Map
@@ -4221,6 +4222,28 @@ MonoBehaviour:
   level: 1
   MissionText: {fileID: 310321038}
   ItemUIDisplay: {fileID: 1315081111}
+--- !u!114 &888104869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888104866}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 607e7d345c7fb484aabd07b701f3efe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeController: {fileID: 1790710736}
+  tilemap: {fileID: 1085240558}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  toColor: {r: 0, g: 0, b: 0, a: 1}
+  morning: {r: 0.8392157, g: 0.83137256, b: 0.8666667, a: 1}
+  noon: {r: 1, g: 1, b: 1, a: 1}
+  evening: {r: 0.93333334, g: 0.88235295, b: 0.53333336, a: 1}
+  night: {r: 0.65882355, g: 0.654902, b: 0.6627451, a: 1}
+  midnight: {r: 0.46666667, g: 0.4627451, b: 0.47843137, a: 1}
+  sunrise: {r: 0.81960785, g: 0.8117647, b: 0.6862745, a: 1}
 --- !u!1 &896259989
 GameObject:
   m_ObjectHideFlags: 0
@@ -17719,7 +17742,7 @@ MonoBehaviour:
   nowGameHour: 0
   secToMinCount: 2
   minToHourCount: 2
-  hourToDayCount: 6
+  hourToDayCount: 24
 --- !u!114 &1790710737
 MonoBehaviour:
   m_ObjectHideFlags: 0
