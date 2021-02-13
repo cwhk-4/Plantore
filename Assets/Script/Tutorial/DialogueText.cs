@@ -9,7 +9,7 @@ public class DialogueText : MonoBehaviour
         switch( dialogueNum )
         {
             case 1:
-            str = "動物箱庭へようこそ!\n\n" +
+            str = "動物箱庭にようこそ!\n\n" +
                     "動物を箱庭に招き入れて自分だけの箱庭を完成させましょう!";
             break;
 
