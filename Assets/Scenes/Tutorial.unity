@@ -6465,7 +6465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnSelectImage: {fileID: 21300000, guid: 889ff1d6254eb4af2b30f8a2798a2141, type: 3}
-  NormalImage: {fileID: 21300000, guid: 889ff1d6254eb4af2b30f8a2798a2141, type: 3}
+  NormalImage: {fileID: 21300000, guid: 954b84ad51055470e8040a0e2c19e665, type: 3}
 --- !u!114 &2051448806
 MonoBehaviour:
   m_ObjectHideFlags: 0
