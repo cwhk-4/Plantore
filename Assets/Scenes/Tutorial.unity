@@ -6464,7 +6464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54476d7315d714503a07d37d0d6ada69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnSelectImage: {fileID: 21300000, guid: 4d264d95181844f10aeaea351e9cc97e, type: 3}
+  OnSelectImage: {fileID: 21300000, guid: 889ff1d6254eb4af2b30f8a2798a2141, type: 3}
   NormalImage: {fileID: 21300000, guid: 889ff1d6254eb4af2b30f8a2798a2141, type: 3}
 --- !u!114 &2051448806
 MonoBehaviour:
