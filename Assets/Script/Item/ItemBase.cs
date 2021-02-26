@@ -12,6 +12,7 @@ public class ItemBase : MonoBehaviour
     [SerializeField] private float ClickDelay;
     private float ClickTime;
     private int Click;
+    private bool Repairing = false;
 
     void Start( )
     {
@@ -57,7 +58,15 @@ public class ItemBase : MonoBehaviour
                     {
                         Repair( );
                     }
+
                 }
+
+                if( Input.GetMouseButtonUp( 0 ) && Repairing)
+                {
+                    countDown.StopRepairing( );
+                    Repairing = false;
+                }
+
             }
             else
             {
@@ -86,7 +95,8 @@ public class ItemBase : MonoBehaviour
 
     private void Repair( )
     {
-        countDown.ResetStartingTime( );
+        Repairing = true;
+        countDown.StartRepairing( );
         MissionControl.FixedItem( );
     }
 

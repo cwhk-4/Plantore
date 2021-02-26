@@ -17,6 +17,9 @@ public class CountDown : MonoBehaviour
     [SerializeField]private Sprite original;
     [SerializeField]private Sprite timeOutImage;
 
+    [SerializeField] private bool IsRepairing = false;
+    [SerializeField] private float RepairingSpeed = 10;
+
     private void Awake( )
     {
         canvas = GetComponentInChildren<Canvas>( );
@@ -35,6 +38,17 @@ public class CountDown : MonoBehaviour
 
     void Update()
     {
+        if( IsRepairing )
+        {
+            startingTime += Time.deltaTime * RepairingSpeed;
+
+            if( slider.value >= 1 )
+            {
+                IsRepairing = false;
+                startingTime = timeController.getNowRealSec( );
+            }
+        }
+
         CD = Timer - ( timeController.getNowRealSec( ) - startingTime );
         slider.value = ( CD / Timer );
 
@@ -74,9 +88,14 @@ public class CountDown : MonoBehaviour
         canvas.enabled = false;
     }
 
-    public void ResetStartingTime( )
+    public void StartRepairing( )
     {
-        startingTime = timeController.getNowRealSec( );
+        IsRepairing = true;
+    }
+
+    public void StopRepairing( )
+    {
+        IsRepairing = false;
     }
 
     public float getStartTime( )

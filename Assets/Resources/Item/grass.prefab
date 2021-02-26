@@ -552,6 +552,8 @@ MonoBehaviour:
   Timer: 30
   original: {fileID: 21300000, guid: 85cee2670572f498bbc0ff08a682678f, type: 3}
   timeOutImage: {fileID: 21300000, guid: 2814bce3e0477492286cdd6eb0fa9558, type: 3}
+  IsRepairing: 0
+  RepairingSpeed: 10
 --- !u!114 &-1329336550253494381
 MonoBehaviour:
   m_ObjectHideFlags: 0
