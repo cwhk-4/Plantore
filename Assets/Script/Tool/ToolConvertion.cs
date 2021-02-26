@@ -9,23 +9,21 @@ public class ToolConvertion : MonoBehaviour
 
     void Start()
     {
-        isCan = false;
-        canhotSpot = new Vector2( 0f , wateringCan.height / 3 * 2 );
-        Cursor.SetCursor( null, Vector2.zero, CursorMode.Auto );
+        ResetCan( );
     }
 
     void Update()
     {
         if( Input.GetMouseButtonDown( 1 ) )
         {
-            if( !isCan && !isOnGO)
+            if( !isCan )
             {
-                Cursor.SetCursor( wateringCan, canhotSpot, CursorMode.Auto );
+                Cursor.SetCursor( wateringCan, canhotSpot, CursorMode.ForceSoftware );
                 isCan = true;
             }
             else
             {
-                Cursor.SetCursor( null, Vector2.zero, CursorMode.Auto );
+                Cursor.SetCursor( null, Vector2.zero, CursorMode.ForceSoftware );
                 isCan = false;
             }
         }
@@ -44,5 +42,12 @@ public class ToolConvertion : MonoBehaviour
     public void setExitGO()
     {
         isOnGO = false;
+    }
+
+    public void ResetCan( )
+    {
+        isCan = false;
+        canhotSpot = new Vector2( 0f, wateringCan.height / 3 * 2 );
+        Cursor.SetCursor( null, Vector2.zero, CursorMode.Auto );
     }
 }

@@ -9,6 +9,9 @@ public class ItemBase : MonoBehaviour
     private MoveItem moveItem;
 
     [SerializeField]private bool isOnMouse;
+    [SerializeField] private float ClickDelay;
+    private float ClickTime;
+    private int Click;
 
     void Start( )
     {
@@ -22,26 +25,62 @@ public class ItemBase : MonoBehaviour
 
     private void Update( )
     {
-        if( isOnMouse )
+        //if( isOnMouse )
+        //{
+        //    if( !imController.GetIsInstantiating( ) || !imController.GetIsMoving( ) )
+        //    {
+        //        if( Input.GetMouseButtonDown( 0 ) )
+        //        {
+        //            if( toolConvertion.getIsCan( ) )
+        //            {
+        //                if(countDown.getCD() <= 0)
+        //                {
+        //                    Repair( );
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    if( Input.GetMouseButtonDown( 1 ) )
+        //    {
+        //        MoveItem( );
+        //    }
+        //}
+
+        if(isOnMouse)
         {
-            if( !imController.GetIsInstantiating( ) || !imController.GetIsMoving( ) )
+            if( toolConvertion.getIsCan( ) )
             {
                 if( Input.GetMouseButtonDown( 0 ) )
                 {
-                    if( toolConvertion.getIsCan( ) )
+                    if( countDown.getCD( ) <= 0 )
                     {
-                        if(countDown.getCD() <= 0)
-                        {
-                            Repair( );
-                        }
+                        Repair( );
+                    }
+                }
+            }
+            else
+            {
+                if( Input.GetMouseButtonUp( 0 ) )
+                {
+                    if( Time.time - ClickTime <= ClickDelay )
+                    {
+                        Click++;
+                    }
+                    else
+                    {
+                        Click = 0;
+                        ClickTime = Time.time;
+                    }
+
+                    if( Click == 2 )
+                    {
+                        MoveItem( );
                     }
                 }
             }
 
-            if( Input.GetMouseButtonDown( 1 ) )
-            {
-                MoveItem( );
-            }
+
         }
     }
 

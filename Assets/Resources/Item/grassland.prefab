@@ -364,6 +364,7 @@ MonoBehaviour:
   imController: {fileID: 0}
   toolConvertion: {fileID: 0}
   isOnMouse: 0
+  ClickDelay: 1
 --- !u!114 &6228983461691411190
 MonoBehaviour:
   m_ObjectHideFlags: 0
