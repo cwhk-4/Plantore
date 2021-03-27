@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TimeController : MonoBehaviour
 {
@@ -58,6 +56,7 @@ public class TimeController : MonoBehaviour
     {
         switch( nowGameHour )
         {
+            //朝
             case 0:
             case 1:
             case 2:
@@ -66,6 +65,7 @@ public class TimeController : MonoBehaviour
                 nowGamePeriod = 1;
                 break;
 
+            //昼
             case 5:
             case 6:
             case 7:
@@ -73,12 +73,14 @@ public class TimeController : MonoBehaviour
                 nowGamePeriod = 2;
                 break;
 
+            //夕方
             case 9:
             case 10:
             case 11:
                 nowGamePeriod = 3;
                 break;
 
+            //夜
             case 12:
             case 13:
             case 14:
@@ -87,6 +89,7 @@ public class TimeController : MonoBehaviour
                 nowGamePeriod = 4;
                 break;
 
+            //深夜
             case 17:
             case 18:
             case 19:
@@ -94,6 +97,7 @@ public class TimeController : MonoBehaviour
                 nowGamePeriod = 5;
                 break;
 
+            //早朝
             case 21:
             case 22:
             case 23:
