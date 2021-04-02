@@ -9,8 +9,8 @@ public class GridInstantiate : MonoBehaviour
     private int x;
     private int y;
 
-    private int xGridCount = 7;
-    private int yGridCount = 6;
+    private int xGridCount = 12;
+    private int yGridCount = 11;
 
     private float gridWidth = 4.8f;
     private float gridHeight = 3.1f;

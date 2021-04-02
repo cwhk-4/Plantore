@@ -4,6 +4,7 @@ public class InstantiateItem : MonoBehaviour
 {
     private InstantiateMoveControl imController;
     private TimeController timeController;
+    private GridTerritoryControl territoryControl;
 
     [SerializeField]private GameObject ItemToInstantiate;
     private GameObject parentGO;
@@ -14,6 +15,7 @@ public class InstantiateItem : MonoBehaviour
     {
         timeController = GameObject.Find( "System" ).GetComponent<TimeController>( );
         imController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
+        territoryControl = GameObject.Find( "TerritoryController" ).GetComponent<GridTerritoryControl>( );
         imController.setGOName( name );
         thisStartingTime = timeController.getNowRealSec( );
     }
@@ -66,11 +68,26 @@ public class InstantiateItem : MonoBehaviour
             item.transform.SetParent( parentGO.transform );
             item.transform.position = parentGO.transform.position;
 
+            var index = parentGO.transform.GetSiblingIndex( );
+            Debug.Log( index );
+
+            switch( name )
+            {
+                case "grass_Instan(Clone)":
+                    territoryControl.SetItem( index, 0 );
+                    break;
+
+                case "wood_Instan(Clone)":
+                    territoryControl.SetItem( index, 1 );
+                    break;
+            }
+
             if( name != "grass_Instan(Clone)" )
             {
                 imController.InstantiateExtraGrid( name );
             }
 
+            //tutorial
             if( name != "Tutorial_grass(Clone)" )
             {
                 if( imController.GetIsMoving( ) )

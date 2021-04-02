@@ -59,7 +59,7 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
-    public void SetItem( int itemNum, int index )
+    public void SetItem( int index, int itemNum )
     {
         switch( itemNum )
         {
