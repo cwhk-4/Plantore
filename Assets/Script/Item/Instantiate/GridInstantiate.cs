@@ -4,6 +4,7 @@ public class GridInstantiate : MonoBehaviour
 {
     [SerializeField] private GameObject grid;
     [SerializeField] private AvailabilityControl availabilityControl;
+    [SerializeField] private GridTerritoryControl territoryControl;
 
     private int x;
     private int y;
@@ -36,5 +37,7 @@ public class GridInstantiate : MonoBehaviour
                 totalGridCount++;
             }
         }
+
+        territoryControl.SetGrids( xGridCount * yGridCount );
     }
 }

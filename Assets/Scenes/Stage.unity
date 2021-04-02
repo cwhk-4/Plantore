@@ -4175,6 +4175,51 @@ Transform:
   m_Father: {fileID: 1240495518}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &887081445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 887081446}
+  - component: {fileID: 887081447}
+  m_Layer: 0
+  m_Name: TerritoryController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &887081446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887081445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1790710735}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &887081447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887081445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efe573b6191842d8a2096f46857cd72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GridParent: {fileID: 906629084}
+  Grids: []
 --- !u!1 &888104866
 GameObject:
   m_ObjectHideFlags: 0
@@ -4412,6 +4457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 7032335502587972046, guid: 83a8922971d2147f9950fac11979d9ee, type: 3}
   availabilityControl: {fileID: 1881095423}
+  territoryControl: {fileID: 887081447}
 --- !u!4 &906629086
 Transform:
   m_ObjectHideFlags: 0
@@ -17719,6 +17765,7 @@ Transform:
   - {fileID: 156054425}
   - {fileID: 310321036}
   - {fileID: 453900764}
+  - {fileID: 887081446}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

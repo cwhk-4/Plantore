@@ -3,18 +3,35 @@
 public class GridBase : MonoBehaviour
 {
     [SerializeField] private int totalAnimalNum = 13;
-    private GridStructBase.PassThrough passThrough = new GridStructBase.PassThrough( );
+    [SerializeField] private bool[] territory;
 
     private void Start( )
     {
-        PassThroughInit( );
+        TerritoryInit( );
     }
 
-    private void PassThroughInit( )
+    private void TerritoryInit( )
     {
+        territory = new bool[totalAnimalNum];
+
         for( int i = 0; i < totalAnimalNum; i++ )
         {
-            passThrough.animals[i] = false;
+            territory[i] = false;
         }
+    }
+
+    public void SetTerritory( int animalNum )
+    {
+        territory[animalNum] = true;
+    }
+
+    public void RemoveTerritory( int animalNum )
+    {
+        territory[animalNum] = true;
+    }
+
+    public bool GetTerritory( int animalNum )
+    {
+        return territory[animalNum];
     }
 }
