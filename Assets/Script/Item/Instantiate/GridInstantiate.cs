@@ -12,8 +12,8 @@ public class GridInstantiate : MonoBehaviour
     private int xGridCount = 12;
     private int yGridCount = 11;
 
-    private float gridWidth = 4.8f;
-    private float gridHeight = 3.1f;
+    private float gridWidth = 3.2f;
+    private float gridHeight = 1.8f;
 
     private int totalGridCount = 0;
 

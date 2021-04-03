@@ -213,8 +213,8 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         mapLevel = MapLevel.getMapLevel( );
 
-        var x = 3 + mapLevel;
-        var y = 2 + mapLevel;
+        var x = MapLevel.GetNowMapXCount( );
+        var y = MapLevel.GetNowMapYCount( );
 
         if( GridNum % xCount < x )
         {
