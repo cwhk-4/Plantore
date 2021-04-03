@@ -56,8 +56,8 @@ public class GridColorControl : MonoBehaviour
 
         var GridNum = this.transform.GetSiblingIndex( );
 
-        var x = 3 + mapLevel;
-        var y = 2 + mapLevel;
+        var x = FindObjectOfType<MapLevel>( ).GetNowMapXCount( );
+        var y = FindObjectOfType<MapLevel>( ).GetNowMapYCount( ); ;
 
         if( GridNum % xCount < x )
         {

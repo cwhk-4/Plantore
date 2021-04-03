@@ -23,8 +23,6 @@ public class InstantiateMoveControl : MonoBehaviour
 
     [SerializeField] private GameObject StageUI;
 
-    private int mapLevel;
-
     private void Start( )
     {
         RubbishBin.gameObject.SetActive( false );
@@ -211,8 +209,6 @@ public class InstantiateMoveControl : MonoBehaviour
 
     private bool CheckOutOfRange( int GridNum )
     {
-        mapLevel = MapLevel.getMapLevel( );
-
         var x = MapLevel.GetNowMapXCount( );
         var y = MapLevel.GetNowMapYCount( );
 

@@ -172,6 +172,7 @@ public class CameraMovementControl : MonoBehaviour
     private void levelCheck()
     {
         level = mapLevel.getMapLevel();
+
         switch (level)
         {
             case 1:
