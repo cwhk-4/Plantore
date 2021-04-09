@@ -102,6 +102,7 @@ public class InstantiateItem : MonoBehaviour
                 }
 
             }
+            //tutorial end
 
             Destroy( gameObject );
         }

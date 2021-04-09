@@ -2,13 +2,15 @@
 
 public class MoveItem : MonoBehaviour
 {
-    [SerializeField] private InstantiateMoveControl imController;
+    private InstantiateMoveControl imController;
+    private GridTerritoryControl territoryController;
     [SerializeField] private GameObject itemToBeInstantiate;
     [SerializeField] private int xCount = 8;
 
     void Start( )
     {
         imController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
+        territoryController = GameObject.Find( "TerritoryController" ).GetComponent<GridTerritoryControl>( );
         xCount = imController.GetXCount( );
     }
 
@@ -17,32 +19,73 @@ public class MoveItem : MonoBehaviour
         imController.StartMoving( time );
         Vector3 mousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
         mousePos = new Vector3( mousePos.x, mousePos.y, 0 );
-        var item = Instantiate( itemToBeInstantiate, mousePos, Quaternion.identity );
+        Instantiate( itemToBeInstantiate, mousePos, Quaternion.identity );
+        var index = transform.parent.GetSiblingIndex( );
 
-        if(name == "wood(Clone)" )
+        switch( name )
         {
-            var extraGridNum = transform.parent.GetSiblingIndex( ) + xCount;
-            Destroy( transform.parent.parent.GetChild( extraGridNum ).GetChild( 0 ).gameObject );
-        }
+            case "grass(Clone)":
+                territoryController.RemoveItem( index, ItemDefine.GRASS );
+                break;
 
-        if( name == "grassland(Clone)" )
-        {
-            var extraGridNum = transform.parent.GetSiblingIndex( ) - 1;
-            Destroy( transform.parent.parent.GetChild( extraGridNum ).GetChild( 0 ).gameObject );
-        }
+            case "wood(Clone)":
+                RemoveExtraGrid( ItemDefine.WOOD, index );
+                territoryController.RemoveItem( index, ItemDefine.WOOD );
+                break;
 
-        if( name == "marsh(Clone)" )
-        {
-            var extraGridNumA = transform.parent.GetSiblingIndex( ) - 1;
-            Destroy( transform.parent.parent.GetChild( extraGridNumA ).GetChild( 0 ).gameObject );
+            case "grassland(Clone)":
+                RemoveExtraGrid( ItemDefine.GRASSLAND, index );
+                territoryController.RemoveItem( index, ItemDefine.GRASSLAND );
+                break;
 
-            var extraGridNumB = transform.parent.GetSiblingIndex( ) + xCount;
-            Destroy( transform.parent.parent.GetChild( extraGridNumB ).GetChild( 0 ).gameObject );
-
-            var extraGridNumC = transform.parent.GetSiblingIndex( ) + xCount - 1;
-            Destroy( transform.parent.parent.GetChild( extraGridNumC ).GetChild( 0 ).gameObject );
+            case "marsh(Clone)":
+                RemoveExtraGrid( ItemDefine.MARSH, index );
+                territoryController.RemoveItem( index, ItemDefine.MARSH );
+                break;
         }
 
         Destroy( gameObject );
+    }
+
+    private void RemoveExtraGrid( int itemNum, int index )
+    {
+        switch( itemNum )
+        {
+            case 1:
+                RemoveWoodExtra( index );
+                break;
+
+            case 2:
+                RemoveGrasslandExtra( index );
+                break;
+
+            case 3:
+                RemoveMarshExtra( index );
+                break;
+        }
+    }
+
+    private void RemoveWoodExtra( int index )
+    {
+        var extraGridNum = index + xCount;
+        Destroy( transform.parent.parent.GetChild( extraGridNum ).GetChild( 0 ).gameObject );
+    }
+
+    private void RemoveGrasslandExtra( int index )
+    {
+        var extraGridNum = index - 1;
+        Destroy( transform.parent.parent.GetChild( extraGridNum ).GetChild( 0 ).gameObject );
+    }
+
+    private void RemoveMarshExtra( int index )
+    {
+        var extraGridNumA = index - 1;
+        Destroy( transform.parent.parent.GetChild( extraGridNumA ).GetChild( 0 ).gameObject );
+
+        var extraGridNumB = index + xCount;
+        Destroy( transform.parent.parent.GetChild( extraGridNumB ).GetChild( 0 ).gameObject );
+
+        var extraGridNumC = index + xCount - 1;
+        Destroy( transform.parent.parent.GetChild( extraGridNumC ).GetChild( 0 ).gameObject );
     }
 }

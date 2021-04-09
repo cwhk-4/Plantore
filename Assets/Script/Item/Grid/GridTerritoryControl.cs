@@ -2,6 +2,7 @@
 
 public class GridTerritoryControl : MonoBehaviour
 {
+    //caution -> setup
     private readonly int[] grass = { -12, -1, 0, 1, 12 };
     private readonly int[] grassAnimal = { AnimalDefine.ZEBRA };
     private readonly int[] wood = { -12, -1, 1, 0, 11, 12, 13, 24 };
@@ -20,7 +21,7 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
-    //caution -> here to get if is territory
+    //caution -> here to get if it is territory
     public bool GetTerritory( int index, int animalNum )
     {
         return Grids[index].GetTerritory( animalNum );
@@ -36,7 +37,8 @@ public class GridTerritoryControl : MonoBehaviour
         Grids[index].RemoveTerritory( animalNum );
     }
 
-    private void setGrass( int index )
+    //SET ITEM
+    private void SetGrass( int index )
     {
         foreach( int i in grass )
         {
@@ -47,7 +49,7 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
-    private void setWood( int index )
+    private void SetWood( int index )
     {
         foreach( int i in wood )
         {
@@ -63,13 +65,50 @@ public class GridTerritoryControl : MonoBehaviour
         switch( itemNum )
         {
             case 0: //grass
-                setGrass( index );
+                SetGrass( index );
                 break;
 
             case 1: //wood
-                setWood( index );
+                SetWood( index );
                 break;
         }  
+    }
+
+    //REMOVE ITEM
+    private void RemoveGrass( int index )
+    {
+        foreach( int i in grass )
+        {
+            foreach( int j in grassAnimal )
+            {
+                RemoveTerritory( index + i, j );
+            }
+        }
+    }
+
+    private void RemoveWood( int index )
+    {
+        foreach( int i in wood )
+        {
+            foreach( int j in woodAnimal )
+            {
+                RemoveTerritory( index + i, j );
+            }
+        }
+    }
+
+    public void RemoveItem( int index, int itemNum )
+    {
+        switch( itemNum )
+        {
+            case 0:
+                RemoveGrass( index );
+                break;
+
+            case 1:
+                RemoveWood( index );
+                break;
+        }
     }
 
 }

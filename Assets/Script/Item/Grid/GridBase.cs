@@ -27,7 +27,7 @@ public class GridBase : MonoBehaviour
 
     public void RemoveTerritory( int animalNum )
     {
-        territory[animalNum] = true;
+        territory[animalNum] = false;
     }
 
     public bool GetTerritory( int animalNum )

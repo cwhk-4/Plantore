@@ -26,28 +26,6 @@ public class ItemBase : MonoBehaviour
 
     private void Update( )
     {
-        //if( isOnMouse )
-        //{
-        //    if( !imController.GetIsInstantiating( ) || !imController.GetIsMoving( ) )
-        //    {
-        //        if( Input.GetMouseButtonDown( 0 ) )
-        //        {
-        //            if( toolConvertion.getIsCan( ) )
-        //            {
-        //                if(countDown.getCD() <= 0)
-        //                {
-        //                    Repair( );
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    if( Input.GetMouseButtonDown( 1 ) )
-        //    {
-        //        MoveItem( );
-        //    }
-        //}
-
         if(isOnMouse)
         {
             if( toolConvertion.getIsCan( ) )
