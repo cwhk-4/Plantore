@@ -44,6 +44,11 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in grassAnimal )
             {
+                if( index + i < 0 )
+                {
+                    return;
+                }
+
                 SetTerritory( index + i, j );
             }
         }
