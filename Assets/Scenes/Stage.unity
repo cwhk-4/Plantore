@@ -17739,8 +17739,6 @@ GameObject:
   - component: {fileID: 1790710737}
   - component: {fileID: 1790710738}
   - component: {fileID: 1790710739}
-  - component: {fileID: 1790710741}
-  - component: {fileID: 1790710740}
   m_Layer: 0
   m_Name: System
   m_TagString: Untagged
@@ -17833,30 +17831,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MissionControl: {fileID: 310321039}
---- !u!114 &1790710740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790710734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5fd1a81190004bf096ba9a09a87a183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1790710741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790710734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc46745cb27924e6f8f501f13a729707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1790946571
 GameObject:
   m_ObjectHideFlags: 0

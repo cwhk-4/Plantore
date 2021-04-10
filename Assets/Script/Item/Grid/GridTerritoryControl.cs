@@ -4,9 +4,9 @@ public class GridTerritoryControl : MonoBehaviour
 {
     //caution -> setup
     private readonly int[] grass = { -12, -1, 0, 1, 12 };
-    private readonly int[] grassAnimal = { AnimalDefine.ZEBRA };
+    private readonly int[] grassAnimal = { Define.ANIMAL_DEFINE.ZEBRA };
     private readonly int[] wood = { -12, -1, 1, 0, 11, 12, 13, 24 };
-    private readonly int[] woodAnimal = { AnimalDefine.GIRAFFE };
+    private readonly int[] woodAnimal = { Define.ANIMAL_DEFINE.GIRAFFE };
 
     [SerializeField] private GameObject GridParent;
     [SerializeField] private GridBase[] Grids;

@@ -25,22 +25,22 @@ public class MoveItem : MonoBehaviour
         switch( name )
         {
             case "grass(Clone)":
-                territoryController.RemoveItem( index, ItemDefine.GRASS );
+                territoryController.RemoveItem( index, Define.ITEM_DEFINE.GRASS );
                 break;
 
             case "wood(Clone)":
-                RemoveExtraGrid( ItemDefine.WOOD, index );
-                territoryController.RemoveItem( index, ItemDefine.WOOD );
+                RemoveExtraGrid( Define.ITEM_DEFINE.WOOD, index );
+                territoryController.RemoveItem( index, Define.ITEM_DEFINE.WOOD );
                 break;
 
             case "grassland(Clone)":
-                RemoveExtraGrid( ItemDefine.GRASSLAND, index );
-                territoryController.RemoveItem( index, ItemDefine.GRASSLAND );
+                RemoveExtraGrid( Define.ITEM_DEFINE.GRASSLAND, index );
+                territoryController.RemoveItem( index, Define.ITEM_DEFINE.GRASSLAND );
                 break;
 
             case "marsh(Clone)":
-                RemoveExtraGrid( ItemDefine.MARSH, index );
-                territoryController.RemoveItem( index, ItemDefine.MARSH );
+                RemoveExtraGrid( Define.ITEM_DEFINE.MARSH, index );
+                territoryController.RemoveItem( index, Define.ITEM_DEFINE.MARSH );
                 break;
         }
 
