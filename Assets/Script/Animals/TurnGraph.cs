@@ -42,10 +42,10 @@ public class TurnGraph : MonoBehaviour
     {
         switch ( this.gameObject.tag )
         {
-            case "lion":
+            case "LIONS":
                 needTurn = LION._lion.needTurn;
                 break;
-            case "zebra":
+            case "ZEBRAS":
                 needTurn = ZEBRA._zebra.needTurn;
                 break;
             case "giraffe":

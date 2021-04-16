@@ -11,7 +11,7 @@ public class ZEBRA : MonoBehaviour
 
     public AnimalsTimeController _zebraTimeController;
 
-    public static GameObject[ ] zebra;
+    public static GameObject zebra;
     public static int zebrasNUM;
     public static int findsNum;
     
@@ -38,9 +38,6 @@ public class ZEBRA : MonoBehaviour
     private void Update( )
     {
         timeIn( );
-        numsProbability( );
-        findNum( );
-        getAnimalsType( );
         setTurnScale( );
         if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 1 )
         {
@@ -71,12 +68,12 @@ public class ZEBRA : MonoBehaviour
             goStage.transform.position = newPosition;
             canFindGrass = false;
         }
-        if ( this.gameObject.transform.position == LION._lion.animals.transform.position )
-        {
-            newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
-            runaway = true;
-            goStage.transform.position = newPosition;
-        }
+        //if ( this.gameObject.transform.position == LION._lion.animals.transform.position )
+        //{
+        //    newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
+        //    runaway = true;
+        //    goStage.transform.position = newPosition;
+        //}
         if ( item == null && this.gameObject.transform.position == newPosition )
         {
             runaway = false;
@@ -92,54 +89,22 @@ public class ZEBRA : MonoBehaviour
         {
             if ( item.tag == "Grass" )
             {
+                if ( !scriptCount )
                 {
-                    if ( !scriptCount )
-                    {
-                        _zebraTimeController = this.gameObject.AddComponent<AnimalsTimeController>( );
-                        scriptCount = true;
-                    }
-                    timeToGo = this.gameObject.GetComponent<AnimalsTimeController>( ).changeTime( );
+                    _zebraTimeController = this.gameObject.AddComponent<AnimalsTimeController>( );
+                    scriptCount = true;
+                }
+                timeToGo = this.gameObject.GetComponent<AnimalsTimeController>( ).changeTime( );
 
-                    if ( timeToGo < 0 )
-                    {
-                        _zebra.canMove = true;
-                        Destroy( this.gameObject.GetComponent<AnimalsTimeController>( ) );
-                        timeControllerIn = 1;
-                        timeToGo = 0;
-                    }
+                if ( timeToGo <= 0 )
+                {
+                    _zebra.canMove = true;
+                    Destroy( this.gameObject.GetComponent<AnimalsTimeController>( ) );
+                    timeControllerIn = 1;
+                    timeToGo = 0;
                 }
             }
         }
-    }
-
-    void numsProbability( )
-    {
-        if ( InstallAnimals.zebrasNumProbability == 0 )
-        {
-            zebrasNUM = 0;
-        }
-        else if ( InstallAnimals.zebrasNumProbability == 1 )
-        {
-            zebrasNUM = 1;
-        }
-        else if ( InstallAnimals.zebrasNumProbability == 2 )
-        {
-            zebrasNUM = 2;
-        }
-        else
-        {
-            zebrasNUM = 3;
-        }
-    }
-
-    private void findNum( )
-    {
-        findsNum = this.gameObject.GetComponent<GetNum>( ).getAnimalsNum( );
-    }
-
-    private void getAnimalsType( )
-    {
-        zebra = this.gameObject.GetComponent<GetNum>( )._animals;
     }
 
     private void setTurnScale( )

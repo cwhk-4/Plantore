@@ -17,11 +17,12 @@ public class AnimalsTimeController : MonoBehaviour
     void Update( )
     {
         changeAnimalsType( );
+        //Debug.Log( changeTime( ));
     }
 
     void changeAnimalsType( )
     {
-        switch( animalsType.name )
+        switch( animalsType.tag )
         {
             case "LIONS":
                 timeOut = 5.0f;
@@ -50,7 +51,7 @@ public class AnimalsTimeController : MonoBehaviour
     public float changeTime( )
     {
         float timeOver = timeOut - ( GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( ) - startTime );
-        if ( timeReset == 0 )
+        if ( timeOver < 0 )
         {
             timeOver = 0;
             timeReset = 1;

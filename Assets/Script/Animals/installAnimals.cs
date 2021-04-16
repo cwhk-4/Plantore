@@ -8,7 +8,7 @@ public class InstallAnimals : MonoBehaviour
     //
     GameObject[ ] lion;
     public static GameObject lionObj;
-    GameObject[ ] zebra;
+    GameObject zebra;
     public static GameObject zebraObj;
     GameObject[ ] giraffe;
     public static GameObject giraffeObj;
@@ -78,17 +78,6 @@ public class InstallAnimals : MonoBehaviour
         whiterhinoObj = Resources.Load( "Animal/Prefabs/whiterhino" ) as GameObject;
         bluewildebeestObj = Resources.Load( "Animal/Prefabs/bluewildebeest" ) as GameObject;
         hippoObj = Resources.Load( "Animal/Prefabs/hippo" ) as GameObject;
-
-        //
-        lionsNumProbability = Random.Range( 1, 21 );
-        zebrasNumProbability = Random.Range( 1, 5 );
-        giraffesNumProbability = Random.Range( 1, 3 );
-        impalasNumProbability = Random.Range( 1, 11 );
-        spottedhyenasNumProbability = Random.Range( 1, 11 );
-        africanwilddogsNumProbability = Random.Range( 1, 11 );
-        bluewildebeestsNumProbability = Random.Range( 1, 11 );
-        whiterhinosNumProbability = Random.Range( 1, 11 );
-        hipposNumProbability = Random.Range( 1, 3 );
     }
 
     void Update( )
@@ -103,8 +92,6 @@ public class InstallAnimals : MonoBehaviour
         //
         if ( !changedPosition )
         {
-            lionsPosition( );
-            zebrasPosition( );
             impalasPosition( );
             africanwilddogsPosition( );
             spottedhyenasPosition( );
@@ -120,35 +107,35 @@ public class InstallAnimals : MonoBehaviour
         //LION
         if ( environment.nowLevel == 1 )
         {
-            if ( lion == null )
-            {
-                if ( LION.findsNum < LION.lionsNUM )
-                {
-                    for ( int i = 0; i < LION.lionsNUM; i++ )
-                    {
-                        Instantiate( lionObj, new Vector3( -8.0f, 8.0f , 0.0f ), Quaternion.identity );
-                        lion = GameObject.FindGameObjectsWithTag( "lion" );
-                        lion[ i ].name = "lion" + i;
-                        lion[ i ].transform.parent = GameObject.Find( "LIONS" ).transform;
-                    }
-                }
-            }
+            //if ( lion == null )
+            //{
+            //    if ( LION.findsNum < LION.lionsNUM )
+            //    {
+            //        for ( int i = 0; i < LION.lionsNUM; i++ )
+            //        {
+            //            Instantiate( lionObj, new Vector3( -8.0f, 8.0f , 0.0f ), Quaternion.identity );
+            //            lion = GameObject.FindGameObjectsWithTag( "lion" );
+            //            lion[ i ].name = "lion" + i;
+            //            lion[ i ].transform.parent = GameObject.Find( "LIONS" ).transform;
+            //        }
+            //    }
+            //}
 
             //ZEBRA
 
-            if ( zebra == null )
-            {
-                if ( ZEBRA.findsNum < ZEBRA.zebrasNUM )
-                {
-                    for ( int i = 0; i < ZEBRA.zebrasNUM; i++ )
-                    {
-                        Instantiate( zebraObj, new Vector3( 0.5f, 9.7f, 0.0f ), Quaternion.identity );
-                        zebra = GameObject.FindGameObjectsWithTag( "zebra" );
-                        zebra[ i ].name = "zebra" + i;
-                        zebra[ i ].transform.parent = GameObject.Find( "ZEBRAS" ).transform;
-                    }
-                }
-            }
+            //if ( zebra == null )
+            //{
+            //    if ( ZEBRA.findsNum < ZEBRA.zebrasNUM )
+            //    {
+            //        for ( int i = 0; i < ZEBRA.zebrasNUM; i++ )
+            //        {
+            //            Instantiate( zebraObj, new Vector3( 0.5f, 9.7f, 0.0f ), Quaternion.identity, "LIONS" );
+            //            zebra = GameObject.FindGameObjectsWithTag( "zebra" );
+            //            zebra[ i ].name = "zebra" + i;
+            //            zebra[ i ].transform.parent = GameObject.Find( "ZEBRAS" ).transform;
+            //        }
+            //    }
+            //}
 
             //GIRAFFE
             if ( giraffe == null )
@@ -379,49 +366,49 @@ public class InstallAnimals : MonoBehaviour
         }
     }
 
-    private void lionsPosition( )
-    {
-        if ( LION.lionsNUM == 1 )
-        {
-            lion[ 0 ].transform.position = new Vector3( -5.0f, 10.4f, 0.0f );
-        }
-        if ( LION.lionsNUM == 2 )
-        {
-            lion[ 0 ].transform.position = new Vector3( -5.0f, 10.4f, 0.0f );
-            lion[ 1 ].transform.position = new Vector3( -3.0f, 7.5f, 0.0f );
-        }
-        if ( LION.lionsNUM == 3 )
-        {
-            lion[ 0 ].transform.position = new Vector3( -5.0f, 10.4f, 0.0f );
-            lion[ 1 ].transform.position = new Vector3( -3.0f, 7.5f, 0.0f );
-            lion[ 2 ].transform.position = new Vector3( -7.0f, 6.5f, 0.0f );
-        }
-        if ( LION.lionsNUM == 4 )
-        {
-            lion[ 0 ].transform.position = new Vector3( -5.0f, 10.4f, 0.0f );
-            lion[ 1 ].transform.position = new Vector3( -3.0f, 7.5f, 0.0f );
-            lion[ 2 ].transform.position = new Vector3( -7.0f, 6.5f, 0.0f );
-            lion[ 3 ].transform.position = new Vector3( -6.0f, 8.5f, 0.0f );
-        }
-    }
-    private void zebrasPosition( )
-    {
-        if ( ZEBRA.zebrasNUM == 1 )
-        {
-            zebra[ 0 ].transform.position = new Vector3( 1.5f, 7.5f, 0.0f );
-        }
-        if ( ZEBRA.zebrasNUM == 2 )
-        {
-            zebra[ 0 ].transform.position = new Vector3( 1.5f, 7.5f, 0.0f );
-            zebra[ 1 ].transform.position = new Vector3( -0.5f, 9.2f, 0.0f );
-        }
-        if ( ZEBRA.zebrasNUM == 3 )
-        {
-            zebra[ 0 ].transform.position = new Vector3( 1.5f, 7.5f, 0.0f );
-            zebra[ 1 ].transform.position = new Vector3( -0.5f, 9.2f, 0.0f );
-            zebra[ 2 ].transform.position = new Vector3( 2.5f, 9.7f, 0.0f );
-        }
-    }
+    //private void lionsPosition( )
+    //{
+    //    if ( LION.lionsNUM == 1 )
+    //    {
+    //        lion[ 0 ].transform.position = new Vector3( -5.0f, 10.4f, 0.0f );
+    //    }
+    //    if ( LION.lionsNUM == 2 )
+    //    {
+    //        lion[ 0 ].transform.position = new Vector3( -5.0f, 10.4f, 0.0f );
+    //        lion[ 1 ].transform.position = new Vector3( -3.0f, 7.5f, 0.0f );
+    //    }
+    //    if ( LION.lionsNUM == 3 )
+    //    {
+    //        lion[ 0 ].transform.position = new Vector3( -5.0f, 10.4f, 0.0f );
+    //        lion[ 1 ].transform.position = new Vector3( -3.0f, 7.5f, 0.0f );
+    //        lion[ 2 ].transform.position = new Vector3( -7.0f, 6.5f, 0.0f );
+    //    }
+    //    if ( LION.lionsNUM == 4 )
+    //    {
+    //        lion[ 0 ].transform.position = new Vector3( -5.0f, 10.4f, 0.0f );
+    //        lion[ 1 ].transform.position = new Vector3( -3.0f, 7.5f, 0.0f );
+    //        lion[ 2 ].transform.position = new Vector3( -7.0f, 6.5f, 0.0f );
+    //        lion[ 3 ].transform.position = new Vector3( -6.0f, 8.5f, 0.0f );
+    //    }
+    //}
+    //private void zebrasPosition( )
+    //{
+    //    if ( ZEBRA.zebrasNUM == 1 )
+    //    {
+    //        zebra[ 0 ].transform.position = new Vector3( 1.5f, 7.5f, 0.0f );
+    //    }
+    //    if ( ZEBRA.zebrasNUM == 2 )
+    //    {
+    //        zebra[ 0 ].transform.position = new Vector3( 1.5f, 7.5f, 0.0f );
+    //        zebra[ 1 ].transform.position = new Vector3( -0.5f, 9.2f, 0.0f );
+    //    }
+    //    if ( ZEBRA.zebrasNUM == 3 )
+    //    {
+    //        zebra[ 0 ].transform.position = new Vector3( 1.5f, 7.5f, 0.0f );
+    //        zebra[ 1 ].transform.position = new Vector3( -0.5f, 9.2f, 0.0f );
+    //        zebra[ 2 ].transform.position = new Vector3( 2.5f, 9.7f, 0.0f );
+    //    }
+    //}
     private void impalasPosition( )
     {
         if ( IMPALA.impalasNUM == 1 )
