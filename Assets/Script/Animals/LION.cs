@@ -44,7 +44,7 @@ public class LION : MonoBehaviour
         timeIn( );
         setTurnScale( );
         lionMove( );
-        Debug.Log( TargetAnimals.GetComponent<ZEBRA>( ).getItem( ) );
+        Debug.Log( timeToGo );
     }
 
     void lionMove( )
@@ -60,7 +60,6 @@ public class LION : MonoBehaviour
     {
         if ( TargetAnimals.GetComponent<ZEBRA>( ).getItem( ) )
         {
-
             if ( this.gameObject.transform.position == goStage.transform.position && goPredation && TargetAnimals.GetComponent<ZEBRA>( ).itemAndAnimalPosition( ) )
             {
                 Target.transform.position = ZEBRA._zebra.animals.transform.position;
@@ -110,16 +109,17 @@ public class LION : MonoBehaviour
     void timeIn( )
     {
         if ( TargetAnimals.GetComponent<ZEBRA>( ).getItem( ) )
-        {
+        {   
             if ( TargetAnimals.GetComponent<ZEBRA>( ).itemAndAnimalPosition( ) && InstallAnimals.in_animals.in_lion && timeControllerIn == 0 )
             {
+                Debug.Log( "1111" );
                 if ( !scriptCount )
                 {
                     _lionTimeController = this.gameObject.AddComponent<AnimalsTimeController>( );
                     scriptCount = true;
                 }
                 timeToGo = this.gameObject.GetComponent<AnimalsTimeController>( ).changeTime( );
-                if ( timeToGo < 0 )
+                if ( timeToGo <= 0 )
                 {
                     _lion.canMove = true;
                     Destroy( this.gameObject.GetComponent<AnimalsTimeController>( ) );
