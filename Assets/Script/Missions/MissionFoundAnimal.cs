@@ -3,7 +3,8 @@
 public class MissionFoundAnimal : MonoBehaviour
 {
     [SerializeField]private MissionControl getThisAnimal;
-    private float foundpositionY = 4.0f; 
+    private float foundpositionXL = -9.5f;
+    private float foundpositionXR = 8.0f;
     private bool plusMissionNum = true;
     private bool getThisAnimalType;
     private bool huntingHappened = true;
@@ -19,18 +20,18 @@ public class MissionFoundAnimal : MonoBehaviour
 
     private void canFindThisAnimal( )
     {
-        if ( this.gameObject.transform.position.y < foundpositionY && plusMissionNum )
+        if ( this.gameObject.transform.position.x > foundpositionXL && this.gameObject.transform.position.x < foundpositionXR && plusMissionNum )
         {
             getThisAnimal.FoundAnimal( );
             plusMissionNum = false;
             getThisAnimalType = true;
         }
-        if ( this.gameObject.name == "WHITERHINOS" && this.gameObject.transform.position.y < foundpositionY && findRhino )
+        if ( this.gameObject.name == "WHITERHINOS" && this.gameObject.transform.position.x > foundpositionXL && this.gameObject.transform.position.x < foundpositionXR && findRhino )
         {
             getThisAnimal.FoundRhino( );
             findRhino = false;
         }
-        if ( this.gameObject.name == "HIPPOS" && this.gameObject.transform.position.y < foundpositionY && findHippo )
+        if ( this.gameObject.name == "HIPPOS" && this.gameObject.transform.position.y > foundpositionXL && this.gameObject.transform.position.x < foundpositionXR && findHippo )
         {
             getThisAnimal.FoundHippo( );
             findHippo = false;
