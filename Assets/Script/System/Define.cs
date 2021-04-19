@@ -23,6 +23,7 @@
         WOOD,
         GRASSLAND,
         MARSH,
+        ROCK,
         TOTAL_NUM,
     }
 }

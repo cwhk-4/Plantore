@@ -2,11 +2,14 @@
 
 public class GridTerritoryControl : MonoBehaviour
 {
-    //caution -> setup
     private readonly int[] grass = { -12, -1, 0, 1, 12 };
     private readonly int[] grassAnimal = { ( int )Define.ANIMAL.ZEBRA };
     private readonly int[] wood = { -12, -1, 1, 0, 11, 12, 13, 24 };
     private readonly int[] woodAnimal = { ( int )Define.ANIMAL.GIRAFFE };
+
+    //caution -> not yet setup
+    private readonly int[] rock = { -12, -1, 1, 0, 11, 12, 13, 24 };
+    private readonly int[] rockAnimal = { ( int )Define.ANIMAL.LION };
 
     [SerializeField] private GameObject GridParent;
     [SerializeField] private GridBase[] Grids;
@@ -69,17 +72,37 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
+    private void SetRock( int index )
+    {
+        foreach( int i in rock )
+        {
+            foreach( int j in rockAnimal )
+            {
+                if( index + i < 0 )
+                {
+                    return;
+                }
+                SetTerritory( index + i, j );
+            }
+        }
+    }
+
     public void SetItem( int index, int itemNum )
     {
         switch( itemNum )
         {
-            case 0: //grass
+            case ( int )Define.ITEM.GRASS:
                 SetGrass( index );
                 break;
 
-            case 1: //wood
+            case ( int )Define.ITEM.WOOD:
                 SetWood( index );
                 break;
+
+            case ( int )Define.ITEM.ROCK:
+                SetRock( index );
+                break;
+
         }  
     }
 
@@ -106,6 +129,17 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
+    private void RemoveRock( int index )
+    {
+        foreach( int i in rock )
+        {
+            foreach( int j in rockAnimal )
+            {
+                RemoveTerritory( index + i, j );
+            }
+        }
+    }
+
     public void RemoveItem( int index, int itemNum )
     {
         switch( itemNum )
@@ -116,6 +150,10 @@ public class GridTerritoryControl : MonoBehaviour
 
             case 1:
                 RemoveWood( index );
+                break;
+
+            case ( int )Define.ITEM.ROCK:
+                RemoveRock( index );
                 break;
         }
     }

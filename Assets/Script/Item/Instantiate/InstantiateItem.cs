@@ -57,6 +57,11 @@ public class InstantiateItem : MonoBehaviour
                 case "marsh_Instan(Clone)":
                     available = imController.CheckMarshGrid( );
                     break;
+
+                //caution -> new function needed
+                case "rock_Instan(Clone)":
+                    available = imController.CheckMarshGrid( );
+                    break;
             }
 
             if( !available )
@@ -74,11 +79,15 @@ public class InstantiateItem : MonoBehaviour
             switch( name )
             {
                 case "grass_Instan(Clone)":
-                    territoryControl.SetItem( index, 0 );
+                    territoryControl.SetItem( index, ( int )Define.ITEM.GRASS );
                     break;
 
                 case "wood_Instan(Clone)":
-                    territoryControl.SetItem( index, 1 );
+                    territoryControl.SetItem( index, ( int )Define.ITEM.WOOD );
+                    break;
+
+                case "rock_Instan(Clone)":
+                    territoryControl.SetItem( index, ( int )Define.ITEM.ROCK );
                     break;
             }
 
