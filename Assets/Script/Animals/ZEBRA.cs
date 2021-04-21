@@ -10,6 +10,8 @@ public class ZEBRA : MonoBehaviour
     private Vector3 newPosition;
 
     public AnimalsTimeController _zebraTimeController;
+    private GridTerritoryControl getItem;
+    private int getItemIndex;
 
     public static GameObject zebra;
     public static int zebrasNUM;
