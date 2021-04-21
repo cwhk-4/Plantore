@@ -158,4 +158,9 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
+    public Transform GetIndexTransform( int index )
+    {
+        return GridParent.transform.GetChild( index );
+    }
+
 }
