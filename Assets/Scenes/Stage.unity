@@ -1133,6 +1133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zebraTimeController: {fileID: 0}
+  getItemIndex: {fileID: 0}
+  itemChid: {fileID: 0}
 --- !u!1 &149636243
 GameObject:
   m_ObjectHideFlags: 0
@@ -5276,6 +5278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zebraTimeController: {fileID: 0}
+  getItemIndex: {fileID: 887081447}
+  itemChid: {fileID: 0}
 --- !u!114 &951517897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19073,6 +19077,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5dde9c21981854a898bb51a0a815d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nowMapLevel: 0
+  MapLevel: {fileID: 0}
+  System: {fileID: 0}
 --- !u!114 &1956758734
 MonoBehaviour:
   m_ObjectHideFlags: 0

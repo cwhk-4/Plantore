@@ -10,13 +10,15 @@ public class ZEBRA : MonoBehaviour
     private Vector3 newPosition;
 
     public AnimalsTimeController _zebraTimeController;
-    private GridTerritoryControl getItem;
-    private int getItemIndex;
+    public GridTerritoryControl getItemIndex;
+    public ItemBase ItemBase;
 
     public static GameObject zebra;
     public static int zebrasNUM;
     public static int findsNum;
-    
+    private int i = 0;
+
+    private int[ ] grassIndex = { -12, -1, 0, 1, 12 };
     private int timeControllerIn;
     private float timeToGo;
     private bool onItem = false;
@@ -46,6 +48,10 @@ public class ZEBRA : MonoBehaviour
             zebraMove( );
         }
         item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
+        if ( item )
+        {
+            ItemBase = GameObject.FindGameObjectWithTag( "Grass" ).GetComponent<ItemBase>( );
+        }
     }
 
     void zebraMove( )
@@ -60,8 +66,13 @@ public class ZEBRA : MonoBehaviour
     void changeTarget( )
     {
         if ( item && !runaway )
-        {
-            goStage.transform.position = item.transform.position;
+        { 
+            goStage.transform.position = getItemsIndex( ItemBase.GetIndex( ) + grassIndex[ i ] ).position;
+            if ( gameObject.transform.position == goStage.transform.position )
+            {
+                i ++;
+            }
+            
             canFindGrass = true;
         }
         if ( item == null && canFindGrass )
@@ -70,12 +81,6 @@ public class ZEBRA : MonoBehaviour
             goStage.transform.position = newPosition;
             canFindGrass = false;
         }
-        //if ( this.gameObject.transform.position == LION._lion.animals.transform.position )
-        //{
-        //    newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
-        //    runaway = true;
-        //    goStage.transform.position = newPosition;
-        //}
         if ( item == null && this.gameObject.transform.position == newPosition )
         {
             runaway = false;
@@ -87,7 +92,7 @@ public class ZEBRA : MonoBehaviour
 
     void timeIn( )
     {
-        if ( item && InstallAnimals.in_animals.in_zebra == true && timeControllerIn == 0 )
+        if ( item && timeControllerIn == 0 )
         {
             if ( item.tag == "Grass" )
             {
@@ -136,5 +141,10 @@ public class ZEBRA : MonoBehaviour
     public GameObject getItem( )
     {
         return item;
+    }
+
+    public Transform getItemsIndex( int index )
+    {
+        return getItemIndex.GetIndexTransform( index );
     }
 }

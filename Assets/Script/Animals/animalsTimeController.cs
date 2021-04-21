@@ -17,7 +17,6 @@ public class AnimalsTimeController : MonoBehaviour
     void Update( )
     {
         changeAnimalsType( );
-        //Debug.Log( changeTime( ));
     }
 
     void changeAnimalsType( )
