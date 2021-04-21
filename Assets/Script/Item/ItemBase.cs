@@ -95,4 +95,8 @@ public class ItemBase : MonoBehaviour
         toolConvertion.setExitGO( );
     }
 
+    public int GetIndex( )
+    {
+        return transform.parent.GetSiblingIndex( );
+    }
 }
