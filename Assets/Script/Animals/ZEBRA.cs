@@ -14,9 +14,7 @@ public class ZEBRA : MonoBehaviour
     public ItemBase ItemBase;
 
     public static GameObject zebra;
-    public static int zebrasNUM;
-    public static int findsNum;
-    private int i = 0;
+    private int i;
 
     private int[ ] grassIndex = { -12, -1, 0, 1, 12 };
     private int timeControllerIn;
@@ -39,7 +37,7 @@ public class ZEBRA : MonoBehaviour
         newPosition = new Vector3( 11.0f, Random.Range( -10, 10 ), 0.0f );
     }
 
-    private void Update( )
+    void Update( )
     {
         timeIn( );
         setTurnScale( );
@@ -48,6 +46,7 @@ public class ZEBRA : MonoBehaviour
             zebraMove( );
         }
         item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
+
         if ( item )
         {
             ItemBase = GameObject.FindGameObjectWithTag( "Grass" ).GetComponent<ItemBase>( );
@@ -71,6 +70,10 @@ public class ZEBRA : MonoBehaviour
             if ( gameObject.transform.position == goStage.transform.position )
             {
                 i ++;
+                if ( i > 4 )
+                {
+                    i = 0;
+                }
             }
             
             canFindGrass = true;

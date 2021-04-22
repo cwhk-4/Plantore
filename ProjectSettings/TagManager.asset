@@ -45,6 +45,7 @@ TagManager:
   - Map
   - HIPPOS
   - hippo
+  - Rock
   layers:
   - Default
   - TransparentFX

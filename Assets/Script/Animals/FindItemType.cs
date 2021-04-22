@@ -24,6 +24,9 @@ public class FindItemType : MonoBehaviour
             case "ZEBRAS":
                 nowItem = GameObject.FindGameObjectWithTag( "Grass" );
                 break;
+            case "LIONS":
+                nowItem = GameObject.FindGameObjectWithTag( "Rock" );
+                break;
             case "GIRAFFES":
                 if ( nowMapLevel == 1 )
                 {
