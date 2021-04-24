@@ -46,6 +46,10 @@ public class AvailabilityControl : MonoBehaviour
     {
         if( onGridNum != -1 && ( imController.GetIsInstantiating( ) || imController.GetIsMoving( ) ) )
         {
+            //caution->enable set return?
+            //then show other?
+            //caution->getcomponent->slow
+
             Grids[onGridNum].GetComponent<GridColorControl>( ).EnableAvailability( );
 
             if(imController.getGOName() == "wood_Instan(Clone)" )
@@ -90,5 +94,10 @@ public class AvailabilityControl : MonoBehaviour
                 Grids[lastGridNum + xCount - 1].GetComponent<GridColorControl>( ).DisableAvailability( );
             }
         }
+    }
+
+    private void ShowTerritories( int AnimalNum )
+    {
+
     }
 }

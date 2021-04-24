@@ -47,6 +47,7 @@ public class ZEBRA : MonoBehaviour
         }
         item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
 
+        //caution -> find -> slow
         if ( item )
         {
             ItemBase = GameObject.FindGameObjectWithTag( "Grass" ).GetComponent<ItemBase>( );
