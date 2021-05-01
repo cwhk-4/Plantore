@@ -5,6 +5,7 @@ public class InstantiateItem : MonoBehaviour
     private InstantiateMoveControl imController;
     private TimeController timeController;
     private GridTerritoryControl territoryControl;
+    private ItemStorage storage;
 
     [SerializeField]private GameObject ItemToInstantiate;
     private GameObject parentGO;
@@ -16,6 +17,8 @@ public class InstantiateItem : MonoBehaviour
         timeController = GameObject.Find( "System" ).GetComponent<TimeController>( );
         imController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
         territoryControl = GameObject.Find( "TerritoryController" ).GetComponent<GridTerritoryControl>( );
+        storage = GameObject.Find( "ItemStorage" ).GetComponent<ItemStorage>( );
+
         imController.setGOName( name );
         thisStartingTime = timeController.getNowRealSec( );
     }
@@ -80,14 +83,17 @@ public class InstantiateItem : MonoBehaviour
             {
                 case "grass_Instan(Clone)":
                     territoryControl.SetItem( index, ( int )Define.ITEM.GRASS );
+                    storage.PlaceItem( index, ( int )Define.ITEM.GRASS );
                     break;
 
                 case "wood_Instan(Clone)":
                     territoryControl.SetItem( index, ( int )Define.ITEM.WOOD );
+                    storage.PlaceItem( index, ( int )Define.ITEM.WOOD );
                     break;
 
                 case "rock_Instan(Clone)":
                     territoryControl.SetItem( index, ( int )Define.ITEM.ROCK );
+                    storage.PlaceItem( index, ( int )Define.ITEM.ROCK );
                     break;
             }
 

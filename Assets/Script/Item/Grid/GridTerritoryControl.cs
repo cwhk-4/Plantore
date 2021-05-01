@@ -2,7 +2,6 @@
 
 public class GridTerritoryControl : MonoBehaviour
 {
-    //test
     [SerializeField] private GameObject GridParent;
     [SerializeField] private GridBase[] Grids;
 
