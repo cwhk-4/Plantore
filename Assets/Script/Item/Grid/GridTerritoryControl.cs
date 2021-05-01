@@ -2,15 +2,6 @@
 
 public class GridTerritoryControl : MonoBehaviour
 {
-    private readonly int[] grass = { -12, -1, 0, 1, 12 };
-    private readonly int[] grassAnimal = { ( int )Define.ANIMAL.ZEBRA };
-    private readonly int[] wood = { -12, -1, 1, 0, 11, 12, 13, 24 };
-    private readonly int[] woodAnimal = { ( int )Define.ANIMAL.GIRAFFE };
-
-    //caution -> not yet setup
-    private readonly int[] rock = { -12, -1, 1, 0, 11, 12, 13, 24 };
-    private readonly int[] rockAnimal = { ( int )Define.ANIMAL.LION };
-
     [SerializeField] private GameObject GridParent;
     [SerializeField] private GridBase[] Grids;
 
@@ -43,9 +34,9 @@ public class GridTerritoryControl : MonoBehaviour
     //SET ITEM
     private void SetGrass( int index )
     {
-        foreach( int i in grass )
+        foreach( int i in Define.GRASS_TERRITORY )
         {
-            foreach( int j in grassAnimal )
+            foreach( int j in Define.GRASS_ANIMAL )
             {
                 if( index + i < 0 )
                 {
@@ -59,9 +50,9 @@ public class GridTerritoryControl : MonoBehaviour
 
     private void SetWood( int index )
     {
-        foreach( int i in wood )
+        foreach( int i in Define.WOOD_TERRITORY )
         {
-            foreach( int j in woodAnimal )
+            foreach( int j in Define.WOOD_ANIMAL )
             {
                 if( index + i < 0 )
                 {
@@ -74,9 +65,9 @@ public class GridTerritoryControl : MonoBehaviour
 
     private void SetRock( int index )
     {
-        foreach( int i in rock )
+        foreach( int i in Define.ROCK_TERRITORY )
         {
-            foreach( int j in rockAnimal )
+            foreach( int j in Define.ROCK_ANIMAL )
             {
                 if( index + i < 0 )
                 {
@@ -109,9 +100,9 @@ public class GridTerritoryControl : MonoBehaviour
     //REMOVE ITEM
     private void RemoveGrass( int index )
     {
-        foreach( int i in grass )
+        foreach( int i in Define.GRASS_TERRITORY )
         {
-            foreach( int j in grassAnimal )
+            foreach( int j in Define.GRASS_ANIMAL )
             {
                 RemoveTerritory( index + i, j );
             }
@@ -120,9 +111,9 @@ public class GridTerritoryControl : MonoBehaviour
 
     private void RemoveWood( int index )
     {
-        foreach( int i in wood )
+        foreach( int i in Define.WOOD_TERRITORY )
         {
-            foreach( int j in woodAnimal )
+            foreach( int j in Define.WOOD_ANIMAL )
             {
                 RemoveTerritory( index + i, j );
             }
@@ -131,9 +122,9 @@ public class GridTerritoryControl : MonoBehaviour
 
     private void RemoveRock( int index )
     {
-        foreach( int i in rock )
+        foreach( int i in Define.ROCK_TERRITORY )
         {
-            foreach( int j in rockAnimal )
+            foreach( int j in Define.ROCK_ANIMAL )
             {
                 RemoveTerritory( index + i, j );
             }
