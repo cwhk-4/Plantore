@@ -2,7 +2,7 @@
 
 public class AvailabilityControl : MonoBehaviour
 {
-    [SerializeField] private GameObject[] Grids;
+    [SerializeField] private GridColorControl[] Grids;
     [SerializeField] private InstantiateMoveControl imController;
 
     private int xCount;
@@ -20,13 +20,13 @@ public class AvailabilityControl : MonoBehaviour
     {
         xCount = x;
         yCount = y;
-        Grids = new GameObject[x * y];
+        Grids = new GridColorControl[x * y];
         imController.setXCount( xCount );
     }
 
     public void SetGrid( int num, GameObject child )
     {
-        Grids[num] = child;
+        Grids[num] = child.GetComponent<GridColorControl>( );
     }
 
     public void OnGrid( int num )
@@ -46,27 +46,27 @@ public class AvailabilityControl : MonoBehaviour
     {
         if( onGridNum != -1 && ( imController.GetIsInstantiating( ) || imController.GetIsMoving( ) ) )
         {
-            //caution->enable set return?
+            //caution -> enable set return?
+            //**show territory
             //then show other?
-            //caution->getcomponent->slow
 
-            Grids[onGridNum].GetComponent<GridColorControl>( ).EnableAvailability( );
+            Grids[onGridNum].EnableAvailability( );
 
             if(imController.getGOName() == "wood_Instan(Clone)" )
             {
-                Grids[onGridNum + xCount].GetComponent<GridColorControl>( ).EnableAvailability( );
+                Grids[onGridNum + xCount].EnableAvailability( );
             }
 
             if( imController.getGOName( ) == "grassland_Instan(Clone)" )
             {
-                Grids[onGridNum - 1].GetComponent<GridColorControl>( ).EnableAvailability( );
+                Grids[onGridNum - 1].EnableAvailability( );
             }
 
             if( imController.getGOName( ) == "marsh_Instan(Clone)" )
             {
-                Grids[onGridNum - 1].GetComponent<GridColorControl>( ).EnableAvailability( );
-                Grids[onGridNum + xCount].GetComponent<GridColorControl>( ).EnableAvailability( );
-                Grids[onGridNum + xCount - 1].GetComponent<GridColorControl>( ).EnableAvailability( );
+                Grids[onGridNum - 1].EnableAvailability( );
+                Grids[onGridNum + xCount].EnableAvailability( );
+                Grids[onGridNum + xCount - 1].EnableAvailability( );
             }
         }
     }
@@ -75,23 +75,23 @@ public class AvailabilityControl : MonoBehaviour
     {
         if( lastGridNum != -1 )
         {
-            Grids[lastGridNum].GetComponent<GridColorControl>( ).DisableAvailability( );
+            Grids[lastGridNum].DisableAvailability( );
 
             if( imController.getGOName( ) == "wood_Instan(Clone)" )
             {
-                Grids[lastGridNum + xCount].GetComponent<GridColorControl>( ).DisableAvailability( );
+                Grids[lastGridNum + xCount].DisableAvailability( );
             }
 
             if( imController.getGOName( ) == "grassland_Instan(Clone)" )
             {
-                Grids[lastGridNum - 1].GetComponent<GridColorControl>( ).DisableAvailability( );
+                Grids[lastGridNum - 1].DisableAvailability( );
             }
 
             if( imController.getGOName( ) == "marsh_Instan(Clone)" )
             {
-                Grids[lastGridNum - 1].GetComponent<GridColorControl>( ).DisableAvailability( );
-                Grids[lastGridNum + xCount].GetComponent<GridColorControl>( ).DisableAvailability( );
-                Grids[lastGridNum + xCount - 1].GetComponent<GridColorControl>( ).DisableAvailability( );
+                Grids[lastGridNum - 1].DisableAvailability( );
+                Grids[lastGridNum + xCount].DisableAvailability( );
+                Grids[lastGridNum + xCount - 1].DisableAvailability( );
             }
         }
     }
