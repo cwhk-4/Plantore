@@ -15243,6 +15243,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridParent: {fileID: 906629084}
+  grass: 
+  wood: 
+  grassland: 
+  marsh: 
+  rock: 
 --- !u!1 &1240495517
 GameObject:
   m_ObjectHideFlags: 0
