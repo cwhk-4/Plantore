@@ -446,7 +446,7 @@ MonoBehaviour:
   slider: {fileID: 8584160821621319382}
   text: {fileID: 3505927593707313778}
   Timer: 30
-  original: {fileID: 21300000, guid: b94f83478f7f34acf93ec59b2172f1b3, type: 3}
+  original: {fileID: 21300000, guid: 08cc27f9ecbad254ebec3aa276695a44, type: 3}
   timeOutImage: {fileID: 21300000, guid: 9a8d36086fcb844e782af9040735209b, type: 3}
   IsRepairing: 0
   RepairingSpeed: 10
