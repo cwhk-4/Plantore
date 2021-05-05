@@ -524,7 +524,7 @@ SpriteRenderer:
   m_SortingLayerID: 92946567
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 85cee2670572f498bbc0ff08a682678f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8dda51f42c1c3c04fb03fb7042fac3c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -550,7 +550,7 @@ MonoBehaviour:
   slider: {fileID: 6587741820147400953}
   text: {fileID: 6587741819437575037}
   Timer: 30
-  original: {fileID: 21300000, guid: 85cee2670572f498bbc0ff08a682678f, type: 3}
+  original: {fileID: 21300000, guid: 8dda51f42c1c3c04fb03fb7042fac3c7, type: 3}
   timeOutImage: {fileID: 21300000, guid: 2814bce3e0477492286cdd6eb0fa9558, type: 3}
   IsRepairing: 0
   RepairingSpeed: 10
@@ -583,9 +583,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2ace78561114d52bdea4bf9ec68b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imController: {fileID: 0}
   itemToBeInstantiate: {fileID: 5095705009213696844, guid: b5d6256b0797b45a2902cf5608254987, type: 3}
   xCount: 8
+  queueNum: -1
 --- !u!1 &6587741821024494563
 GameObject:
   m_ObjectHideFlags: 0

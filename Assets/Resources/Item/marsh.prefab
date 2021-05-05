@@ -420,7 +420,7 @@ SpriteRenderer:
   m_SortingLayerID: 92946567
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: b94f83478f7f34acf93ec59b2172f1b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 08cc27f9ecbad254ebec3aa276695a44, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -448,6 +448,8 @@ MonoBehaviour:
   Timer: 30
   original: {fileID: 21300000, guid: b94f83478f7f34acf93ec59b2172f1b3, type: 3}
   timeOutImage: {fileID: 21300000, guid: 9a8d36086fcb844e782af9040735209b, type: 3}
+  IsRepairing: 0
+  RepairingSpeed: 10
 --- !u!114 &6652426450643470656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,9 +479,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2ace78561114d52bdea4bf9ec68b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imController: {fileID: 0}
   itemToBeInstantiate: {fileID: 8642123341480803075, guid: 92b364ea915ed49db940a82da0bbbe0c, type: 3}
   xCount: 8
+  queueNum: -1
 --- !u!1 &7632158571744373881
 GameObject:
   m_ObjectHideFlags: 0
