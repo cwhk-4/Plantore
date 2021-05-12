@@ -24,7 +24,6 @@ public class ZEBRA : MonoBehaviour
     private bool runaway = false;
     private bool scriptCount = false;
 
-
     void Start( )
     {
         _zebra.animals = this.gameObject;
@@ -46,11 +45,9 @@ public class ZEBRA : MonoBehaviour
             zebraMove( );
         }
         item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
-
-        //caution -> find -> slow
         if ( item )
         {
-            ItemBase = GameObject.FindGameObjectWithTag( "Grass" ).GetComponent<ItemBase>( );
+            ItemBase = item.GetComponent<ItemBase>( );
         }
     }
 
