@@ -25,14 +25,14 @@ public class TurnGraph : MonoBehaviour
         {
             if ( scaleX > minScaleX )
             {
-                scaleX -= 0.02f;
+                scaleX *= -1;
                 nowAnimal.transform.localScale = new Vector3( scaleX, 1, 0 );
             }
         }else
         {
             if ( scaleX < maxScaleX )
             {
-                scaleX += 0.02f;
+                scaleX *= -1;
                 nowAnimal.transform.localScale = new Vector3( scaleX, 1, 0 );
             }
         }
