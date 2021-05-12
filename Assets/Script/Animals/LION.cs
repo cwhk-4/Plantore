@@ -46,7 +46,7 @@ public class LION : MonoBehaviour
         item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
         if ( item )
         {
-            ItemBase = GameObject.FindGameObjectWithTag( "Rock" ).GetComponent<ItemBase>( );
+            ItemBase = item.GetComponent<ItemBase>( );
         }
     }
 
