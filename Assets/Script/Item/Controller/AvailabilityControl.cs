@@ -45,28 +45,40 @@ public class AvailabilityControl : MonoBehaviour
     {
         if( onGridNum != -1 && ( imController.GetIsInstantiating( ) || imController.GetIsMoving( ) ) )
         {
-            //caution -> enable set return?
-            //**show territory
-            //then show other?
-
             Grids[onGridNum].EnableAvailability( );
 
-            if(imController.getGOName() == "wood_Instan(Clone)" )
+            switch( imController.getGOItemNum( ) )
             {
-                Grids[onGridNum + xCount].EnableAvailability( );
-            }
+                case ( int )Define.ITEM.WOOD:
+                    EnableWood( );
+                    break;
 
-            if( imController.getGOName( ) == "grassland_Instan(Clone)" )
-            {
-                Grids[onGridNum - 1].EnableAvailability( );
-            }
+                case ( int )Define.ITEM.GRASSLAND:
+                    EnableGrassland( );
+                    break;
 
-            if( imController.getGOName( ) == "marsh_Instan(Clone)" )
-            {
-                Grids[onGridNum - 1].EnableAvailability( );
-                Grids[onGridNum + xCount].EnableAvailability( );
-                Grids[onGridNum + xCount - 1].EnableAvailability( );
+                case ( int )Define.ITEM.MARSH:
+                    EnableMarsh( );
+                    break;
             }
+        }
+    }
+
+    private void EnableWood( )
+    {
+        Grids[onGridNum + xCount].EnableAvailability( );
+    }
+
+    private void EnableGrassland( )
+    {
+        Grids[onGridNum - 1].EnableAvailability( );
+    }
+
+    private void EnableMarsh( )
+    {
+        for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
+        {
+            Grids[onGridNum - Define.MARSH_SIZE[i]].EnableAvailability( );
         }
     }
 
@@ -76,22 +88,39 @@ public class AvailabilityControl : MonoBehaviour
         {
             Grids[lastGridNum].DisableAvailability( );
 
-            if( imController.getGOName( ) == "wood_Instan(Clone)" )
+            switch( imController.getGOItemNum( ) )
             {
-                Grids[lastGridNum + xCount].DisableAvailability( );
-            }
+                case ( int )Define.ITEM.WOOD:
+                    DisableWood( );
+                    break;
 
-            if( imController.getGOName( ) == "grassland_Instan(Clone)" )
-            {
-                Grids[lastGridNum - 1].DisableAvailability( );
-            }
+                case ( int )Define.ITEM.GRASSLAND:
+                    DisableGrassland( );
+                    break;
 
-            if( imController.getGOName( ) == "marsh_Instan(Clone)" )
-            {
-                Grids[lastGridNum - 1].DisableAvailability( );
-                Grids[lastGridNum + xCount].DisableAvailability( );
-                Grids[lastGridNum + xCount - 1].DisableAvailability( );
+                case ( int )Define.ITEM.MARSH:
+                    DisableMarsh( );
+                    break;
             }
+        }
+    }
+
+
+    private void DisableWood( )
+    {
+        Grids[onGridNum + xCount].DisableAvailability( );
+    }
+
+    private void DisableGrassland( )
+    {
+        Grids[onGridNum - 1].DisableAvailability( );
+    }
+
+    private void DisableMarsh( )
+    {
+        for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
+        {
+            Grids[onGridNum - Define.MARSH_SIZE[i]].DisableAvailability( );
         }
     }
 

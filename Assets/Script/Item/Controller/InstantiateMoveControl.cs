@@ -10,7 +10,7 @@ public class InstantiateMoveControl : MonoBehaviour
     [SerializeField] private bool isMoving = false;
 
     [SerializeField] private float startingTime;
-    [SerializeField] private string GOName;
+    [SerializeField] private int GOItemNum;
 
     [SerializeField] private GameObject gridInstan;
     [SerializeField] private int nowGridNum;
@@ -91,22 +91,20 @@ public class InstantiateMoveControl : MonoBehaviour
         return startingTime;
     }
 
-    public void setGOName( string str )
+    public void setGOItemNum( int itemNum )
     {
-        GOName = str;
+        GOItemNum = itemNum;
     }
 
-    public string getGOName( )
+    public int getGOItemNum( )
     {
-        return GOName;
+        return GOItemNum;
     }
 
     public void setNowGrid( int num )
     {
         nowGridNum = num;
     }
-
-    
 
     private void InstanWoodExtraGrid( )
     {

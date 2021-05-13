@@ -21,7 +21,6 @@ public class InstantiateItem : MonoBehaviour
         territoryControl = GameObject.Find( "TerritoryController" ).GetComponent<GridTerritoryControl>( );
         storage = GameObject.Find( "ItemStorage" ).GetComponent<ItemStorage>( );
 
-        imController.setGOName( name );
         thisStartingTime = timeController.getNowRealSec( );
 
         switch( name )
@@ -46,6 +45,8 @@ public class InstantiateItem : MonoBehaviour
                 itemNum = ( int )Define.ITEM.ROCK;
                 break;
         }
+
+        imController.setGOItemNum( itemNum );
     }
 
     private void Update( )
@@ -85,7 +86,6 @@ public class InstantiateItem : MonoBehaviour
             var index = parentGO.transform.GetSiblingIndex( );
             Debug.Log( index );
 
-            //caution lv1 item only
             territoryControl.SetItem( index, itemNum );
             storage.PlaceItem( index, itemNum );
 
@@ -94,7 +94,7 @@ public class InstantiateItem : MonoBehaviour
                 imController.InstantiateExtraGrid( name );
             }
 
-            //tutorial
+            //tutorial?
             if( name != "Tutorial_grass(Clone)" )
             {
                 if( imController.GetIsMoving( ) )
