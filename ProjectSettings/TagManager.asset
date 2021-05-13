@@ -46,6 +46,7 @@ TagManager:
   - HIPPOS
   - hippo
   - Rock
+  - RockExtra
   layers:
   - Default
   - TransparentFX
