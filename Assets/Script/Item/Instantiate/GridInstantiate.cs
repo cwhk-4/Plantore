@@ -9,8 +9,8 @@ public class GridInstantiate : MonoBehaviour
     private int x;
     private int y;
 
-    private int xGridCount = 12;
-    private int yGridCount = 11;
+    private int xGridCount = Define.XCOUNT;
+    private int yGridCount = Define.YCOUNT;
 
     private float gridWidth = 3.2f;
     private float gridHeight = 1.8f;
@@ -20,6 +20,7 @@ public class GridInstantiate : MonoBehaviour
     void Start()
     {
         availabilityControl.SetGridSize( xGridCount, yGridCount );
+        territoryControl.SetGridSize( xGridCount * yGridCount );
 
         for( y = 0; y < yGridCount; y++ )
         {
@@ -31,13 +32,13 @@ public class GridInstantiate : MonoBehaviour
 
                 var gridName = "x" + x + "y" + y;
                 gridInstan.name = gridName;
-                gridInstan.GetComponent<GridColorControl>( ).setXCount( xGridCount );
 
                 availabilityControl.SetGrid( totalGridCount, gridInstan );
+                territoryControl.SetGrid( totalGridCount );
                 totalGridCount++;
             }
         }
 
-        territoryControl.SetGrids( xGridCount * yGridCount );
+
     }
 }

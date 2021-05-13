@@ -5,14 +5,14 @@ public class GridTerritoryControl : MonoBehaviour
     [SerializeField] private GameObject GridParent;
     [SerializeField] private GridBase[] Grids;
 
-    public void SetGrids( int size )
+    public void SetGridSize( int size )
     {
         Grids = new GridBase[size];
+    }
 
-        for( int i = 0; i < size; i++ )
-        {
-            Grids[i] = GridParent.transform.GetChild( i ).gameObject.GetComponent<GridBase>( );
-        }
+    public void SetGrid( int index )
+    {
+        Grids[index] = GridParent.transform.GetChild( index ).gameObject.GetComponent<GridBase>( );
     }
 
     //caution -> here to get if it is territory
@@ -78,6 +78,36 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
+    private void SetGrassland( int index )
+    {
+        foreach( int i in Define.GRASSLAND_TERRITORY )
+        {
+            foreach( int j in Define.GRASSLAND_ANIMAL )
+            {
+                if( index + i < 0 )
+                {
+                    return;
+                }
+                SetTerritory( index + i, j );
+            }
+        }
+    }
+
+    private void SetMarsh( int index )
+    {
+        foreach( int i in Define.MARSH_TERRITORY )
+        {
+            foreach( int j in Define.MARSH_ANIMAL )
+            {
+                if( index + i < 0 )
+                {
+                    return;
+                }
+                SetTerritory( index + i, j );
+            }
+        }
+    }
+
     public void SetItem( int index, int itemNum )
     {
         switch( itemNum )
@@ -94,6 +124,13 @@ public class GridTerritoryControl : MonoBehaviour
                 SetRock( index );
                 break;
 
+            case ( int )Define.ITEM.GRASSLAND:
+                SetGrassland( index );
+                break;
+
+            case ( int )Define.ITEM.MARSH:
+                SetMarsh( index );
+                break;
         }  
     }
 
@@ -131,6 +168,28 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
+    private void RemoveGrassland( int index )
+    {
+        foreach( int i in Define.GRASSLAND_TERRITORY )
+        {
+            foreach( int j in Define.GRASSLAND_ANIMAL )
+            {
+                RemoveTerritory( index + i, j );
+            }
+        }
+    }
+
+    private void RemoveMarsh( int index )
+    {
+        foreach( int i in Define.MARSH_TERRITORY )
+        {
+            foreach( int j in Define.MARSH_ANIMAL )
+            {
+                RemoveTerritory( index + i, j );
+            }
+        }
+    }
+
     public void RemoveItem( int index, int itemNum )
     {
         switch( itemNum )
@@ -145,6 +204,14 @@ public class GridTerritoryControl : MonoBehaviour
 
             case ( int )Define.ITEM.ROCK:
                 RemoveRock( index );
+                break;
+
+            case ( int )Define.ITEM.GRASSLAND:
+                RemoveGrassland( index );
+                break;
+
+            case ( int )Define.ITEM.MARSH:
+                RemoveMarsh( index );
                 break;
         }
     }

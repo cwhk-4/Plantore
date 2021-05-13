@@ -14,11 +14,12 @@ public class GridColorControl : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>( );
         spriteRenderer.color = Color.clear;
+        setXCount( );
     }
 
-    public void setXCount( int count )
+    public void setXCount( )
     {
-        xCount = count;
+        xCount = Define.XCOUNT;
     }
 
     public void EnableAvailability( )

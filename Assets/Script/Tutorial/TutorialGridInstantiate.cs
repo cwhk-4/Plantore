@@ -30,7 +30,6 @@ public class TutorialGridInstantiate : MonoBehaviour
 
                 var gridName = "x" + x + "y" + y;
                 gridInstan.name = gridName;
-                gridInstan.GetComponent<GridColorControl>( ).setXCount( xGridCount );
 
                 availabilityControl.SetGrid( totalGridCount, gridInstan );
                 totalGridCount++;

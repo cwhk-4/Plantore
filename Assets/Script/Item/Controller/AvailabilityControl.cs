@@ -16,12 +16,11 @@ public class AvailabilityControl : MonoBehaviour
         onGridNum = -1;
     }
 
-    public void SetGridSize( int x, int y )
+    public void SetGridSize( int x, int y)
     {
         xCount = x;
         yCount = y;
-        Grids = new GridColorControl[x * y];
-        imController.setXCount( xCount );
+        Grids = new GridColorControl[xCount * yCount];
     }
 
     public void SetGrid( int num, GameObject child )

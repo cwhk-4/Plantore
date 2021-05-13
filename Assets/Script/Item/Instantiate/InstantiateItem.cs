@@ -12,6 +12,8 @@ public class InstantiateItem : MonoBehaviour
     private Vector3 mousePos = Vector3.zero;
     private float thisStartingTime;
 
+    private int itemNum;
+
     private void Start( )
     {
         timeController = GameObject.Find( "System" ).GetComponent<TimeController>( );
@@ -21,6 +23,29 @@ public class InstantiateItem : MonoBehaviour
 
         imController.setGOName( name );
         thisStartingTime = timeController.getNowRealSec( );
+
+        switch( name )
+        {
+            case "grass_Instan(Clone)":
+                itemNum = ( int )Define.ITEM.GRASS;
+                break;
+
+            case "wood_Instan(Clone)":
+                itemNum = ( int )Define.ITEM.WOOD;
+                break;
+
+            case "grassland_Instan(Clone)":
+                itemNum = ( int )Define.ITEM.GRASSLAND;
+                break;
+
+            case "marsh_Instan(Clone)":
+                itemNum = ( int )Define.ITEM.MARSH;
+                break;
+
+            case "rock_Instan(Clone)":
+                itemNum = ( int )Define.ITEM.ROCK;
+                break;
+        }
     }
 
     private void Update( )
@@ -43,28 +68,9 @@ public class InstantiateItem : MonoBehaviour
                 return;
             }
 
-            switch( name )
+            if(name!= "grass_Instan(Clone)" )
             {
-                case "grass_Instan(Clone)":
-                    available = true;
-                    break;
-
-                case "wood_Instan(Clone)":
-                    available = imController.CheckWoodGrid( );
-                    break;
-
-                case "grassland_Instan(Clone)":
-                    available = imController.CheckGrasslandGrid( );
-                    break;
-
-                case "marsh_Instan(Clone)":
-                    available = imController.CheckMarshGrid( );
-                    break;
-
-                //caution -> new function needed
-                case "rock_Instan(Clone)":
-                    available = imController.CheckMarshGrid( );
-                    break;
+                available = imController.CheckGrids( itemNum );
             }
 
             if( !available )
@@ -79,23 +85,9 @@ public class InstantiateItem : MonoBehaviour
             var index = parentGO.transform.GetSiblingIndex( );
             Debug.Log( index );
 
-            switch( name )
-            {
-                case "grass_Instan(Clone)":
-                    territoryControl.SetItem( index, ( int )Define.ITEM.GRASS );
-                    storage.PlaceItem( index, ( int )Define.ITEM.GRASS );
-                    break;
-
-                case "wood_Instan(Clone)":
-                    territoryControl.SetItem( index, ( int )Define.ITEM.WOOD );
-                    storage.PlaceItem( index, ( int )Define.ITEM.WOOD );
-                    break;
-
-                case "rock_Instan(Clone)":
-                    territoryControl.SetItem( index, ( int )Define.ITEM.ROCK );
-                    storage.PlaceItem( index, ( int )Define.ITEM.ROCK );
-                    break;
-            }
+            //caution lv1 item only
+            territoryControl.SetItem( index, itemNum );
+            storage.PlaceItem( index, itemNum );
 
             if( name != "grass_Instan(Clone)" )
             {

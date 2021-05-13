@@ -15569,20 +15569,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeea71c3379440329a1e4d3fd8bebe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeController: {fileID: 1790710736}
-  MissionControl: {fileID: 310321039}
-  MapLevel: {fileID: 888104868}
+  missionControl: {fileID: 310321039}
+  mapLevel: {fileID: 888104868}
   isInstantiating: 0
   isMoving: 0
   startingTime: 0
-  movingStartingTime: 0
   GOName: 
-  GridInstan: {fileID: 906629084}
+  gridInstan: {fileID: 906629084}
   nowGridNum: 0
   xCount: 0
   extraGrid: {fileID: 1987409158960093541, guid: 384935a4e91ad40829d813f489ccb4bb, type: 3}
-  RubbishBin: {fileID: 1501620449}
-  StageUI: {fileID: 1124278636}
+  rubbishBin: {fileID: 1501620449}
+  stageUI: {fileID: 1124278636}
 --- !u!1 &1398817786
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class MoveItem : MonoBehaviour
         imController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
         territoryController = GameObject.Find( "TerritoryController" ).GetComponent<GridTerritoryControl>( );
         storage = GameObject.Find( "ItemStorage" ).GetComponent<ItemStorage>( );
-        xCount = imController.GetXCount( );
+        xCount = Define.XCOUNT;
     }
 
     public void StartMoving( float time )
