@@ -97,7 +97,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.8, y: 3.1}
+  m_Size: {x: 3.2, y: 1.8}
   m_EdgeRadius: 0
 --- !u!50 &-7241237760169532279
 Rigidbody2D:
@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   available: {r: 0.03875971, g: 1, b: 0, a: 0.23529412}
   notAvailble: {r: 1, g: 0, b: 0, a: 0.23529412}
+  territory: {r: 1, g: 1, b: 0, a: 0.23529412}
 --- !u!114 &-8287804672035493007
 MonoBehaviour:
   m_ObjectHideFlags: 0

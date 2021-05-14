@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 public class GridColorControl : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    private MapLevel mapLevel;
 
     [SerializeField] private Color available;
     [SerializeField] private Color notAvailble;
+    [SerializeField] private Color territory;
 
     private int xCount;
 
@@ -15,6 +17,7 @@ public class GridColorControl : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>( );
         spriteRenderer.color = Color.clear;
         setXCount( );
+        mapLevel = FindObjectOfType<MapLevel>( );
     }
 
     public void setXCount( )
@@ -46,19 +49,31 @@ public class GridColorControl : MonoBehaviour
         spriteRenderer.color = Color.clear;
     }
 
+    public void EnableTerritories( )
+    {
+        if( CheckRange( ) )
+        {
+            spriteRenderer.color = territory;
+        }
+        else
+        {
+            DisableAvailability( );
+        }
+    }
+
     private bool CheckRange( )
     {
-        var mapLevel = 1;
+        var level = 1;
 
         if( SceneManager.GetActiveScene( ).name == "Stage" )
         {
-            mapLevel = FindObjectOfType<MapLevel>( ).getMapLevel( );
+            level = mapLevel.getMapLevel( );
         }
 
         var GridNum = this.transform.GetSiblingIndex( );
 
-        var x = FindObjectOfType<MapLevel>( ).GetNowMapXCount( );
-        var y = FindObjectOfType<MapLevel>( ).GetNowMapYCount( ); ;
+        var x = mapLevel.GetNowMapXCount( );
+        var y = mapLevel.GetNowMapYCount( ); ;
 
         if( GridNum % xCount < x )
         {
