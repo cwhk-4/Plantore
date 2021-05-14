@@ -74,26 +74,23 @@ public class MoveItem : MonoBehaviour
 
     private void RemoveWoodExtra( int index )
     {
-        var extraGridNum = index + xCount;
+        var extraGridNum = index + Define.WOOD_SIZE[1];
         Destroy( transform.parent.parent.GetChild( extraGridNum ).GetChild( 0 ).gameObject );
     }
 
     private void RemoveGrasslandExtra( int index )
     {
-        var extraGridNum = index - 1;
+        var extraGridNum = index - Define.GRASSLAND_SIZE[1];
         Destroy( transform.parent.parent.GetChild( extraGridNum ).GetChild( 0 ).gameObject );
     }
 
     private void RemoveMarshExtra( int index )
     {
-        var extraGridNumA = index - 1;
-        Destroy( transform.parent.parent.GetChild( extraGridNumA ).GetChild( 0 ).gameObject );
+        for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
+        {
+            Destroy( transform.parent.parent.GetChild( index + Define.MARSH_SIZE[i] ).GetChild( 0 ).gameObject );
 
-        var extraGridNumB = index + xCount;
-        Destroy( transform.parent.parent.GetChild( extraGridNumB ).GetChild( 0 ).gameObject );
-
-        var extraGridNumC = index + xCount - 1;
-        Destroy( transform.parent.parent.GetChild( extraGridNumC ).GetChild( 0 ).gameObject );
+        }
     }
 
     public void SetQueueNum( int num )

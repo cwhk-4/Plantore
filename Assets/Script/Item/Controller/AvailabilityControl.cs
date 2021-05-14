@@ -108,19 +108,19 @@ public class AvailabilityControl : MonoBehaviour
 
     private void DisableWood( )
     {
-        Grids[onGridNum + xCount].DisableAvailability( );
+        Grids[lastGridNum + xCount].DisableAvailability( );
     }
 
     private void DisableGrassland( )
     {
-        Grids[onGridNum - 1].DisableAvailability( );
+        Grids[lastGridNum - 1].DisableAvailability( );
     }
 
     private void DisableMarsh( )
     {
         for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
         {
-            Grids[onGridNum - Define.MARSH_SIZE[i]].DisableAvailability( );
+            Grids[lastGridNum - Define.MARSH_SIZE[i]].DisableAvailability( );
         }
     }
 

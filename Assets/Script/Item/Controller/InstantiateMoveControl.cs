@@ -111,8 +111,8 @@ public class InstantiateMoveControl : MonoBehaviour
         for( int i = 1; i < Define.WOOD_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + i ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + i ).position;
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.WOOD_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.WOOD_SIZE[i] ).position;
             item.tag = "WoodExtra";
         } 
     }
@@ -122,8 +122,8 @@ public class InstantiateMoveControl : MonoBehaviour
         for( int i = 1; i < Define.GRASSLAND_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + i ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + i ).position;
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.GRASSLAND_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.GRASSLAND_SIZE[i] ).position;
             item.tag = "GrasslandExtra";
         }
     }
@@ -133,8 +133,8 @@ public class InstantiateMoveControl : MonoBehaviour
         for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + i ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + i ).position;
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.MARSH_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.MARSH_SIZE[i] ).position;
             item.tag = "MarshExtra";
         }
     }
@@ -144,8 +144,8 @@ public class InstantiateMoveControl : MonoBehaviour
         for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + i ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + i ).position;
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ).position;
             item.tag = "RockExtra";
         }
     }
