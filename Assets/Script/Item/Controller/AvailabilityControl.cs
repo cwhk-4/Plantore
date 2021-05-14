@@ -71,25 +71,53 @@ public class AvailabilityControl : MonoBehaviour
             case ( int )Define.ITEM.MARSH:
                 EnableMarsh( );
                 break;
+
+            case ( int )Define.ITEM.ROCK:
+                EnableRock( );
+                break;
         }
         
     }
 
     private void EnableWood( )
     {
-        Grids[onGridNum + xCount].EnableAvailability( );
+        var extraNum = onGridNum + Define.WOOD_SIZE[1];
+        if( CheckRange( extraNum ) )
+        {
+            Grids[extraNum].EnableAvailability( );
+        }
     }
 
     private void EnableGrassland( )
     {
-        Grids[onGridNum - 1].EnableAvailability( );
+        var extraNum = onGridNum + Define.GRASSLAND_SIZE[1];
+        if( CheckRange( extraNum ) )
+        {
+            Grids[extraNum].EnableAvailability( );
+        }
     }
 
     private void EnableMarsh( )
     {
         for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
         {
-            Grids[onGridNum - Define.MARSH_SIZE[i]].EnableAvailability( );
+            var extraNum = onGridNum + Define.MARSH_SIZE[i];
+            if( CheckRange( extraNum ) )
+            {
+                Grids[extraNum].EnableAvailability( );
+            }
+        }
+    }
+
+    private void EnableRock( )
+    {
+        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        {
+            var extraNum = onGridNum + Define.ROCK_SIZE[i];
+            if( CheckRange( extraNum ) )
+            {
+                Grids[extraNum].EnableAvailability( );
+            }
         }
     }
 
@@ -112,26 +140,53 @@ public class AvailabilityControl : MonoBehaviour
                 case ( int )Define.ITEM.MARSH:
                     DisableMarsh( );
                     break;
+
+                case ( int )Define.ITEM.ROCK:
+                    DisableRock( );
+                    break;
             }
         }
     }
 
-
     private void DisableWood( )
     {
-        Grids[lastGridNum + Define.WOOD_SIZE[1]].DisableAvailability( );
+        var extraNum = lastGridNum + Define.WOOD_SIZE[1];
+        if( CheckRange( extraNum ) )
+        {
+            Grids[extraNum].DisableAvailability( );
+        }
     }
 
     private void DisableGrassland( )
     {
-        Grids[lastGridNum + Define.GRASSLAND_SIZE[1]].DisableAvailability( );
+        var extraNum = lastGridNum + Define.GRASSLAND_SIZE[1];
+        if( CheckRange( extraNum ) )
+        {
+            Grids[extraNum].DisableAvailability( );
+        }
     }
 
     private void DisableMarsh( )
     {
         for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
         {
-            Grids[lastGridNum + Define.MARSH_SIZE[i]].DisableAvailability( );
+            var extraNum = lastGridNum + Define.MARSH_SIZE[i];
+            if( CheckRange( extraNum ) )
+            {
+                Grids[extraNum].DisableAvailability( );
+            }
+        }
+    }
+
+    private void DisableRock( )
+    {
+        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        {
+            var extraNum = lastGridNum + Define.ROCK_SIZE[i];
+            if( CheckRange( extraNum ) )
+            {
+                Grids[extraNum].DisableAvailability( );
+            }
         }
     }
 
@@ -157,10 +212,6 @@ public class AvailabilityControl : MonoBehaviour
 
             case ( int )Define.ITEM.ROCK:
                 EnableRockTerritories( );
-                break;
-
-            default:
-                EnableMarshTerritories( );
                 break;
         }
     }
@@ -249,10 +300,6 @@ public class AvailabilityControl : MonoBehaviour
 
                 case ( int )Define.ITEM.ROCK:
                     DisableRockTerritories( );
-                    break;
-
-                default:
-                    DisableMarshTerritories( );
                     break;
             }
         }

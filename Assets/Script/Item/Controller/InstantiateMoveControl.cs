@@ -196,33 +196,41 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         var flag = false;
 
-        if( gridInstan.transform.GetChild( nowGridNum - 1 ).childCount == 0 && CheckOutOfRange( nowGridNum - 1 ) )
+        for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
         {
-            if( gridInstan.transform.GetChild( nowGridNum + xCount ).childCount == 0 && CheckOutOfRange( nowGridNum + xCount ) )
+            if( gridInstan.transform.GetChild( nowGridNum + Define.MARSH_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.ROCK_SIZE[i] ) )
             {
-                if( gridInstan.transform.GetChild( nowGridNum + xCount - 1 ).childCount == 0 && CheckOutOfRange( nowGridNum + xCount - 1 ) )
-                {
-                    flag = true;
-                }
+                flag = true;
+            }
+            else
+            {
+                return false;
             }
         }
 
         return flag;
     }
 
-    //caution
     public bool CheckRockGrid( )
     {
         var flag = false;
 
-        if( gridInstan.transform.GetChild( nowGridNum - 1 ).childCount == 0 && CheckOutOfRange( nowGridNum - 1 ) )
+        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
         {
-            if( gridInstan.transform.GetChild( nowGridNum + xCount ).childCount == 0 && CheckOutOfRange( nowGridNum + xCount ) )
+            var ExtraNum = nowGridNum + Define.ROCK_SIZE[i];
+
+            if( ExtraNum < 0 || ExtraNum > Define.YCOUNT * xCount )
             {
-                if( gridInstan.transform.GetChild( nowGridNum + xCount - 1 ).childCount == 0 && CheckOutOfRange( nowGridNum + xCount - 1 ) )
-                {
-                    flag = true;
-                }
+                return false;
+            }
+
+            if( gridInstan.transform.GetChild( ExtraNum ).childCount == 0 && CheckOutOfRange( ExtraNum ) )
+            {
+                flag = true;
+            }
+            else
+            {
+                return false;
             }
         }
 

@@ -220,5 +220,4 @@ public class GridTerritoryControl : MonoBehaviour
     {
         return GridParent.transform.GetChild( index );
     }
-
 }

@@ -80,7 +80,7 @@ public class MoveItem : MonoBehaviour
 
     private void RemoveGrasslandExtra( int index )
     {
-        var extraGridNum = index - Define.GRASSLAND_SIZE[1];
+        var extraGridNum = index + Define.GRASSLAND_SIZE[1];
         Destroy( transform.parent.parent.GetChild( extraGridNum ).GetChild( 0 ).gameObject );
     }
 

@@ -33,7 +33,7 @@
     public static readonly int[] GRASS_SIZE = { 0 };
     public static readonly int[] WOOD_SIZE = { 0, XCOUNT };
     public static readonly int[] GRASSLAND_SIZE = { 0, -1 };
-    public static readonly int[] MARSH_SIZE = { 0, -1 };
+    public static readonly int[] MARSH_SIZE = { 0, -1, XCOUNT, XCOUNT - 1 };
     public static readonly int[] ROCK_SIZE = { 0, -1, XCOUNT, XCOUNT - 1 };
 
     //size first
@@ -43,15 +43,19 @@
                                                     -XCOUNT-2, -XCOUNT-1, -XCOUNT, -XCOUNT+1,
                                                     -2, +1,
                                                     XCOUNT-2, XCOUNT+1,
-                                                    2*XCOUNT-2, 2*XCOUNT-1, 2*XCOUNT, 2*XCOUNT+1};
+                                                    (2*XCOUNT)-2, (2*XCOUNT)-1, 2*XCOUNT, (2*XCOUNT)+1};
 
     public static readonly int[] GRASS_ANIMAL = { ( int )ANIMAL.ZEBRA };
     public static readonly int[] WOOD_ANIMAL = { ( int )ANIMAL.GIRAFFE };
     public static readonly int[] ROCK_ANIMAL = { ( int )ANIMAL.LION };
 
     //caution -> not yet setup
-    public static readonly int[] GRASSLAND_TERRITORY = { -12, -1, 1, 0, 11, 12, 13, 24 };
-    public static readonly int[] MARSH_TERRITORY = { -12, -1, 1, 0, 11, 12, 13, 24 };
+    public static readonly int[] GRASSLAND_TERRITORY = { 0, -1, -2, 1, -XCOUNT, -XCOUNT - 1, XCOUNT, XCOUNT - 1 };
+    public static readonly int[] MARSH_TERRITORY = { 0, -1, XCOUNT, XCOUNT - 1,
+                                                    -XCOUNT-2, -XCOUNT-1, -XCOUNT, -XCOUNT+1,
+                                                    -2, +1,
+                                                    XCOUNT-2, XCOUNT+1,
+                                                    (2*XCOUNT)-2, (2*XCOUNT)-1, 2*XCOUNT, (2*XCOUNT)+1};
 
     public static readonly int[] GRASSLAND_ANIMAL = { ( int )ANIMAL.LION };
     public static readonly int[] MARSH_ANIMAL = { ( int )ANIMAL.LION };
