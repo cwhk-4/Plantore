@@ -41,7 +41,7 @@ public class InstantiateItem : MonoBehaviour
                 itemNum = ( int )Define.ITEM.MARSH;
                 break;
 
-            case "rock_Instan(Clone)":
+            case "smallRock_Instan(Clone)":
                 itemNum = ( int )Define.ITEM.SMALL_ROCK;
                 break;
         }
@@ -69,7 +69,7 @@ public class InstantiateItem : MonoBehaviour
                 return;
             }
 
-            if( name!= "grass_Instan(Clone)" && name != "rock_Instan(Clone)" )
+            if( name!= "grass_Instan(Clone)" && name != "smallRock_Instan(Clone)" )
             {
                 available = imController.CheckGrids( itemNum );
             }
@@ -89,9 +89,9 @@ public class InstantiateItem : MonoBehaviour
             territoryControl.SetItem( index, itemNum );
             storage.PlaceItem( index, itemNum );
 
-            if( name != "grass_Instan(Clone)" && name != "rock_Instan(Clone)" )
+            if( name != "grass_Instan(Clone)" && name != "smallRock_Instan(Clone)" )
             {
-                imController.InstantiateExtraGrid( name );
+                imController.InstantiateExtraGrid( itemNum );
             }
 
             //tutorial?

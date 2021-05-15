@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5744244000097218797}
   - component: {fileID: 7408439013189794977}
   m_Layer: 0
-  m_Name: rock_Instan
+  m_Name: smallRock_Instan
   m_TagString: Instantiate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

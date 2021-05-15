@@ -150,25 +150,25 @@ public class InstantiateMoveControl : MonoBehaviour
         }
     }
 
-    public void InstantiateExtraGrid( string GO_NAME )
+    public void InstantiateExtraGrid( int itemNum )
     {
-        switch( GO_NAME )
+        switch( itemNum )
         {
-            case "wood_Instan(Clone)":
+            case ( int )Define.ITEM.WOOD:
                 InstanWoodExtraGrid( );
                 break;
 
-            case "grassland_Instan(Clone)":
+            case ( int )Define.ITEM.GRASSLAND:
                 InstanGrasslandExtraGrid( );
                 break;
 
-            case "marsh_Instan(Clone)":
+            case ( int )Define.ITEM.MARSH:
                 InstanMarshExtraGrid( );
                 break;
 
-            //case "rock_Instan(Clone)":
-            //    InstanRockExtraGrid( );
-            //    break;
+                //case "rock_Instan(Clone)":
+                //    InstanRockExtraGrid( );
+                //    break;
         }
     }
 
