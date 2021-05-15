@@ -37,8 +37,8 @@ public class AvailabilityDisplayControl : MonoBehaviour
                 EnableMarsh( );
                 break;
 
-            case ( int )Define.ITEM.ROCK:
-                EnableRock( );
+            case ( int )Define.ITEM.SMALL_ROCK:
+                EnableSmallRock( );
                 break;
         }
 
@@ -74,11 +74,11 @@ public class AvailabilityDisplayControl : MonoBehaviour
         }
     }
 
-    private void EnableRock( )
+    private void EnableSmallRock( )
     {
-        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
         {
-            var extraNum = onGridNum + Define.ROCK_SIZE[i];
+            var extraNum = onGridNum + Define.SMALL_ROCK_SIZE[i];
             if( CheckRange( extraNum ) )
             {
                 availability.EnableAva( extraNum );
@@ -108,8 +108,8 @@ public class AvailabilityDisplayControl : MonoBehaviour
                     DisableMarsh( );
                     break;
 
-                case ( int )Define.ITEM.ROCK:
-                    DisableRock( );
+                case ( int )Define.ITEM.SMALL_ROCK:
+                    DisableSmallRock( );
                     break;
             }
         }
@@ -145,11 +145,11 @@ public class AvailabilityDisplayControl : MonoBehaviour
         }
     }
 
-    private void DisableRock( )
+    private void DisableSmallRock( )
     {
-        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
         {
-            var extraNum = lastGridNum + Define.ROCK_SIZE[i];
+            var extraNum = lastGridNum + Define.SMALL_ROCK_SIZE[i];
             if( CheckRange( extraNum ) )
             {
                 availability.DisableAva( extraNum );
@@ -159,11 +159,12 @@ public class AvailabilityDisplayControl : MonoBehaviour
 
     private bool CheckRange( int index )
     {
-        if( index >= 0 && index < Define.XCOUNT * Define.YCOUNT )
+        if( index >= 0 && index < Define.TOTAL_GRID_NUM )
         {
             return true;
         }
 
         return false;
     }
+
 }

@@ -108,6 +108,21 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
+    private void SetSmallRock( int index )
+    {
+        foreach( int i in Define.SMALL_ROCK_TERRITORY )
+        {
+            foreach( int j in Define.SMALL_ROCK_ANIMAL )
+            {
+                if( index + i < 0 )
+                {
+                    return;
+                }
+                SetTerritory( index + i, j );
+            }
+        }
+    }
+
     public void SetItem( int index, int itemNum )
     {
         switch( itemNum )
@@ -120,8 +135,8 @@ public class GridTerritoryControl : MonoBehaviour
                 SetWood( index );
                 break;
 
-            case ( int )Define.ITEM.ROCK:
-                SetRock( index );
+            case ( int )Define.ITEM.SMALL_ROCK:
+                SetSmallRock( index );
                 break;
 
             case ( int )Define.ITEM.GRASSLAND:
@@ -190,20 +205,31 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
+    private void RemoveSmallRock( int index )
+    {
+        foreach( int i in Define.SMALL_ROCK_TERRITORY )
+        {
+            foreach( int j in Define.SMALL_ROCK_ANIMAL )
+            {
+                RemoveTerritory( index + i, j );
+            }
+        }
+    }
+
     public void RemoveItem( int index, int itemNum )
     {
         switch( itemNum )
         {
-            case 0:
+            case (int) Define.ITEM.GRASS:
                 RemoveGrass( index );
                 break;
 
-            case 1:
+            case ( int )Define.ITEM.WOOD:
                 RemoveWood( index );
                 break;
 
-            case ( int )Define.ITEM.ROCK:
-                RemoveRock( index );
+            case ( int )Define.ITEM.SMALL_ROCK:
+                RemoveSmallRock( index );
                 break;
 
             case ( int )Define.ITEM.GRASSLAND:

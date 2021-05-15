@@ -166,9 +166,9 @@ public class InstantiateMoveControl : MonoBehaviour
                 InstanMarshExtraGrid( );
                 break;
 
-            case "rock_Instan(Clone)":
-                InstanRockExtraGrid( );
-                break;
+            //case "rock_Instan(Clone)":
+            //    InstanRockExtraGrid( );
+            //    break;
         }
     }
 
@@ -255,9 +255,9 @@ public class InstantiateMoveControl : MonoBehaviour
                 flag = CheckMarshGrid( );
                 break;
 
-            case ( int )Define.ITEM.ROCK:
-                flag = CheckRockGrid( );
-                break;
+            //case ( int )Define.ITEM.ROCK:
+            //    flag = CheckRockGrid( );
+            //    break;
         }
 
         return flag;

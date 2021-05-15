@@ -63,8 +63,17 @@ public class ZEBRA : MonoBehaviour
     void changeTarget( )
     {
         if ( item && !runaway )
-        { 
-            goStage.transform.position = getItemsIndex( ItemBase.GetIndex( ) + grassIndex[ i ] ).position;
+        {
+            //caution
+            var index = ItemBase.GetIndex( ) + grassIndex[i];
+
+            //if( !CommonFunc.CheckRange( index ) )
+            //{
+            //    //sth here
+            //    return;
+            //}
+
+            goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )
             {
                 i ++;
@@ -76,6 +85,7 @@ public class ZEBRA : MonoBehaviour
             
             canFindGrass = true;
         }
+
         if ( item == null && canFindGrass )
         {
             newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );

@@ -39,8 +39,8 @@ public class TerritoryDisplayControl : MonoBehaviour
                 EnableMarshTerritories( );
                 break;
 
-            case ( int )Define.ITEM.ROCK:
-                EnableRockTerritories( );
+            case ( int )Define.ITEM.SMALL_ROCK:
+                EnableSmallRockTerritories( );
                 break;
         }
     }
@@ -93,11 +93,11 @@ public class TerritoryDisplayControl : MonoBehaviour
         }
     }
 
-    private void EnableRockTerritories( )
+    private void EnableSmallRockTerritories( )
     {
-        for( int i = Define.ROCK_SIZE.Length; i < Define.ROCK_TERRITORY.Length; i++ )
+        for( int i = Define.SMALL_ROCK_SIZE.Length; i < Define.SMALL_ROCK_TERRITORY.Length; i++ )
         {
-            var territoryNum = onGridNum + Define.ROCK_TERRITORY[i];
+            var territoryNum = onGridNum + Define.SMALL_ROCK_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.EnableTerritory( territoryNum );
@@ -131,8 +131,8 @@ public class TerritoryDisplayControl : MonoBehaviour
                     DisableMarshTerritories( );
                     break;
 
-                case ( int )Define.ITEM.ROCK:
-                    DisableRockTerritories( );
+                case ( int )Define.ITEM.SMALL_ROCK:
+                    DisableSmallRockTerritories( );
                     break;
             }
         }
@@ -186,11 +186,11 @@ public class TerritoryDisplayControl : MonoBehaviour
         }
     }
 
-    private void DisableRockTerritories( )
+    private void DisableSmallRockTerritories( )
     {
-        for( int i = Define.ROCK_SIZE.Length; i < Define.ROCK_TERRITORY.Length; i++ )
+        for( int i = Define.SMALL_ROCK_SIZE.Length; i < Define.SMALL_ROCK_TERRITORY.Length; i++ )
         {
-            var territoryNum = lastGridNum + Define.ROCK_TERRITORY[i];
+            var territoryNum = lastGridNum + Define.SMALL_ROCK_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.DisableTerritory( territoryNum );
@@ -200,7 +200,7 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private bool CheckRange( int index )
     {
-        if( index >= 0 && index < Define.XCOUNT * Define.YCOUNT )
+        if( index >= 0 && index < Define.TOTAL_GRID_NUM )
         {
             return true;
         }
