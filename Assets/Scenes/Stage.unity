@@ -15574,7 +15574,7 @@ MonoBehaviour:
   isInstantiating: 0
   isMoving: 0
   startingTime: 0
-  GOName: 
+  GOItemNum: 0
   gridInstan: {fileID: 906629084}
   nowGridNum: 0
   xCount: 0
@@ -17813,6 +17813,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1881095422}
   - component: {fileID: 1881095423}
+  - component: {fileID: 1881095424}
+  - component: {fileID: 1881095425}
   m_Layer: 0
   m_Name: AvailabilityController
   m_TagString: GridAvailability
@@ -17850,6 +17852,32 @@ MonoBehaviour:
   imController: {fileID: 1392108318}
   onGridNum: 0
   lastGridNum: 0
+--- !u!114 &1881095424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881095421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b073d13d1efb543cb9e467506cf1ed5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imController: {fileID: 1392108318}
+--- !u!114 &1881095425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881095421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce980e501f9544a48db495febd6ed13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imController: {fileID: 1392108318}
 --- !u!1 &1887683119
 GameObject:
   m_ObjectHideFlags: 0
