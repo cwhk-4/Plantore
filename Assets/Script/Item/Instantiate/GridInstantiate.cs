@@ -3,7 +3,7 @@
 public class GridInstantiate : MonoBehaviour
 {
     [SerializeField] private GameObject grid;
-    [SerializeField] private AvailabilityControl availabilityControl;
+    [SerializeField] private GridAvailabilityControl availabilityControl;
     [SerializeField] private GridTerritoryControl territoryControl;
 
     private int x;

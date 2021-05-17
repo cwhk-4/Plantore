@@ -3,7 +3,7 @@
 public class AvailabilityDisplayControl : MonoBehaviour
 {
     [SerializeField] private InstantiateMoveControl imController;
-    private AvailabilityControl availability;
+    private GridAvailabilityControl availability;
 
     private int nowItemNum;
 
@@ -13,7 +13,7 @@ public class AvailabilityDisplayControl : MonoBehaviour
     private void Start( )
     {
         nowItemNum = onGridNum = lastGridNum = -1;
-        availability = GetComponent<AvailabilityControl>( );
+        availability = GetComponent<GridAvailabilityControl>( );
     }
 
     public void EnableExtraGrids( int GridNum )

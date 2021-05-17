@@ -3,7 +3,7 @@
 public class TerritoryDisplayControl : MonoBehaviour
 {
     [SerializeField] private InstantiateMoveControl imController;
-    private AvailabilityControl availability;
+    private GridAvailabilityControl availability;
 
     private int nowItemNum;
 
@@ -13,7 +13,7 @@ public class TerritoryDisplayControl : MonoBehaviour
     private void Start( )
     {
         nowItemNum = onGridNum = lastGridNum = -1;
-        availability = GetComponent<AvailabilityControl>( );
+        availability = GetComponent<GridAvailabilityControl>( );
     }
 
     public void EnableTerritories( int gridNum )
