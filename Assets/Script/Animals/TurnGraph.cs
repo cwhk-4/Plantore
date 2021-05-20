@@ -48,7 +48,7 @@ public class TurnGraph : MonoBehaviour
             case "ZEBRAS":
                 needTurn = ZEBRA._zebra.needTurn;
                 break;
-            case "giraffe":
+            case "GIRAFFES":
                 needTurn = GIRAFFE._giraffe.needTurn;
                 break;
             case "impala":

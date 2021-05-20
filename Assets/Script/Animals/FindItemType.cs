@@ -28,14 +28,7 @@ public class FindItemType : MonoBehaviour
                 nowItem = GameObject.FindGameObjectWithTag( "SmallRock" );
                 break;
             case "GIRAFFES":
-                if ( nowMapLevel == 1 )
-                {
-                    nowItem = GameObject.FindGameObjectWithTag( "Wood" );
-                }
-                else if ( nowMapLevel == 2 )
-                {
-                    nowItem = GameObject.FindGameObjectWithTag( "Grassland" );
-                }
+                nowItem = GameObject.FindGameObjectWithTag( "Wood" );
                 break;
             case "IMPALAS":
                 nowItem = GameObject.FindGameObjectWithTag( "Grass" );

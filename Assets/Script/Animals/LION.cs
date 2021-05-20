@@ -15,7 +15,6 @@ public class LION : MonoBehaviour
     
     public static GameObject lion;
 
-    private int[ ] rockIndex = { -12, -1, 1, 0, 11, 12, 13, 24 };
     private int timeControllerIn = 0;
     private float timeToGo;
     private bool runaway = false;
@@ -63,7 +62,7 @@ public class LION : MonoBehaviour
     {
         if ( item && !runaway )
         {
-            goStage.transform.position = getItemsIndex( ItemBase.GetIndex( ) + rockIndex[ i ] ).position;
+            goStage.transform.position = getItemsIndex( ItemBase.GetIndex( ) + Define.ROCK_TERRITORY[ i ] ).position;
             if ( gameObject.transform.position == goStage.transform.position )
             {
                 i++;

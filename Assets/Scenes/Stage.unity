@@ -3477,6 +3477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _giraffeTimeController: {fileID: 0}
   ItemBase: {fileID: 0}
+  getItemIndex: {fileID: 887081447}
 --- !u!114 &612758713
 MonoBehaviour:
   m_ObjectHideFlags: 0

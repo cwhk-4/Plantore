@@ -12,7 +12,9 @@ public class GIRAFFE : MonoBehaviour
 
     public AnimalsTimeController _giraffeTimeController;
     public ItemBase ItemBase;
+    public GridTerritoryControl getItemIndex;
 
+    private int i;
     private int timeControllerIn;
     private float timeToGo;
     private bool canFindItem = true;
@@ -44,6 +46,7 @@ public class GIRAFFE : MonoBehaviour
         {
             ItemBase = item.GetComponent<ItemBase>( );
         }
+        Debug.Log( item );
     }
 
     void giraffeMove( )
@@ -59,7 +62,16 @@ public class GIRAFFE : MonoBehaviour
     {
         if ( item && !runaway )
         {
-            goStage.transform.position = item.transform.position;
+            var index = ItemBase.GetIndex( ) + Define.WOOD_TERRITORY[ i ];
+            goStage.transform.position = getItemsIndex( index ).position;
+            if ( gameObject.transform.position == goStage.transform.position )
+            {
+                i++;
+                if ( i > 4 )
+                {
+                    i = 0;
+                }
+            }
             canFindItem = true;
         }
         if ( item == null && canFindItem )
@@ -67,12 +79,6 @@ public class GIRAFFE : MonoBehaviour
             newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
             goStage.transform.position = newPosition;
             canFindItem = false;
-        }
-        if ( this.gameObject.transform.position == LION._lion.animals.transform.position )
-        {
-            newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
-            runaway = true;
-            goStage.transform.position = newPosition;
         }
         if ( item == null && this.gameObject.transform.position == newPosition )
         {
@@ -85,16 +91,16 @@ public class GIRAFFE : MonoBehaviour
 
     void timeIn( )
     {
-        if ( item && InstallAnimals.in_animals.in_giraffe && timeControllerIn == 0 )
+        if ( item && timeControllerIn == 0 )
         {
             if ( !scriptCount )
             {
                 _giraffeTimeController = this.gameObject.AddComponent<AnimalsTimeController>( );
                 scriptCount = true;
             }
-            timeToGo = GameObject.Find( "GIRAFFES" ).GetComponent<AnimalsTimeController>( ).changeTime( );
+            timeToGo = this.gameObject.GetComponent<AnimalsTimeController>( ).changeTime( );
 
-            if ( timeToGo < 0 )
+            if ( timeToGo < -0.5 )
             {
                 _giraffe.canMove = true;
                 Destroy( this.gameObject.GetComponent<AnimalsTimeController>( ) );
@@ -115,5 +121,10 @@ public class GIRAFFE : MonoBehaviour
         {
             _giraffe.needTurn = false;
         }
+    }
+
+    public Transform getItemsIndex( int index )
+    {
+        return getItemIndex.GetIndexTransform( index );
     }
 }

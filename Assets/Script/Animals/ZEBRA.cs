@@ -16,7 +16,6 @@ public class ZEBRA : MonoBehaviour
     public static GameObject zebra;
     private int i;
 
-    private int[ ] grassIndex = { -12, -1, 0, 1, 12 };
     private int timeControllerIn;
 
     private bool onItem = false;
@@ -65,7 +64,7 @@ public class ZEBRA : MonoBehaviour
         if ( item && !runaway )
         {
             //caution
-            var index = ItemBase.GetIndex( ) + grassIndex[i];
+            var index = ItemBase.GetIndex( ) + Define.GRASS_TERRITORY[ i ];
 
             //if( !CommonFunc.CheckRange( index ) )
             //{
@@ -147,11 +146,6 @@ public class ZEBRA : MonoBehaviour
             onItem = false;
         }
         return onItem;
-    }
-
-    public GameObject getItem( )
-    {
-        return item;
     }
 
     public Transform getItemsIndex( int index )
