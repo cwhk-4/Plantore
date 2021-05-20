@@ -6,6 +6,7 @@ public class InstantiateItem : MonoBehaviour
     private TimeController timeController;
     private GridTerritoryControl territoryControl;
     private ItemStorage storage;
+    private AvailabilityControl availability;
 
     [SerializeField]private GameObject ItemToInstantiate;
     private GameObject parentGO;
@@ -20,6 +21,7 @@ public class InstantiateItem : MonoBehaviour
         imController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
         territoryControl = GameObject.Find( "TerritoryController" ).GetComponent<GridTerritoryControl>( );
         storage = GameObject.Find( "ItemStorage" ).GetComponent<ItemStorage>( );
+        availability = GameObject.Find( "AvailabilityController" ).GetComponent<AvailabilityControl>( );
 
         thisStartingTime = timeController.getNowRealSec( );
 
@@ -110,6 +112,8 @@ public class InstantiateItem : MonoBehaviour
 
             }
             //tutorial end
+
+            availability.ItemInstantiated( index );
 
             Destroy( gameObject );
         }
