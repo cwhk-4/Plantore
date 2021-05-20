@@ -101,7 +101,7 @@ public class LION : MonoBehaviour
                 scriptCount = true;
             }
             timeToGo = this.gameObject.GetComponent<AnimalsTimeController>( ).changeTime( );
-            if ( timeToGo <= 0 )
+            if ( timeToGo < -0.5 )
             {
                 _lion.canMove = true;
                 Destroy( this.gameObject.GetComponent<AnimalsTimeController>( ) );

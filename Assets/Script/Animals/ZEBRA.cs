@@ -18,7 +18,7 @@ public class ZEBRA : MonoBehaviour
 
     private int[ ] grassIndex = { -12, -1, 0, 1, 12 };
     private int timeControllerIn;
-    private float timeToGo;
+
     private bool onItem = false;
     private bool canFindGrass = true;
     private bool runaway = false;
@@ -112,9 +112,10 @@ public class ZEBRA : MonoBehaviour
                     _zebraTimeController = this.gameObject.AddComponent<AnimalsTimeController>( );
                     scriptCount = true;
                 }
+                float timeToGo;
                 timeToGo = this.gameObject.GetComponent<AnimalsTimeController>( ).changeTime( );
-
-                if ( timeToGo <= 0 )
+                Debug.Log( timeToGo );
+                if ( timeToGo < -0.5 )
                 {
                     _zebra.canMove = true;
                     Destroy( this.gameObject.GetComponent<AnimalsTimeController>( ) );
