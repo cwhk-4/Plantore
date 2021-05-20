@@ -7,13 +7,11 @@ public class GIRAFFE : MonoBehaviour
     private GameObject MapLevel;
     private GameObject goStage;
     private GameObject item;
+
     private Vector3 newPosition;
 
     public AnimalsTimeController _giraffeTimeController;
-
-    public static GameObject[ ] giraffe;
-    public static int giraffesNUM;
-    public static int findsNum;
+    public ItemBase ItemBase;
 
     private int timeControllerIn;
     private float timeToGo;
@@ -36,15 +34,16 @@ public class GIRAFFE : MonoBehaviour
     void Update( )
     {
         timeIn( );
-        numsProbability( );
-        findNum( );
-        getAnimalsType( );
         setTurnScale( );
         if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 1 )
         {
             giraffeMove( );
         }
         item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );
+        if ( item )
+        {
+            ItemBase = item.GetComponent<ItemBase>( );
+        }
     }
 
     void giraffeMove( )
@@ -82,10 +81,6 @@ public class GIRAFFE : MonoBehaviour
             _giraffe.canMove = false;
             timeControllerIn = 0;
         }
-        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) != 1 )
-        {
-            newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
-        }
     }
 
     void timeIn( )
@@ -109,26 +104,6 @@ public class GIRAFFE : MonoBehaviour
         }
     }
 
-    private void findNum( )
-    {
-        findsNum = this.gameObject.GetComponent<GetNum>( ).getAnimalsNum( );
-    }
-
-    private void getAnimalsType( )
-    {
-        giraffe = this.gameObject.GetComponent<GetNum>( )._animals;
-    }
-
-    void numsProbability( )
-    {
-        if ( InstallAnimals.giraffesNumProbability == 1 )
-        {
-            giraffesNUM = 1;
-        }else if ( InstallAnimals.giraffesNumProbability == 2 )
-        {
-            giraffesNUM = 2;
-        }
-    }
 
     private void setTurnScale( )
     {

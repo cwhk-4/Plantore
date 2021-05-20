@@ -114,7 +114,6 @@ public class ZEBRA : MonoBehaviour
                 }
                 float timeToGo;
                 timeToGo = this.gameObject.GetComponent<AnimalsTimeController>( ).changeTime( );
-                Debug.Log( timeToGo );
                 if ( timeToGo < -0.5 )
                 {
                     _zebra.canMove = true;
