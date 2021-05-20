@@ -34,11 +34,20 @@ public class AvailabilityControl : MonoBehaviour
 
     private void Update( )
     {
-        if( onGridNum != -1 && ( imController.GetIsInstantiating( ) || imController.GetIsMoving( ) ) )
+        if( onGridNum != -1 )
         {
-            territoryDisplay.EnableTerritories( onGridNum );
-            availabilityDisplay.EnableExtraGrids( onGridNum );
+            if( imController.GetIsInstantiating( ) || imController.GetIsMoving( ) )
+            {
+                territoryDisplay.EnableTerritories( onGridNum );
+                availabilityDisplay.EnableExtraGrids( onGridNum );
+            }
         }
+    }
+
+    public void ItemInstantiated( int index )
+    {
+        territoryDisplay.DisableTerritories( index );
+        availabilityDisplay.DisableLastGrids( index );
     }
 
 }
