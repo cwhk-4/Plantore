@@ -39,6 +39,9 @@ TagManager:
   - Rock
   - RockExtra
   - SmallRock
+  - giraffe
+  - lion
+  - zebra
   layers:
   - Default
   - TransparentFX
@@ -82,9 +85,9 @@ TagManager:
   - name: Grid
     uniqueID: 3666640037
     locked: 0
-  - name: Animal
-    uniqueID: 1017343613
-    locked: 0
   - name: Item
     uniqueID: 92946567
+    locked: 0
+  - name: Animal
+    uniqueID: 1017343613
     locked: 0

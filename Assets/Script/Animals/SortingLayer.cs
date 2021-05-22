@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SortingLayer : MonoBehaviour
 {
@@ -9,6 +7,7 @@ public class SortingLayer : MonoBehaviour
     {
         ChangeOrderInLayer( );
         SpriteRenderer spriterenderer = gameObject.GetComponent<SpriteRenderer>( );
+        spriterenderer.sortingLayerName = "Animal";
         spriterenderer.sortingOrder = orderNumber;
     }
 
