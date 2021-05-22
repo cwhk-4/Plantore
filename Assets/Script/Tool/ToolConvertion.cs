@@ -2,8 +2,9 @@
 
 public class ToolConvertion : MonoBehaviour
 {
+    public Texture2D defaultCursor;
     public Texture2D wateringCan;
-    public Vector2 canhotSpot = Vector2.zero;
+    public Vector2 canHotSpot = Vector2.zero;
     private bool isCan = false;
     private bool isOnGO = false;
 
@@ -18,12 +19,12 @@ public class ToolConvertion : MonoBehaviour
         {
             if( !isCan )
             {
-                Cursor.SetCursor( wateringCan, canhotSpot, CursorMode.ForceSoftware );
+                Cursor.SetCursor( wateringCan, canHotSpot, CursorMode.ForceSoftware );
                 isCan = true;
             }
             else
             {
-                Cursor.SetCursor( null, Vector2.zero, CursorMode.ForceSoftware );
+                Cursor.SetCursor( defaultCursor, Vector2.zero, CursorMode.ForceSoftware );
                 isCan = false;
             }
         }
@@ -47,7 +48,7 @@ public class ToolConvertion : MonoBehaviour
     public void ResetCan( )
     {
         isCan = false;
-        canhotSpot = new Vector2( 0f, wateringCan.height / 3 * 2 );
-        Cursor.SetCursor( null, Vector2.zero, CursorMode.Auto );
+        canHotSpot = new Vector2( 0f, wateringCan.height / 3 * 2 );
+        Cursor.SetCursor( defaultCursor, Vector2.zero, CursorMode.ForceSoftware );
     }
 }

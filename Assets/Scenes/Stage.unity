@@ -903,8 +903,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d88691c9df14abf9a149aa3c961c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wateringCan: {fileID: 2800000, guid: f71c9861a25374df693f9f4bf808f195, type: 3}
-  canhotSpot: {x: 0, y: 0}
+  defaultCursor: {fileID: 2800000, guid: d84530b2e7f9149e38483d0e5a779d8a, type: 3}
+  wateringCan: {fileID: 2800000, guid: 282690bef45fe4e158fa2c4429d8a9a5, type: 3}
+  canHotSpot: {x: 0, y: 0}
 --- !u!1 &123393166
 GameObject:
   m_ObjectHideFlags: 0
