@@ -1,31 +1,79 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemUIDisplay : MonoBehaviour
 {
-    [SerializeField] private GameObject[] ItemUI;
+    [SerializeField] private Transform ItemUI;
+    [SerializeField] private GameObject[] Items;
+    [SerializeField] private Button[] ItemButtons;
     [SerializeField] private MapLevel map;
 
-    [SerializeField] private int MapLevel;
+    [SerializeField] private int level1Limit = 3;
+    [SerializeField] private int level2Limit = 5;
+    [SerializeField] private int totalNum;
+
+    [SerializeField] private int mapLevel;
 
     void Start()
     {
-        MapLevel = map.getMapLevel( );
+        mapLevel = map.getMapLevel( );
+        Init( );
         SetItemDisplayLevel( );
+    }
+
+    private void Init( )
+    {
+        totalNum = ( int )Define.ITEM.TOTAL_NUM;
+
+        if( ( int )Define.ITEM.TOTAL_NUM % 2 != 0 )
+        {
+            totalNum += 1;
+        }
+
+        Items = new GameObject[totalNum];
+        ItemButtons = new Button[totalNum];
+
+        for( int i = 0; i < totalNum; i++ )
+        {
+            Items[i] = ItemUI.GetChild( i ).GetChild(0).gameObject;
+            ItemButtons[i] = ItemUI.GetChild( i ).GetComponent<Button>( );
+        }
     }
 
     public void SetMapLevel( int level )
     {
-        MapLevel = level;
+        mapLevel = level;
         SetItemDisplayLevel( );
     }
 
     public void SetItemDisplayLevel( )
     {
-        for( int i = 0; i <= ItemUI.Length - 1; i++ )
+        switch( mapLevel )
         {
-            ItemUI[i].SetActive( false );
-        }
+            case 1:
+                SetItemVisibility( level1Limit );
+                break;
 
-        ItemUI[MapLevel - 1].SetActive( true );
+            case 2:
+                SetItemVisibility( level2Limit );
+                break;
+        }
+    }
+
+    private void SetItemVisibility( int limit )
+    {
+        for( int i = 0; i < totalNum; i++ )
+        {
+            if( i < limit )
+            {
+                Items[i].SetActive( true );
+                ItemButtons[i].interactable = true;
+            }
+            else
+            {
+                Items[i].SetActive( false );
+                ItemButtons[i].interactable = false;
+            }
+        }
     }
 }
