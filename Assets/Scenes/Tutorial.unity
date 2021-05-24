@@ -419,8 +419,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d88691c9df14abf9a149aa3c961c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 0}
   wateringCan: {fileID: 2800000, guid: f71c9861a25374df693f9f4bf808f195, type: 3}
-  canhotSpot: {x: 0, y: 0}
+  canHotSpot: {x: 0, y: 0}
 --- !u!4 &77514051
 Transform:
   m_ObjectHideFlags: 0
@@ -1362,7 +1363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 519420031}
   dialogueWindow: {fileID: 1448090049}
-  activateMenu: {fileID: 1351992765}
+  menuControl: {fileID: 1351992763}
   popUp: {fileID: 1351992766}
   itemUIInstantiate: {fileID: 1351992762}
   toolConvertion: {fileID: 77514050}
@@ -4583,7 +4584,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1351992765}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ActivateMenu, Assembly-CSharp
         m_MethodName: CloseMenu
         m_Mode: 1
@@ -4905,8 +4906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f75a94b34c104aa4baaa731cd000ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetBoard: {fileID: 2098896840}
-  AnimationRate: 10
+  targetBoard: {fileID: 2098896840}
+  animationRate: 10
 --- !u!4 &1321776386
 Transform:
   m_ObjectHideFlags: 0
@@ -5197,7 +5198,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1351992761}
   - component: {fileID: 1351992764}
-  - component: {fileID: 1351992765}
   - component: {fileID: 1351992763}
   - component: {fileID: 1351992766}
   - component: {fileID: 1351992762}
@@ -5248,9 +5248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 920104351}
-  MenuButton: {fileID: 1303664805}
-  Open: {fileID: 21300000, guid: 1e2119231323e4982ad6cfb648c6f543, type: 3}
-  Close: {fileID: 21300000, guid: a541fa835ffe9429789032b06dbbfb2a, type: 3}
+  MenuButton: {fileID: 1303664802}
 --- !u!114 &1351992764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5264,20 +5262,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemMenu: {fileID: 2098896839}
---- !u!114 &1351992765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351992760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47bf02e9011914739b38fe8c25604cfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Menu: {fileID: 920104351}
-  MenuButton: {fileID: 1303664802}
 --- !u!114 &1351992766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5290,8 +5274,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f75a94b34c104aa4baaa731cd000ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetBoard: {fileID: 920104352}
-  AnimationRate: 10
+  targetBoard: {fileID: 920104352}
+  animationRate: 10
 --- !u!1 &1388061390
 GameObject:
   m_ObjectHideFlags: 0

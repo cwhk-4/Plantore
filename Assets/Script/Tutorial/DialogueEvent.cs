@@ -6,7 +6,7 @@ public class DialogueEvent : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private GameObject dialogueWindow;
 
-    [SerializeField] private ActivateMenu activateMenu;
+    [SerializeField] private MenuUIControl menuControl;
     [SerializeField] private PopUpAnimation popUp;
     [SerializeField] private TutorialInstanFromUI itemUIInstantiate;
     [SerializeField] private ToolConvertion toolConvertion;
@@ -36,7 +36,7 @@ public class DialogueEvent : MonoBehaviour
     private void Start( )
     {
         showDialogueWindow( );
-        activateMenu.CloseAllUI( );
+        menuControl.CloseAllUI( );
         dialogueControl = GetComponent<DialogueControl>( );
 
         BlackScreen.SetActive( false );
@@ -89,7 +89,7 @@ public class DialogueEvent : MonoBehaviour
     public void openMenu( )
     {
         closeDialogueWindow( );
-        activateMenu.InitUI( );
+        menuControl.InitUI( );
         showMouseLeftGuide( new Vector2( 840, 190 ) );
     }
 
@@ -129,13 +129,13 @@ public class DialogueEvent : MonoBehaviour
     public void showGrass( )
     {
         closeDialogueWindow( );
-        activateMenu.CloseMenu( );
+        menuControl.CloseMenu( );
     }
 
     public void grassClicked( )
     {
         showDialogueWindow( );
-        activateMenu.CloseAllUI( );
+        menuControl.CloseAllUI( );
     }
 
     public void placeGrass( )

@@ -2,9 +2,10 @@
 
 public class PopUpAnimation : MonoBehaviour
 {
-    [SerializeField] private RectTransform TargetBoard;
-    [SerializeField] private float AnimationRate;
-    private float AnimationSpeed;
+    [SerializeField] private MenuUIControl menuControl;
+    [SerializeField] private RectTransform targetBoard;
+    [SerializeField] private float animationRate;
+    private float animationSpeed;
 
     private bool IsShowing = false;
     private bool IsClosing = false;
@@ -12,21 +13,21 @@ public class PopUpAnimation : MonoBehaviour
 
     void Start()
     {
-        TargetBoard.localScale = Vector3.zero;
-        TargetBoard.gameObject.SetActive( false );
-        AnimationSpeed = ( 1 / AnimationRate );
+        targetBoard.localScale = Vector3.zero;
+        targetBoard.gameObject.SetActive( false );
+        animationSpeed = ( 1 / animationRate );
     }
 
     void Update()
     {
         if( IsShowing )
         {
-            TargetBoard.localScale =
-                new Vector3( TargetBoard.localScale.x + AnimationSpeed,
-                TargetBoard.localScale.y + AnimationSpeed,
-                TargetBoard.localScale.z + AnimationSpeed );
+            targetBoard.localScale =
+                new Vector3( targetBoard.localScale.x + animationSpeed,
+                targetBoard.localScale.y + animationSpeed,
+                targetBoard.localScale.z + animationSpeed );
 
-            if( TargetBoard.localScale == Vector3.one )
+            if( targetBoard.localScale == Vector3.one )
             {
                 IsShowing = false;
                 BoardShown = true;
@@ -36,16 +37,17 @@ public class PopUpAnimation : MonoBehaviour
 
         if( IsClosing )
         {
-            TargetBoard.localScale =
-                new Vector3( TargetBoard.localScale.x - AnimationSpeed,
-                TargetBoard.localScale.y - AnimationSpeed,
-                TargetBoard.localScale.z - AnimationSpeed );
+            targetBoard.localScale =
+                new Vector3( targetBoard.localScale.x - animationSpeed,
+                targetBoard.localScale.y - animationSpeed,
+                targetBoard.localScale.z - animationSpeed );
 
-            if( TargetBoard.localScale == Vector3.zero )
+            if( targetBoard.localScale == Vector3.zero )
             {
                 IsClosing = false;
                 BoardShown = false;
-                TargetBoard.gameObject.SetActive( false );
+                menuControl.DisableBG( );
+                targetBoard.gameObject.SetActive( false );
                 Time.timeScale = 1;
             }
         }
@@ -53,7 +55,7 @@ public class PopUpAnimation : MonoBehaviour
 
     public void BoardButtonClick( )
     {
-        BoardShown = TargetBoard.gameObject.activeSelf;
+        BoardShown = targetBoard.gameObject.activeSelf;
 
         if( BoardShown )
         {
@@ -62,8 +64,8 @@ public class PopUpAnimation : MonoBehaviour
         else
         {
             IsShowing = true;
-            TargetBoard.localScale = Vector3.zero;
-            TargetBoard.gameObject.SetActive( true );
+            targetBoard.localScale = Vector3.zero;
+            targetBoard.gameObject.SetActive( true );
         }
     }
 }

@@ -5,9 +5,7 @@ public class AvailabilityControl : MonoBehaviour
     [SerializeField] private InstantiateMoveControl imController;
     private TerritoryDisplayControl territoryDisplay;
     private AvailabilityDisplayControl availabilityDisplay;
-
-
-
+    
     [SerializeField] private int onGridNum;
     [SerializeField] private int lastGridNum = 0;
 
