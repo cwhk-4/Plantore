@@ -20,6 +20,7 @@ public class LION : MonoBehaviour
     private bool runaway = false;
     private bool scriptCount = false;
     private bool canFindRock = true;
+    private bool goPredation = false;
     private int i;
 
     void Start( )
@@ -47,20 +48,25 @@ public class LION : MonoBehaviour
         {
             ItemBase = item.GetComponent<ItemBase>( );
         }
+        if ( goPredation )
+        {
+            Predation( );
+            _lion.moveSpeed = 6.0f;
+        }
     }
 
     void lionMove( )
     {
         if ( _lion.canMove )
         {
-            this.gameObject.transform.position = Vector3.MoveTowards( this.gameObject.transform.position, goStage.transform.position, _lion.moveSpeed * Time.deltaTime );
+            this.gameObject.transform.position = Vector3.MoveTowards( gameObject.transform.position, goStage.transform.position, _lion.moveSpeed * Time.deltaTime );
             changeTarget( );
         }
     }
 
     void changeTarget( )
     {
-        if ( item && !runaway )
+        if ( ( item && !runaway ) )
         {
             goStage.transform.position = getItemsIndex( ItemBase.GetIndex( ) + Define.ROCK_TERRITORY[ i ] ).position;
             if ( gameObject.transform.position == goStage.transform.position )
@@ -71,16 +77,23 @@ public class LION : MonoBehaviour
                     i = 0;
                 }
             }
-
             canFindRock = true;
         }
-        if ( item == null && canFindRock )
+        if ( gameObject.transform.position == item.transform.position )
         {
+            goPredation = true;
+            runaway = true;
+        }
+        
+        if ( ( item == null && canFindRock ) || ( goPredation && !itempro.targetAnimal ) )
+        {
+            runaway = true;
+            goPredation = false;
             newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
             goStage.transform.position = newPosition;
             canFindRock = false;
         }
-        if ( item == null && this.gameObject.transform.position == newPosition )
+        if ( item == null && gameObject.transform.position == newPosition )
         {
             runaway = false;
             scriptCount = false;
@@ -125,5 +138,20 @@ public class LION : MonoBehaviour
     public Transform getItemsIndex( int index )
     {
         return getItemIndex.GetIndexTransform( index );
+    }
+
+    void Predation( )
+    {
+        if ( itempro.targetAnimal )
+        {
+            if ( itempro.canPredation )
+            {
+                goStage.transform.position = itempro.targetAnimal.transform.position;
+            }
+            if ( gameObject.transform.position == itempro.targetAnimal.transform.position )
+            {
+                Destroy( itempro.targetAnimal );
+            }
+        }
     }
 }
