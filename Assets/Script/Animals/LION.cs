@@ -54,7 +54,6 @@ public class LION : MonoBehaviour
             Predation( );
             _lion.moveSpeed = DASH_SPEED;
         }
-        Debug.Log( goStage.transform.position );
     }
 
     void lionMove( )
@@ -84,18 +83,18 @@ public class LION : MonoBehaviour
             canFindRock = true;
             Debug.Log( "123" );
         }
-        //if ( item )
-        //{
-        //    if ( gameObject.transform.position == item.transform.position && itempro.targetAnimal )
-        //    {
-        //        goPredation = true;
-        //        runaway = true;
-        //        _lion.canPredation = true;
-        //    }
-        //}
+        if ( item )
+        {
+            if ( gameObject.transform.position == item.transform.position && TargetAnimalsType.targetAnimal )
+            {
+                goPredation = true;
+                runaway = true;
+                _lion.canPredation = true;
+            }
+        }
         _lion.canPredation = false;
 
-        if ( ( item == null && canFindRock ) || ( goPredation && !itempro.targetAnimal ) )
+        if ( ( item == null && canFindRock ) || ( goPredation && !TargetAnimalsType.targetAnimal ) )
         {
             runaway = true;
             goPredation = false;
@@ -153,15 +152,15 @@ public class LION : MonoBehaviour
 
     void Predation( )
     {
-        if ( itempro.targetAnimal )
+        if ( TargetAnimalsType.targetAnimal )
         {
-            if ( itempro.canPredation )
+            if ( TargetAnimalsType.canPredation )
             {
-                goStage.transform.position = itempro.targetAnimal.transform.position;
+                goStage.transform.position = TargetAnimalsType.targetAnimal.transform.position;
             }
-            if ( gameObject.transform.position == itempro.targetAnimal.transform.position )
+            if ( gameObject.transform.position == TargetAnimalsType.targetAnimal.transform.position )
             {
-                Destroy( itempro.targetAnimal );
+                Destroy( TargetAnimalsType.targetAnimal );
             }
         }
     }

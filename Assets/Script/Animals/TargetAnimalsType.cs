@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class itempro : MonoBehaviour
+public class TargetAnimalsType : MonoBehaviour
 {
     public static bool canPredation;
     public static GameObject targetAnimal;
@@ -33,8 +33,6 @@ public class itempro : MonoBehaviour
             canPredation = false;
             targetAnimal = null;
         }
-
-        Debug.Log( targetAnimal );
     }
 
     void randomTargetAnimal( )
