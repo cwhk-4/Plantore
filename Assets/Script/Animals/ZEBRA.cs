@@ -4,6 +4,8 @@ public class ZEBRA : MonoBehaviour
 {
     public static AnimalsCollection.animalsSystem _zebra = new AnimalsCollection.animalsSystem( );
 
+    private const float SPEED = 3.0f;
+    private const float DASH_SPEED = 4.5f;
     private GameObject MapLevel;
     private GameObject goStage;
     private GameObject item;
@@ -26,7 +28,7 @@ public class ZEBRA : MonoBehaviour
     void Start( )
     {
         _zebra.animals = this.gameObject;
-        _zebra.moveSpeed = 3.0f;
+        _zebra.moveSpeed = SPEED;
         _zebra.canMove = false;
         _zebra.needTurn = false;
 
@@ -63,14 +65,7 @@ public class ZEBRA : MonoBehaviour
     {
         if ( item && !runaway )
         {
-            //caution
             var index = ItemBase.GetIndex( ) + Define.GRASS_TERRITORY[ i ];
-
-            //if( !CommonFunc.CheckRange( index ) )
-            //{
-            //    //sth here
-            //    return;
-            //}
 
             goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )
@@ -84,16 +79,20 @@ public class ZEBRA : MonoBehaviour
             
             canFindGrass = true;
         }
-
-        if ( item == null && canFindGrass )
+        if ( LION._lion.canPredation )
+        {
+            runaway = true;
+            _zebra.moveSpeed = DASH_SPEED;
+        }
+        if ( ( item == null && canFindGrass ) || runaway == true )
         {
             newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
             goStage.transform.position = newPosition;
             canFindGrass = false;
+            runaway = false;
         }
         if ( item == null && this.gameObject.transform.position == newPosition )
         {
-            runaway = false;
             scriptCount = false;
             _zebra.canMove = false;
             timeControllerIn = 0;

@@ -4,6 +4,8 @@ public class GIRAFFE : MonoBehaviour
 {
     public static AnimalsCollection.animalsSystem _giraffe = new AnimalsCollection.animalsSystem( );
 
+    private const float SPEED = 4.0f;
+    private const float DASH_SPEED = 5.0f;
     private GameObject MapLevel;
     private GameObject goStage;
     private GameObject item;
@@ -24,7 +26,7 @@ public class GIRAFFE : MonoBehaviour
     void Start( )
     {
         _giraffe.animals = this.gameObject;
-        _giraffe.moveSpeed = 4.0f;
+        _giraffe.moveSpeed = SPEED;
         _giraffe.canMove = false;
         _giraffe.needTurn = false;
 
@@ -67,18 +69,24 @@ public class GIRAFFE : MonoBehaviour
             if ( gameObject.transform.position == goStage.transform.position )
             {
                 i++;
-                if ( i > 4 )
+                if ( i > 7 )
                 {
                     i = 0;
                 }
             }
             canFindItem = true;
         }
-        if ( item == null && canFindItem )
+        if ( LION._lion.canPredation )
+        {
+            runaway = true;
+            _giraffe.moveSpeed = DASH_SPEED;
+        }
+        if ( ( item == null && canFindItem ) || runaway )
         {
             newPosition = new Vector3( 15.0f, Random.Range( -10, 10 ), 0.0f );
             goStage.transform.position = newPosition;
             canFindItem = false;
+            runaway = false;
         }
         if ( item == null && this.gameObject.transform.position == newPosition )
         {

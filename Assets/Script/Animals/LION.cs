@@ -5,6 +5,8 @@ public class LION : MonoBehaviour
 
     public static AnimalsCollection.animalsSystem _lion = new AnimalsCollection.animalsSystem( );
 
+    private const float SPEED = 4.0f;
+    private const float DASH_SPEED = 6.0f;
     private GameObject goStage;
     private Vector3 newPosition;
     private GameObject item;
@@ -26,13 +28,12 @@ public class LION : MonoBehaviour
     void Start( )
     {
         _lion.animals = this.gameObject;
-        _lion.moveSpeed = 4.0f;
+        _lion.moveSpeed = SPEED;
         _lion.Minus = 5;
         _lion.startPredationProbability = 30;
         _lion.canMove = false;
         _lion.canPredation = false;
         _lion.needTurn = false;
-        _lion.predationProbability = Random.Range( 0, 9 );
 
         goStage = GameObject.Find( "lionTarget" );
         newPosition = new Vector3( Random.Range( -10, 10 ), 7.0f, 0.0f );
@@ -51,8 +52,9 @@ public class LION : MonoBehaviour
         if ( goPredation )
         {
             Predation( );
-            _lion.moveSpeed = 6.0f;
+            _lion.moveSpeed = DASH_SPEED;
         }
+        Debug.Log( goStage.transform.position );
     }
 
     void lionMove( )
@@ -68,23 +70,31 @@ public class LION : MonoBehaviour
     {
         if ( ( item && !runaway ) )
         {
-            goStage.transform.position = getItemsIndex( ItemBase.GetIndex( ) + Define.ROCK_TERRITORY[ i ] ).position;
+            var index = ItemBase.GetIndex( ) + Define.SMALL_ROCK_TERRITORY[ i ];
+
+            goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )
             {
                 i++;
-                if ( i > 4 )
+                if ( i > 8 )
                 {
                     i = 0;
                 }
             }
             canFindRock = true;
+            Debug.Log( "123" );
         }
-        if ( gameObject.transform.position == item.transform.position )
-        {
-            goPredation = true;
-            runaway = true;
-        }
-        
+        //if ( item )
+        //{
+        //    if ( gameObject.transform.position == item.transform.position && itempro.targetAnimal )
+        //    {
+        //        goPredation = true;
+        //        runaway = true;
+        //        _lion.canPredation = true;
+        //    }
+        //}
+        _lion.canPredation = false;
+
         if ( ( item == null && canFindRock ) || ( goPredation && !itempro.targetAnimal ) )
         {
             runaway = true;
@@ -98,6 +108,7 @@ public class LION : MonoBehaviour
             runaway = false;
             scriptCount = false;
             _lion.canMove = false;
+            _lion.moveSpeed = SPEED;
             timeControllerIn = 0;
         }
     }
