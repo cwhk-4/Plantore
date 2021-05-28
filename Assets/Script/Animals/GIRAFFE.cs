@@ -48,7 +48,6 @@ public class GIRAFFE : MonoBehaviour
         {
             ItemBase = item.GetComponent<ItemBase>( );
         }
-        Debug.Log( item );
     }
 
     void giraffeMove( )

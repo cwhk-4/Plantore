@@ -6,6 +6,8 @@ public class ZEBRA : MonoBehaviour
 
     private const float SPEED = 3.0f;
     private const float DASH_SPEED = 4.5f;
+    private int[ ] indexTutorial;
+    private int[ ] index0 = { 0, 1, Define.XCOUNT }; 
     private GameObject MapLevel;
     private GameObject goStage;
     private GameObject item;
@@ -31,6 +33,7 @@ public class ZEBRA : MonoBehaviour
         _zebra.moveSpeed = SPEED;
         _zebra.canMove = false;
         _zebra.needTurn = false;
+        
 
         MapLevel = GameObject.Find( "MapInfo" );
         goStage = GameObject.Find( "zebraTarget" );
@@ -65,13 +68,14 @@ public class ZEBRA : MonoBehaviour
     {
         if ( item && !runaway )
         {
-            var index = ItemBase.GetIndex( ) + Define.GRASS_TERRITORY[ i ];
+            checkOutOfRange( );
+            var index = ItemBase.GetIndex( ) + indexTutorial[ i ];
 
             goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )
             {
                 i ++;
-                if ( i > 4 )
+                if ( i > indexTutorial.Length - 1 )
                 {
                     i = 0;
                 }
@@ -111,11 +115,11 @@ public class ZEBRA : MonoBehaviour
                     scriptCount = true;
                 }
                 float timeToGo;
-                timeToGo = this.gameObject.GetComponent<AnimalsTimeController>( ).changeTime( );
+                timeToGo = gameObject.GetComponent<AnimalsTimeController>( ).changeTime( );
                 if ( timeToGo < -0.5 )
                 {
                     _zebra.canMove = true;
-                    Destroy( this.gameObject.GetComponent<AnimalsTimeController>( ) );
+                    Destroy( gameObject.GetComponent<AnimalsTimeController>( ) );
                     timeControllerIn = 1;
                     timeToGo = 0;
                 }
@@ -150,5 +154,21 @@ public class ZEBRA : MonoBehaviour
     public Transform getItemsIndex( int index )
     {
         return getItemIndex.GetIndexTransform( index );
+    }
+
+    private void checkOutOfRange( )
+    {
+        switch( ItemBase.GetIndex( ) )
+        {
+            case 0:
+                indexTutorial = index0;
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                break;
+        }
     }
 }
