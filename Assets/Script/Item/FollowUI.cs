@@ -6,7 +6,7 @@ public class FollowUI : MonoBehaviour
     private GameObject canvas;
     public Transform target;
     private Vector3 targetPos;
-    [SerializeField]private int distance;
+    [SerializeField] private int distance;
     [SerializeField] private int xdistance;
 
     private void Start( )

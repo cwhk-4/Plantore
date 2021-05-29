@@ -348,6 +348,8 @@ MonoBehaviour:
   Timer: 30
   original: {fileID: 21300000, guid: 5cc823ce0746c426b939adbdb97e9514, type: 3}
   timeOutImage: {fileID: 21300000, guid: 4a657390870a146a794c6b238aaac6ea, type: 3}
+  IsRepairing: 0
+  RepairingSpeed: 10
 --- !u!114 &6228983461691411191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,9 +379,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2ace78561114d52bdea4bf9ec68b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imController: {fileID: 0}
   itemToBeInstantiate: {fileID: 4833833724648926518, guid: 0f796f8b210ed4dd588ad171ec132844, type: 3}
   xCount: 8
+  queueNum: -1
 --- !u!1 &6228983462829018084
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,5 +620,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  distance: 145
+  distance: 75
   xdistance: 0

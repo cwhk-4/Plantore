@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  distance: 145
+  distance: 75
   xdistance: 0
 --- !u!1 &3717367912121007457
 GameObject:
