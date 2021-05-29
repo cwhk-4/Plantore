@@ -58,15 +58,15 @@ public class MoveItem : MonoBehaviour
     {
         switch( itemNum )
         {
-            case 1:
+            case ( int )Define.ITEM.WOOD:
                 RemoveWoodExtra( index );
                 break;
 
-            case 2:
+            case ( int )Define.ITEM.GRASSLAND:
                 RemoveGrasslandExtra( index );
                 break;
 
-            case 3:
+            case ( int )Define.ITEM.MARSH:
                 RemoveMarshExtra( index );
                 break;
         }
@@ -89,7 +89,6 @@ public class MoveItem : MonoBehaviour
         for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
         {
             Destroy( transform.parent.parent.GetChild( index + Define.MARSH_SIZE[i] ).GetChild( 0 ).gameObject );
-
         }
     }
 
