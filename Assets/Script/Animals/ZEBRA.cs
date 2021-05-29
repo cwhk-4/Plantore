@@ -8,6 +8,8 @@ public class ZEBRA : MonoBehaviour
     private const float DASH_SPEED = 4.5f;
     private int[ ] indexTutorial;
     private int[ ] index0 = { 0, 1, Define.XCOUNT }; 
+    private int[ ] index1 = { 0, -1, 1, Define.XCOUNT };
+    private int[ ] index12 = { 0, -Define.XCOUNT, 1, Define.XCOUNT };
     private GameObject MapLevel;
     private GameObject goStage;
     private GameObject item;
@@ -168,6 +170,16 @@ public class ZEBRA : MonoBehaviour
             case 3:
             case 4:
             case 5:
+                indexTutorial = index1;
+                break;
+            case 12:
+            case 24:
+            case 36:
+            case 48:
+                indexTutorial = index12;
+                break;
+            default:
+                indexTutorial = Define.GRASS_TERRITORY;
                 break;
         }
     }

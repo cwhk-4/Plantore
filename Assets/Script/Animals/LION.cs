@@ -4,9 +4,13 @@ public class LION : MonoBehaviour
 {
 
     public static AnimalsCollection.animalsSystem _lion = new AnimalsCollection.animalsSystem( );
-
+    //public static readonly int[ ] SMALL_ROCK_TERRITORY = { 0, XCOUNT - 1, XCOUNT, XCOUNT + 1, -1, 1, -XCOUNT - 1, -XCOUNT, -XCOUNT + 1 };
     private const float SPEED = 4.0f;
     private const float DASH_SPEED = 6.0f;
+    private int[ ] indexTutorial;
+    private int[ ] index0 = { 0, Define.XCOUNT, Define.XCOUNT + 1, 1};
+    private int[ ] index1 = { 0, Define.XCOUNT - 1, Define.XCOUNT, Define.XCOUNT + 1, -1, 1 };
+    private int[ ] index12 = { 0, Define.XCOUNT, Define.XCOUNT + 1, 1, -Define.XCOUNT, -Define.XCOUNT + 1 };
     private GameObject goStage;
     private Vector3 newPosition;
     private GameObject item;
@@ -69,19 +73,19 @@ public class LION : MonoBehaviour
     {
         if ( ( item && !runaway ) )
         {
-            var index = ItemBase.GetIndex( ) + Define.SMALL_ROCK_TERRITORY[ i ];
+            checkOutOfRange( );
+            var index = ItemBase.GetIndex( ) + indexTutorial[ i ];
 
             goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )
             {
                 i++;
-                if ( i > 8 )
+                if ( i > indexTutorial.Length - 1 )
                 {
                     i = 0;
                 }
             }
             canFindRock = true;
-            Debug.Log( "123" );
         }
         if ( item )
         {
@@ -165,4 +169,29 @@ public class LION : MonoBehaviour
         }
     }
 
+    private void checkOutOfRange( )
+    {
+        switch ( ItemBase.GetIndex( ) )
+        {
+            case 0:
+                indexTutorial = index0;
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                indexTutorial = index1;
+                break;
+            case 12:
+            case 24:
+            case 36:
+            case 48:
+                indexTutorial = index12;
+                break;
+            default:
+                indexTutorial = Define.SMALL_ROCK_TERRITORY;
+                break;
+        }
+    }
 }

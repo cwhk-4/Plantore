@@ -3,12 +3,16 @@
 public class GIRAFFE : MonoBehaviour
 {
     public static AnimalsCollection.animalsSystem _giraffe = new AnimalsCollection.animalsSystem( );
-
+    //public static readonly int[] WOOD_TERRITORY = { 0, XCOUNT, -XCOUNT, -1, 1, XCOUNT - 1, XCOUNT + 1, 2 * XCOUNT };
     private const float SPEED = 4.0f;
     private const float DASH_SPEED = 5.0f;
     private GameObject MapLevel;
     private GameObject goStage;
     private GameObject item;
+    private int[ ] indexTutorial;
+    private int[ ] index0 = { 0, Define.XCOUNT, 1, Define.XCOUNT + 1, 2 * Define.XCOUNT };
+    private int[ ] index1 = { 0, Define.XCOUNT -1, 1, Define.XCOUNT - 1, Define.XCOUNT + 1, 2 * Define.XCOUNT };
+    private int[ ] index12 = { 0, Define.XCOUNT, -Define.XCOUNT, 1, Define.XCOUNT + 1, 2 * Define.XCOUNT };
 
     private Vector3 newPosition;
 
@@ -63,12 +67,13 @@ public class GIRAFFE : MonoBehaviour
     {
         if ( item && !runaway )
         {
-            var index = ItemBase.GetIndex( ) + Define.WOOD_TERRITORY[ i ];
+            checkOutOfRange( );
+            var index = ItemBase.GetIndex( ) + indexTutorial[ i ];
             goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )
             {
                 i++;
-                if ( i > 7 )
+                if ( i > indexTutorial.Length - 1 )
                 {
                     i = 0;
                 }
@@ -133,5 +138,31 @@ public class GIRAFFE : MonoBehaviour
     public Transform getItemsIndex( int index )
     {
         return getItemIndex.GetIndexTransform( index );
+    }
+
+    private void checkOutOfRange( )
+    {
+        switch ( ItemBase.GetIndex( ) )
+        {
+            case 0:
+                indexTutorial = index0;
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                indexTutorial = index1;
+                break;
+            case 12:
+            case 24:
+            case 36:
+            case 48:
+                indexTutorial = index12;
+                break;
+            default:
+                indexTutorial = Define.WOOD_TERRITORY;
+                break;
+        }
     }
 }
