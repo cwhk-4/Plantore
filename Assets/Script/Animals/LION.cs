@@ -4,7 +4,6 @@ public class LION : MonoBehaviour
 {
 
     public static AnimalsCollection.animalsSystem _lion = new AnimalsCollection.animalsSystem( );
-    //public static readonly int[ ] SMALL_ROCK_TERRITORY = { 0, XCOUNT - 1, XCOUNT, XCOUNT + 1, -1, 1, -XCOUNT - 1, -XCOUNT, -XCOUNT + 1 };
     private const float SPEED = 4.0f;
     private const float DASH_SPEED = 6.0f;
     private int[ ] indexTutorial;

@@ -4,17 +4,16 @@ public class TargetAnimalsType : MonoBehaviour
 {
     public static bool canPredation;
     public static GameObject targetAnimal;
-    //[SerializeField] private bool haveTargetAnimal;
-    // Start is called before the first frame update
+    [SerializeField] private bool haveTargetAnimal;
+
     void Start()
     {
-        //haveTargetAnimal = false;
+        haveTargetAnimal = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if ( LION._lion.canMove && ( ZEBRA._zebra.canMove || GIRAFFE._giraffe.canMove ) /*&& !haveTargetAnimal*/)
+        if ( LION._lion.canMove && ( ZEBRA._zebra.canMove || GIRAFFE._giraffe.canMove ) )
         {
             canPredation = true;
             if( GIRAFFE._giraffe.canMove == false )
@@ -25,23 +24,17 @@ public class TargetAnimalsType : MonoBehaviour
             {
                 targetAnimal = GIRAFFE._giraffe.animals;
             }
-            else if( ZEBRA._zebra.canMove && GIRAFFE._giraffe.canMove )
+            else if ( !haveTargetAnimal )
             {
                 randomTargetAnimal( );
-            }
-            else
-            {
-                Debug.Log( "noA" );
-            }
-
-            Debug.Log( "noB" );
-            //haveTargetAnimal = true;
-            
+                haveTargetAnimal = true;
+            }          
         }
         else
         {
             canPredation = false;
             targetAnimal = null;
+            haveTargetAnimal = false;
         }
     }
 
