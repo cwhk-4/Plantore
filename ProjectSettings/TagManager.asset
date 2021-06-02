@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ItemExtraGrid
   - Grid
   - Wood
   - Grass
@@ -22,7 +21,6 @@ TagManager:
   - DialogueWindow
   - Menu
   - MissionController
-  - DriedGrass
   - GIRAFFES
   - IMPALAS
   - AFRICANWILDDOGS
@@ -30,18 +28,19 @@ TagManager:
   - SPOTTEDHYENAS
   - WHITERHINOS
   - Grassland
-  - GrasslandExtra
-  - WoodExtra
   - Marsh
-  - MarshExtra
   - Map
   - HIPPOS
   - Rock
-  - RockExtra
   - SmallRock
   - giraffe
   - lion
   - zebra
+  - TimedOut_Grass
+  - TimedOut_Wood
+  - TimedOut_SmallRock
+  - TimedOut_Grassland
+  - TimedOut_Marsh
   layers:
   - Default
   - TransparentFX
