@@ -20,6 +20,9 @@ public class CountDown : MonoBehaviour
     [SerializeField] private bool IsRepairing = false;
     [SerializeField] private float RepairingSpeed = 10;
 
+    [SerializeField] private string originalTagName;
+    [SerializeField] private string driedTagName;
+
     private void Awake( )
     {
         canvas = GetComponentInChildren<Canvas>( );
@@ -34,6 +37,8 @@ public class CountDown : MonoBehaviour
         spriteRenderer.sprite = original;
 
         slider.value = 1;
+        originalTagName = gameObject.tag;
+        driedTagName = originalTagName.Insert( 0, "TimedOut_" );
     }
 
     void Update()
@@ -64,7 +69,8 @@ public class CountDown : MonoBehaviour
             if( spriteRenderer.sprite != timeOutImage)
             {
                 spriteRenderer.sprite = timeOutImage;
-                gameObject.tag = "DriedGrass";
+
+                gameObject.tag = driedTagName;
 
             }
         }
@@ -73,7 +79,7 @@ public class CountDown : MonoBehaviour
             if( spriteRenderer.sprite != original )
             {
                 spriteRenderer.sprite = original;
-                gameObject.tag = "Grass";
+                gameObject.tag = originalTagName;
             }
         }
     }
