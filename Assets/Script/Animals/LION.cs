@@ -19,6 +19,7 @@ public class LION : MonoBehaviour
     public ItemBase ItemBase;
     
     public static GameObject lion;
+    public static int index;
 
     private int timeControllerIn = 0;
     private float timeToGo;
@@ -73,7 +74,7 @@ public class LION : MonoBehaviour
         if ( ( item && !runaway ) )
         {
             checkOutOfRange( );
-            var index = ItemBase.GetIndex( ) + indexTutorial[ i ];
+            index = ItemBase.GetIndex( ) + indexTutorial[ i ];
 
             goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )

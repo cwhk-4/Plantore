@@ -19,6 +19,7 @@ public class GIRAFFE : MonoBehaviour
     public AnimalsTimeController _giraffeTimeController;
     public ItemBase ItemBase;
     public GridTerritoryControl getItemIndex;
+    public static int index;
 
     private int i;
     private int timeControllerIn;
@@ -68,7 +69,7 @@ public class GIRAFFE : MonoBehaviour
         if ( item && !runaway )
         {
             checkOutOfRange( );
-            var index = ItemBase.GetIndex( ) + indexTutorial[ i ];
+            index = ItemBase.GetIndex( ) + indexTutorial[ i ];
             goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )
             {
