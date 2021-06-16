@@ -19,7 +19,7 @@ public class LION : MonoBehaviour
     public ItemBase ItemBase;
     
     public static GameObject lion;
-    public static int index;
+    public static int indexIn = 100;
 
     private int timeControllerIn = 0;
     private float timeToGo;
@@ -52,6 +52,7 @@ public class LION : MonoBehaviour
         if ( item )
         {
             ItemBase = item.GetComponent<ItemBase>( );
+            indexIn = ItemBase.GetIndex( );
         }
         if ( goPredation )
         {
@@ -74,7 +75,7 @@ public class LION : MonoBehaviour
         if ( ( item && !runaway ) )
         {
             checkOutOfRange( );
-            index = ItemBase.GetIndex( ) + indexTutorial[ i ];
+            var index = ItemBase.GetIndex( ) + indexTutorial[ i ];
 
             goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )
@@ -89,7 +90,7 @@ public class LION : MonoBehaviour
         }
         if ( item )
         {
-            if ( gameObject.transform.position == item.transform.position && TargetAnimalsType.targetAnimal )
+            if ( gameObject.transform.position == item.transform.position && TargetAnimalsType.canPredation )
             {
                 goPredation = true;
                 runaway = true;

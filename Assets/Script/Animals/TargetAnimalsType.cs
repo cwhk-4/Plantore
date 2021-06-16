@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class TargetAnimalsType : MonoBehaviour
 {
@@ -6,35 +7,35 @@ public class TargetAnimalsType : MonoBehaviour
     public static GameObject targetAnimal;
     [SerializeField] private bool haveTargetAnimal;
     private bool canCheckIndex;
-    private int[ ] itemIndex;
-    private int[ ] lionIndex;
+    private List<int> lionIndex = new List<int>( );
+    private List<int> itemIndex = new List<int>( );
     private int indexNum;
 
     private int A;
     private int B;
-    
+    private bool canadd;
+    int i;
 
     void Start()
     {
         canCheckIndex = false;
+        canadd = true;
     }
 
     void Update()
     {
         chouceTragetAnimal( );
         TargetAnimalsIndex( );
+        Debug.Log( LION.indexIn );
+        Debug.Log( "lion " + LION._lion.canMove );
+        Debug.Log( "zebra " + ZEBRA._zebra.canMove );
+        Debug.Log( "target" + targetAnimal );
     }
 
     void chouceTragetAnimal( )
     {
         if ( LION._lion.canMove && ( ZEBRA._zebra.canMove || GIRAFFE._giraffe.canMove ) )
         {
-            for ( int i = 0; i < Define.ROCK_TERRITORY.Length; i++ )
-            {
-                Debug.Log( Define.ROCK_TERRITORY[ i ] );
-                lionIndex[ i ] = LION.index + Define.ROCK_TERRITORY[ i ];
-            }
-            canPredation = true;
             if ( GIRAFFE._giraffe.canMove == false )
             {
                 targetAnimal = ZEBRA._zebra.animals;
@@ -55,6 +56,11 @@ public class TargetAnimalsType : MonoBehaviour
             canPredation = false;
             targetAnimal = null;
             haveTargetAnimal = false;
+            canCheckIndex = false;
+            canadd = true;
+            A = B = 0;
+            itemIndex.Clear( );
+            lionIndex.Clear( );
         }
     }
 
@@ -62,30 +68,44 @@ public class TargetAnimalsType : MonoBehaviour
     {
         if ( canCheckIndex )
         {
-            if ( targetAnimal == ZEBRA._zebra.animals )
+            if ( canadd )
             {
-                indexNum = ZEBRA.index;
-                for ( int i = 0; i < Define.ROCK_TERRITORY.Length; i++ )
+                for ( int i = 0; i < Define.SMALL_ROCK_TERRITORY.Length; i++ )
                 {
-                    itemIndex[ i ] = indexNum + Define.ROCK_TERRITORY[ i ];
+                    lionIndex.Add( LION.indexIn + Define.SMALL_ROCK_TERRITORY[ i ] );
+                    Debug.Log( "lion  " + lionIndex[ i ] );
                 }
-            }
-            if ( targetAnimal == GIRAFFE._giraffe.animals )
-            {
-                indexNum = GIRAFFE.index;
-                for ( int i = 0; i < Define.WOOD_TERRITORY.Length; i++ )
+
+                if ( targetAnimal == ZEBRA._zebra.animals )
                 {
-                    itemIndex[ i ] = indexNum + Define.WOOD_TERRITORY[ i ];
+                    indexNum = ZEBRA.indexIn;
+
+                    for ( int i = 0; i < Define.GRASS_TERRITORY.Length; i++ )
+                    {
+                        itemIndex.Add( indexNum + Define.GRASS_TERRITORY[ i ] );
+                        Debug.Log( "zebra  " + itemIndex[ i ] );
+                    }
                 }
+
+                if ( targetAnimal == GIRAFFE._giraffe.animals )
+                {
+                    indexNum = GIRAFFE.index;
+                    for ( int i = 0; i < Define.WOOD_TERRITORY.Length; i++ )
+                    {
+                        itemIndex.Add( indexNum + Define.WOOD_TERRITORY[ i ] );
+                    }
+                }
+                canadd = false;
             }
-            for ( int i = 0; i < lionIndex.Length; i++ )
+            for ( int i = 0; i < lionIndex.Count; i++ )
             {
                 A = lionIndex[ i ];
-                for ( int e = 0; e < itemIndex.Length; e++ )
+                for ( int e = 0; e < itemIndex.Count; e++ )
                 {
                     B = itemIndex[ e ];
                     if ( A == B )
                     {
+                        canPredation = true;
                         Debug.Log( "123" );
                     }
                 }
@@ -103,10 +123,5 @@ public class TargetAnimalsType : MonoBehaviour
             case 2: targetAnimal = GIRAFFE._giraffe.animals;
                 break;
         }
-    }
-
-    void getItemsTutorial( )
-    {
-
     }
 }

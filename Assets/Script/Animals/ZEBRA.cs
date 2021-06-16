@@ -20,7 +20,7 @@ public class ZEBRA : MonoBehaviour
     public ItemBase ItemBase;
 
     public static GameObject zebra;
-    public static int index;
+    public static int indexIn;
     private int i;
 
     private int timeControllerIn;
@@ -56,6 +56,7 @@ public class ZEBRA : MonoBehaviour
         if ( item )
         {
             ItemBase = item.GetComponent<ItemBase>( );
+            indexIn = ItemBase.GetIndex( );
         }
     }
 
@@ -73,7 +74,7 @@ public class ZEBRA : MonoBehaviour
         if ( item && !runaway )
         {
             checkOutOfRange( );
-            index = ItemBase.GetIndex( ) + indexTutorial[ i ];
+            var index = ItemBase.GetIndex( ) + indexTutorial[ i ];
 
             goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )
