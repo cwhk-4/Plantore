@@ -6,17 +6,23 @@ public class MissionTextDisplay : MonoBehaviour
     [SerializeField] private MissionsList missions;
     [SerializeField] private MissionControl MissionControl;
 
-    [SerializeField] private TMP_Text Mission1Num;
-    [SerializeField] private TMP_Text Mission1;
-    [SerializeField] private TMP_Text Mission2Num;
-    [SerializeField] private TMP_Text Mission2;
-    [SerializeField] private TMP_Text Mission3Num;
-    [SerializeField] private TMP_Text Mission3;
+    [SerializeField] private GameObject MissionParent;
+
+    private TMP_Text[,] MissionText = new TMP_Text[4, 2];
 
     [SerializeField] private int MapLevel;
     private int MissionStartingNum;
 
-    void Start()
+    private void Awake( )
+    {
+        for( int i = 0; i < 4; i++ )
+        {
+            MissionText[i, 0] = MissionParent.transform.GetChild( i ).GetComponent<TMP_Text>( );
+            MissionText[i, 1] = MissionParent.transform.GetChild( i ).GetChild( 0 ).GetComponent<TMP_Text>( );
+        }
+    }
+
+    private void Start()
     {
         missionSwitch( );
     }
@@ -27,14 +33,22 @@ public class MissionTextDisplay : MonoBehaviour
         missionSwitch( );
     }
 
-    private void setText( int num )
+    private void setText( )
     {
-        Mission1Num.text = "/" + missions.GetValue( MissionStartingNum ).totalNum.ToString( );
-        Mission1.text = missions.GetValue( MissionStartingNum ).MissionText;
-        Mission2Num.text = "/" + missions.GetValue( MissionStartingNum + 1 ).totalNum.ToString( );
-        Mission2.text = missions.GetValue( MissionStartingNum + 1 ).MissionText;
-        Mission3Num.text = "/" + missions.GetValue( MissionStartingNum + 2 ).totalNum.ToString( );
-        Mission3.text = missions.GetValue( MissionStartingNum + 2 ).MissionText;
+        for( int i = 0; i < 4; i++ )
+        {
+            if( missions.GetLevel( MissionStartingNum + i ) == MapLevel )
+            {
+                MissionText[i, 0].gameObject.SetActive( true );
+                MissionText[i, 0].text = missions.GetValue( MissionStartingNum ).MissionText;
+                MissionText[i, 1].text = "/" + missions.GetValue( MissionStartingNum ).totalNum.ToString( );
+            }
+            else
+            {
+                MissionText[i, 0].gameObject.SetActive( false );
+            }
+        }
+
     }
 
     private void missionSwitch( )
@@ -47,9 +61,15 @@ public class MissionTextDisplay : MonoBehaviour
             case 2:
                 MissionStartingNum = 3;
                 break;
+            case 3:
+                MissionStartingNum = 5;
+                break;
+            case 4:
+                MissionStartingNum = 9;
+                break;
         }
 
-        setText( MissionStartingNum );
+        setText( );
         MissionControl.SetNowStartingMission( MissionStartingNum );
     }
 }
