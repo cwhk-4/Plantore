@@ -3,14 +3,15 @@ using TMPro;
 
 public class MissionTextDisplay : MonoBehaviour
 {
-    [SerializeField] private MissionsList missions;
+    [SerializeField] private MissionsList Missions;
     [SerializeField] private MissionControl MissionControl;
+    [SerializeField] private MapLevel MapLevel;
 
     [SerializeField] private GameObject MissionParent;
 
     private TMP_Text[,] MissionText = new TMP_Text[4, 2];
 
-    [SerializeField] private int MapLevel;
+    [SerializeField] private int Level;
     private int MissionStartingNum;
 
     private void Awake( )
@@ -24,42 +25,44 @@ public class MissionTextDisplay : MonoBehaviour
 
     private void Start()
     {
-        missionSwitch( );
+        MissionSwitch( );
     }
 
-    public void MapLevelChanged( int level )
-    {
-        MapLevel = level;
-        missionSwitch( );
-    }
 
-    private void setText( )
+    private void SetText( )
     {
         for( int i = 0; i < 4; i++ )
         {
-            if( missions.GetLevel( MissionStartingNum + i ) == MapLevel )
+            if( MissionStartingNum + i > 10 )
+            {
+                MissionText[i, 0].gameObject.SetActive( false );
+                return;
+            }
+
+            if( Missions.GetLevel( MissionStartingNum + i ) == Level )
             {
                 MissionText[i, 0].gameObject.SetActive( true );
-                MissionText[i, 0].text = missions.GetValue( MissionStartingNum ).MissionText;
-                MissionText[i, 1].text = "/" + missions.GetValue( MissionStartingNum ).totalNum.ToString( );
+                MissionText[i, 0].text = Missions.GetValue( MissionStartingNum + i ).MissionText;
+                MissionText[i, 1].text = "/" + Missions.GetValue( MissionStartingNum + i ).totalNum.ToString( );
             }
             else
             {
                 MissionText[i, 0].gameObject.SetActive( false );
             }
         }
-
     }
 
-    private void missionSwitch( )
+    public void MissionSwitch( )
     {
-        switch( MapLevel )
+        Level = MapLevel.getMapLevel( );
+
+        switch( Level )
         {
             case 1:
                 MissionStartingNum = 0;
                 break;
             case 2:
-                MissionStartingNum = 3;
+                MissionStartingNum = 2;
                 break;
             case 3:
                 MissionStartingNum = 5;
@@ -69,7 +72,7 @@ public class MissionTextDisplay : MonoBehaviour
                 break;
         }
 
-        setText( );
+        SetText( );
         MissionControl.SetNowStartingMission( MissionStartingNum );
     }
 }

@@ -8,11 +8,6 @@ public class MapLevel : MonoBehaviour
     [SerializeField] private MissionTextDisplay MissionText;
     [SerializeField] private ItemUIDisplay ItemUIDisplay;
 
-    private void Awake( )
-    {
-        MissionText.MapLevelChanged( level );
-    }
-
     public int getMapLevel( )
     {
         return level;
@@ -21,7 +16,6 @@ public class MapLevel : MonoBehaviour
     public void setMapLevel( int input )
     {
         level = input;
-        MissionText.MapLevelChanged( level );
         ItemUIDisplay.SetMapLevel( level );
     }
 
