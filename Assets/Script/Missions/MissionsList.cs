@@ -11,7 +11,7 @@ public class SubClass
 
 public class MissionsList : MonoBehaviour
 {
-	[SerializeField] private SubClass[] Missions = new SubClass[11];
+	[SerializeField]private SubClass[] Missions = new SubClass[11];
 
     private void Awake( )
     {

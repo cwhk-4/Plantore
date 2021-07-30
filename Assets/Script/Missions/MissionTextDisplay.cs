@@ -36,7 +36,7 @@ public class MissionTextDisplay : MonoBehaviour
             if( MissionStartingNum + i > 10 )
             {
                 MissionText[i, 0].gameObject.SetActive( false );
-                return;
+                continue;
             }
 
             if( Missions.GetLevel( MissionStartingNum + i ) == Level )

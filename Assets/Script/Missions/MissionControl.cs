@@ -21,6 +21,12 @@ public class MissionControl : MonoBehaviour
 
     [SerializeField] private int NowStartingMission = 0;
 
+    #region ControlBool
+    private bool Index = false;
+    private bool Rhino = false;
+    private bool Hippo = false;
+    #endregion
+
     private void Start( )
     {
         InitAllData( );
@@ -50,7 +56,7 @@ public class MissionControl : MonoBehaviour
         NowStartingMission = MissionStartingNum[NowMapLevel - 1];
 
         UpdateMissionNum( );
-        CheckMissionsComplete( );
+        CheckMissionsCompletion( );
 
         Animation.BoardButtonClick( );
     }
@@ -63,7 +69,7 @@ public class MissionControl : MonoBehaviour
         }
     }
 
-    private void CheckMissionsComplete( )
+    private void CheckMissionsCompletion( )
     {
         for( int i = NowStartingMission; i < MissionStartingNum[NowMapLevel]; i++ )
         {
@@ -76,14 +82,122 @@ public class MissionControl : MonoBehaviour
                 MissionCheck[i - NowStartingMission].SetActive( false );
             }
         }
+
+        CheckLevelCompletion( );
+    }
+
+    private void CheckLevelCompletion( )
+    {
+        for( int i = NowStartingMission; i < MissionStartingNum[NowMapLevel]; i++ )
+        {
+            if( MissionNum[i] < MissionTotalNum[i] )
+            {
+                return;
+            }
+        }
+
+        GoToNextLevel( );
+    }
+
+
+    //Lv 1
+    public void PlacedItem( )
+    {
+        MissionNum[0] += 1;
+        CheckMissionsCompletion( );
+    }
+
+    public void ReadIndex( )
+    {
+        if( Index )
+        {
+            return;
+        }
+        else
+        {
+            Index = true;
+            MissionNum[1] = 1;
+            CheckMissionsCompletion( );
+        }
+    }
+
+    //Lv 2
+    public void FoundHippo( )
+    {
+        if( !Hippo )
+        {
+            Hippo = true;
+            FoundHippoRhino( );
+        }
+    }
+
+    public void FoundRhino( )
+    {
+        if( !Rhino )
+        {
+            Rhino = true;
+            FoundHippoRhino( );
+        }
+    }
+
+    private void FoundHippoRhino( )
+    {
+        MissionNum[2] += 1;
+        CheckMissionsCompletion( );
+    }
+
+    public void FixedItem( )
+    {
+        MissionNum[3] += 1;
+        MissionNum[5] += 1;
+        CheckMissionsCompletion( );
+    }
+
+    public void HuntedByLion( )
+    {
+        MissionNum[4] += 1;
+        CheckMissionsCompletion( );
+    }
+
+    //Lv 3
+    public void FoundHerbivore( )
+    {
+        MissionNum[6] += 1;
+        CheckMissionsCompletion( );
+    }
+
+    public void HuntingSucceed( )
+    {
+        MissionNum[7] += 1;
+        CheckMissionsCompletion( );
+    }
+
+    public void FoundBuffalo( )
+    {
+        MissionNum[8] += 1;
+        CheckMissionsCompletion( );
+    }
+
+    //Lv 4
+    public void FilledIndex( )
+    {
+        MissionNum[9] += 1;
+        CheckMissionsCompletion( );
+    }
+
+    public void AllAnimal( )
+    {
+        //caution ????
+    }
+
+    private void GoToNextLevel( )
+    {
+        MapLevel.setMapLevel( NowMapLevel + 1 );
     }
 
     //caution
     #region Old
     private int DisplayBoardNum;
-
-    [SerializeField] private bool Rhino = false;
-    [SerializeField] private bool Hippo = false;
 
     [SerializeField] private int[] missionTotalNum = new int[6];
     [SerializeField] private int[] missionNowNum = new int[6];
@@ -204,64 +318,6 @@ public class MissionControl : MonoBehaviour
         //    mission1Num.text = missionNowNum[0].ToString( );
         //}
         //checkMissionCompleted( 0 );
-    }
-
-    public void PlacedItem( )
-    {
-        //missionNowNum[1]++;
-        //if( NowStartingMission == 0 )
-        //{
-        //    mission2Num.text = missionNowNum[1].ToString( );
-        //}
-        //checkMissionCompleted( 1 );
-    }
-
-    public void FixedItem( )
-    {
-        //missionNowNum[2]++;
-        //if( NowStartingMission == 0 )
-        //{
-        //    mission3Num.text = missionNowNum[2].ToString( );
-        //}
-        //checkMissionCompleted( 2 );
-    }
-
-    public void FoundHippo( )
-    {
-        //if( !Hippo )
-        //{
-        //    Hippo = true;
-        //    FoundHippoRhino( );
-        //}
-    }
-
-    public void FoundRhino( )
-    {
-        //if( !Rhino )
-        //{
-        //    Rhino = true;
-        //    FoundHippoRhino( );
-        //}
-    }
-
-    private void FoundHippoRhino( )
-    {
-        //missionNowNum[3]++;
-        //if( NowStartingMission == 3 )
-        //{
-        //    mission1Num.text = missionNowNum[3].ToString( );
-        //}
-        //checkMissionCompleted( 3 );
-    }
-
-    public void HuntingHappened( )
-    {
-        //missionNowNum[4]++;
-        //if( NowStartingMission == 3 )
-        //{
-        //    mission2Num.text = missionNowNum[4].ToString( );
-        //}
-        //checkMissionCompleted( 4 );
     }
 
     public void ClearedEvent( )

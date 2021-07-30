@@ -42,12 +42,12 @@ public class MissionFoundAnimal : MonoBehaviour
     {
         if ( this.gameObject.name == "SPOTTEDHYENAS" && this.gameObject.GetComponent<SPOTTEDHYENA>( ).huntingHappened( ) && huntingHappened )
         {
-            getThisAnimal.HuntingHappened( );
+            getThisAnimal.HuntingSucceed( );
             huntingHappened = false;
         }
         if ( this.gameObject.name == "AFRICANWILDDOGS" && this.gameObject.GetComponent<AFRICANWILDDOG>( ).huntingHappened( ) && huntingHappened )
         {
-            getThisAnimal.HuntingHappened( );
+            getThisAnimal.HuntingSucceed( );
             huntingHappened = false;
         }
     }

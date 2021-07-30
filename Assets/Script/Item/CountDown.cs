@@ -54,7 +54,14 @@ public class CountDown : MonoBehaviour
             }
         }
 
+
+        if( ( timeController.getNowRealSec( ) - startingTime ) > Timer )
+        {
+            startingTime = timeController.getNowRealSec( ) - Timer;
+        }
+
         CD = Timer - ( timeController.getNowRealSec( ) - startingTime );
+
         slider.value = ( CD / Timer );
 
         CheckSprite( slider.value );
