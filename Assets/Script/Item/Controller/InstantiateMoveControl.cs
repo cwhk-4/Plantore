@@ -136,13 +136,13 @@ public class InstantiateMoveControl : MonoBehaviour
         }
     }
 
-    private void InstanRockExtraGrid( )
+    private void InstanSmallRockExtraGrid( )
     {
-        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ).position;
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.SMALL_ROCK_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.SMALL_ROCK_SIZE[i] ).position;
         }
     }
 
@@ -150,10 +150,16 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         switch( itemNum )
         {
+            //Lv 1
             case ( int )Define.ITEM.WOOD:
                 InstanWoodExtraGrid( );
                 break;
 
+            case ( int )Define.ITEM.SMALL_ROCK:
+                InstanSmallRockExtraGrid( );
+                break;
+
+            //Lv 2
             case ( int )Define.ITEM.GRASSLAND:
                 InstanGrasslandExtraGrid( );
                 break;
@@ -162,9 +168,23 @@ public class InstantiateMoveControl : MonoBehaviour
                 InstanMarshExtraGrid( );
                 break;
 
-                //case "rock_Instan(Clone)":
-                //    InstanRockExtraGrid( );
-                //    break;
+            //caution
+            //Lv 3
+            case ( int )Define.ITEM.RICE:
+                InstanMarshExtraGrid( );
+                break;
+
+            case ( int )Define.ITEM.ROCK:
+                InstanMarshExtraGrid( );
+                break;
+
+            //Lv 4
+            case ( int )Define.ITEM.LAKE:
+                InstanMarshExtraGrid( );
+                break;
+            case ( int )Define.ITEM.ROCK_GROUP:
+                InstanMarshExtraGrid( );
+                break;
         }
     }
 
@@ -207,13 +227,13 @@ public class InstantiateMoveControl : MonoBehaviour
         return flag;
     }
 
-    public bool CheckRockGrid( )
+    public bool CheckSmallRockGrid( )
     {
         var flag = false;
 
-        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
         {
-            var ExtraNum = nowGridNum + Define.ROCK_SIZE[i];
+            var ExtraNum = nowGridNum + Define.SMALL_ROCK_SIZE[i];
 
             if( ExtraNum < 0 || ExtraNum > Define.YCOUNT * xCount )
             {
@@ -239,6 +259,7 @@ public class InstantiateMoveControl : MonoBehaviour
 
         switch( itemNum )
         {
+            //Lv 1
             case (int)Define.ITEM.WOOD:
                 flag = CheckWoodGrid( );
                 break;
@@ -247,13 +268,33 @@ public class InstantiateMoveControl : MonoBehaviour
                 flag = CheckGrasslandGrid( );
                 break;
 
+            //Lv 2
+            case ( int )Define.ITEM.SMALL_ROCK:
+                flag = CheckSmallRockGrid( );
+                break;
+
             case ( int )Define.ITEM.MARSH:
                 flag = CheckMarshGrid( );
                 break;
 
-            //case ( int )Define.ITEM.ROCK:
-            //    flag = CheckRockGrid( );
-            //    break;
+            //caution
+            //Lv 3
+            case ( int )Define.ITEM.RICE:
+                flag = CheckMarshGrid( );
+                break;
+
+            case ( int )Define.ITEM.ROCK:
+                flag = CheckMarshGrid( );
+                break;
+
+            //Lv 4
+            case ( int )Define.ITEM.LAKE:
+                flag = CheckMarshGrid( );
+                break;
+
+            case ( int )Define.ITEM.ROCK_GROUP:
+                flag = CheckMarshGrid( );
+                break;
         }
 
         return flag;

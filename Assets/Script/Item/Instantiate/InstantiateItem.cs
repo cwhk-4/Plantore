@@ -27,6 +27,7 @@ public class InstantiateItem : MonoBehaviour
 
         switch( name )
         {
+            //Lv 1
             case "grass_Instan(Clone)":
                 itemNum = ( int )Define.ITEM.GRASS;
                 break;
@@ -35,6 +36,11 @@ public class InstantiateItem : MonoBehaviour
                 itemNum = ( int )Define.ITEM.WOOD;
                 break;
 
+            case "smallRock_Instan(Clone)":
+                itemNum = ( int )Define.ITEM.SMALL_ROCK;
+                break;
+
+            //Lv 2
             case "grassland_Instan(Clone)":
                 itemNum = ( int )Define.ITEM.GRASSLAND;
                 break;
@@ -43,8 +49,22 @@ public class InstantiateItem : MonoBehaviour
                 itemNum = ( int )Define.ITEM.MARSH;
                 break;
 
-            case "smallRock_Instan(Clone)":
-                itemNum = ( int )Define.ITEM.SMALL_ROCK;
+            //Lv 3
+            case "rice_Instan(Clone)":
+                itemNum = ( int )Define.ITEM.RICE;
+                break;
+
+            case "rock_Instan(Clone)":
+                itemNum = ( int )Define.ITEM.ROCK;
+                break;
+
+            //Lv 4
+            case "lake_Instan(Clone)":
+                itemNum = ( int )Define.ITEM.LAKE;
+                break;
+
+            case "rock_group_Instan(Clone)":
+                itemNum = ( int )Define.ITEM.ROCK_GROUP;
                 break;
         }
 
@@ -96,7 +116,7 @@ public class InstantiateItem : MonoBehaviour
                 imController.InstantiateExtraGrid( itemNum );
             }
 
-            //tutorial?
+            #region Tutorial
             if( name != "Tutorial_grass(Clone)" )
             {
                 if( imController.GetIsMoving( ) )
@@ -111,7 +131,7 @@ public class InstantiateItem : MonoBehaviour
                 }
 
             }
-            //tutorial end
+            #endregion
 
             availability.ItemInstantiated( index );
 

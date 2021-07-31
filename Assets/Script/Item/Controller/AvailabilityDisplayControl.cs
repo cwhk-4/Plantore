@@ -29,6 +29,10 @@ public class AvailabilityDisplayControl : MonoBehaviour
                 EnableWood( );
                 break;
 
+            case ( int )Define.ITEM.SMALL_ROCK:
+                EnableSmallRock( );
+                break;
+
             case ( int )Define.ITEM.GRASSLAND:
                 EnableGrassland( );
                 break;
@@ -37,8 +41,20 @@ public class AvailabilityDisplayControl : MonoBehaviour
                 EnableMarsh( );
                 break;
 
-            case ( int )Define.ITEM.SMALL_ROCK:
-                EnableSmallRock( );
+            case ( int )Define.ITEM.RICE:
+                EnableMarsh( );
+                break;
+
+            case ( int )Define.ITEM.ROCK:
+                EnableMarsh( );
+                break;
+
+            case ( int )Define.ITEM.LAKE:
+                EnableMarsh( );
+                break;
+
+            case ( int )Define.ITEM.ROCK_GROUP:
+                EnableMarsh( );
                 break;
         }
 
@@ -100,6 +116,10 @@ public class AvailabilityDisplayControl : MonoBehaviour
                     DisableWood( );
                     break;
 
+                case ( int )Define.ITEM.SMALL_ROCK:
+                    DisableSmallRock( );
+                    break;
+
                 case ( int )Define.ITEM.GRASSLAND:
                     DisableGrassland( );
                     break;
@@ -108,8 +128,20 @@ public class AvailabilityDisplayControl : MonoBehaviour
                     DisableMarsh( );
                     break;
 
-                case ( int )Define.ITEM.SMALL_ROCK:
-                    DisableSmallRock( );
+                case ( int )Define.ITEM.RICE:
+                    DisableMarsh( );
+                    break;
+
+                case ( int )Define.ITEM.ROCK:
+                    DisableMarsh( );
+                    break;
+
+                case ( int )Define.ITEM.LAKE:
+                    DisableMarsh( );
+                    break;
+
+                case ( int )Define.ITEM.ROCK_GROUP:
+                    DisableMarsh( );
                     break;
             }
         }

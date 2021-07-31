@@ -31,6 +31,10 @@ public class TerritoryDisplayControl : MonoBehaviour
                 EnableWoodTerritories( );
                 break;
 
+            case ( int )Define.ITEM.SMALL_ROCK:
+                EnableSmallRockTerritories( );
+                break;
+
             case ( int )Define.ITEM.GRASSLAND:
                 EnableGrasslandTerritories( );
                 break;
@@ -39,8 +43,20 @@ public class TerritoryDisplayControl : MonoBehaviour
                 EnableMarshTerritories( );
                 break;
 
-            case ( int )Define.ITEM.SMALL_ROCK:
-                EnableSmallRockTerritories( );
+            case ( int )Define.ITEM.RICE:
+                EnableMarshTerritories( );
+                break;
+
+            case ( int )Define.ITEM.ROCK:
+                EnableMarshTerritories( );
+                break;
+
+            case ( int )Define.ITEM.LAKE:
+                EnableMarshTerritories( );
+                break;
+
+            case ( int )Define.ITEM.ROCK_GROUP:
+                EnableMarshTerritories( );
                 break;
         }
     }
@@ -62,6 +78,18 @@ public class TerritoryDisplayControl : MonoBehaviour
         for( int i = Define.WOOD_SIZE.Length; i < Define.WOOD_TERRITORY.Length; i++ )
         {
             var territoryNum = onGridNum + Define.WOOD_TERRITORY[i];
+            if( CheckRange( territoryNum ) )
+            {
+                availability.EnableTerritory( territoryNum );
+            }
+        }
+    }
+
+    private void EnableSmallRockTerritories( )
+    {
+        for( int i = Define.SMALL_ROCK_SIZE.Length; i < Define.SMALL_ROCK_TERRITORY.Length; i++ )
+        {
+            var territoryNum = onGridNum + Define.SMALL_ROCK_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.EnableTerritory( territoryNum );
@@ -93,18 +121,6 @@ public class TerritoryDisplayControl : MonoBehaviour
         }
     }
 
-    private void EnableSmallRockTerritories( )
-    {
-        for( int i = Define.SMALL_ROCK_SIZE.Length; i < Define.SMALL_ROCK_TERRITORY.Length; i++ )
-        {
-            var territoryNum = onGridNum + Define.SMALL_ROCK_TERRITORY[i];
-            if( CheckRange( territoryNum ) )
-            {
-                availability.EnableTerritory( territoryNum );
-            }
-        }
-    }
-
     public void DisableTerritories( int lastGrid )
     {
         lastGridNum = lastGrid;
@@ -123,6 +139,10 @@ public class TerritoryDisplayControl : MonoBehaviour
                     DisableWoodTerritories( );
                     break;
 
+                case ( int )Define.ITEM.SMALL_ROCK:
+                    DisableSmallRockTerritories( );
+                    break;
+
                 case ( int )Define.ITEM.GRASSLAND:
                     DisableGrasslandTerritories( );
                     break;
@@ -131,8 +151,20 @@ public class TerritoryDisplayControl : MonoBehaviour
                     DisableMarshTerritories( );
                     break;
 
-                case ( int )Define.ITEM.SMALL_ROCK:
-                    DisableSmallRockTerritories( );
+                case ( int )Define.ITEM.RICE:
+                    DisableMarshTerritories( );
+                    break;
+
+                case ( int )Define.ITEM.ROCK:
+                    DisableMarshTerritories( );
+                    break;
+
+                case ( int )Define.ITEM.LAKE:
+                    DisableMarshTerritories( );
+                    break;
+
+                case ( int )Define.ITEM.ROCK_GROUP:
+                    DisableMarshTerritories( );
                     break;
             }
         }
@@ -162,6 +194,18 @@ public class TerritoryDisplayControl : MonoBehaviour
         }
     }
 
+    private void DisableSmallRockTerritories( )
+    {
+        for( int i = Define.SMALL_ROCK_SIZE.Length; i < Define.SMALL_ROCK_TERRITORY.Length; i++ )
+        {
+            var territoryNum = lastGridNum + Define.SMALL_ROCK_TERRITORY[i];
+            if( CheckRange( territoryNum ) )
+            {
+                availability.DisableTerritory( territoryNum );
+            }
+        }
+    }
+
     private void DisableGrasslandTerritories( )
     {
         for( int i = Define.GRASSLAND_SIZE.Length; i < Define.GRASSLAND_TERRITORY.Length; i++ )
@@ -179,18 +223,6 @@ public class TerritoryDisplayControl : MonoBehaviour
         for( int i = Define.MARSH_SIZE.Length; i < Define.MARSH_TERRITORY.Length; i++ )
         {
             var territoryNum = lastGridNum + Define.MARSH_TERRITORY[i];
-            if( CheckRange( territoryNum ) )
-            {
-                availability.DisableTerritory( territoryNum );
-            }
-        }
-    }
-
-    private void DisableSmallRockTerritories( )
-    {
-        for( int i = Define.SMALL_ROCK_SIZE.Length; i < Define.SMALL_ROCK_TERRITORY.Length; i++ )
-        {
-            var territoryNum = lastGridNum + Define.SMALL_ROCK_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.DisableTerritory( territoryNum );

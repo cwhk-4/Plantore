@@ -158,11 +158,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: "\u30D2\u30E9\u30AE\u30CE\u4E38\u30B4 ProN W4 SDF"
+  m_Name: "\u30D2\u30E9\u30AD\u3099\u30CE\u4E38\u30B3\u3099 ProN W4 SDF"
   m_EditorClassIdentifier: 
-  hashCode: 296215334
+  hashCode: 1756036834
   material: {fileID: -3107083357929139222}
-  materialHashCode: 1822624838
+  materialHashCode: 505441282
   m_Version: 1.1.0
   m_SourceFontFileGUID: 4726148a97e4e46bcbadc74e374e3156
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 4726148a97e4e46bcbadc74e374e3156, type: 3}
