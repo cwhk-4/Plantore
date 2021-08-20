@@ -2,7 +2,7 @@
 
 public class GridBase : MonoBehaviour
 {
-    [SerializeField] private int totalAnimalNum = 13;
+    [SerializeField] private int totalAnimalNum = ( int )Define.ANIMAL.TOTAL_NUM;
     [SerializeField] private bool[] territory;
 
     private void Start( )

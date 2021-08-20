@@ -116,6 +116,16 @@ public class InstantiateMoveControl : MonoBehaviour
         } 
     }
 
+    private void InstanSmallRockExtraGrid( )
+    {
+        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
+        {
+            var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.SMALL_ROCK_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.SMALL_ROCK_SIZE[i] ).position;
+        }
+    }
+
     private void InstanGrasslandExtraGrid( )
     {
         for( int i = 1; i < Define.GRASSLAND_SIZE.Length; i++ )
@@ -136,13 +146,43 @@ public class InstantiateMoveControl : MonoBehaviour
         }
     }
 
-    private void InstanSmallRockExtraGrid( )
+    private void InstanRiceExtraGrid( )
     {
-        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < Define.RICE_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.SMALL_ROCK_SIZE[i] ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.SMALL_ROCK_SIZE[i] ).position;
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.RICE_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.RICE_SIZE[i] ).position;
+        }
+    }
+
+    private void InstanRockExtraGrid( )
+    {
+        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        {
+            var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ).position;
+        }
+    }
+
+    private void InstanLakeExtraGrid( )
+    {
+        for( int i = 1; i < Define.LAKE_SIZE.Length; i++ )
+        {
+            var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.LAKE_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.LAKE_SIZE[i] ).position;
+        }
+    }
+
+    private void InstanRockGroupExtraGrid( )
+    {
+        for( int i = 1; i < Define.ROCK_GROUP_SIZE.Length; i++ )
+        {
+            var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_GROUP_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.ROCK_GROUP_SIZE[i] ).position;
         }
     }
 
@@ -168,22 +208,21 @@ public class InstantiateMoveControl : MonoBehaviour
                 InstanMarshExtraGrid( );
                 break;
 
-            //caution
             //Lv 3
             case ( int )Define.ITEM.RICE:
-                InstanMarshExtraGrid( );
+                InstanRiceExtraGrid( );
                 break;
 
             case ( int )Define.ITEM.ROCK:
-                InstanMarshExtraGrid( );
+                InstanRockExtraGrid( );
                 break;
 
             //Lv 4
             case ( int )Define.ITEM.LAKE:
-                InstanMarshExtraGrid( );
+                InstanLakeExtraGrid( );
                 break;
             case ( int )Define.ITEM.ROCK_GROUP:
-                InstanMarshExtraGrid( );
+                InstanRockGroupExtraGrid( );
                 break;
         }
     }
@@ -200,31 +239,6 @@ public class InstantiateMoveControl : MonoBehaviour
         var GridNum = nowGridNum + xCount;
 
         return gridInstan.transform.GetChild( GridNum ).childCount == 0 && CheckOutOfRange( GridNum );
-    }
-
-    public bool CheckGrasslandGrid( )
-    {
-        var GridNum = nowGridNum - 1;
-        return gridInstan.transform.GetChild( GridNum ).childCount == 0 && CheckOutOfRange( GridNum );
-    }
-
-    public bool CheckMarshGrid( )
-    {
-        var flag = false;
-
-        for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
-        {
-            if( gridInstan.transform.GetChild( nowGridNum + Define.MARSH_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.ROCK_SIZE[i] ) )
-            {
-                flag = true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        return flag;
     }
 
     public bool CheckSmallRockGrid( )
@@ -253,6 +267,107 @@ public class InstantiateMoveControl : MonoBehaviour
         return flag;
     }
 
+    public bool CheckGrasslandGrid( )
+    {
+        var GridNum = nowGridNum - 1;
+        return gridInstan.transform.GetChild( GridNum ).childCount == 0 && CheckOutOfRange( GridNum );
+    }
+
+    public bool CheckMarshGrid( )
+    {
+        var flag = false;
+
+        for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
+        {
+            if( gridInstan.transform.GetChild( nowGridNum + Define.MARSH_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.ROCK_SIZE[i] ) )
+            {
+                flag = true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        return flag;
+    }
+
+    public bool CheckRiceGrid( )
+    {
+        var flag = false;
+
+        for( int i = 1; i < Define.RICE_SIZE.Length; i++ )
+        {
+            if( gridInstan.transform.GetChild( nowGridNum + Define.RICE_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.RICE_SIZE[i] ) )
+            {
+                flag = true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        return flag;
+    }
+
+    public bool CheckRockGrid( )
+    {
+        var flag = false;
+
+        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        {
+            if( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.ROCK_SIZE[i] ) )
+            {
+                flag = true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        return flag;
+    }
+
+    public bool CheckLakeGrid( )
+    {
+        var flag = false;
+
+        for( int i = 1; i < Define.LAKE_SIZE.Length; i++ )
+        {
+            if( gridInstan.transform.GetChild( nowGridNum + Define.LAKE_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.LAKE_SIZE[i] ) )
+            {
+                flag = true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        return flag;
+    }
+
+    public bool CheckRockGroupGrid( )
+    {
+        var flag = false;
+
+        for( int i = 1; i < Define.ROCK_GROUP_SIZE.Length; i++ )
+        {
+            if( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_GROUP_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.ROCK_GROUP_SIZE[i] ) )
+            {
+                flag = true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        return flag;
+    }
+
     public bool CheckGrids( int itemNum )
     {
         var flag = false;
@@ -264,36 +379,35 @@ public class InstantiateMoveControl : MonoBehaviour
                 flag = CheckWoodGrid( );
                 break;
 
-            case ( int )Define.ITEM.GRASSLAND:
-                flag = CheckGrasslandGrid( );
+            case ( int )Define.ITEM.SMALL_ROCK:
+                flag = CheckSmallRockGrid( );
                 break;
 
             //Lv 2
-            case ( int )Define.ITEM.SMALL_ROCK:
-                flag = CheckSmallRockGrid( );
+            case ( int )Define.ITEM.GRASSLAND:
+                flag = CheckGrasslandGrid( );
                 break;
 
             case ( int )Define.ITEM.MARSH:
                 flag = CheckMarshGrid( );
                 break;
 
-            //caution
             //Lv 3
             case ( int )Define.ITEM.RICE:
-                flag = CheckMarshGrid( );
+                flag = CheckRiceGrid( );
                 break;
 
             case ( int )Define.ITEM.ROCK:
-                flag = CheckMarshGrid( );
+                flag = CheckRockGrid( );
                 break;
 
             //Lv 4
             case ( int )Define.ITEM.LAKE:
-                flag = CheckMarshGrid( );
+                flag = CheckLakeGrid( );
                 break;
 
             case ( int )Define.ITEM.ROCK_GROUP:
-                flag = CheckMarshGrid( );
+                flag = CheckRockGroupGrid( );
                 break;
         }
 

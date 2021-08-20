@@ -33,7 +33,7 @@ public class MissionTextDisplay : MonoBehaviour
     {
         for( int i = 0; i < 4; i++ )
         {
-            if( MissionStartingNum + i > 10 )
+            if( MissionStartingNum + i > 9 )
             {
                 MissionText[i, 0].gameObject.SetActive( false );
                 continue;

@@ -43,20 +43,21 @@ public class TerritoryDisplayControl : MonoBehaviour
                 EnableMarshTerritories( );
                 break;
 
+            //caution
             case ( int )Define.ITEM.RICE:
-                EnableMarshTerritories( );
+                EnableRiceTerritories( );
                 break;
 
             case ( int )Define.ITEM.ROCK:
-                EnableMarshTerritories( );
+                EnableRockTerritories( );
                 break;
 
             case ( int )Define.ITEM.LAKE:
-                EnableMarshTerritories( );
+                EnableLakeTerritories( );
                 break;
 
             case ( int )Define.ITEM.ROCK_GROUP:
-                EnableMarshTerritories( );
+                EnableRockGroupTerritories( );
                 break;
         }
     }
@@ -121,6 +122,54 @@ public class TerritoryDisplayControl : MonoBehaviour
         }
     }
 
+    private void EnableRiceTerritories( )
+    {
+        for( int i = Define.RICE_SIZE.Length; i < Define.RICE_TERRITORY.Length; i++ )
+        {
+            var territoryNum = onGridNum + Define.RICE_TERRITORY[i];
+            if( CheckRange( territoryNum ) )
+            {
+                availability.EnableTerritory( territoryNum );
+            }
+        }
+    }
+
+    private void EnableRockTerritories( )
+    {
+        for( int i = Define.ROCK_SIZE.Length; i < Define.ROCK_TERRITORY.Length; i++ )
+        {
+            var territoryNum = onGridNum + Define.ROCK_TERRITORY[i];
+            if( CheckRange( territoryNum ) )
+            {
+                availability.EnableTerritory( territoryNum );
+            }
+        }
+    }
+
+    private void EnableLakeTerritories( )
+    {
+        for( int i = Define.LAKE_SIZE.Length; i < Define.LAKE_TERRITORY.Length; i++ )
+        {
+            var territoryNum = onGridNum + Define.LAKE_TERRITORY[i];
+            if( CheckRange( territoryNum ) )
+            {
+                availability.EnableTerritory( territoryNum );
+            }
+        }
+    }
+
+    private void EnableRockGroupTerritories( )
+    {
+        for( int i = Define.ROCK_GROUP_SIZE.Length; i < Define.ROCK_GROUP_TERRITORY.Length; i++ )
+        {
+            var territoryNum = onGridNum + Define.ROCK_GROUP_TERRITORY[i];
+            if( CheckRange( territoryNum ) )
+            {
+                availability.EnableTerritory( territoryNum );
+            }
+        }
+    }
+
     public void DisableTerritories( int lastGrid )
     {
         lastGridNum = lastGrid;
@@ -152,19 +201,19 @@ public class TerritoryDisplayControl : MonoBehaviour
                     break;
 
                 case ( int )Define.ITEM.RICE:
-                    DisableMarshTerritories( );
+                    DisableRiceTerritories( );
                     break;
 
                 case ( int )Define.ITEM.ROCK:
-                    DisableMarshTerritories( );
+                    DisableRockTerritories( );
                     break;
 
                 case ( int )Define.ITEM.LAKE:
-                    DisableMarshTerritories( );
+                    DisableLakeTerritories( );
                     break;
 
                 case ( int )Define.ITEM.ROCK_GROUP:
-                    DisableMarshTerritories( );
+                    DisableRockGroupTerritories( );
                     break;
             }
         }
@@ -223,6 +272,54 @@ public class TerritoryDisplayControl : MonoBehaviour
         for( int i = Define.MARSH_SIZE.Length; i < Define.MARSH_TERRITORY.Length; i++ )
         {
             var territoryNum = lastGridNum + Define.MARSH_TERRITORY[i];
+            if( CheckRange( territoryNum ) )
+            {
+                availability.DisableTerritory( territoryNum );
+            }
+        }
+    }
+
+    private void DisableRiceTerritories( )
+    {
+        for( int i = Define.RICE_SIZE.Length; i < Define.RICE_TERRITORY.Length; i++ )
+        {
+            var territoryNum = lastGridNum + Define.RICE_TERRITORY[i];
+            if( CheckRange( territoryNum ) )
+            {
+                availability.DisableTerritory( territoryNum );
+            }
+        }
+    }
+
+    private void DisableRockTerritories( )
+    {
+        for( int i = Define.ROCK_SIZE.Length; i < Define.ROCK_TERRITORY.Length; i++ )
+        {
+            var territoryNum = lastGridNum + Define.ROCK_TERRITORY[i];
+            if( CheckRange( territoryNum ) )
+            {
+                availability.DisableTerritory( territoryNum );
+            }
+        }
+    }
+
+    private void DisableLakeTerritories( )
+    {
+        for( int i = Define.LAKE_SIZE.Length; i < Define.LAKE_TERRITORY.Length; i++ )
+        {
+            var territoryNum = lastGridNum + Define.LAKE_TERRITORY[i];
+            if( CheckRange( territoryNum ) )
+            {
+                availability.DisableTerritory( territoryNum );
+            }
+        }
+    }
+
+    private void DisableRockGroupTerritories( )
+    {
+        for( int i = Define.ROCK_GROUP_SIZE.Length; i < Define.ROCK_GROUP_TERRITORY.Length; i++ )
+        {
+            var territoryNum = lastGridNum + Define.ROCK_GROUP_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.DisableTerritory( territoryNum );

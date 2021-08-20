@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ItemBase : MonoBehaviour
 {
     [SerializeField] private MissionControl MissionControl;
-    [SerializeField] private InstantiateMoveControl imController;
-    [SerializeField] private ToolConvertion toolConvertion;
+    [SerializeField] private ToolConvertion ToolConvertion;
+    [SerializeField] private MapLevel MapLevel;
     private CountDown countDown;
     private MoveItem moveItem;
 
@@ -12,13 +13,12 @@ public class ItemBase : MonoBehaviour
     [SerializeField] private float ClickDelay;
     private float ClickTime;
     private int Click;
-    private bool Repairing = false;
 
     void Start( )
     {
-        imController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
-        toolConvertion = GameObject.FindWithTag( "Cursor" ).GetComponent<ToolConvertion>( );
+        ToolConvertion = GameObject.FindWithTag( "Cursor" ).GetComponent<ToolConvertion>( );
         MissionControl = GameObject.FindWithTag( "MissionController" ).GetComponent<MissionControl>( );
+        MapLevel = GameObject.FindWithTag( "Map" ).GetComponent<MapLevel>( );
         countDown = GetComponent<CountDown>( );
         moveItem = GetComponent<MoveItem>( );
         isOnMouse = false;
@@ -28,7 +28,7 @@ public class ItemBase : MonoBehaviour
     {
         if(isOnMouse)
         {
-            if( toolConvertion.getIsCan( ) )
+            if( ToolConvertion.getIsCan( ) )
             {
                 if( Input.GetMouseButtonDown( 0 ) )
                 {
@@ -39,17 +39,14 @@ public class ItemBase : MonoBehaviour
 
                 }
 
-                if( Input.GetMouseButtonUp( 0 ) && Repairing)
-                {
-                    countDown.StopRepairing( );
-                    Repairing = false;
-                }
-
             }
             else
             {
                 if( Input.GetMouseButtonUp( 0 ) )
                 {
+                    if( EventSystem.current.IsPointerOverGameObject() )
+                        return;
+
                     if( Time.time - ClickTime <= ClickDelay )
                     {
                         Click++;
@@ -73,9 +70,17 @@ public class ItemBase : MonoBehaviour
 
     private void Repair( )
     {
-        Repairing = true;
         countDown.StartRepairing( );
-        MissionControl.FixedItem( );
+
+        if( MapLevel.getMapLevel( ) == 2 )
+        {
+            MissionControl.FixedItem1( );
+        }
+
+        if( MapLevel.getMapLevel( ) == 3 )
+        {
+            MissionControl.FixedItem2( );
+        }
     }
 
     private void MoveItem( )
@@ -86,13 +91,13 @@ public class ItemBase : MonoBehaviour
     public void setOnMouse( )
     {
         isOnMouse = true;
-        toolConvertion.setOnGO( );
+        ToolConvertion.setOnGO( );
     }
 
     public void setExitMouse( )
     {
         isOnMouse = false;
-        toolConvertion.setExitGO( );
+        ToolConvertion.setExitGO( );
     }
 
     public int GetIndex( )

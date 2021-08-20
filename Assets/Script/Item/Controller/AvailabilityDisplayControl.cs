@@ -42,19 +42,19 @@ public class AvailabilityDisplayControl : MonoBehaviour
                 break;
 
             case ( int )Define.ITEM.RICE:
-                EnableMarsh( );
+                EnableRice( );
                 break;
 
             case ( int )Define.ITEM.ROCK:
-                EnableMarsh( );
+                EnableRock( );
                 break;
 
             case ( int )Define.ITEM.LAKE:
-                EnableMarsh( );
+                EnableLake( );
                 break;
 
             case ( int )Define.ITEM.ROCK_GROUP:
-                EnableMarsh( );
+                EnableRockGroup( );
                 break;
         }
 
@@ -66,6 +66,18 @@ public class AvailabilityDisplayControl : MonoBehaviour
         if( CheckRange( extraNum ) )
         {
             availability.EnableAva( extraNum );
+        }
+    }
+
+    private void EnableSmallRock( )
+    {
+        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
+        {
+            var extraNum = onGridNum + Define.SMALL_ROCK_SIZE[i];
+            if( CheckRange( extraNum ) )
+            {
+                availability.EnableAva( extraNum );
+            }
         }
     }
 
@@ -90,11 +102,47 @@ public class AvailabilityDisplayControl : MonoBehaviour
         }
     }
 
-    private void EnableSmallRock( )
+    private void EnableRice( )
     {
-        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < Define.RICE_SIZE.Length; i++ )
         {
-            var extraNum = onGridNum + Define.SMALL_ROCK_SIZE[i];
+            var extraNum = onGridNum + Define.RICE_SIZE[i];
+            if( CheckRange( extraNum ) )
+            {
+                availability.EnableAva( extraNum );
+            }
+        }
+    }
+
+    private void EnableRock( )
+    {
+        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        {
+            var extraNum = onGridNum + Define.ROCK_SIZE[i];
+            if( CheckRange( extraNum ) )
+            {
+                availability.EnableAva( extraNum );
+            }
+        }
+    }
+
+    private void EnableLake( )
+    {
+        for( int i = 1; i < Define.LAKE_SIZE.Length; i++ )
+        {
+            var extraNum = onGridNum + Define.LAKE_SIZE[i];
+            if( CheckRange( extraNum ) )
+            {
+                availability.EnableAva( extraNum );
+            }
+        }
+    }
+
+    private void EnableRockGroup( )
+    {
+        for( int i = 1; i < Define.ROCK_GROUP_SIZE.Length; i++ )
+        {
+            var extraNum = onGridNum + Define.ROCK_GROUP_SIZE[i];
             if( CheckRange( extraNum ) )
             {
                 availability.EnableAva( extraNum );
@@ -129,19 +177,19 @@ public class AvailabilityDisplayControl : MonoBehaviour
                     break;
 
                 case ( int )Define.ITEM.RICE:
-                    DisableMarsh( );
+                    DisableRice( );
                     break;
 
                 case ( int )Define.ITEM.ROCK:
-                    DisableMarsh( );
+                    DisableRock( );
                     break;
 
                 case ( int )Define.ITEM.LAKE:
-                    DisableMarsh( );
+                    DisableLake( );
                     break;
 
                 case ( int )Define.ITEM.ROCK_GROUP:
-                    DisableMarsh( );
+                    DisableRockGroup( );
                     break;
             }
         }
@@ -153,6 +201,18 @@ public class AvailabilityDisplayControl : MonoBehaviour
         if( CheckRange( extraNum ) )
         {
             availability.DisableAva( extraNum );
+        }
+    }
+
+    private void DisableSmallRock( )
+    {
+        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
+        {
+            var extraNum = lastGridNum + Define.SMALL_ROCK_SIZE[i];
+            if( CheckRange( extraNum ) )
+            {
+                availability.DisableAva( extraNum );
+            }
         }
     }
 
@@ -177,11 +237,47 @@ public class AvailabilityDisplayControl : MonoBehaviour
         }
     }
 
-    private void DisableSmallRock( )
+    private void DisableRice( )
     {
-        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < Define.RICE_SIZE.Length; i++ )
         {
-            var extraNum = lastGridNum + Define.SMALL_ROCK_SIZE[i];
+            var extraNum = lastGridNum + Define.RICE_SIZE[i];
+            if( CheckRange( extraNum ) )
+            {
+                availability.DisableAva( extraNum );
+            }
+        }
+    }
+
+    private void DisableRock( )
+    {
+        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        {
+            var extraNum = lastGridNum + Define.ROCK_SIZE[i];
+            if( CheckRange( extraNum ) )
+            {
+                availability.DisableAva( extraNum );
+            }
+        }
+    }
+
+    private void DisableLake( )
+    {
+        for( int i = 1; i < Define.LAKE_SIZE.Length; i++ )
+        {
+            var extraNum = lastGridNum + Define.LAKE_SIZE[i];
+            if( CheckRange( extraNum ) )
+            {
+                availability.DisableAva( extraNum );
+            }
+        }
+    }
+
+    private void DisableRockGroup( )
+    {
+        for( int i = 1; i < Define.ROCK_GROUP_SIZE.Length; i++ )
+        {
+            var extraNum = lastGridNum + Define.ROCK_GROUP_SIZE[i];
             if( CheckRange( extraNum ) )
             {
                 availability.DisableAva( extraNum );

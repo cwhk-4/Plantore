@@ -2,6 +2,7 @@
 
 public class MenuUIControl : MonoBehaviour
 {
+    [SerializeField] private GameObject MapUI;
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject menuButton;
     [SerializeField] private GameObject background;
@@ -37,11 +38,13 @@ public class MenuUIControl : MonoBehaviour
 
     public void EnableBG( )
     {
+        MapUI.SetActive( false );
         background.SetActive( true );
     }
 
     public void DisableBG( )
     {
         background.SetActive( false );
+        MapUI.SetActive( true );
     }
 }

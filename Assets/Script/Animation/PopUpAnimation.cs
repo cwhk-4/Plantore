@@ -2,6 +2,7 @@
 
 public class PopUpAnimation : MonoBehaviour
 {
+    [SerializeField] private GameObject MapUI;
     [SerializeField] private MenuUIControl menuControl;
     [SerializeField] private RectTransform targetBoard;
     [SerializeField] private float animationRate;
@@ -59,10 +60,13 @@ public class PopUpAnimation : MonoBehaviour
 
         if( BoardShown )
         {
+            MapUI.SetActive( true );
             IsClosing = true;
         }
         else
         {
+            menuControl.EnableBG( );
+            MapUI.SetActive( false );
             IsShowing = true;
             targetBoard.localScale = Vector3.zero;
             targetBoard.gameObject.SetActive( true );

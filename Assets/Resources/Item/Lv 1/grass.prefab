@@ -549,11 +549,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 6587741820147400953}
   text: {fileID: 6587741819437575037}
-  Timer: 30
+  Timer: 5
   original: {fileID: 21300000, guid: 8dda51f42c1c3c04fb03fb7042fac3c7, type: 3}
   timeOutImage: {fileID: 21300000, guid: 2814bce3e0477492286cdd6eb0fa9558, type: 3}
   IsRepairing: 0
-  RepairingSpeed: 10
+  originalTagName: 
+  driedTagName: 
 --- !u!114 &-1329336550253494381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,8 +568,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MissionControl: {fileID: 0}
-  imController: {fileID: 0}
-  toolConvertion: {fileID: 0}
+  ToolConvertion: {fileID: 0}
+  MapLevel: {fileID: 0}
   isOnMouse: 0
   ClickDelay: 1
 --- !u!114 &-7663659413530402559
@@ -584,7 +585,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemToBeInstantiate: {fileID: 5095705009213696844, guid: b5d6256b0797b45a2902cf5608254987, type: 3}
-  xCount: 8
   queueNum: -1
 --- !u!1 &6587741821024494563
 GameObject:

@@ -63,7 +63,7 @@ public class InstantiateItem : MonoBehaviour
                 itemNum = ( int )Define.ITEM.LAKE;
                 break;
 
-            case "rock_group_Instan(Clone)":
+            case "rockGroup_Instan(Clone)":
                 itemNum = ( int )Define.ITEM.ROCK_GROUP;
                 break;
         }

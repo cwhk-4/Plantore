@@ -18,7 +18,7 @@ public class CountDown : MonoBehaviour
     [SerializeField]private Sprite timeOutImage;
 
     [SerializeField] private bool IsRepairing = false;
-    [SerializeField] private float RepairingSpeed = 10;
+    //[SerializeField] private float RepairingSpeed = 10;
 
     [SerializeField] private string originalTagName;
     [SerializeField] private string driedTagName;
@@ -45,13 +45,8 @@ public class CountDown : MonoBehaviour
     {
         if( IsRepairing )
         {
-            startingTime += Time.deltaTime * RepairingSpeed;
-
-            if( slider.value >= 1 )
-            {
-                IsRepairing = false;
-                startingTime = timeController.getNowRealSec( );
-            }
+            startingTime = timeController.getNowRealSec( );
+            IsRepairing = false;
         }
 
 
@@ -66,7 +61,7 @@ public class CountDown : MonoBehaviour
 
         CheckSprite( slider.value );
 
-        text.text = ( int )CD + "s Left";
+        //text.text = ( int )CD + "s Left";
     }
 
     private void CheckSprite( float val )
@@ -106,10 +101,10 @@ public class CountDown : MonoBehaviour
         IsRepairing = true;
     }
 
-    public void StopRepairing( )
-    {
-        IsRepairing = false;
-    }
+    //public void StopRepairing( )
+    //{
+    //    IsRepairing = false;
+    //}
 
     public float getStartTime( )
     {

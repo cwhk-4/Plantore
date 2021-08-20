@@ -63,11 +63,11 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
-    private void SetRock( int index )
+    private void SetSmallRock( int index )
     {
-        foreach( int i in Define.ROCK_TERRITORY )
+        foreach( int i in Define.SMALL_ROCK_TERRITORY )
         {
-            foreach( int j in Define.ROCK_ANIMAL )
+            foreach( int j in Define.SMALL_ROCK_ANIMAL )
             {
                 if( index + i < 0 )
                 {
@@ -108,11 +108,56 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
-    private void SetSmallRock( int index )
+    private void SetRice( int index )
     {
-        foreach( int i in Define.SMALL_ROCK_TERRITORY )
+        foreach( int i in Define.RICE_TERRITORY )
         {
-            foreach( int j in Define.SMALL_ROCK_ANIMAL )
+            foreach( int j in Define.RICE_ANIMAL )
+            {
+                if( index + i < 0 )
+                {
+                    return;
+                }
+                SetTerritory( index + i, j );
+            }
+        }
+    }
+
+    private void SetRock( int index )
+    {
+        foreach( int i in Define.ROCK_TERRITORY )
+        {
+            foreach( int j in Define.ROCK_ANIMAL )
+            {
+                if( index + i < 0 )
+                {
+                    return;
+                }
+                SetTerritory( index + i, j );
+            }
+        }
+    }
+
+    private void SetLake( int index )
+    {
+        foreach( int i in Define.LAKE_TERRITORY )
+        {
+            foreach( int j in Define.LAKE_ANIMAL )
+            {
+                if( index + i < 0 )
+                {
+                    return;
+                }
+                SetTerritory( index + i, j );
+            }
+        }
+    }
+
+    private void SetRockGroup( int index )
+    {
+        foreach( int i in Define.ROCK_GROUP_TERRITORY )
+        {
+            foreach( int j in Define.ROCK_GROUP_ANIMAL )
             {
                 if( index + i < 0 )
                 {
@@ -146,6 +191,22 @@ public class GridTerritoryControl : MonoBehaviour
             case ( int )Define.ITEM.MARSH:
                 SetMarsh( index );
                 break;
+
+            case ( int )Define.ITEM.RICE:
+                SetRice( index );
+                break;
+
+            case ( int )Define.ITEM.ROCK:
+                SetRock( index );
+                break;
+
+            case ( int )Define.ITEM.LAKE:
+                SetLake( index );
+                break;
+
+            case ( int )Define.ITEM.ROCK_GROUP:
+                SetRockGroup( index );
+                break;
         }  
     }
 
@@ -172,11 +233,11 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
-    private void RemoveRock( int index )
+    private void RemoveSmallRock( int index )
     {
-        foreach( int i in Define.ROCK_TERRITORY )
+        foreach( int i in Define.SMALL_ROCK_TERRITORY )
         {
-            foreach( int j in Define.ROCK_ANIMAL )
+            foreach( int j in Define.SMALL_ROCK_ANIMAL )
             {
                 RemoveTerritory( index + i, j );
             }
@@ -205,11 +266,11 @@ public class GridTerritoryControl : MonoBehaviour
         }
     }
 
-    private void RemoveSmallRock( int index )
+    private void RemoveRock( int index )
     {
-        foreach( int i in Define.SMALL_ROCK_TERRITORY )
+        foreach( int i in Define.ROCK_TERRITORY )
         {
-            foreach( int j in Define.SMALL_ROCK_ANIMAL )
+            foreach( int j in Define.ROCK_ANIMAL )
             {
                 RemoveTerritory( index + i, j );
             }
@@ -237,6 +298,22 @@ public class GridTerritoryControl : MonoBehaviour
                 break;
 
             case ( int )Define.ITEM.MARSH:
+                RemoveMarsh( index );
+                break;
+
+            case ( int )Define.ITEM.RICE:
+                RemoveMarsh( index );
+                break;
+
+            case ( int )Define.ITEM.ROCK:
+                RemoveMarsh( index );
+                break;
+
+            case ( int )Define.ITEM.LAKE:
+                RemoveMarsh( index );
+                break;
+
+            case ( int )Define.ITEM.ROCK_GROUP:
                 RemoveMarsh( index );
                 break;
         }

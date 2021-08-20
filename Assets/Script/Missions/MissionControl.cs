@@ -1,18 +1,19 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MissionControl : MonoBehaviour
 {
     [SerializeField] private MissionsList MissionsList;
     [SerializeField] private MapLevel MapLevel;
     [SerializeField] private PopUpAnimation Animation;
+    [SerializeField] private MissionCompletionControl CompletionControl;
 
     private int NowMapLevel;
 
-    private readonly int[] MissionStartingNum = { 0, 2, 5, 9, 11 };
-    [SerializeField] private int[] MissionNum = new int[11];
-    private int[] MissionTotalNum = new int[11];
+    private readonly int[] MissionStartingNum = { 0, 2, 5, 9, 10 };
+    [SerializeField] private int[] MissionNum = new int[10];
+    [SerializeField] private bool[] IsMissionCompleteShown = new bool[10];
+    private int[] MissionTotalNum = new int[10];
 
     [SerializeField] private GameObject MissionParent;
     [SerializeField] private GameObject[] MissionCheck = new GameObject[4];
@@ -36,10 +37,11 @@ public class MissionControl : MonoBehaviour
     {
         NowMapLevel = MapLevel.getMapLevel( );
 
-        for( int i = 0; i < 11; i++ )
+        for( int i = 0; i < 10; i++ )
         {
             MissionNum[i] = 0;
             MissionTotalNum[i] = MissionsList.GetTotalNum( i );
+            IsMissionCompleteShown[i] = false;
         }
 
         for( int i = 0; i < 4; i++ )
@@ -76,6 +78,8 @@ public class MissionControl : MonoBehaviour
             if( MissionNum[i] >= MissionTotalNum[i] )
             {
                 MissionCheck[i - NowStartingMission].SetActive( true );
+                ShowMissionCompletionBox( i );
+
             }
             else
             {
@@ -99,6 +103,14 @@ public class MissionControl : MonoBehaviour
         GoToNextLevel( );
     }
 
+    private void ShowMissionCompletionBox( int index )
+    {
+        if( !IsMissionCompleteShown[index] )
+        {
+            CompletionControl.CreateBox( index );
+            IsMissionCompleteShown[index] = true;
+        }
+    }
 
     //Lv 1
     public void PlacedItem( )
@@ -146,10 +158,9 @@ public class MissionControl : MonoBehaviour
         CheckMissionsCompletion( );
     }
 
-    public void FixedItem( )
+    public void FixedItem1( )
     {
         MissionNum[3] += 1;
-        MissionNum[5] += 1;
         CheckMissionsCompletion( );
     }
 
@@ -160,6 +171,12 @@ public class MissionControl : MonoBehaviour
     }
 
     //Lv 3
+    public void FixedItem2( )
+    {
+        MissionNum[5] += 1;
+        CheckMissionsCompletion( );
+    }
+
     public void FoundHerbivore( )
     {
         MissionNum[6] += 1;
@@ -183,11 +200,6 @@ public class MissionControl : MonoBehaviour
     {
         MissionNum[9] += 1;
         CheckMissionsCompletion( );
-    }
-
-    public void AllAnimal( )
-    {
-        //caution ????
     }
 
     private void GoToNextLevel( )

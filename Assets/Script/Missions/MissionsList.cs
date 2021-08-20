@@ -11,7 +11,7 @@ public class SubClass
 
 public class MissionsList : MonoBehaviour
 {
-	[SerializeField]private SubClass[] Missions = new SubClass[11];
+	[SerializeField]private SubClass[] Missions = new SubClass[10];
 
     private void Awake( )
     {
@@ -43,11 +43,11 @@ public class MissionsList : MonoBehaviour
         Missions[5].MissionText = " かんきょうを10回なおす";
 		Missions[5].level = 3;
 
-        Missions[6].totalNum = 20;
+        Missions[6].totalNum = 10;
 		Missions[6].MissionText = " 草食動物をみつける";
 		Missions[6].level = 3;
 
-		Missions[7].totalNum = 20;
+		Missions[7].totalNum = 10;
 		Missions[7].MissionText = " 肉食動物が狩に成功する";
 		Missions[7].level = 3;
 
@@ -59,10 +59,6 @@ public class MissionsList : MonoBehaviour
 		Missions[9].totalNum = 12;
 		Missions[9].MissionText = " ずかんを埋める";
 		Missions[9].level = 4;
-
-		Missions[10].totalNum = 12;
-		Missions[10].MissionText = " すべてのどうぶつを共存させる";
-		Missions[10].level = 4;
         #endregion
     }
 
@@ -84,5 +80,10 @@ public class MissionsList : MonoBehaviour
 	public int GetLevel( int index )
 	{
 		return Missions[index].level;
+	}
+
+	public string GetMissionText( int index )
+	{
+		return Missions[index].MissionText;
 	}
 }
