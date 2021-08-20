@@ -3600,6 +3600,8 @@ MonoBehaviour:
   PageLimit: 01000000020000000300000004000000
   NowPage: 0
   map: {fileID: 888104868}
+  LeftButton: {fileID: 2057256365}
+  RightButton: {fileID: 1887683119}
   ToLeft: 0
   ToRight: 0
 --- !u!114 &453900767

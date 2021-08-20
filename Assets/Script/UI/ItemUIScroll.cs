@@ -12,6 +12,9 @@ public class ItemUIScroll : MonoBehaviour
     [SerializeField] private MapLevel map;
     private int mapLevel;
 
+    [SerializeField] private GameObject LeftButton;
+    [SerializeField] private GameObject RightButton;
+
     [SerializeField] private bool ToLeft = false;
     [SerializeField] private bool ToRight = false;
 
@@ -45,6 +48,24 @@ public class ItemUIScroll : MonoBehaviour
         else
         {
             ToRight = false;
+        }
+
+        if( NowPage == 0 )
+        {
+            LeftButton.SetActive( false );
+        }
+        else
+        {
+            LeftButton.SetActive( true );
+        }
+
+        if( NowPage == PageLimit[mapLevel - 1] )
+        {
+            RightButton.SetActive( false );
+        }
+        else
+        {
+            RightButton.SetActive( true );
         }
 
         //if( ToLeft && Mathf.Abs( ScrollTransform.localPosition.x - StartingValue ) < 800f )
