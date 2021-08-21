@@ -113,7 +113,7 @@ public class InstantiateItem : MonoBehaviour
 
             if( name != "grass_Instan(Clone)" && name != "smallRock_Instan(Clone)" )
             {
-                imController.InstantiateExtraGrid( itemNum );
+                imController.InstantiateExtraGrid( itemNum, item );
             }
 
             #region Tutorial

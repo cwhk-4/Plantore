@@ -22,10 +22,17 @@ public class MouseOnGrid : MonoBehaviour
 
         if( transform.childCount != 0 )
         {
+            //caution
             if( transform.GetChild( 0 ).name != "ExtraGrid(Clone)" && transform.GetChild( 0 ).name != "Tutorial_grass(Clone)" )
             {
                 GetComponentInChildren<ItemBase>( ).setOnMouse( );
                 GetComponentInChildren<CountDown>( ).showGauge( );
+            }
+
+            if( transform.GetChild( 0 ).name == "ExtraGrid(Clone)" )
+            {
+                GetComponentInChildren<ExtraGridBase>( ).SetOnMouse( );
+                GetComponentInChildren<ExtraGridBase>( ).ShowGauge( );
             }
         }
     }
@@ -46,6 +53,12 @@ public class MouseOnGrid : MonoBehaviour
             {
                 GetComponentInChildren<ItemBase>( ).setExitMouse( );
                 GetComponentInChildren<CountDown>( ).closeGauge( );
+            }
+
+            if( transform.GetChild( 0 ).name == "ExtraGrid(Clone)" )
+            {
+                GetComponentInChildren<ExtraGridBase>( ).SetExitMouse( );
+                GetComponentInChildren<ExtraGridBase>( ).CloseGauge( );
             }
         }
     }

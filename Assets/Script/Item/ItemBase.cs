@@ -10,9 +10,9 @@ public class ItemBase : MonoBehaviour
     private MoveItem moveItem;
 
     [SerializeField]private bool isOnMouse;
-    [SerializeField] private float ClickDelay;
-    private float ClickTime;
-    private int Click;
+    private float clickDelay = 1;
+    private float clickTime;
+    private int click;
 
     void Start( )
     {
@@ -47,17 +47,17 @@ public class ItemBase : MonoBehaviour
                     if( EventSystem.current.IsPointerOverGameObject() )
                         return;
 
-                    if( Time.time - ClickTime <= ClickDelay )
+                    if( Time.time - clickTime <= clickDelay )
                     {
-                        Click++;
+                        click++;
                     }
                     else
                     {
-                        Click = 0;
-                        ClickTime = Time.time;
+                        click = 0;
+                        clickTime = Time.time;
                     }
 
-                    if( Click == 2 )
+                    if( click == 2 )
                     {
                         MoveItem( );
                     }
@@ -68,7 +68,7 @@ public class ItemBase : MonoBehaviour
         }
     }
 
-    private void Repair( )
+    public void Repair( )
     {
         countDown.StartRepairing( );
 
@@ -83,7 +83,7 @@ public class ItemBase : MonoBehaviour
         }
     }
 
-    private void MoveItem( )
+    public void MoveItem( )
     {
         moveItem.StartMoving( countDown.getStartTime( ) );
     }

@@ -106,123 +106,131 @@ public class InstantiateMoveControl : MonoBehaviour
         nowGridNum = num;
     }
 
-    private void InstanWoodExtraGrid( )
+    private void InstanWoodExtraGrid( GameObject ExtraParent )
     {
         for( int i = 1; i < Define.WOOD_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
             item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.WOOD_SIZE[i] ) );
             item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.WOOD_SIZE[i] ).position;
+            item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         } 
     }
 
-    private void InstanSmallRockExtraGrid( )
+    private void InstanSmallRockExtraGrid( GameObject ExtraParent )
     {
         for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
             item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.SMALL_ROCK_SIZE[i] ) );
             item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.SMALL_ROCK_SIZE[i] ).position;
+            item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         }
     }
 
-    private void InstanGrasslandExtraGrid( )
+    private void InstanGrasslandExtraGrid( GameObject ExtraParent )
     {
         for( int i = 1; i < Define.GRASSLAND_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
             item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.GRASSLAND_SIZE[i] ) );
             item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.GRASSLAND_SIZE[i] ).position;
+            item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         }
     }
 
-    private void InstanMarshExtraGrid( )
+    private void InstanMarshExtraGrid( GameObject ExtraParent )
     {
         for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
             item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.MARSH_SIZE[i] ) );
             item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.MARSH_SIZE[i] ).position;
+            item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         }
     }
 
-    private void InstanRiceExtraGrid( )
+    private void InstanRiceExtraGrid( GameObject ExtraParent )
     {
         for( int i = 1; i < Define.RICE_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
             item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.RICE_SIZE[i] ) );
             item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.RICE_SIZE[i] ).position;
+            item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         }
     }
 
-    private void InstanRockExtraGrid( )
+    private void InstanRockExtraGrid( GameObject ExtraParent )
     {
         for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
             item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ) );
             item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ).position;
+            item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         }
     }
 
-    private void InstanLakeExtraGrid( )
+    private void InstanLakeExtraGrid( GameObject ExtraParent )
     {
         for( int i = 1; i < Define.LAKE_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
             item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.LAKE_SIZE[i] ) );
             item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.LAKE_SIZE[i] ).position;
+            item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         }
     }
 
-    private void InstanRockGroupExtraGrid( )
+    private void InstanRockGroupExtraGrid( GameObject ExtraParent )
     {
         for( int i = 1; i < Define.ROCK_GROUP_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
             item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_GROUP_SIZE[i] ) );
             item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.ROCK_GROUP_SIZE[i] ).position;
+            item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         }
     }
 
-    public void InstantiateExtraGrid( int itemNum )
+    public void InstantiateExtraGrid( int itemNum, GameObject ExtraParent )
     {
         switch( itemNum )
         {
             //Lv 1
             case ( int )Define.ITEM.WOOD:
-                InstanWoodExtraGrid( );
+                InstanWoodExtraGrid( ExtraParent );
                 break;
 
             case ( int )Define.ITEM.SMALL_ROCK:
-                InstanSmallRockExtraGrid( );
+                InstanSmallRockExtraGrid( ExtraParent  );
                 break;
 
             //Lv 2
             case ( int )Define.ITEM.GRASSLAND:
-                InstanGrasslandExtraGrid( );
+                InstanGrasslandExtraGrid( ExtraParent );
                 break;
 
             case ( int )Define.ITEM.MARSH:
-                InstanMarshExtraGrid( );
+                InstanMarshExtraGrid( ExtraParent );
                 break;
 
             //Lv 3
             case ( int )Define.ITEM.RICE:
-                InstanRiceExtraGrid( );
+                InstanRiceExtraGrid( ExtraParent );
                 break;
 
             case ( int )Define.ITEM.ROCK:
-                InstanRockExtraGrid( );
+                InstanRockExtraGrid( ExtraParent );
                 break;
 
             //Lv 4
             case ( int )Define.ITEM.LAKE:
-                InstanLakeExtraGrid( );
+                InstanLakeExtraGrid( ExtraParent );
                 break;
             case ( int )Define.ITEM.ROCK_GROUP:
-                InstanRockGroupExtraGrid( );
+                InstanRockGroupExtraGrid( ExtraParent );
                 break;
         }
     }
