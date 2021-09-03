@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ItemUIDisplay : MonoBehaviour
 {
+    [SerializeField] private ItemStorage storage;
+
     [SerializeField] private Transform ItemUI;
     [SerializeField] private GameObject[] Items;
     [SerializeField] private Button[] ItemButtons;
@@ -21,7 +24,7 @@ public class ItemUIDisplay : MonoBehaviour
     {
         mapLevel = map.getMapLevel( );
         Init( );
-        SetItemDisplayLevel( );
+        //SetItemDisplayLevel( );
     }
 
     private void Init( )
@@ -57,18 +60,22 @@ public class ItemUIDisplay : MonoBehaviour
         {
             case 1:
                 SetItemVisibility( level1Limit );
+                SetItemLimit( level1Limit );
                 break;
 
             case 2:
                 SetItemVisibility( level2Limit );
+                SetItemLimit( level2Limit );
                 break;
 
             case 3:
                 SetItemVisibility( level3Limit );
+                SetItemLimit( level3Limit );
                 break;
 
             case 4:
                 SetItemVisibility( level4Limit );
+                SetItemLimit( level4Limit );
                 break;
         }
     }
@@ -86,6 +93,23 @@ public class ItemUIDisplay : MonoBehaviour
             {
                 Items[i].SetActive( false );
                 ItemButtons[i].interactable = false;
+            }
+        }
+    }
+
+    private void SetItemLimit( int limit )
+    {
+        for( int i = 0; i < totalNum; i++ )
+        {
+            if( i < limit )
+            {
+                var remain = ItemData.ITEM_LIMIT[mapLevel - 1, i] - storage.GetNumOfItemPlaced( i );
+                Items[i].transform.GetChild( 2 ).GetComponent<TMP_Text>( ).text = "x " + remain;
+
+                if( remain == 0 )
+                {
+                    ItemButtons[i].interactable = false;
+                }
             }
         }
     }

@@ -42,9 +42,9 @@ public class ItemBase : MonoBehaviour
             }
             else
             {
-                if( Input.GetMouseButtonUp( 0 ) )
+                if( Input.GetMouseButtonDown( 0 ) )
                 {
-                    if( EventSystem.current.IsPointerOverGameObject() )
+                    if( EventSystem.current.IsPointerOverGameObject( ) )
                         return;
 
                     if( Time.time - clickTime <= clickDelay )

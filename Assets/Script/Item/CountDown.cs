@@ -116,6 +116,11 @@ public class CountDown : MonoBehaviour
         startingTime = time;
     }
 
+    public void SetCD( int cd )
+    {
+        Timer = cd;
+    }
+
     public float getCD( )
     {
         return CD;

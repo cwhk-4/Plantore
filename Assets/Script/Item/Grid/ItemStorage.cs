@@ -7,8 +7,8 @@ public class ItemStorage : MonoBehaviour
     private List<int>[] ItemArr;
 
     [SerializeField] private List<int> grass = new List<int>( );
-    [SerializeField] private List<int> wood = new List<int>( );
     [SerializeField] private List<int> smallRock = new List<int>( );
+    [SerializeField] private List<int> wood = new List<int>( );
 
     [SerializeField] private List<int> grassland = new List<int>( );
     [SerializeField] private List<int> marsh = new List<int>( );
@@ -62,5 +62,10 @@ public class ItemStorage : MonoBehaviour
     public List<int> GetItem( int itemNum )
     {
         return ItemArr[itemNum];
+    }
+
+    public int GetNumOfItemPlaced( int itemNum )
+    {
+        return ItemArr[itemNum].Count;
     }
 }

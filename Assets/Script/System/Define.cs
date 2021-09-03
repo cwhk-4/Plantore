@@ -20,8 +20,8 @@
     public enum ITEM
     {
         GRASS,
-        SMALL_ROCK,
         WOOD,
+        SMALL_ROCK,
         GRASSLAND,
         MARSH,
         RICE,

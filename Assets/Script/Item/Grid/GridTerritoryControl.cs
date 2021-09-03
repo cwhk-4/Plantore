@@ -38,9 +38,25 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.GRASS_ANIMAL )
             {
-                if( index + i < 0 )
+                if( index + i < 0 || index + i >= Grids.Length)
                 {
-                    return;
+                    break;
+                }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
                 }
 
                 SetTerritory( index + i, j );
@@ -54,10 +70,27 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.WOOD_ANIMAL )
             {
-                if( index + i < 0 )
+                if( index + i < 0 || index + i >= Grids.Length )
                 {
-                    return;
+                    break;
                 }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 SetTerritory( index + i, j );
             }
         }
@@ -69,10 +102,27 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.SMALL_ROCK_ANIMAL )
             {
-                if( index + i < 0 )
+                if( index + i < 0 || index + i >= Grids.Length )
                 {
-                    return;
+                    break;
                 }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 SetTerritory( index + i, j );
             }
         }
@@ -84,10 +134,27 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.GRASSLAND_ANIMAL )
             {
-                if( index + i < 0 )
+                if( index + i < 0 || index + i >= Grids.Length )
                 {
-                    return;
+                    break;
                 }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 SetTerritory( index + i, j );
             }
         }
@@ -99,10 +166,27 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.MARSH_ANIMAL )
             {
-                if( index + i < 0 )
+                if( index + i < 0 || index + i >= Grids.Length )
                 {
-                    return;
+                    break;
                 }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 SetTerritory( index + i, j );
             }
         }
@@ -114,10 +198,27 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.RICE_ANIMAL )
             {
-                if( index + i < 0 )
+                if( index + i < 0 || index + i >= Grids.Length )
                 {
-                    return;
+                    break;
                 }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 SetTerritory( index + i, j );
             }
         }
@@ -129,10 +230,27 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.ROCK_ANIMAL )
             {
-                if( index + i < 0 )
+                if( index + i < 0 || index + i >= Grids.Length )
                 {
-                    return;
+                    break;
                 }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 SetTerritory( index + i, j );
             }
         }
@@ -144,10 +262,27 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.LAKE_ANIMAL )
             {
-                if( index + i < 0 )
+                if( index + i < 0 || index + i >= Grids.Length )
                 {
-                    return;
+                    break;
                 }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 SetTerritory( index + i, j );
             }
         }
@@ -159,10 +294,27 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.ROCK_GROUP_ANIMAL )
             {
-                if( index + i < 0 )
+                if( index + i < 0 || index + i >= Grids.Length )
                 {
-                    return;
+                    break;
                 }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 SetTerritory( index + i, j );
             }
         }
@@ -217,6 +369,27 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.GRASS_ANIMAL )
             {
+                if( index + i < 0 || index + i >= Grids.Length )
+                {
+                    return;
+                }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 RemoveTerritory( index + i, j );
             }
         }
@@ -228,6 +401,27 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.WOOD_ANIMAL )
             {
+                if( index + i < 0 || index + i >= Grids.Length )
+                {
+                    break;
+                }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 RemoveTerritory( index + i, j );
             }
         }
@@ -239,6 +433,27 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.SMALL_ROCK_ANIMAL )
             {
+                if( index + i < 0 || index + i >= Grids.Length )
+                {
+                    break;
+                }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 RemoveTerritory( index + i, j );
             }
         }
@@ -250,6 +465,27 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.GRASSLAND_ANIMAL )
             {
+                if( index + i < 0 || index + i >= Grids.Length )
+                {
+                    break;
+                }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 RemoveTerritory( index + i, j );
             }
         }
@@ -261,6 +497,59 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.MARSH_ANIMAL )
             {
+                if( index + i < 0 || index + i >= Grids.Length )
+                {
+                    break;
+                }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
+                RemoveTerritory( index + i, j );
+            }
+        }
+    }
+
+    private void RemoveRice( int index )
+    {
+        foreach( int i in Define.RICE_TERRITORY )
+        {
+            foreach( int j in Define.RICE_ANIMAL )
+            {
+                if( index + i < 0 || index + i >= Grids.Length )
+                {
+                    break;
+                }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 RemoveTerritory( index + i, j );
             }
         }
@@ -272,10 +561,97 @@ public class GridTerritoryControl : MonoBehaviour
         {
             foreach( int j in Define.ROCK_ANIMAL )
             {
+                if( index + i < 0 || index + i >= Grids.Length )
+                {
+                    break;
+                }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
                 RemoveTerritory( index + i, j );
             }
         }
     }
+
+    private void RemoveLake( int index )
+    {
+        foreach( int i in Define.ROCK_TERRITORY )
+        {
+            foreach( int j in Define.ROCK_ANIMAL )
+            {
+                if( index + i < 0 || index + i >= Grids.Length )
+                {
+                    break;
+                }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
+                RemoveTerritory( index + i, j );
+            }
+        }
+    }
+
+
+    private void RemoveRockGroup( int index )
+    {
+        foreach( int i in Define.ROCK_TERRITORY )
+        {
+            foreach( int j in Define.ROCK_ANIMAL )
+            {
+                if( index + i < 0 || index + i >= Grids.Length )
+                {
+                    break;
+                }
+
+                if( index % Define.XCOUNT == 0 )
+                {
+                    if( ( index + i ) % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                    {
+                        break;
+                    }
+                }
+
+                if( index % Define.XCOUNT == ( Define.XCOUNT - 1 ) )
+                {
+                    if( ( index + i ) % Define.XCOUNT == 0 )
+                    {
+                        break;
+                    }
+                }
+
+                RemoveTerritory( index + i, j );
+            }
+        }
+    }
+
 
     public void RemoveItem( int index, int itemNum )
     {
@@ -302,19 +678,19 @@ public class GridTerritoryControl : MonoBehaviour
                 break;
 
             case ( int )Define.ITEM.RICE:
-                RemoveMarsh( index );
+                RemoveRice( index );
                 break;
 
             case ( int )Define.ITEM.ROCK:
-                RemoveMarsh( index );
+                RemoveRock( index );
                 break;
 
             case ( int )Define.ITEM.LAKE:
-                RemoveMarsh( index );
+                RemoveLake( index );
                 break;
 
             case ( int )Define.ITEM.ROCK_GROUP:
-                RemoveMarsh( index );
+                RemoveRockGroup( index );
                 break;
         }
     }

@@ -101,6 +101,7 @@ public class InstantiateItem : MonoBehaviour
                 return;
             }
 
+            //Instantiate
             var item = Instantiate( ItemToInstantiate, mousePos, Quaternion.identity );
             item.transform.SetParent( parentGO.transform );
             item.transform.position = parentGO.transform.position;
@@ -109,6 +110,7 @@ public class InstantiateItem : MonoBehaviour
             Debug.Log( index );
 
             territoryControl.SetItem( index, itemNum );
+
             storage.PlaceItem( index, itemNum );
 
             if( name != "grass_Instan(Clone)" && name != "smallRock_Instan(Clone)" )
@@ -116,7 +118,7 @@ public class InstantiateItem : MonoBehaviour
                 imController.InstantiateExtraGrid( itemNum, item );
             }
 
-            #region Tutorial
+            #region !Tutorial
             if( name != "Tutorial_grass(Clone)" )
             {
                 if( imController.GetIsMoving( ) )
@@ -127,6 +129,7 @@ public class InstantiateItem : MonoBehaviour
                 }
                 else
                 {
+                    item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
                     item.GetComponent<CountDown>( ).setStartingTime( timeController.getNowRealSec( ) );
                 }
 
