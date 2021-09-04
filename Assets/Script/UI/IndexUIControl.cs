@@ -12,10 +12,12 @@ public class IndexUIControl : MonoBehaviour
     public void CloseIndexUI( )
     {
         indexUI.SetActive( false );
+        Time.timeScale = 1;
     }
 
     public void OpenIndexUI( )
     {
         indexUI.SetActive( true );
+        Time.timeScale = 0;
     }
 }

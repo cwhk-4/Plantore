@@ -107,7 +107,7 @@ public class MissionControl : MonoBehaviour
     {
         if( !IsMissionCompleteShown[index] )
         {
-            CompletionControl.CreateBox( index );
+            CompletionControl.CreateBanner( index );
             IsMissionCompleteShown[index] = true;
         }
     }
@@ -205,6 +205,7 @@ public class MissionControl : MonoBehaviour
     private void GoToNextLevel( )
     {
         MapLevel.setMapLevel( NowMapLevel + 1 );
+        CompletionControl.CreateBox( NowMapLevel );
     }
 
     //caution

@@ -6,14 +6,25 @@ public class MissionCompletionControl : MonoBehaviour
     [SerializeField] private MissionsList Missions;
     [SerializeField] private GameObject BoxParent;
     [SerializeField] private GameObject Box;
+    [SerializeField] private GameObject Banner;
 
-    public void CreateBox( int index )
+    public void CreateBanner( int index )
+    {
+        var banner = Instantiate( Banner, BoxParent.transform );
+
+        banner.SetActive( false );
+        banner.transform.GetChild( 0 ).GetComponent<TMP_Text>( ).text
+            = Missions.GetMissionText( index ) + "\nを完成した！";
+        banner.SetActive( true );
+    }
+
+    public void CreateBox( int level )
     {
         var box = Instantiate( Box, BoxParent.transform );
 
         box.SetActive( false );
         box.transform.GetChild( 0 ).GetChild( 1 ).GetComponent<TMP_Text>( ).text
-            = Missions.GetMissionText( index ) + "\nを完成した！";
+            = "おめでとうございます！\n\n- クリア報酬 - " + Missions.GetMissionClearText( level );
         box.SetActive( true );
     }
 }

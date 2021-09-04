@@ -12,10 +12,12 @@ public class SettingUIControl : MonoBehaviour
     public void CloseSettingUI( )
     {
         settingUI.SetActive( false );
+        Time.timeScale = 1;
     }
 
     public void OpenSettingUI( )
     {
         settingUI.SetActive( true );
+        Time.timeScale = 0;
     }
 }

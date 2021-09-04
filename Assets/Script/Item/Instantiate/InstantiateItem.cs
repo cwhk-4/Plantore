@@ -123,6 +123,7 @@ public class InstantiateItem : MonoBehaviour
             {
                 if( imController.GetIsMoving( ) )
                 {
+                    item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
                     var timeDelayed = timeController.getNowRealSec( ) - thisStartingTime;
                     item.GetComponent<CountDown>( ).setStartingTime( imController.GetStartingTime( ) + timeDelayed );
                     Debug.Log( timeDelayed );

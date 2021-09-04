@@ -9,7 +9,7 @@ public class MissionBoxControl : MonoBehaviour
 
     private void Update( )
     {
-        if( transform.localScale != new Vector3( 0.7f, 0.7f, 0.7f ) )
+        if( transform.localScale != Vector3.one )
         {
             transform.localScale = new Vector3( transform.localScale.x + 0.1f, transform.localScale.y + 0.1f, transform.localScale.z + 0.1f );
         }

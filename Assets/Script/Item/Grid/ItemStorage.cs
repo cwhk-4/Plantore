@@ -57,6 +57,12 @@ public class ItemStorage : MonoBehaviour
     public void RemoveItem( int queueNum, int itemNum )
     {
         ItemArr[itemNum].RemoveAt( queueNum );
+
+        for( int i = queueNum; i < ItemArr[itemNum].Count; i++ )
+        {
+            gridParent.transform.GetChild( ItemArr[itemNum][queueNum] ).GetComponentInChildren<MoveItem>( )
+                      .SetQueueNum( i );
+        }
     }
 
     public List<int> GetItem( int itemNum )
