@@ -3,6 +3,15 @@
 public class DebugCmdMission : MonoBehaviour
 {
     [SerializeField] private MissionControl MissionControl;
+    [SerializeField] private GameObject Buttons;
+
+    private bool isButtonActive = false;
+
+    private void Start( )
+    {
+        isButtonActive = false;
+        Buttons.SetActive( isButtonActive );
+    }
 
     void Update()
     {
@@ -11,6 +20,20 @@ public class DebugCmdMission : MonoBehaviour
             if( Input.GetKey( KeyCode.H ) )
             {
                 MissionControl.FoundHippo( );
+            }
+
+            if( Input.GetKeyUp( KeyCode.B ) )
+            {
+                if( isButtonActive )
+                {
+                    isButtonActive = false;
+                }
+                else
+                {
+                    isButtonActive = true;
+                }
+
+                Buttons.SetActive( isButtonActive );
             }
         }
     }

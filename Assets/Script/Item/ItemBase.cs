@@ -6,6 +6,7 @@ public class ItemBase : MonoBehaviour
     [SerializeField] private MissionControl MissionControl;
     [SerializeField] private ToolConvertion ToolConvertion;
     [SerializeField] private MapLevel MapLevel;
+    [SerializeField] private InstantiateMoveControl IMController;
     private CountDown countDown;
     private MoveItem moveItem;
 
@@ -19,6 +20,7 @@ public class ItemBase : MonoBehaviour
         ToolConvertion = GameObject.FindWithTag( "Cursor" ).GetComponent<ToolConvertion>( );
         MissionControl = GameObject.FindWithTag( "MissionController" ).GetComponent<MissionControl>( );
         MapLevel = GameObject.FindWithTag( "Map" ).GetComponent<MapLevel>( );
+        IMController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
         countDown = GetComponent<CountDown>( );
         moveItem = GetComponent<MoveItem>( );
         isOnMouse = false;
@@ -26,8 +28,13 @@ public class ItemBase : MonoBehaviour
 
     private void Update( )
     {
-        if(isOnMouse)
+        if( isOnMouse )
         {
+            if( IMController.GetIsInstantiating( ) || IMController.GetIsMoving( ) )
+            {
+                return;
+            }
+
             if( ToolConvertion.getIsCan( ) )
             {
                 if( Input.GetMouseButtonDown( 0 ) )

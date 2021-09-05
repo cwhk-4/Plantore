@@ -14,7 +14,7 @@ public class MissionCompletionControl : MonoBehaviour
 
         banner.SetActive( false );
         banner.transform.GetChild( 0 ).GetComponent<TMP_Text>( ).text
-            = Missions.GetMissionText( index ) + "\nを完成した！";
+            = "ミッション 「" + Missions.GetMissionText( index ) + "」\nをたっせいした！";
         banner.SetActive( true );
     }
 
@@ -24,7 +24,7 @@ public class MissionCompletionControl : MonoBehaviour
 
         box.SetActive( false );
         box.transform.GetChild( 0 ).GetChild( 1 ).GetComponent<TMP_Text>( ).text
-            = "おめでとうございます！\n\n- クリア報酬 - " + Missions.GetMissionClearText( level );
+            = "おめでとうございます！\n\n- クリア報酬 -\n" + Missions.GetMissionClearText( level );
         box.SetActive( true );
     }
 }

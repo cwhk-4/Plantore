@@ -2838,6 +2838,7 @@ MonoBehaviour:
   CompletionControl: {fileID: 310321041}
   MissionNum: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   IsMissionCompleteShown: 00000000000000000000
+  IsLvCompletionShown: 000000
   MissionParent: {fileID: 530104584}
   MissionCheck:
   - {fileID: 0}
@@ -22604,6 +22605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MissionControl: {fileID: 310321039}
+  Buttons: {fileID: 1917676480}
 --- !u!1 &1831978196
 GameObject:
   m_ObjectHideFlags: 0
@@ -24047,7 +24049,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1917676481
 RectTransform:
   m_ObjectHideFlags: 0

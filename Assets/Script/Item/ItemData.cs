@@ -4,15 +4,15 @@
     {
         //unit = second
 
-        60,     //grass
-        60,     //small rock
-        60,     //wood
-        180,    //grassland
-        180,    //marsh
-        300,    //rice
-        300,    //rock
-        600,    //lake
-        600,    //rock group
+        60/2,     //grass
+        60/2,     //small rock
+        60/2,     //wood
+        180/2,    //grassland
+        180/2,    //marsh
+        300/2,    //rice
+        300/2,    //rock
+        600/2,    //lake
+        600/2,    //rock group
 
     };
 

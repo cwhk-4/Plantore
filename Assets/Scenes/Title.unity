@@ -407,8 +407,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1012695637}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: clickStart
+        m_TargetAssemblyTypeName: Title, Assembly-CSharp
+        m_MethodName: clickSkipTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

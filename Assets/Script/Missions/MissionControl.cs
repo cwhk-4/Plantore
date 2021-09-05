@@ -13,6 +13,7 @@ public class MissionControl : MonoBehaviour
     private readonly int[] MissionStartingNum = { 0, 2, 5, 9, 10 };
     [SerializeField] private int[] MissionNum = new int[10];
     [SerializeField] private bool[] IsMissionCompleteShown = new bool[10];
+    [SerializeField] private bool[] IsLvCompletionShown = new bool[3];
     private int[] MissionTotalNum = new int[10];
 
     [SerializeField] private GameObject MissionParent;
@@ -49,6 +50,11 @@ public class MissionControl : MonoBehaviour
             MissionCheck[i] = MissionParent.transform.GetChild( i ).GetChild( 2 ).GetChild( 0 ).gameObject;
             MissionCheck[i].SetActive( false );
             MissionNowNum[i] = MissionParent.transform.GetChild( i ).GetChild( 1 ).GetComponent<TMP_Text>( );
+        }
+
+        for( int i = 0; i < 3; i++ )
+        {
+            IsLvCompletionShown[i] = false;
         }
     }
 
@@ -205,7 +211,12 @@ public class MissionControl : MonoBehaviour
     private void GoToNextLevel( )
     {
         MapLevel.setMapLevel( NowMapLevel + 1 );
-        CompletionControl.CreateBox( NowMapLevel );
+
+        if( !IsLvCompletionShown[NowMapLevel - 1] )
+        {
+            CompletionControl.CreateBox( NowMapLevel );
+            IsLvCompletionShown[NowMapLevel - 1] = true;
+        }
     }
 
     //caution
