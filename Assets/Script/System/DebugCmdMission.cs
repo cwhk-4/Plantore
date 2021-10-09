@@ -17,11 +17,6 @@ public class DebugCmdMission : MonoBehaviour
     {
         if( Input.GetKey( KeyCode.LeftShift ) )
         {
-            if( Input.GetKey( KeyCode.H ) )
-            {
-                MissionControl.FoundHippo( );
-            }
-
             if( Input.GetKeyUp( KeyCode.B ) )
             {
                 if( isButtonActive )

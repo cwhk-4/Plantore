@@ -50,21 +50,8 @@ public class InstantiateItem : MonoBehaviour
                 break;
 
             //Lv 3
-            case "rice_Instan(Clone)":
-                itemNum = ( int )Define.ITEM.RICE;
-                break;
-
             case "rock_Instan(Clone)":
                 itemNum = ( int )Define.ITEM.ROCK;
-                break;
-
-            //Lv 4
-            case "lake_Instan(Clone)":
-                itemNum = ( int )Define.ITEM.LAKE;
-                break;
-
-            case "rockGroup_Instan(Clone)":
-                itemNum = ( int )Define.ITEM.ROCK_GROUP;
                 break;
         }
 
@@ -125,13 +112,13 @@ public class InstantiateItem : MonoBehaviour
                 {
                     item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
                     var timeDelayed = timeController.getNowRealSec( ) - thisStartingTime;
-                    item.GetComponent<CountDown>( ).setStartingTime( imController.GetStartingTime( ) + timeDelayed );
+                    item.GetComponent<CountDown>( ).SetStartingTime( imController.GetStartingTime( ) + timeDelayed );
                     Debug.Log( timeDelayed );
                 }
                 else
                 {
                     item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
-                    item.GetComponent<CountDown>( ).setStartingTime( timeController.getNowRealSec( ) );
+                    item.GetComponent<CountDown>( ).SetStartingTime( timeController.getNowRealSec( ) );
                 }
 
             }

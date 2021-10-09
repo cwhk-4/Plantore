@@ -5,6 +5,7 @@ public class InstantiateMoveControl : MonoBehaviour
 {
     [SerializeField] private MissionControl missionControl;
     [SerializeField] private MapLevel mapLevel;
+    [SerializeField] private AnimalInstantiate animalInstantiate;
 
     [SerializeField] private bool isInstantiating = false;
     [SerializeField] private bool isMoving = false;
@@ -60,6 +61,7 @@ public class InstantiateMoveControl : MonoBehaviour
             missionControl.PlacedItem( );
         }
 
+        animalInstantiate.ItemCreated( GOItemNum, nowGridNum );
         SetUIActive( true );
     }
 
@@ -150,17 +152,6 @@ public class InstantiateMoveControl : MonoBehaviour
         }
     }
 
-    private void InstanRiceExtraGrid( GameObject ExtraParent )
-    {
-        for( int i = 1; i < Define.RICE_SIZE.Length; i++ )
-        {
-            var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.RICE_SIZE[i] ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.RICE_SIZE[i] ).position;
-            item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
-        }
-    }
-
     private void InstanRockExtraGrid( GameObject ExtraParent )
     {
         for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
@@ -168,28 +159,6 @@ public class InstantiateMoveControl : MonoBehaviour
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
             item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ) );
             item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ).position;
-            item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
-        }
-    }
-
-    private void InstanLakeExtraGrid( GameObject ExtraParent )
-    {
-        for( int i = 1; i < Define.LAKE_SIZE.Length; i++ )
-        {
-            var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.LAKE_SIZE[i] ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.LAKE_SIZE[i] ).position;
-            item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
-        }
-    }
-
-    private void InstanRockGroupExtraGrid( GameObject ExtraParent )
-    {
-        for( int i = 1; i < Define.ROCK_GROUP_SIZE.Length; i++ )
-        {
-            var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_GROUP_SIZE[i] ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.ROCK_GROUP_SIZE[i] ).position;
             item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         }
     }
@@ -217,20 +186,8 @@ public class InstantiateMoveControl : MonoBehaviour
                 break;
 
             //Lv 3
-            case ( int )Define.ITEM.RICE:
-                InstanRiceExtraGrid( ExtraParent );
-                break;
-
             case ( int )Define.ITEM.ROCK:
                 InstanRockExtraGrid( ExtraParent );
-                break;
-
-            //Lv 4
-            case ( int )Define.ITEM.LAKE:
-                InstanLakeExtraGrid( ExtraParent );
-                break;
-            case ( int )Define.ITEM.ROCK_GROUP:
-                InstanRockGroupExtraGrid( ExtraParent );
                 break;
         }
     }
@@ -300,25 +257,6 @@ public class InstantiateMoveControl : MonoBehaviour
         return flag;
     }
 
-    public bool CheckRiceGrid( )
-    {
-        var flag = false;
-
-        for( int i = 1; i < Define.RICE_SIZE.Length; i++ )
-        {
-            if( gridInstan.transform.GetChild( nowGridNum + Define.RICE_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.RICE_SIZE[i] ) )
-            {
-                flag = true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        return flag;
-    }
-
     public bool CheckRockGrid( )
     {
         var flag = false;
@@ -326,44 +264,6 @@ public class InstantiateMoveControl : MonoBehaviour
         for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
         {
             if( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.ROCK_SIZE[i] ) )
-            {
-                flag = true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        return flag;
-    }
-
-    public bool CheckLakeGrid( )
-    {
-        var flag = false;
-
-        for( int i = 1; i < Define.LAKE_SIZE.Length; i++ )
-        {
-            if( gridInstan.transform.GetChild( nowGridNum + Define.LAKE_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.LAKE_SIZE[i] ) )
-            {
-                flag = true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        return flag;
-    }
-
-    public bool CheckRockGroupGrid( )
-    {
-        var flag = false;
-
-        for( int i = 1; i < Define.ROCK_GROUP_SIZE.Length; i++ )
-        {
-            if( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_GROUP_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.ROCK_GROUP_SIZE[i] ) )
             {
                 flag = true;
             }
@@ -401,21 +301,8 @@ public class InstantiateMoveControl : MonoBehaviour
                 break;
 
             //Lv 3
-            case ( int )Define.ITEM.RICE:
-                flag = CheckRiceGrid( );
-                break;
-
             case ( int )Define.ITEM.ROCK:
                 flag = CheckRockGrid( );
-                break;
-
-            //Lv 4
-            case ( int )Define.ITEM.LAKE:
-                flag = CheckLakeGrid( );
-                break;
-
-            case ( int )Define.ITEM.ROCK_GROUP:
-                flag = CheckRockGroupGrid( );
                 break;
         }
 

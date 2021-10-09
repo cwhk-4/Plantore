@@ -39,7 +39,7 @@ public class ItemBase : MonoBehaviour
             {
                 if( Input.GetMouseButtonDown( 0 ) )
                 {
-                    if( countDown.getCD( ) <= 0 )
+                    if( countDown.GetCD( ) <= 0 )
                     {
                         Repair( );
                     }
@@ -79,12 +79,12 @@ public class ItemBase : MonoBehaviour
     {
         countDown.StartRepairing( );
 
-        if( MapLevel.getMapLevel( ) == 2 )
+        if( MapLevel.getMapLevel( ) == 1 )
         {
             MissionControl.FixedItem1( );
         }
 
-        if( MapLevel.getMapLevel( ) == 3 )
+        if( MapLevel.getMapLevel( ) == 2 )
         {
             MissionControl.FixedItem2( );
         }
@@ -92,16 +92,16 @@ public class ItemBase : MonoBehaviour
 
     public void MoveItem( )
     {
-        moveItem.StartMoving( countDown.getStartTime( ) );
+        moveItem.StartMoving( countDown.GetStartTime( ) );
     }
 
-    public void setOnMouse( )
+    public void SetOnMouse( )
     {
         isOnMouse = true;
         ToolConvertion.setOnGO( );
     }
 
-    public void setExitMouse( )
+    public void SetExitMouse( )
     {
         isOnMouse = false;
         ToolConvertion.setExitGO( );

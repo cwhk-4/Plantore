@@ -49,28 +49,10 @@ public class MoveItem : MonoBehaviour
                 storage.RemoveItem( queueNum, ( int )Define.ITEM.MARSH );
                 break;
 
-            case "rice(Clone)":
-                RemoveExtraGrid( ( int )Define.ITEM.RICE, index );
-                territoryController.RemoveItem( index, ( int )Define.ITEM.RICE );
-                storage.RemoveItem( queueNum, ( int )Define.ITEM.RICE );
-                break;
-
             case "rock(Clone)":
                 RemoveExtraGrid( ( int )Define.ITEM.ROCK, index );
                 territoryController.RemoveItem( index, ( int )Define.ITEM.ROCK );
                 storage.RemoveItem( queueNum, ( int )Define.ITEM.ROCK );
-                break;
-
-            case "lake(Clone)":
-                RemoveExtraGrid( ( int )Define.ITEM.LAKE, index );
-                territoryController.RemoveItem( index, ( int )Define.ITEM.LAKE );
-                storage.RemoveItem( queueNum, ( int )Define.ITEM.LAKE );
-                break;
-
-            case "rockGroup(Clone)":
-                RemoveExtraGrid( ( int )Define.ITEM.ROCK_GROUP, index );
-                territoryController.RemoveItem( index, ( int )Define.ITEM.ROCK_GROUP );
-                storage.RemoveItem( queueNum, ( int )Define.ITEM.ROCK_GROUP );
                 break;
         }
 
@@ -93,20 +75,8 @@ public class MoveItem : MonoBehaviour
                 RemoveMarshExtra( index );
                 break;
 
-            case ( int )Define.ITEM.RICE:
-                RemoveRiceExtra( index );
-                break;
-
             case ( int )Define.ITEM.ROCK:
                 RemoveRockExtra( index );
-                break;
-                
-            case ( int )Define.ITEM.LAKE:
-                RemoveLakeExtra( index );
-                break;
-
-            case ( int )Define.ITEM.ROCK_GROUP:
-                RemoveRockGroupExtra( index );
                 break;
         }
     }
@@ -131,35 +101,11 @@ public class MoveItem : MonoBehaviour
         }
     }
 
-    private void RemoveRiceExtra( int index )
-    {
-        for( int i = 1; i < Define.RICE_SIZE.Length; i++ )
-        {
-            Destroy( transform.parent.parent.GetChild( index + Define.RICE_SIZE[i] ).GetChild( 0 ).gameObject );
-        }
-    }
-
     private void RemoveRockExtra( int index )
     {
         for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
         {
             Destroy( transform.parent.parent.GetChild( index + Define.ROCK_SIZE[i] ).GetChild( 0 ).gameObject );
-        }
-    }
-
-    private void RemoveLakeExtra( int index )
-    {
-        for( int i = 1; i < Define.LAKE_SIZE.Length; i++ )
-        {
-            Destroy( transform.parent.parent.GetChild( index + Define.LAKE_SIZE[i] ).GetChild( 0 ).gameObject );
-        }
-    }
-
-    private void RemoveRockGroupExtra( int index )
-    {
-        for( int i = 1; i < Define.ROCK_GROUP_SIZE.Length; i++ )
-        {
-            Destroy( transform.parent.parent.GetChild( index + Define.ROCK_GROUP_SIZE[i] ).GetChild( 0 ).gameObject );
         }
     }
 

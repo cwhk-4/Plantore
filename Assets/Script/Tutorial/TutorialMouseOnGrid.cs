@@ -24,8 +24,8 @@ public class TutorialMouseOnGrid : MonoBehaviour
         {
             if( transform.GetChild( 0 ).name != "ExtraGrid(Clone)" && transform.GetChild( 0 ).name != "Tutorial_grass(Clone)" )
             {
-                GetComponentInChildren<ItemBase>( ).setOnMouse( );
-                GetComponentInChildren<CountDown>( ).showGauge( );
+                GetComponentInChildren<ItemBase>( ).SetOnMouse( );
+                GetComponentInChildren<CountDown>( ).ShowGauge( );
             }
         }
     }
@@ -43,8 +43,8 @@ public class TutorialMouseOnGrid : MonoBehaviour
         {
             if( transform.GetChild( 0 ).name != "ExtraGrid(Clone)" && transform.GetChild( 0 ).name != "Tutorial_grass(Clone)" )
             {
-                GetComponentInChildren<ItemBase>( ).setExitMouse( );
-                GetComponentInChildren<CountDown>( ).closeGauge( );
+                GetComponentInChildren<ItemBase>( ).SetExitMouse( );
+                GetComponentInChildren<CountDown>( ).CloseGauge( );
             }
         }
     }

@@ -13,11 +13,7 @@ public class ItemStorage : MonoBehaviour
     [SerializeField] private List<int> grassland = new List<int>( );
     [SerializeField] private List<int> marsh = new List<int>( );
 
-    [SerializeField] private List<int> rice = new List<int>( );
     [SerializeField] private List<int> rock = new List<int>( );
-
-    [SerializeField] private List<int> lake = new List<int>( );
-    [SerializeField] private List<int> rockGroup = new List<int>( );
 
     private void Start( )
     {
@@ -35,11 +31,7 @@ public class ItemStorage : MonoBehaviour
         ItemArr[( int )Define.ITEM.GRASSLAND] = grassland;
         ItemArr[( int )Define.ITEM.MARSH] = marsh;
 
-        ItemArr[( int )Define.ITEM.RICE] = rice;
         ItemArr[( int )Define.ITEM.ROCK] = rock;
-
-        ItemArr[( int )Define.ITEM.LAKE] = lake;
-        ItemArr[( int )Define.ITEM.ROCK_GROUP] = rockGroup;
 
         for( int i = 0; i < ( int )Define.ITEM.TOTAL_NUM; i++ )
         {

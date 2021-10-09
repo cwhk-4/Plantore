@@ -26,7 +26,7 @@ public class CountDown : MonoBehaviour
     private void Awake( )
     {
         canvas = GetComponentInChildren<Canvas>( );
-        closeGauge( );
+        CloseGauge( );
     }
 
     void Start()
@@ -86,12 +86,12 @@ public class CountDown : MonoBehaviour
         }
     }
 
-    public void showGauge( )
+    public void ShowGauge( )
     {
         canvas.enabled = true;
     }
 
-    public void closeGauge( )
+    public void CloseGauge( )
     {
         canvas.enabled = false;
     }
@@ -101,17 +101,12 @@ public class CountDown : MonoBehaviour
         IsRepairing = true;
     }
 
-    //public void StopRepairing( )
-    //{
-    //    IsRepairing = false;
-    //}
-
-    public float getStartTime( )
+    public float GetStartTime( )
     {
         return startingTime;
     }
 
-    public void setStartingTime( float time )
+    public void SetStartingTime( float time )
     {
         startingTime = time;
     }
@@ -121,7 +116,7 @@ public class CountDown : MonoBehaviour
         Timer = cd;
     }
 
-    public float getCD( )
+    public float GetCD( )
     {
         return CD;
     }

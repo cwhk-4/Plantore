@@ -22,7 +22,7 @@ public class MissionFoundAnimal : MonoBehaviour
     {
         if ( this.gameObject.transform.position.x > foundpositionXL && this.gameObject.transform.position.x < foundpositionXR && plusMissionNum )
         {
-            getThisAnimal.FoundAnimal( );
+            //getThisAnimal.FoundAnimal( );
             plusMissionNum = false;
             getThisAnimalType = true;
         }
@@ -33,7 +33,7 @@ public class MissionFoundAnimal : MonoBehaviour
         }
         if ( this.gameObject.name == "HIPPOS" && this.gameObject.transform.position.y > foundpositionXL && this.gameObject.transform.position.x < foundpositionXR && findHippo )
         {
-            getThisAnimal.FoundHippo( );
+            //getThisAnimal.FoundHippo( );
             findHippo = false;
         }
     }

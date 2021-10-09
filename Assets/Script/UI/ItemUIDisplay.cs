@@ -11,10 +11,9 @@ public class ItemUIDisplay : MonoBehaviour
     [SerializeField] private Button[] ItemButtons;
     [SerializeField] private MapLevel map;
 
-    [SerializeField] private int level1Limit = 3;
-    [SerializeField] private int level2Limit = 5;
-    [SerializeField] private int level3Limit = 7;
-    [SerializeField] private int level4Limit = 9;
+    private int level1Limit = 3;
+    private int level2Limit = 5;
+    private int level3Limit = 6;
     [SerializeField] private int totalNum;
 
     [SerializeField] private MapLevel Map;
@@ -24,7 +23,6 @@ public class ItemUIDisplay : MonoBehaviour
     {
         mapLevel = map.getMapLevel( );
         Init( );
-        //SetItemDisplayLevel( );
     }
 
     private void Init( )
@@ -71,11 +69,6 @@ public class ItemUIDisplay : MonoBehaviour
             case 3:
                 SetItemVisibility( level3Limit );
                 SetItemLimit( level3Limit );
-                break;
-
-            case 4:
-                SetItemVisibility( level4Limit );
-                SetItemLimit( level4Limit );
                 break;
         }
     }

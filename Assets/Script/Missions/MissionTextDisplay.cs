@@ -16,7 +16,7 @@ public class MissionTextDisplay : MonoBehaviour
 
     private void Awake( )
     {
-        for( int i = 0; i < 4; i++ )
+        for( int i = 0; i < 3; i++ )
         {
             MissionText[i, 0] = MissionParent.transform.GetChild( i ).GetComponent<TMP_Text>( );
             MissionText[i, 1] = MissionParent.transform.GetChild( i ).GetChild( 0 ).GetComponent<TMP_Text>( );
@@ -31,9 +31,9 @@ public class MissionTextDisplay : MonoBehaviour
 
     private void SetText( )
     {
-        for( int i = 0; i < 4; i++ )
+        for( int i = 0; i < 3; i++ )
         {
-            if( MissionStartingNum + i > 9 )
+            if( MissionStartingNum + i > 8 )
             {
                 MissionText[i, 0].gameObject.SetActive( false );
                 continue;
@@ -62,17 +62,13 @@ public class MissionTextDisplay : MonoBehaviour
                 MissionStartingNum = 0;
                 break;
             case 2:
-                MissionStartingNum = 2;
+                MissionStartingNum = 3;
                 break;
             case 3:
-                MissionStartingNum = 5;
-                break;
-            case 4:
-                MissionStartingNum = 9;
+                MissionStartingNum = 6;
                 break;
         }
 
         SetText( );
-        MissionControl.SetNowStartingMission( MissionStartingNum );
     }
 }

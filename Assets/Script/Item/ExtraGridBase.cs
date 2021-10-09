@@ -30,7 +30,7 @@ public class ExtraGridBase : MonoBehaviour
             {
                 if( Input.GetMouseButtonDown( 0 ) )
                 {
-                    if( ParentItem.GetComponent<CountDown>( ).getCD( ) <= 0 )
+                    if( ParentItem.GetComponent<CountDown>( ).GetCD( ) <= 0 )
                     {
                         ParentItem.GetComponent<ItemBase>().Repair( );
                     }
@@ -82,7 +82,7 @@ public class ExtraGridBase : MonoBehaviour
     {
         if( ParentItem != null )
         {
-            ParentItem.GetComponent<CountDown>( ).showGauge( );
+            ParentItem.GetComponent<CountDown>( ).ShowGauge( );
         }
     }
 
@@ -90,7 +90,7 @@ public class ExtraGridBase : MonoBehaviour
     {
         if( ParentItem != null )
         {
-            ParentItem.GetComponent<CountDown>( ).closeGauge( );
+            ParentItem.GetComponent<CountDown>( ).CloseGauge( );
         }
     }
 }

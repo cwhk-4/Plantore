@@ -6,7 +6,7 @@ public class ItemUIScroll : MonoBehaviour
     [SerializeField] private float ScrollingSpeed;
     [SerializeField] private float ScrollLimit = 800f;
 
-    [SerializeField] private int[] PageLimit = { 1, 2, 3, 4 };
+    private int[] PageLimit = { 1, 2, 2 };
     [SerializeField] private int NowPage = 0;
 
     [SerializeField] private MapLevel map;
@@ -67,44 +67,6 @@ public class ItemUIScroll : MonoBehaviour
         {
             RightButton.SetActive( true );
         }
-
-        //if( ToLeft && Mathf.Abs( ScrollTransform.localPosition.x - StartingValue ) < 800f )
-        //{
-        //    ToRight = false;
-        //    ScrollTransform.localPosition =
-        //        new Vector3( ScrollTransform.localPosition.x + ScrollingSpeed,
-        //                     ScrollTransform.localPosition.y,
-        //                     ScrollTransform.localPosition.z );
-        //}
-
-        //if( ToRight && Mathf.Abs( ScrollTransform.localPosition.x - StartingValue ) < 800f )
-        //{
-        //    ToLeft = false;
-        //    ScrollTransform.localPosition =
-        //        new Vector3( ScrollTransform.localPosition.x - ScrollingSpeed,
-        //                     ScrollTransform.localPosition.y,
-        //                     ScrollTransform.localPosition.z );
-        //}
-
-        //if( Mathf.Abs( ScrollTransform.localPosition.x - StartingValue ) >= 800f )
-        //{
-        //    ToLeft = false;
-        //    ToRight = false;
-        //}
-
-        //if( ScrollTransform.localPosition.x > 0 )
-        //{
-        //    ScrollTransform.localPosition = new Vector3( 0,
-        //                                             ScrollTransform.localPosition.y,
-        //                                             ScrollTransform.localPosition.z );
-        //}
-
-        //if( ScrollTransform.localPosition.x < -ScrollLimit * mapLevel )
-        //{
-        //    ScrollTransform.localPosition = new Vector3( -ScrollLimit * mapLevel,
-        //                                             ScrollTransform.localPosition.y,
-        //                                             ScrollTransform.localPosition.z );
-        //}
     }
 
     public void LeftButtonClicked( )

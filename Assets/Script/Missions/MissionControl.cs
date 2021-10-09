@@ -10,16 +10,15 @@ public class MissionControl : MonoBehaviour
 
     private int NowMapLevel;
 
-    private readonly int[] MissionStartingNum = { 0, 2, 5, 9, 10 };
-    [SerializeField] private int[] MissionNum = new int[10];
-    [SerializeField] private bool[] IsMissionCompleteShown = new bool[10];
-    [SerializeField] private bool[] IsLvCompletionShown = new bool[3];
-    private int[] MissionTotalNum = new int[10];
+    private readonly int[] MissionStartingNum = { 0, 3, 6, 9 };
+    private int[] MissionNum = new int[9];
+    private bool[] IsMissionCompleteShown = new bool[9];
+    private bool[] IsLvCompletionShown = new bool[3];
+    private int[] MissionTotalNum = new int[9];
 
     [SerializeField] private GameObject MissionParent;
-    [SerializeField] private GameObject[] MissionCheck = new GameObject[4];
-
-    [SerializeField] private TMP_Text[] MissionNowNum = new TMP_Text[4];
+    [SerializeField] private GameObject[] MissionCheck = new GameObject[3];
+    [SerializeField] private TMP_Text[] MissionNowNum = new TMP_Text[3];
 
     [SerializeField] private int NowStartingMission = 0;
 
@@ -29,7 +28,7 @@ public class MissionControl : MonoBehaviour
     private bool Hippo = false;
     #endregion
 
-    private void Start( )
+    private void Start( ) 
     {
         InitAllData( );
     }
@@ -38,14 +37,14 @@ public class MissionControl : MonoBehaviour
     {
         NowMapLevel = MapLevel.getMapLevel( );
 
-        for( int i = 0; i < 10; i++ )
+        for( int i = 0; i < 9; i++ )
         {
             MissionNum[i] = 0;
             MissionTotalNum[i] = MissionsList.GetTotalNum( i );
             IsMissionCompleteShown[i] = false;
         }
 
-        for( int i = 0; i < 4; i++ )
+        for( int i = 0; i < 3; i++ )
         {
             MissionCheck[i] = MissionParent.transform.GetChild( i ).GetChild( 2 ).GetChild( 0 ).gameObject;
             MissionCheck[i].SetActive( false );
@@ -125,6 +124,13 @@ public class MissionControl : MonoBehaviour
         CheckMissionsCompletion( );
     }
 
+
+    public void FixedItem1( )
+    {
+        MissionNum[1] += 1;
+        CheckMissionsCompletion( );
+    }
+
     public void ReadIndex( )
     {
         if( Index )
@@ -134,18 +140,18 @@ public class MissionControl : MonoBehaviour
         else
         {
             Index = true;
-            MissionNum[1] = 1;
+            MissionNum[2] = 1;
             CheckMissionsCompletion( );
         }
     }
 
     //Lv 2
-    public void FoundHippo( )
+    public void FoundElephant( )
     {
         if( !Hippo )
         {
             Hippo = true;
-            FoundHippoRhino( );
+            FoundElephantRhino( );
         }
     }
 
@@ -154,17 +160,11 @@ public class MissionControl : MonoBehaviour
         if( !Rhino )
         {
             Rhino = true;
-            FoundHippoRhino( );
+            FoundElephantRhino( );
         }
     }
 
-    private void FoundHippoRhino( )
-    {
-        MissionNum[2] += 1;
-        CheckMissionsCompletion( );
-    }
-
-    public void FixedItem1( )
+    private void FoundElephantRhino( )
     {
         MissionNum[3] += 1;
         CheckMissionsCompletion( );
@@ -176,13 +176,13 @@ public class MissionControl : MonoBehaviour
         CheckMissionsCompletion( );
     }
 
-    //Lv 3
     public void FixedItem2( )
     {
         MissionNum[5] += 1;
         CheckMissionsCompletion( );
     }
 
+    //Lv 3
     public void FoundHerbivore( )
     {
         MissionNum[6] += 1;
@@ -195,16 +195,9 @@ public class MissionControl : MonoBehaviour
         CheckMissionsCompletion( );
     }
 
-    public void FoundBuffalo( )
-    {
-        MissionNum[8] += 1;
-        CheckMissionsCompletion( );
-    }
-
-    //Lv 4
     public void FilledIndex( )
     {
-        MissionNum[9] += 1;
+        MissionNum[8] += 1;
         CheckMissionsCompletion( );
     }
 
@@ -219,227 +212,4 @@ public class MissionControl : MonoBehaviour
         }
     }
 
-    //caution
-    #region Old
-    private int DisplayBoardNum;
-
-    [SerializeField] private int[] missionTotalNum = new int[6];
-    [SerializeField] private int[] missionNowNum = new int[6];
-    [SerializeField] private bool[] missionCompleted = new bool[6];
-
-    [SerializeField] private RectTransform[] MissionClearBoard;
-    [SerializeField] private float AnimationSpeed;
-    #endregion
-    #region LegacyCode
-    //{
-    //    for( int i = 0; i < missionTotalNum.Length - 1; i++ )
-    //    {
-    //        missionTotalNum[i] = missions.GetValue( i ).totalNum;
-    //        missionCompleted[i] = false;
-    //    }
-
-    //    clearMissionBox( );
-
-    //    for( int i = 0; i < MissionClearBoard.Length; i++ )
-    //    {
-    //        MissionClearBoard[i].localScale = Vector3.zero;
-    //        MissionClearBoard[i].gameObject.SetActive( false );
-
-    //    }
-    //}
-
-    //private void Update( )
-    //{
-    //    if( ShowMission )
-    //    {
-    //        if( DisplayBoardNum != -1 )
-    //        {
-    //            if( MissionClearBoard[DisplayBoardNum].localScale.x >= 1 )
-    //            {
-    //                MissionClearBoard[DisplayBoardNum].localScale = Vector3.one;
-    //            }
-    //            else
-    //            {
-    //                MissionClearBoard[DisplayBoardNum].localScale =
-    //                    new Vector3( MissionClearBoard[DisplayBoardNum].localScale.x + AnimationSpeed,
-    //                    MissionClearBoard[DisplayBoardNum].localScale.y + AnimationSpeed,
-    //                    MissionClearBoard[DisplayBoardNum].localScale.z + AnimationSpeed );
-    //            }
-
-    //            if( MissionClearBoard[DisplayBoardNum].localScale == Vector3.one )
-    //            {
-    //                ShowMission = false;
-    //                MissionShown = true;
-    //                MapLevel.setMapLevel( ToMapLevel );
-    //                DisplayBoardNum = -1;
-    //            }
-    //        }
-    //        else
-    //        {
-    //            ShowMission = false;
-    //            MissionShown = true;
-    //        }
-    //    }
-
-    //    if( CloseMission )
-    //    {
-    //        if( DisplayBoardNum != -1 )
-    //        {
-    //            if( MissionClearBoard[DisplayBoardNum].localScale.x <= 0 )
-    //            {
-    //                MissionClearBoard[DisplayBoardNum].localScale = Vector3.zero;
-    //            }
-    //            else
-    //            {
-    //                MissionClearBoard[DisplayBoardNum].localScale =
-    //                    new Vector3( MissionClearBoard[DisplayBoardNum].localScale.x - AnimationSpeed,
-    //                    MissionClearBoard[DisplayBoardNum].localScale.y - AnimationSpeed,
-    //                    MissionClearBoard[DisplayBoardNum].localScale.z - AnimationSpeed );
-    //            }
-
-    //            if( MissionClearBoard[DisplayBoardNum].localScale == Vector3.zero )
-    //            {
-    //                CloseMission = false;
-    //                MissionShown = false;
-    //                MissionClearBoard[DisplayBoardNum].gameObject.SetActive( false );
-    //                DisplayBoardNum = -1;
-    //            }
-    //        }
-    //        else
-    //        {
-    //            CloseMission = false;
-    //            MissionShown = false;
-    //        }
-    //    }
-    //}
-
-    public void SetNowStartingMission( int num )
-    {
-        //NowStartingMission = num;
-        //setMissionNum( );
-        //clearMissionBox( );
-    }
-
-    public void InitMissionBox( )
-    {
-        //clearMissionBox( );
-        //setMissionNum( );
-    }
-
-    private void setMissionNum( )
-    {
-        //mission1Num.text = missionNowNum[NowStartingMission].ToString( );
-        //mission2Num.text = missionNowNum[NowStartingMission + 1].ToString( );
-        //mission3Num.text = missionNowNum[NowStartingMission + 2].ToString( );
-    }
-
-    
-    public void FoundAnimal( )
-    {
-        //missionNowNum[0]++;
-        //if( NowStartingMission == 0 )
-        //{
-        //    mission1Num.text = missionNowNum[0].ToString( );
-        //}
-        //checkMissionCompleted( 0 );
-    }
-
-    public void ClearedEvent( )
-    {
-        //missionNowNum[5]++;
-        //if( NowStartingMission == 3 )
-        //{
-        //    mission3Num.text = missionNowNum[5].ToString( );
-        //}
-        //checkMissionCompleted( 5 );
-    }
-
-    private void checkMissionCompleted( int input )
-    {
-        //if( missionNowNum[input] >= missionTotalNum[input] )
-        //{
-        //    missionCompleted[input] = true;
-        //    checkMissionBox( input );
-        //    checkLevelMissionCompleted( );
-        //}
-    }
-
-    private void checkMissionBox( int input )
-    {
-        //if( missionCompleted[input] )
-        //{
-        //    missionCheck[input % 3].SetActive( true );
-        //}
-        //else
-        //{
-        //    missionCheck[input % 3].SetActive( false );
-        //}
-    }
-
-    private void clearMissionBox( )
-    {
-        //for( int i = 0; i < 3; i++ )
-        //{
-        //    checkMissionBox( NowStartingMission + i );
-        //}
-    }
-
-    private void checkLevelMissionCompleted( )
-    {
-        //var startingNum = NowStartingMission;
-
-        ////we are special ver
-        //if( startingNum == 3 )
-        //{
-        //    if( missionCompleted[startingNum] && missionCompleted[startingNum + 1] )
-        //    {
-        //        MissionCleared( 3 );
-        //    }
-        //}
-        //else
-        //{
-        //    if( missionCompleted[startingNum] && missionCompleted[startingNum + 1] && missionCompleted[startingNum + 2] )
-        //    {
-        //        MissionCleared( 2 );
-        //    }
-        //}
-    }
-
-    private void MissionCleared( int ToLevel )
-    {
-        //if( ToLevel == 2 )
-        //{
-        //    ToMapLevel = ToLevel;
-        //    ShowMission = true;
-        //    MissionClearBoard[0].gameObject.SetActive( true );
-        //    DisplayBoardNum = 0;
-        //}
-        //else
-        //{
-        //    if( ToLevel == 3 )
-        //    {
-        //        ShowMission = true;
-        //        MissionClearBoard[1].gameObject.SetActive( true );
-        //        DisplayBoardNum = 1;
-        //    }
-        //}
-    }
-
-    public void CloseMissionClearBoard( int boardNum )
-    {
-        //if( MissionShown )
-        //{
-        //    CloseMission = true;
-        //    DisplayBoardNum = boardNum;
-        //}
-    }
-
-    /*
-    public void TrialEnd( )
-    {
-        trial.ShowEnd( );
-    }
-    */
-
-    #endregion
 }
