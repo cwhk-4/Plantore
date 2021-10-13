@@ -26,8 +26,8 @@
         TOTAL_NUM,
     }
 
-    public static readonly int XCOUNT = 12;
-    public static readonly int YCOUNT = 11;
+    public static readonly int XCOUNT = 10;
+    public static readonly int YCOUNT = 9;
     public static readonly int TOTAL_GRID_NUM = XCOUNT * YCOUNT;
 
     #region item-animal
