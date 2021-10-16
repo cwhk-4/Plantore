@@ -25,7 +25,7 @@ public class MissionControl : MonoBehaviour
     #region ControlBool
     private bool Index = false;
     private bool Rhino = false;
-    private bool Hippo = false;
+    private bool Elephant = false;
     #endregion
 
     private void Start( ) 
@@ -120,15 +120,21 @@ public class MissionControl : MonoBehaviour
     //Lv 1
     public void PlacedItem( )
     {
-        MissionNum[0] += 1;
-        CheckMissionsCompletion( );
+        if( MapLevel.getMapLevel( ) == 1 )
+        {
+            MissionNum[0] += 1;
+            CheckMissionsCompletion( );
+        }
     }
 
 
     public void FixedItem1( )
     {
-        MissionNum[1] += 1;
-        CheckMissionsCompletion( );
+        if( MapLevel.getMapLevel( ) == 1 )
+        {
+            MissionNum[1] += 1;
+            CheckMissionsCompletion( );
+        }
     }
 
     public void ReadIndex( )
@@ -148,9 +154,9 @@ public class MissionControl : MonoBehaviour
     //Lv 2
     public void FoundElephant( )
     {
-        if( !Hippo )
+        if( !Elephant )
         {
-            Hippo = true;
+            Elephant = true;
             FoundElephantRhino( );
         }
     }
@@ -166,14 +172,20 @@ public class MissionControl : MonoBehaviour
 
     private void FoundElephantRhino( )
     {
-        MissionNum[3] += 1;
-        CheckMissionsCompletion( );
+        if( MapLevel.getMapLevel( ) == 2 )
+        {
+            MissionNum[3] += 1;
+            CheckMissionsCompletion( );
+        }
     }
 
     public void HuntedByLion( )
     {
-        MissionNum[4] += 1;
-        CheckMissionsCompletion( );
+        if( MapLevel.getMapLevel( ) == 2 )
+        {
+            MissionNum[4] += 1;
+            CheckMissionsCompletion( );
+        }
     }
 
     public void FixedItem2( )
@@ -185,14 +197,20 @@ public class MissionControl : MonoBehaviour
     //Lv 3
     public void FoundHerbivore( )
     {
-        MissionNum[6] += 1;
-        CheckMissionsCompletion( );
+        if( MapLevel.getMapLevel( ) == 3 )
+        {
+            MissionNum[6] += 1;
+            CheckMissionsCompletion( );
+        }
     }
 
     public void HuntingSucceed( )
     {
-        MissionNum[7] += 1;
-        CheckMissionsCompletion( );
+        if( MapLevel.getMapLevel( ) == 3 )
+        {
+            MissionNum[7] += 1;
+            CheckMissionsCompletion( );
+        }
     }
 
     public void FilledIndex( )

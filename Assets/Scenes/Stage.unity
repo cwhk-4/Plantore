@@ -4846,6 +4846,7 @@ MonoBehaviour:
   - {fileID: 1500061320501144701, guid: f812e8d2e596f4711b898d76d45b67ac, type: 3}
   - {fileID: 3151371489352018722, guid: 39f63bbf2ff974158a8829cc7f9e7328, type: 3}
   - {fileID: 1229514981387677335, guid: 97d88ce7465534746be6a8eb36ccb144, type: 3}
+  MissionControl: {fileID: 310321039}
 --- !u!1 &680392549
 GameObject:
   m_ObjectHideFlags: 0

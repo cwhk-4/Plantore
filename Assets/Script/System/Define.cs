@@ -74,5 +74,9 @@
                                                     -XCOUNT-2, -XCOUNT-1, -XCOUNT, -XCOUNT+1,
                                                     -2, +1,
                                                     XCOUNT-2, XCOUNT+1, };
+
+    public static readonly int[][] TERRITORY_ARR = { GRASS_TERRITORY, WOOD_TERRITORY, SMALL_ROCK_TERRITORY,
+                                                     GRASSLAND_TERRITORY, MARSH_TERRITORY,
+                                                     ROCK_TERRITORY};
     #endregion
 }

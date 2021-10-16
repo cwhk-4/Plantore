@@ -35,7 +35,7 @@ public class MissionsList : MonoBehaviour
 		Missions[2].level = 1;
 
 		//lv2
-		Missions[3].totalNum = 2;
+		Missions[3].totalNum = 1;
 		Missions[3].MissionText = "ゾウ、サイをみつける";
 		Missions[3].level = 2;
 

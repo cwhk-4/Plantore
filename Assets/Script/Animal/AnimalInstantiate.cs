@@ -4,6 +4,7 @@ public class AnimalInstantiate : MonoBehaviour
 {
     [SerializeField] private GameObject AnimalParent;
     [SerializeField] private GameObject[] Animals;
+    [SerializeField] private MissionControl MissionControl;
 
     private int now_item_type;
     private int now_item_index;
@@ -104,55 +105,58 @@ public class AnimalInstantiate : MonoBehaviour
     {
         var animal = Instantiate( Animals[(int)Define.ANIMAL.ZEBRA], AnimalParent.transform.position , Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA , now_item_index);
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA , now_item_index, now_item_type);
     }
 
     private void InstantiateLion( )
     {
         var animal = Instantiate( Animals[( int )Define.ANIMAL.LION], AnimalParent.transform.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
     }
 
     private void InstantiateGiraffe( )
     {
         var animal = Instantiate( Animals[( int )Define.ANIMAL.GIRAFFE], AnimalParent.transform.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
     }
 
     private void InstantiateHyena( )
     {
         var animal = Instantiate( Animals[( int )Define.ANIMAL.HYENA], AnimalParent.transform.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
     }
 
     private void InstantiateRhino( )
     {
         var animal = Instantiate( Animals[( int )Define.ANIMAL.RHINO], AnimalParent.transform.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
+        MissionControl.FoundRhino( );
     }
 
     private void InstantiateBuffalo( )
     {
         var animal = Instantiate( Animals[( int )Define.ANIMAL.BUFFALO], AnimalParent.transform.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
     }
 
     private void InstantiatePanther( )
     {
         var animal = Instantiate( Animals[( int )Define.ANIMAL.LEOPARD], AnimalParent.transform.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
     }
 
     private void InstantiateElephant( )
     {
         var animal = Instantiate( Animals[( int )Define.ANIMAL.ELEPHANT], AnimalParent.transform.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
+
+        MissionControl.FoundElephant( );
     }
 }

@@ -2,11 +2,13 @@
 
 public class AnimalBase : MonoBehaviour
 {
-    [SerializeField] private TimeController TimeController; 
+    private TimeController TimeController; 
     private AnimalData.AnimalBase _animal = new AnimalData.AnimalBase( );
 
-    private readonly float StartingCD = 10f;
+    private readonly float StartingCD = 5f;
+    private readonly float ActionCD = 3f;
     private bool IsStartingCD = false;
+
     private Transform GridParent;
     private Transform TargetTransform;
     private Transform AnimalParent;
@@ -14,13 +16,14 @@ public class AnimalBase : MonoBehaviour
     private MapLevel MapLevel;
 
 
-    public void Init( int animal_type, int target_index )
+    public void Init( int animal_type, int target_index, int target_type )
     {
         _animal.AnimalType = animal_type;
         _animal.TargetIndex = target_index;
+        _animal.TargetType = target_type;
 
         GridParent = GameObject.FindGameObjectWithTag( "GridParent" ).transform;
-        TargetTransform = GridParent.GetChild( target_index ).GetChild( 0 );
+        TargetTransform = GridParent.GetChild( target_index );
 
         AnimalParent = GameObject.FindGameObjectWithTag( "AnimalParent" ).transform;
         CameraTransform = GameObject.FindGameObjectWithTag( "MainCamera" ).transform;
@@ -30,9 +33,12 @@ public class AnimalBase : MonoBehaviour
         this.transform.position = _animal.OriginalPos;
 
         TimeController = GameObject.FindObjectOfType<TimeController>( );
-        _animal.StartingTime = TimeController.getNowRealSec( );
-        _animal.CanMove = false;
+        _animal.CDStartingTime = TimeController.getNowRealSec( );
+        _animal.CoolDown = true;
+        _animal.DecisionMade = true;
         _animal.Speed = 5f;
+
+        _animal.Territory = Define.TERRITORY_ARR[target_type];
 
         gameObject.SetActive( true );
     }
@@ -47,10 +53,12 @@ public class AnimalBase : MonoBehaviour
         if( CameraCenter > TargetX )
         {
             x = -13f;
+            gameObject.GetComponent<SpriteRenderer>( ).flipX = true;
         }
         else
         {
-            x = 12 + ( ( CameraCenter - 2 ) * 3.2f );
+            x = 25f;
+            gameObject.GetComponent<SpriteRenderer>( ).flipX = false;
         }
 
         var level = MapLevel.getMapLevel( ) - 1;
@@ -66,20 +74,48 @@ public class AnimalBase : MonoBehaviour
         //starting CD
         if( !IsStartingCD )
         {
-            if( TimeController.getNowRealSec( ) - _animal.StartingTime >= 10f )
+            if( TimeController.getNowRealSec( ) - _animal.CDStartingTime >= StartingCD )
             {
-                _animal.CanMove = true;
+                IsStartingCD = true;
+                _animal.CoolDown = false;
             }
         }
 
-        if( _animal.CanMove )
+        if( !_animal.DecisionMade )
+        {
+            RandomTarget( );
+        }
+
+        if( !_animal.CoolDown )
         {
             this.transform.position = Vector3.MoveTowards( this.transform.position, TargetTransform.position, Time.deltaTime * _animal.Speed );
 
             if( this.transform.position == TargetTransform.position )
             {
-                _animal.CanMove = false;
+                _animal.CoolDown = true;
+                _animal.DecisionMade = false;
             }
         }
+        else
+        {
+            if( TimeController.getNowRealSec( ) - _animal.CDStartingTime >= ActionCD )
+            {
+                _animal.CoolDown = false;
+            }
+        }
+        
     }
+
+    private void RandomTarget( )
+    {
+        //caution -> check range
+        int rand = Random.Range( 0, _animal.Territory.Length );
+        int target = _animal.TargetIndex + _animal.Territory[rand];
+
+        TargetTransform = GridParent.GetChild( target );
+
+        _animal.CDStartingTime = TimeController.getNowRealSec( );
+        _animal.DecisionMade = true;
+    }
+
 }
