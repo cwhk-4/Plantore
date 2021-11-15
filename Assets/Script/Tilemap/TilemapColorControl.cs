@@ -18,6 +18,7 @@ public class TilemapColorControl : MonoBehaviour
     private int nowGameHour;
     private float speed;
 
+    /*
     private void Start( )
     {
         getPeriodColor( );
@@ -74,4 +75,5 @@ public class TilemapColorControl : MonoBehaviour
 
         color = Color.Lerp( color, toColor, Time.deltaTime / divider * speed );
     }
+    */
 }

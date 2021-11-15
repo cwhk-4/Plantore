@@ -41,7 +41,7 @@ public class ItemMovement : MonoBehaviour
 
     private void OnMouseOver( )
     {
-        if( !toolConvertion.getIsCan( ) )
+        if( !toolConvertion.GetIsCan( ) )
         { 
             if( Input.GetMouseButtonDown( 1 ) )
             {

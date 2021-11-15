@@ -23,7 +23,7 @@ public class InstantiateItem : MonoBehaviour
         storage = GameObject.Find( "ItemStorage" ).GetComponent<ItemStorage>( );
         availability = GameObject.Find( "AvailabilityController" ).GetComponent<AvailabilityControl>( );
 
-        thisStartingTime = timeController.getNowRealSec( );
+        thisStartingTime = timeController.GetNowSec( );
 
         switch( name )
         {
@@ -94,9 +94,7 @@ public class InstantiateItem : MonoBehaviour
             item.transform.position = parentGO.transform.position;
 
             var index = parentGO.transform.GetSiblingIndex( );
-            Debug.Log( index );
-
-            territoryControl.SetItem( index, itemNum );
+            //Debug.Log( index );
 
             storage.PlaceItem( index, itemNum );
 
@@ -111,20 +109,30 @@ public class InstantiateItem : MonoBehaviour
                 if( imController.GetIsMoving( ) )
                 {
                     item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
-                    var timeDelayed = timeController.getNowRealSec( ) - thisStartingTime;
+                    var timeDelayed = timeController.GetNowSec( ) - thisStartingTime;
                     item.GetComponent<CountDown>( ).SetStartingTime( imController.GetStartingTime( ) + timeDelayed );
                     Debug.Log( timeDelayed );
                 }
                 else
                 {
                     item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
-                    item.GetComponent<CountDown>( ).SetStartingTime( timeController.getNowRealSec( ) );
+                    item.GetComponent<CountDown>( ).SetStartingTime( timeController.GetNowSec( ) );
                 }
 
             }
             #endregion
 
             availability.ItemInstantiated( index );
+
+            if( !imController.GetIsMoving( ) )
+            {
+                imController.FinishedByInstan( );
+                imController.FinishInstantiate( );
+            }
+            else
+            {
+                imController.FinishMoving( index );
+            }
 
             Destroy( gameObject );
         }
@@ -138,11 +146,5 @@ public class InstantiateItem : MonoBehaviour
     public GameObject getParentGO( )
     {
         return parentGO;
-    }
-
-    private void OnDestroy( )
-    {
-        imController.FinishInstantiate( );
-        imController.FinishMoving( );
     }
 }

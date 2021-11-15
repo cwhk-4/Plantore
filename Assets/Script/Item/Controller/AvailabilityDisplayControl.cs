@@ -50,7 +50,7 @@ public class AvailabilityDisplayControl : MonoBehaviour
 
     private void EnableWood( )
     {
-        var extraNum = onGridNum + Define.WOOD_SIZE[1];
+        var extraNum = onGridNum + ItemData.WOOD_SIZE[1];
         if( CheckRange( extraNum ) )
         {
             availability.EnableAva( extraNum );
@@ -59,9 +59,9 @@ public class AvailabilityDisplayControl : MonoBehaviour
 
     private void EnableSmallRock( )
     {
-        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.SMALL_ROCK_SIZE.Length; i++ )
         {
-            var extraNum = onGridNum + Define.SMALL_ROCK_SIZE[i];
+            var extraNum = onGridNum + ItemData.SMALL_ROCK_SIZE[i];
             if( CheckRange( extraNum ) )
             {
                 availability.EnableAva( extraNum );
@@ -71,7 +71,7 @@ public class AvailabilityDisplayControl : MonoBehaviour
 
     private void EnableGrassland( )
     {
-        var extraNum = onGridNum + Define.GRASSLAND_SIZE[1];
+        var extraNum = onGridNum + ItemData.GRASSLAND_SIZE[1];
         if( CheckRange( extraNum ) )
         {
             availability.EnableAva( extraNum );
@@ -80,9 +80,9 @@ public class AvailabilityDisplayControl : MonoBehaviour
 
     private void EnableMarsh( )
     {
-        for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.MARSH_SIZE.Length; i++ )
         {
-            var extraNum = onGridNum + Define.MARSH_SIZE[i];
+            var extraNum = onGridNum + ItemData.MARSH_SIZE[i];
             if( CheckRange( extraNum ) )
             {
                 availability.EnableAva( extraNum );
@@ -92,9 +92,9 @@ public class AvailabilityDisplayControl : MonoBehaviour
 
     private void EnableRock( )
     {
-        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.ROCK_SIZE.Length; i++ )
         {
-            var extraNum = onGridNum + Define.ROCK_SIZE[i];
+            var extraNum = onGridNum + ItemData.ROCK_SIZE[i];
             if( CheckRange( extraNum ) )
             {
                 availability.EnableAva( extraNum );
@@ -138,7 +138,7 @@ public class AvailabilityDisplayControl : MonoBehaviour
 
     private void DisableWood( )
     {
-        var extraNum = lastGridNum + Define.WOOD_SIZE[1];
+        var extraNum = lastGridNum + ItemData.WOOD_SIZE[1];
         if( CheckRange( extraNum ) )
         {
             availability.DisableAva( extraNum );
@@ -147,9 +147,9 @@ public class AvailabilityDisplayControl : MonoBehaviour
 
     private void DisableSmallRock( )
     {
-        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.SMALL_ROCK_SIZE.Length; i++ )
         {
-            var extraNum = lastGridNum + Define.SMALL_ROCK_SIZE[i];
+            var extraNum = lastGridNum + ItemData.SMALL_ROCK_SIZE[i];
             if( CheckRange( extraNum ) )
             {
                 availability.DisableAva( extraNum );
@@ -159,7 +159,7 @@ public class AvailabilityDisplayControl : MonoBehaviour
 
     private void DisableGrassland( )
     {
-        var extraNum = lastGridNum + Define.GRASSLAND_SIZE[1];
+        var extraNum = lastGridNum + ItemData.GRASSLAND_SIZE[1];
         if( CheckRange( extraNum ) )
         {
             availability.DisableAva( extraNum );
@@ -168,9 +168,9 @@ public class AvailabilityDisplayControl : MonoBehaviour
 
     private void DisableMarsh( )
     {
-        for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.MARSH_SIZE.Length; i++ )
         {
-            var extraNum = lastGridNum + Define.MARSH_SIZE[i];
+            var extraNum = lastGridNum + ItemData.MARSH_SIZE[i];
             if( CheckRange( extraNum ) )
             {
                 availability.DisableAva( extraNum );
@@ -180,9 +180,9 @@ public class AvailabilityDisplayControl : MonoBehaviour
 
     private void DisableRock( )
     {
-        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.ROCK_SIZE.Length; i++ )
         {
-            var extraNum = lastGridNum + Define.ROCK_SIZE[i];
+            var extraNum = lastGridNum + ItemData.ROCK_SIZE[i];
             if( CheckRange( extraNum ) )
             {
                 availability.DisableAva( extraNum );

@@ -44,6 +44,7 @@ TagManager:
   - bluewildebeest
   - GridParent
   - AnimalParent
+  - AnimalController
   layers:
   - Default
   - TransparentFX

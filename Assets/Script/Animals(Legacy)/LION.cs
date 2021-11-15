@@ -77,7 +77,7 @@ public class LION : MonoBehaviour
             checkOutOfRange( );
             var index = ItemBase.GetIndex( ) + indexTutorial[ i ];
 
-            goStage.transform.position = getItemsIndex( index ).position;
+            //goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )
             {
                 i++;
@@ -150,10 +150,10 @@ public class LION : MonoBehaviour
         }
     }
 
-    public Transform getItemsIndex( int index )
-    {
-        return getItemIndex.GetIndexTransform( index );
-    }
+    //public Transform getItemsIndex( int index )
+    //{
+    //    return getItemIndex.GetIndexTransform( index );
+    //}
 
     void Predation( )
     {
@@ -191,7 +191,7 @@ public class LION : MonoBehaviour
                 indexTutorial = index12;
                 break;
             default:
-                indexTutorial = Define.SMALL_ROCK_TERRITORY;
+                indexTutorial = ItemData.SMALL_ROCK_TERRITORY;
                 break;
         }
     }

@@ -2,19 +2,30 @@
 
 public class AnimalInstantiate : MonoBehaviour
 {
-    [SerializeField] private GameObject AnimalParent;
+    [SerializeField] private Transform AnimalParent;
+    [SerializeField] private Transform GridParent;
+    [SerializeField] private Transform MainCamera;
+
+    [SerializeField] private TimeController TimeController;
+    [SerializeField] private MapLevel MapLevel;
+    [SerializeField] private ReactionControl ReactionControl;
+
     [SerializeField] private GameObject[] Animals;
     [SerializeField] private MissionControl MissionControl;
+    [SerializeField] private GridTerritoryControl GridTerritoryControl;
 
-    private int now_item_type;
-    private int now_item_index;
+    private int nowItemType;
+    private int nowItemIndex;
+    private int animalNum;
 
-    public void ItemCreated(int item_type, int index)
+    [SerializeField] private GameObject animalGO = null;
+
+    public GameObject ItemCreated(int item_type, int index)
     {
-        now_item_type = item_type;
-        now_item_index = index;
+        nowItemType = item_type;
+        nowItemIndex = index;
 
-        switch( now_item_type )
+        switch( nowItemType )
         {
             case ( int )Define.ITEM.GRASS:
                 InstantiateZebra( );
@@ -40,6 +51,10 @@ public class AnimalInstantiate : MonoBehaviour
                 RockCreated( );
                 break;
         }
+
+        GridTerritoryControl.SetTerritory( animalGO, nowItemIndex, nowItemType, animalNum );
+
+        return animalGO;
     }
 
     private void GrasslandCreated( )
@@ -91,7 +106,7 @@ public class AnimalInstantiate : MonoBehaviour
         {
             if( rand <= 6 )
             {
-                InstantiatePanther( );
+                InstantiateLeopard( );
             }
             else
             {
@@ -103,60 +118,109 @@ public class AnimalInstantiate : MonoBehaviour
 
     private void InstantiateZebra( )
     {
-        var animal = Instantiate( Animals[(int)Define.ANIMAL.ZEBRA], AnimalParent.transform.position , Quaternion.identity );
+        var animal = Instantiate( Animals[(int)Define.ANIMAL.ZEBRA], AnimalParent.position , Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA , now_item_index, now_item_type);
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, nowItemIndex, nowItemType,
+                                                 GridParent, AnimalParent, MainCamera,
+                                                 MapLevel, ReactionControl, MissionControl, TimeController );
+
+        MissionControl.FoundHerbivore( );
+
+        animalGO = animal;
+        animalNum = ( int )Define.ANIMAL.ZEBRA;
     }
 
     private void InstantiateLion( )
     {
-        var animal = Instantiate( Animals[( int )Define.ANIMAL.LION], AnimalParent.transform.position, Quaternion.identity );
+        var animal = Instantiate( Animals[( int )Define.ANIMAL.LION], AnimalParent.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.LION, nowItemIndex, nowItemType,
+                                                 GridParent, AnimalParent, MainCamera,
+                                                 MapLevel, ReactionControl, MissionControl, TimeController );
+
+        animalGO = animal;
+        animalNum = ( int )Define.ANIMAL.LION;
     }
 
     private void InstantiateGiraffe( )
     {
-        var animal = Instantiate( Animals[( int )Define.ANIMAL.GIRAFFE], AnimalParent.transform.position, Quaternion.identity );
+        var animal = Instantiate( Animals[( int )Define.ANIMAL.GIRAFFE], AnimalParent.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.GIRAFFE, nowItemIndex, nowItemType,
+                                                 GridParent, AnimalParent, MainCamera,
+                                                 MapLevel, ReactionControl, MissionControl, TimeController );
+
+        MissionControl.FoundHerbivore( );
+
+        animalGO = animal;
+        animalNum = ( int )Define.ANIMAL.GIRAFFE;
     }
 
     private void InstantiateHyena( )
     {
-        var animal = Instantiate( Animals[( int )Define.ANIMAL.HYENA], AnimalParent.transform.position, Quaternion.identity );
+        var animal = Instantiate( Animals[( int )Define.ANIMAL.HYENA], AnimalParent.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.HYENA, nowItemIndex, nowItemType,
+                                                 GridParent, AnimalParent, MainCamera,
+                                                 MapLevel, ReactionControl, MissionControl, TimeController );
+
+        animalGO = animal;
+        animalNum = ( int )Define.ANIMAL.HYENA;
     }
 
     private void InstantiateRhino( )
     {
-        var animal = Instantiate( Animals[( int )Define.ANIMAL.RHINO], AnimalParent.transform.position, Quaternion.identity );
+        var animal = Instantiate( Animals[( int )Define.ANIMAL.RHINO], AnimalParent.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.RHINO, nowItemIndex, nowItemType,
+                                                 GridParent, AnimalParent, MainCamera,
+                                                 MapLevel, ReactionControl, MissionControl, TimeController );
+
         MissionControl.FoundRhino( );
+        MissionControl.FoundHerbivore( );
+
+        animalGO = animal;
+        animalNum = ( int )Define.ANIMAL.RHINO;
     }
 
     private void InstantiateBuffalo( )
     {
-        var animal = Instantiate( Animals[( int )Define.ANIMAL.BUFFALO], AnimalParent.transform.position, Quaternion.identity );
+        var animal = Instantiate( Animals[( int )Define.ANIMAL.BUFFALO], AnimalParent.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.BUFFALO, nowItemIndex, nowItemType,
+                                                 GridParent, AnimalParent, MainCamera,
+                                                 MapLevel, ReactionControl, MissionControl, TimeController );
+
+        MissionControl.FoundHerbivore( );
+
+        animalGO = animal;
+        animalNum = ( int )Define.ANIMAL.BUFFALO;
     }
 
-    private void InstantiatePanther( )
+    private void InstantiateLeopard( )
     {
-        var animal = Instantiate( Animals[( int )Define.ANIMAL.LEOPARD], AnimalParent.transform.position, Quaternion.identity );
+        var animal = Instantiate( Animals[( int )Define.ANIMAL.LEOPARD], AnimalParent.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.LEOPARD, nowItemIndex, nowItemType,
+                                                 GridParent, AnimalParent, MainCamera,
+                                                 MapLevel, ReactionControl, MissionControl, TimeController );
+
+        animalGO = animal;
+        animalNum = ( int )Define.ANIMAL.LEOPARD;
     }
 
     private void InstantiateElephant( )
     {
-        var animal = Instantiate( Animals[( int )Define.ANIMAL.ELEPHANT], AnimalParent.transform.position, Quaternion.identity );
+        var animal = Instantiate( Animals[( int )Define.ANIMAL.ELEPHANT], AnimalParent.position, Quaternion.identity );
         animal.SetActive( false );
-        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ZEBRA, now_item_index, now_item_type );
+        animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.ELEPHANT, nowItemIndex, nowItemType,
+                                                 GridParent, AnimalParent, MainCamera,
+                                                 MapLevel, ReactionControl, MissionControl, TimeController );
 
         MissionControl.FoundElephant( );
+        MissionControl.FoundHerbivore( );
+
+        animalGO = animal;
+        animalNum = ( int )Define.ANIMAL.ELEPHANT;
     }
 }

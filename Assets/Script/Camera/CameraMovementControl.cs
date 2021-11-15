@@ -38,21 +38,33 @@ public class CameraMovementControl : MonoBehaviour
         buttonColor = Up.image.color;
         buttonTransColor = Up.image.color;
         buttonTransColor.a = 0;
+
+        LevelCheck( );
+        CamMovement( );
+        CamLimitCheck( );
     }
 
     private void Update()
     {
-        levelCheck();
+        LevelCheck( );
     }
 
     void LateUpdate()
     {
-        camMovement();
-        camLimitCheck();
+        if( level > 1 )
+        {
+            if( moveLeft || moveRight || moveUp || moveDown )
+            {
+                CamMovement( );
+            }
+        }
+
+        CamLimitCheck( );
     }
 
     public void PointerDownLeft()
     {
+        LevelCheck( );
         moveLeft = true;
     }
 
@@ -63,6 +75,7 @@ public class CameraMovementControl : MonoBehaviour
 
     public void PointerDownRight()
     {
+        LevelCheck( );
         moveRight = true;
     }
 
@@ -73,6 +86,7 @@ public class CameraMovementControl : MonoBehaviour
 
     public void PointerDownUp()
     {
+        LevelCheck( );
         moveUp = true;
     }
 
@@ -83,6 +97,7 @@ public class CameraMovementControl : MonoBehaviour
 
     public void PointerDownDown()
     {
+        LevelCheck( );
         moveDown = true;
     }
 
@@ -91,10 +106,9 @@ public class CameraMovementControl : MonoBehaviour
         moveDown = false;
     }
 
-    private void camMovement()
+    private void CamMovement()
     {
         Vector3 pos = camPos.position;
-
         if (moveLeft)
         {
             pos.x -= speed * Time.deltaTime;
@@ -118,7 +132,7 @@ public class CameraMovementControl : MonoBehaviour
         camPos.position = pos;
     }
 
-    private void camLimitCheck()
+    private void CamLimitCheck()
     {
         if (camPos.position.x <= 0)
         {
@@ -169,7 +183,7 @@ public class CameraMovementControl : MonoBehaviour
         }
     }
 
-    private void levelCheck()
+    private void LevelCheck()
     {
         level = mapLevel.getMapLevel();
 

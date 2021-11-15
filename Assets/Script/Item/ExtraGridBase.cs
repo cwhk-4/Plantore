@@ -26,7 +26,7 @@ public class ExtraGridBase : MonoBehaviour
     {
         if( isOnMouse )
         {
-            if( ToolConvertion.getIsCan( ) )
+            if( ToolConvertion.GetIsCan( ) )
             {
                 if( Input.GetMouseButtonDown( 0 ) )
                 {
@@ -69,13 +69,13 @@ public class ExtraGridBase : MonoBehaviour
     public void SetOnMouse( )
     {
         isOnMouse = true;
-        ToolConvertion.setOnGO( );
+        ToolConvertion.SetOnGO( );
     }
 
     public void SetExitMouse( )
     {
         isOnMouse = false;
-        ToolConvertion.setExitGO( );
+        ToolConvertion.SetExitGO( );
     }
 
     public void ShowGauge( )

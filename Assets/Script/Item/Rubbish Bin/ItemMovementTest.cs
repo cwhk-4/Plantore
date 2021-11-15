@@ -22,9 +22,9 @@ public class ItemMovementTest : MonoBehaviour
 
     private void OnMouseOver( )
     {
-        toolConvertion.setOnGO( );
+        toolConvertion.SetOnGO( );
 
-        if( !toolConvertion.getIsCan( ) )
+        if( !toolConvertion.GetIsCan( ) )
         {
             if( Input.GetMouseButtonDown( 1 ) )
             {

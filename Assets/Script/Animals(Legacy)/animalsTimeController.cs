@@ -8,7 +8,7 @@ public class AnimalsTimeController : MonoBehaviour
 
     void Start( )
     {
-        startTime = GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( );
+        startTime = GameObject.Find( "System" ).GetComponent<TimeController>( ).GetNowSec( );
         animalsType = this.gameObject;
     }
 
@@ -47,7 +47,7 @@ public class AnimalsTimeController : MonoBehaviour
 
     public float changeTime( )
     {
-        float timeOver = timeOut - ( GameObject.Find( "System" ).GetComponent<TimeController>( ).getNowRealSec( ) - startTime );
+        float timeOver = timeOut - ( GameObject.Find( "System" ).GetComponent<TimeController>( ).GetNowSec( ) - startTime );
         if ( timeOver <= -1 )
         {
             timeOver = 0;

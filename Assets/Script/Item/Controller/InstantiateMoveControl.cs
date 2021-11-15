@@ -6,6 +6,7 @@ public class InstantiateMoveControl : MonoBehaviour
     [SerializeField] private MissionControl missionControl;
     [SerializeField] private MapLevel mapLevel;
     [SerializeField] private AnimalInstantiate animalInstantiate;
+    [SerializeField] private GridTerritoryControl GridTerritoryControl;
 
     [SerializeField] private bool isInstantiating = false;
     [SerializeField] private bool isMoving = false;
@@ -18,6 +19,8 @@ public class InstantiateMoveControl : MonoBehaviour
     [SerializeField] private int xCount;
     [SerializeField] private GameObject extraGrid;
 
+    [SerializeField] private GameObject movingAnimal;
+
     [SerializeField] private Button rubbishBin;
 
     [SerializeField] private GameObject stageUI;
@@ -26,6 +29,7 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         rubbishBin.gameObject.SetActive( false );
         xCount = Define.XCOUNT;
+        movingAnimal = null;
     }
 
     private void Update( )
@@ -48,20 +52,24 @@ public class InstantiateMoveControl : MonoBehaviour
     public void StartInstantiate( )
     {
         isInstantiating = true;
+        Time.timeScale = 0;
         SetUIActive( false );
+    }
+
+    public void FinishedByInstan( )
+    {
+        Time.timeScale = 1;
+
+        missionControl.PlacedItem( );
+
+        animalInstantiate.ItemCreated( GOItemNum, nowGridNum );
     }
 
     public void FinishInstantiate( )
     {
-        var isInstantiate = isInstantiating;
         isInstantiating = false;
 
-        if( isInstantiate )
-        {
-            missionControl.PlacedItem( );
-        }
-
-        animalInstantiate.ItemCreated( GOItemNum, nowGridNum );
+        Time.timeScale = 1;
         SetUIActive( true );
     }
 
@@ -70,16 +78,28 @@ public class InstantiateMoveControl : MonoBehaviour
         return isInstantiating;
     }
 
-    public void StartMoving( float time )
+    public void StartMoving( float time, GameObject GO )
     {
         isMoving = true;
+
+        movingAnimal = GO;
+
         startingTime = time;
+        Time.timeScale = 0;
         SetUIActive( false );
     }
 
-    public void FinishMoving( )
+    public void FinishMoving( int targetIndex )
     {
         isMoving = false;
+
+        var animalNum = movingAnimal.GetComponent<AnimalBase>( ).GetAnimalNum( );
+        GridTerritoryControl.SetTerritory( movingAnimal, targetIndex, GOItemNum, animalNum );
+
+        movingAnimal.GetComponent<AnimalBase>( ).EnvironmentMoved( targetIndex );
+        movingAnimal = null;
+
+        Time.timeScale = 1;
         SetUIActive( true );
     }
 
@@ -110,55 +130,55 @@ public class InstantiateMoveControl : MonoBehaviour
 
     private void InstanWoodExtraGrid( GameObject ExtraParent )
     {
-        for( int i = 1; i < Define.WOOD_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.WOOD_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.WOOD_SIZE[i] ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.WOOD_SIZE[i] ).position;
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + ItemData.WOOD_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + ItemData.WOOD_SIZE[i] ).position;
             item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         } 
     }
 
     private void InstanSmallRockExtraGrid( GameObject ExtraParent )
     {
-        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.SMALL_ROCK_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.SMALL_ROCK_SIZE[i] ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.SMALL_ROCK_SIZE[i] ).position;
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + ItemData.SMALL_ROCK_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + ItemData.SMALL_ROCK_SIZE[i] ).position;
             item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         }
     }
 
     private void InstanGrasslandExtraGrid( GameObject ExtraParent )
     {
-        for( int i = 1; i < Define.GRASSLAND_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.GRASSLAND_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.GRASSLAND_SIZE[i] ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.GRASSLAND_SIZE[i] ).position;
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + ItemData.GRASSLAND_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + ItemData.GRASSLAND_SIZE[i] ).position;
             item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         }
     }
 
     private void InstanMarshExtraGrid( GameObject ExtraParent )
     {
-        for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.MARSH_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.MARSH_SIZE[i] ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.MARSH_SIZE[i] ).position;
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + ItemData.MARSH_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + ItemData.MARSH_SIZE[i] ).position;
             item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         }
     }
 
     private void InstanRockExtraGrid( GameObject ExtraParent )
     {
-        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.ROCK_SIZE.Length; i++ )
         {
             var item = Instantiate( extraGrid, Vector3.zero, Quaternion.identity );
-            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ) );
-            item.transform.position = gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ).position;
+            item.transform.SetParent( gridInstan.transform.GetChild( nowGridNum + ItemData.ROCK_SIZE[i] ) );
+            item.transform.position = gridInstan.transform.GetChild( nowGridNum + ItemData.ROCK_SIZE[i] ).position;
             item.GetComponent<ExtraGridBase>( ).SetParent( ExtraParent );
         }
     }
@@ -210,9 +230,9 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         var flag = false;
 
-        for( int i = 1; i < Define.SMALL_ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.SMALL_ROCK_SIZE.Length; i++ )
         {
-            var ExtraNum = nowGridNum + Define.SMALL_ROCK_SIZE[i];
+            var ExtraNum = nowGridNum + ItemData.SMALL_ROCK_SIZE[i];
 
             if( ExtraNum < 0 || ExtraNum > Define.YCOUNT * xCount )
             {
@@ -242,9 +262,9 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         var flag = false;
 
-        for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.MARSH_SIZE.Length; i++ )
         {
-            if( gridInstan.transform.GetChild( nowGridNum + Define.MARSH_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.ROCK_SIZE[i] ) )
+            if( gridInstan.transform.GetChild( nowGridNum + ItemData.MARSH_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + ItemData.ROCK_SIZE[i] ) )
             {
                 flag = true;
             }
@@ -261,9 +281,9 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         var flag = false;
 
-        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.ROCK_SIZE.Length; i++ )
         {
-            if( gridInstan.transform.GetChild( nowGridNum + Define.ROCK_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + Define.ROCK_SIZE[i] ) )
+            if( gridInstan.transform.GetChild( nowGridNum + ItemData.ROCK_SIZE[i] ).childCount == 0 && CheckOutOfRange( nowGridNum + ItemData.ROCK_SIZE[i] ) )
             {
                 flag = true;
             }

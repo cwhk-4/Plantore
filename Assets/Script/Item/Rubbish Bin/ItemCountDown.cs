@@ -43,11 +43,11 @@ public class ItemCountDown : MonoBehaviour
     {
         if( !isChanged )
         {
-            startTime = timeController.getNowRealSec( );
+            startTime = timeController.GetNowSec( );
             isChanged = true;
         }
 
-        CD = timer - ( timeController.getNowRealSec( ) - startTime );
+        CD = timer - ( timeController.GetNowSec( ) - startTime );
         slider.value = ( CD / timer );
         if( slider.value == 0 )
         {
@@ -71,7 +71,7 @@ public class ItemCountDown : MonoBehaviour
 
     public void repair()
     {
-        startTime = timeController.getNowRealSec( );
+        startTime = timeController.GetNowSec( );
         spriteRenderer.sprite = original;
     }
 

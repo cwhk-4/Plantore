@@ -70,7 +70,7 @@ public class GIRAFFE : MonoBehaviour
         {
             checkOutOfRange( );
             index = ItemBase.GetIndex( ) + indexTutorial[ i ];
-            goStage.transform.position = getItemsIndex( index ).position;
+            //goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )
             {
                 i++;
@@ -136,10 +136,10 @@ public class GIRAFFE : MonoBehaviour
         }
     }
 
-    public Transform getItemsIndex( int index )
-    {
-        return getItemIndex.GetIndexTransform( index );
-    }
+    //public Transform getItemsIndex( int index )
+    //{
+    //    return getItemIndex.GetIndexTransform( index );
+    //}
 
     private void checkOutOfRange( )
     {
@@ -162,7 +162,7 @@ public class GIRAFFE : MonoBehaviour
                 indexTutorial = index12;
                 break;
             default:
-                indexTutorial = Define.WOOD_TERRITORY;
+                indexTutorial = ItemData.WOOD_TERRITORY;
                 break;
         }
     }

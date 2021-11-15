@@ -17,7 +17,7 @@ public class PlayerData : MonoBehaviour
 
     public void getPlayerData( )
     {
-        nowTime = TimeController.getNowRealSec( ) - 1;
+        nowTime = TimeController.GetNowSec( ) - 1;
         mapLevel = MapLevel.getMapLevel( );
     }
 

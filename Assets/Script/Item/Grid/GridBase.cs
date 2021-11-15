@@ -1,37 +1,115 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class GridBase : MonoBehaviour
 {
-    [SerializeField] private int totalAnimalNum = ( int )Define.ANIMAL.TOTAL_NUM;
-    [SerializeField] private bool[] territory;
+    [SerializeField] private int GridNum = 0;
+    [SerializeField] private List<int> carnivoreList = new List<int>( );
+    [SerializeField] private List<int> herbivoreList = new List<int>( );
+    [SerializeField] private List<GameObject> AnimalList = new List<GameObject>( );
 
     private void Start( )
     {
         TerritoryInit( );
+        GridNum = this.transform.GetSiblingIndex( );
     }
 
     private void TerritoryInit( )
     {
-        territory = new bool[totalAnimalNum];
+        carnivoreList.Clear( );
+        herbivoreList.Clear( );
+        AnimalList.Clear( );
+    }
 
-        for( int i = 0; i < totalAnimalNum; i++ )
+    public void AddAnimal( GameObject animal, int animalNum )
+    {
+        SetList( animalNum );
+        AnimalList.Add( animal );
+    }
+
+    public void RemoveAnimal( GameObject animal, int animalNum )
+    {
+        RemoveFromList( animalNum );
+        AnimalList.Remove( animal );
+    }
+
+    private void SetList( int animalNum )
+    {
+        for( int i = 0; i < AnimalData.CARNIVORE.Length; i++ )
         {
-            territory[i] = false;
+            if(animalNum == AnimalData.CARNIVORE[i])
+            {
+                carnivoreList.Add( animalNum );
+                return;
+            }
+        }
+
+        herbivoreList.Add( animalNum );
+    }
+
+    private void RemoveFromList( int animalNum )
+    {
+        for( int i = 0; i < AnimalData.CARNIVORE.Length; i++ )
+        {
+            if( animalNum == AnimalData.CARNIVORE[i] )
+            {
+                carnivoreList.Remove( animalNum );
+                return;
+            }
+
+        }
+
+        herbivoreList.Remove( animalNum );
+    }
+
+    public bool GetIfOccupied( )
+    {
+        if( AnimalList.Count >= 2 )
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool GetIsCarnTerr( int animalNum )
+    {
+        if( carnivoreList.Count > 0 && !carnivoreList.Contains(animalNum))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void AnimalDestoryed( int itemType, int animalType, GameObject animal )
+    {
+        for( int i = 0; i < ItemData.TERRITORY_ARR[itemType].Length; i++ )
+        {
+            int index = GridNum + ItemData.TERRITORY_ARR[itemType][i];
+            transform.parent.GetChild( index ).GetComponent<GridBase>( ).RemoveAnimal( animal, animalType );
         }
     }
 
-    public void SetTerritory( int animalNum )
+    public GameObject GetAnimal( )
     {
-        territory[animalNum] = true;
+        if( AnimalList.Count == 0 )
+        {
+            return null;
+        }
+
+        return AnimalList[0];
     }
 
-    public void RemoveTerritory( int animalNum )
+    public GameObject GetAnimalbyIndex(int index)
     {
-        territory[animalNum] = false;
+        Debug.Log( index + " " + AnimalList.Count );
+        if( index >= AnimalList.Count )
+        {
+            return null;
+        }
+
+        return AnimalList[index];
     }
 
-    public bool GetTerritory( int animalNum )
-    {
-        return territory[animalNum];
-    }
 }

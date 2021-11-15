@@ -70,9 +70,9 @@ public class TargetAnimalsType : MonoBehaviour
         {
             if ( canadd )
             {
-                for ( int i = 0; i < Define.SMALL_ROCK_TERRITORY.Length; i++ )
+                for ( int i = 0; i < ItemData.SMALL_ROCK_TERRITORY.Length; i++ )
                 {
-                    lionIndex.Add( LION.indexIn + Define.SMALL_ROCK_TERRITORY[ i ] );
+                    lionIndex.Add( LION.indexIn + ItemData.SMALL_ROCK_TERRITORY[ i ] );
                     Debug.Log( "lion  " + lionIndex[ i ] );
                 }
 
@@ -80,9 +80,9 @@ public class TargetAnimalsType : MonoBehaviour
                 {
                     indexNum = ZEBRA.indexIn;
 
-                    for ( int i = 0; i < Define.GRASS_TERRITORY.Length; i++ )
+                    for ( int i = 0; i < ItemData.GRASS_TERRITORY.Length; i++ )
                     {
-                        itemIndex.Add( indexNum + Define.GRASS_TERRITORY[ i ] );
+                        itemIndex.Add( indexNum + ItemData.GRASS_TERRITORY[ i ] );
                         Debug.Log( "zebra  " + itemIndex[ i ] );
                     }
                 }
@@ -90,9 +90,9 @@ public class TargetAnimalsType : MonoBehaviour
                 if ( targetAnimal == GIRAFFE._giraffe.animals )
                 {
                     indexNum = GIRAFFE.index;
-                    for ( int i = 0; i < Define.WOOD_TERRITORY.Length; i++ )
+                    for ( int i = 0; i < ItemData.WOOD_TERRITORY.Length; i++ )
                     {
-                        itemIndex.Add( indexNum + Define.WOOD_TERRITORY[ i ] );
+                        itemIndex.Add( indexNum + ItemData.WOOD_TERRITORY[ i ] );
                     }
                 }
                 canadd = false;

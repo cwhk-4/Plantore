@@ -35,7 +35,7 @@ public class ItemBase : MonoBehaviour
                 return;
             }
 
-            if( ToolConvertion.getIsCan( ) )
+            if( ToolConvertion.GetIsCan( ) )
             {
                 if( Input.GetMouseButtonDown( 0 ) )
                 {
@@ -87,24 +87,25 @@ public class ItemBase : MonoBehaviour
         if( MapLevel.getMapLevel( ) == 2 )
         {
             MissionControl.FixedItem2( );
-        }
+        }   
     }
 
     public void MoveItem( )
     {
-        moveItem.StartMoving( countDown.GetStartTime( ) );
+        var GO = transform.parent.GetComponent<GridBase>( ).GetAnimal( );
+        moveItem.StartMoving( countDown.GetStartTime( ), GO );
     }
 
     public void SetOnMouse( )
     {
         isOnMouse = true;
-        ToolConvertion.setOnGO( );
+        ToolConvertion.SetOnGO( );
     }
 
     public void SetExitMouse( )
     {
         isOnMouse = false;
-        ToolConvertion.setExitGO( );
+        ToolConvertion.SetExitGO( );
     }
 
     public int GetIndex( )

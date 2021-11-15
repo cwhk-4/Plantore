@@ -36,6 +36,7 @@ public class MissionControl : MonoBehaviour
     private void InitAllData( )
     {
         NowMapLevel = MapLevel.getMapLevel( );
+        NowStartingMission = MissionStartingNum[NowMapLevel - 1];
 
         for( int i = 0; i < 9; i++ )
         {

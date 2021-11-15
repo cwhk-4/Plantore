@@ -51,9 +51,9 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private void EnableGrassTerritories( )
     {
-        for( int i = Define.GRASS_SIZE.Length; i < Define.GRASS_TERRITORY.Length; i++ )
+        for( int i = ItemData.GRASS_SIZE.Length; i < ItemData.GRASS_TERRITORY.Length; i++ )
         {
-            var territoryNum = onGridNum + Define.GRASS_TERRITORY[i];
+            var territoryNum = onGridNum + ItemData.GRASS_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.EnableTerritory( territoryNum );
@@ -63,9 +63,9 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private void EnableWoodTerritories( )
     {
-        for( int i = Define.WOOD_SIZE.Length; i < Define.WOOD_TERRITORY.Length; i++ )
+        for( int i = ItemData.WOOD_SIZE.Length; i < ItemData.WOOD_TERRITORY.Length; i++ )
         {
-            var territoryNum = onGridNum + Define.WOOD_TERRITORY[i];
+            var territoryNum = onGridNum + ItemData.WOOD_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.EnableTerritory( territoryNum );
@@ -75,9 +75,9 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private void EnableSmallRockTerritories( )
     {
-        for( int i = Define.SMALL_ROCK_SIZE.Length; i < Define.SMALL_ROCK_TERRITORY.Length; i++ )
+        for( int i = ItemData.SMALL_ROCK_SIZE.Length; i < ItemData.SMALL_ROCK_TERRITORY.Length; i++ )
         {
-            var territoryNum = onGridNum + Define.SMALL_ROCK_TERRITORY[i];
+            var territoryNum = onGridNum + ItemData.SMALL_ROCK_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.EnableTerritory( territoryNum );
@@ -87,9 +87,9 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private void EnableGrasslandTerritories( )
     {
-        for( int i = Define.GRASSLAND_SIZE.Length; i < Define.GRASSLAND_TERRITORY.Length; i++ )
+        for( int i = ItemData.GRASSLAND_SIZE.Length; i < ItemData.GRASSLAND_TERRITORY.Length; i++ )
         {
-            var territoryNum = onGridNum + Define.GRASSLAND_TERRITORY[i];
+            var territoryNum = onGridNum + ItemData.GRASSLAND_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.EnableTerritory( territoryNum );
@@ -99,9 +99,9 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private void EnableMarshTerritories( )
     {
-        for( int i = Define.MARSH_SIZE.Length; i < Define.MARSH_TERRITORY.Length; i++ )
+        for( int i = ItemData.MARSH_SIZE.Length; i < ItemData.MARSH_TERRITORY.Length; i++ )
         {
-            var territoryNum = onGridNum + Define.MARSH_TERRITORY[i];
+            var territoryNum = onGridNum + ItemData.MARSH_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.EnableTerritory( territoryNum );
@@ -111,9 +111,9 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private void EnableRockTerritories( )
     {
-        for( int i = Define.ROCK_SIZE.Length; i < Define.ROCK_TERRITORY.Length; i++ )
+        for( int i = ItemData.ROCK_SIZE.Length; i < ItemData.ROCK_TERRITORY.Length; i++ )
         {
-            var territoryNum = onGridNum + Define.ROCK_TERRITORY[i];
+            var territoryNum = onGridNum + ItemData.ROCK_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.EnableTerritory( territoryNum );
@@ -160,9 +160,9 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private void DisableGrassTerritories( )
     {
-        for( int i = Define.GRASS_SIZE.Length; i < Define.GRASS_TERRITORY.Length; i++ )
+        for( int i = ItemData.GRASS_SIZE.Length; i < ItemData.GRASS_TERRITORY.Length; i++ )
         {
-            var territoryNum = lastGridNum + Define.GRASS_TERRITORY[i];
+            var territoryNum = lastGridNum + ItemData.GRASS_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.DisableTerritory( territoryNum );
@@ -172,9 +172,9 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private void DisableWoodTerritories( )
     {
-        for( int i = Define.WOOD_SIZE.Length; i < Define.WOOD_TERRITORY.Length; i++ )
+        for( int i = ItemData.WOOD_SIZE.Length; i < ItemData.WOOD_TERRITORY.Length; i++ )
         {
-            var territoryNum = lastGridNum + Define.WOOD_TERRITORY[i];
+            var territoryNum = lastGridNum + ItemData.WOOD_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.DisableTerritory( territoryNum );
@@ -184,9 +184,9 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private void DisableSmallRockTerritories( )
     {
-        for( int i = Define.SMALL_ROCK_SIZE.Length; i < Define.SMALL_ROCK_TERRITORY.Length; i++ )
+        for( int i = ItemData.SMALL_ROCK_SIZE.Length; i < ItemData.SMALL_ROCK_TERRITORY.Length; i++ )
         {
-            var territoryNum = lastGridNum + Define.SMALL_ROCK_TERRITORY[i];
+            var territoryNum = lastGridNum + ItemData.SMALL_ROCK_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.DisableTerritory( territoryNum );
@@ -196,9 +196,9 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private void DisableGrasslandTerritories( )
     {
-        for( int i = Define.GRASSLAND_SIZE.Length; i < Define.GRASSLAND_TERRITORY.Length; i++ )
+        for( int i = ItemData.GRASSLAND_SIZE.Length; i < ItemData.GRASSLAND_TERRITORY.Length; i++ )
         {
-            var territoryNum = lastGridNum + Define.GRASSLAND_TERRITORY[i];
+            var territoryNum = lastGridNum + ItemData.GRASSLAND_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.DisableTerritory( territoryNum );
@@ -208,9 +208,9 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private void DisableMarshTerritories( )
     {
-        for( int i = Define.MARSH_SIZE.Length; i < Define.MARSH_TERRITORY.Length; i++ )
+        for( int i = ItemData.MARSH_SIZE.Length; i < ItemData.MARSH_TERRITORY.Length; i++ )
         {
-            var territoryNum = lastGridNum + Define.MARSH_TERRITORY[i];
+            var territoryNum = lastGridNum + ItemData.MARSH_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.DisableTerritory( territoryNum );
@@ -220,9 +220,9 @@ public class TerritoryDisplayControl : MonoBehaviour
 
     private void DisableRockTerritories( )
     {
-        for( int i = Define.ROCK_SIZE.Length; i < Define.ROCK_TERRITORY.Length; i++ )
+        for( int i = ItemData.ROCK_SIZE.Length; i < ItemData.ROCK_TERRITORY.Length; i++ )
         {
-            var territoryNum = lastGridNum + Define.ROCK_TERRITORY[i];
+            var territoryNum = lastGridNum + ItemData.ROCK_TERRITORY[i];
             if( CheckRange( territoryNum ) )
             {
                 availability.DisableTerritory( territoryNum );

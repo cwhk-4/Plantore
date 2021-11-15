@@ -123,6 +123,88 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &26554262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 26554263}
+  - component: {fileID: 26554264}
+  m_Layer: 0
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &26554263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26554262}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.6, y: -5.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 539807981}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &26554264
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26554262}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1915314749
+  m_SortingLayer: 1
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: 00ff8f1cbdeba4690baabea12cc6829a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 32, y: 18}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &26686364
 GameObject:
   m_ObjectHideFlags: 0
@@ -3779,6 +3861,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 26554263}
   - {fileID: 1151572933}
   - {fileID: 1379808729}
   - {fileID: 906629086}
@@ -4803,9 +4886,10 @@ GameObject:
   m_Component:
   - component: {fileID: 658325083}
   - component: {fileID: 658325084}
+  - component: {fileID: 658325085}
   m_Layer: 0
   m_Name: AnimalController
-  m_TagString: Untagged
+  m_TagString: AnimalController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4836,7 +4920,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deec2f3f72dcf4f3f8f13916ab2c409f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimalParent: {fileID: 1603989336}
+  AnimalParent: {fileID: 1603989337}
+  GridParent: {fileID: 906629086}
+  MainCamera: {fileID: 519420032}
+  TimeController: {fileID: 1790710736}
+  MapLevel: {fileID: 888104868}
+  ReactionControl: {fileID: 658325085}
   Animals:
   - {fileID: 2305912838666947536, guid: 29dc06ae107e446f195a8d2bbece0e7a, type: 3}
   - {fileID: 8163530826323355722, guid: c76d0e93cef6348f6b2df94232d8314f, type: 3}
@@ -4847,6 +4936,21 @@ MonoBehaviour:
   - {fileID: 3151371489352018722, guid: 39f63bbf2ff974158a8829cc7f9e7328, type: 3}
   - {fileID: 1229514981387677335, guid: 97d88ce7465534746be6a8eb36ccb144, type: 3}
   MissionControl: {fileID: 310321039}
+  GridTerritoryControl: {fileID: 887081447}
+  animalGO: {fileID: 0}
+--- !u!114 &658325085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658325082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa72842e09f6a4948812bbaad7677482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GridParent: {fileID: 906629086}
 --- !u!1 &680392549
 GameObject:
   m_ObjectHideFlags: 0
@@ -5964,7 +6068,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 539807981}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &912748029
 GameObject:
@@ -15903,7 +16007,7 @@ Transform:
   m_Children:
   - {fileID: 1085240556}
   m_Father: {fileID: 539807981}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1151572934
 Grid:
@@ -17467,12 +17571,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d792f65cd2e4245974b9b92cb8f564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeController: {fileID: 1790710736}
-  PeriodText: {fileID: 2029401202}
-  TimeText: {fileID: 164220966}
-  AMPMText: {fileID: 912748030}
-  toHour: 67
-  count: 100
+  TimeController: {fileID: 0}
+  DisplayText: {fileID: 0}
 --- !u!114 &1315081109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18014,7 +18114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1379808729
 Transform:
   m_ObjectHideFlags: 0
@@ -18027,7 +18127,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 539807981}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1379808730
 SpriteRenderer:
@@ -18143,6 +18243,7 @@ MonoBehaviour:
   missionControl: {fileID: 310321039}
   mapLevel: {fileID: 888104868}
   animalInstantiate: {fileID: 658325084}
+  GridTerritoryControl: {fileID: 887081447}
   isInstantiating: 0
   isMoving: 0
   startingTime: 0
@@ -18151,6 +18252,7 @@ MonoBehaviour:
   nowGridNum: 0
   xCount: 0
   extraGrid: {fileID: 1987409158960093541, guid: 384935a4e91ad40829d813f489ccb4bb, type: 3}
+  movingAnimal: {fileID: 0}
   rubbishBin: {fileID: 1501620449}
   stageUI: {fileID: 1124278636}
 --- !u!1 &1429724378
@@ -20562,15 +20664,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db20953c6ba95445dad6ae675ed6c730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowSec: 0
-  nowMin: 0
-  nowTotalGameHour: 0
-  nowGamePeriod: 0
-  nowGameDay: 0
-  nowGameHour: 0
-  secToMinCount: 2
-  minToHourCount: 2
-  hourToDayCount: 24
+  Sec: 0
+  Min: 0
+  Period: 0
+  SecToMin: 10
+  NumOfPeriod: 3
 --- !u!114 &1790710737
 MonoBehaviour:
   m_ObjectHideFlags: 0

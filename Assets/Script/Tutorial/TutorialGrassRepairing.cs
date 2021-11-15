@@ -17,7 +17,7 @@ public class TutorialGrassRepairing : MonoBehaviour
 
     private void OnMouseDown( )
     {
-        if( toolConvertion.getIsCan( ) )
+        if( toolConvertion.GetIsCan( ) )
         {
             dialogueEvent.repairGrass( );
         }

@@ -3,7 +3,7 @@
 public class MoveItem : MonoBehaviour
 {
     private InstantiateMoveControl imController;
-    private GridTerritoryControl territoryController;
+    private GridTerritoryControl GridTerritoryControl;
     private ItemStorage storage;
 
     [SerializeField] private GameObject itemToBeInstantiate;
@@ -12,46 +12,49 @@ public class MoveItem : MonoBehaviour
     void Start( )
     {
         imController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
-        territoryController = GameObject.Find( "TerritoryController" ).GetComponent<GridTerritoryControl>( );
+        GridTerritoryControl = GameObject.Find( "TerritoryController" ).GetComponent<GridTerritoryControl>( );
         storage = GameObject.Find( "ItemStorage" ).GetComponent<ItemStorage>( );
     }
 
-    public void StartMoving( float time )
+    public void StartMoving( float time, GameObject animal )
     {
-        imController.StartMoving( time );
+        var index = transform.parent.GetSiblingIndex( );
+        Debug.Log( index );
+        var animalNum = animal.GetComponent<AnimalBase>( ).GetAnimalNum( );
+
+        imController.StartMoving( time, animal );
         Vector3 mousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
         mousePos = new Vector3( mousePos.x, mousePos.y, 0 );
         Instantiate( itemToBeInstantiate, mousePos, Quaternion.identity );
-        var index = transform.parent.GetSiblingIndex( );
 
         switch( name )
         {
             case "grass(Clone)":
-                territoryController.RemoveItem( index, ( int )Define.ITEM.GRASS );
+                GridTerritoryControl.RemoveTerritory( animal, index, ( int )Define.ITEM.GRASS, animalNum );
                 storage.RemoveItem( queueNum, ( int )Define.ITEM.GRASS );
                 break;
 
             case "wood(Clone)":
                 RemoveExtraGrid( ( int )Define.ITEM.WOOD, index );
-                territoryController.RemoveItem( index, ( int )Define.ITEM.WOOD );
+                GridTerritoryControl.RemoveTerritory( animal, index, ( int )Define.ITEM.WOOD, animalNum );
                 storage.RemoveItem( queueNum, ( int )Define.ITEM.WOOD );
                 break;
 
             case "grassland(Clone)":
                 RemoveExtraGrid( ( int )Define.ITEM.GRASSLAND, index );
-                territoryController.RemoveItem( index, ( int )Define.ITEM.GRASSLAND );
+                GridTerritoryControl.RemoveTerritory( animal, index, ( int )Define.ITEM.GRASSLAND, animalNum );
                 storage.RemoveItem( queueNum, ( int )Define.ITEM.GRASSLAND );
                 break;
 
             case "marsh(Clone)":
                 RemoveExtraGrid( ( int )Define.ITEM.MARSH, index );
-                territoryController.RemoveItem( index, ( int )Define.ITEM.MARSH );
+                GridTerritoryControl.RemoveTerritory( animal, index, ( int )Define.ITEM.MARSH, animalNum );
                 storage.RemoveItem( queueNum, ( int )Define.ITEM.MARSH );
                 break;
 
             case "rock(Clone)":
                 RemoveExtraGrid( ( int )Define.ITEM.ROCK, index );
-                territoryController.RemoveItem( index, ( int )Define.ITEM.ROCK );
+                GridTerritoryControl.RemoveTerritory( animal, index, ( int )Define.ITEM.ROCK, animalNum );
                 storage.RemoveItem( queueNum, ( int )Define.ITEM.ROCK );
                 break;
         }
@@ -83,29 +86,29 @@ public class MoveItem : MonoBehaviour
 
     private void RemoveWoodExtra( int index )
     {
-        var extraGridNum = index + Define.WOOD_SIZE[1];
+        var extraGridNum = index + ItemData.WOOD_SIZE[1];
         Destroy( transform.parent.parent.GetChild( extraGridNum ).GetChild( 0 ).gameObject );
     }
 
     private void RemoveGrasslandExtra( int index )
     {
-        var extraGridNum = index + Define.GRASSLAND_SIZE[1];
+        var extraGridNum = index + ItemData.GRASSLAND_SIZE[1];
         Destroy( transform.parent.parent.GetChild( extraGridNum ).GetChild( 0 ).gameObject );
     }
 
     private void RemoveMarshExtra( int index )
     {
-        for( int i = 1; i < Define.MARSH_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.MARSH_SIZE.Length; i++ )
         {
-            Destroy( transform.parent.parent.GetChild( index + Define.MARSH_SIZE[i] ).GetChild( 0 ).gameObject );
+            Destroy( transform.parent.parent.GetChild( index + ItemData.MARSH_SIZE[i] ).GetChild( 0 ).gameObject );
         }
     }
 
     private void RemoveRockExtra( int index )
     {
-        for( int i = 1; i < Define.ROCK_SIZE.Length; i++ )
+        for( int i = 1; i < ItemData.ROCK_SIZE.Length; i++ )
         {
-            Destroy( transform.parent.parent.GetChild( index + Define.ROCK_SIZE[i] ).GetChild( 0 ).gameObject );
+            Destroy( transform.parent.parent.GetChild( index + ItemData.ROCK_SIZE[i] ).GetChild( 0 ).gameObject );
         }
     }
 

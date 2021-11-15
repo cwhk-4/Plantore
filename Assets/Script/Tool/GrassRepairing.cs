@@ -19,13 +19,13 @@ public class GrassRepairing : MonoBehaviour
 
     private void OnMouseOver( )
     {
-        toolConvertion.setOnGO( );
+        toolConvertion.SetOnGO( );
         itemCountDown.showGauge( );        
     }
 
     private void OnMouseDown( )
     {
-        if( toolConvertion.getIsCan( ) )
+        if( toolConvertion.GetIsCan( ) )
         {
             itemCountDown.repair( );
         }
@@ -33,7 +33,7 @@ public class GrassRepairing : MonoBehaviour
 
     private void OnMouseExit( )
     {
-        toolConvertion.setExitGO( );
+        toolConvertion.SetExitGO( );
         itemCountDown.closeGauge( );
     }
 }

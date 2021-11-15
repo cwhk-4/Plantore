@@ -76,7 +76,7 @@ public class ZEBRA : MonoBehaviour
             checkOutOfRange( );
             var index = ItemBase.GetIndex( ) + indexTutorial[ i ];
 
-            goStage.transform.position = getItemsIndex( index ).position;
+            //goStage.transform.position = getItemsIndex( index ).position;
             if ( gameObject.transform.position == goStage.transform.position )
             {
                 i ++;
@@ -156,10 +156,10 @@ public class ZEBRA : MonoBehaviour
         return onItem;
     }
 
-    public Transform getItemsIndex( int index )
-    {
-        return getItemIndex.GetIndexTransform( index );
-    }
+    //public Transform getItemsIndex( int index )
+    //{
+    //    return getItemIndex.GetIndexTransform( index );
+    //}
 
     private void checkOutOfRange( )
     {
@@ -182,7 +182,7 @@ public class ZEBRA : MonoBehaviour
                 indexTutorial = index12;
                 break;
             default:
-                indexTutorial = Define.GRASS_TERRITORY;
+                indexTutorial = ItemData.GRASS_TERRITORY;
                 break;
         }
     }

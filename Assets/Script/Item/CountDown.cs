@@ -17,9 +17,6 @@ public class CountDown : MonoBehaviour
     [SerializeField]private Sprite original;
     [SerializeField]private Sprite timeOutImage;
 
-    [SerializeField] private bool IsRepairing = false;
-    //[SerializeField] private float RepairingSpeed = 10;
-
     [SerializeField] private string originalTagName;
     [SerializeField] private string driedTagName;
 
@@ -43,19 +40,12 @@ public class CountDown : MonoBehaviour
 
     void Update()
     {
-        if( IsRepairing )
+        if( ( timeController.GetNowSec( ) - startingTime ) > Timer )
         {
-            startingTime = timeController.getNowRealSec( );
-            IsRepairing = false;
+            startingTime = timeController.GetNowSec( ) - Timer;
         }
 
-
-        if( ( timeController.getNowRealSec( ) - startingTime ) > Timer )
-        {
-            startingTime = timeController.getNowRealSec( ) - Timer;
-        }
-
-        CD = Timer - ( timeController.getNowRealSec( ) - startingTime );
+        CD = Timer - ( timeController.GetNowSec( ) - startingTime );
 
         slider.value = ( CD / Timer );
 
@@ -73,6 +63,12 @@ public class CountDown : MonoBehaviour
                 spriteRenderer.sprite = timeOutImage;
 
                 gameObject.tag = driedTagName;
+
+                var animal = transform.parent.GetComponent<GridBase>( ).GetAnimal( );
+                if( animal != null )
+                {
+                    animal.GetComponent<AnimalBase>( ).ItemTimedOut( );
+                }
 
             }
         }
@@ -98,7 +94,13 @@ public class CountDown : MonoBehaviour
 
     public void StartRepairing( )
     {
-        IsRepairing = true;
+        startingTime = timeController.GetNowSec( );
+
+        var animal = transform.parent.GetComponent<GridBase>( ).GetAnimal( );
+        if( animal != null )
+        {
+            animal.GetComponent<AnimalBase>( ).ItemFixed( );
+        }
     }
 
     public float GetStartTime( )

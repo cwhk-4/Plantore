@@ -26,7 +26,7 @@ public class ItemUIScroll : MonoBehaviour
 
     private void Update( )
     {
-        if( ToLeft && ( ScrollTransform.localPosition.x != NowPage * -800f ) )
+        if( ToLeft && ( ScrollTransform.localPosition.x != NowPage * -ScrollLimit ) )
         {
             ScrollTransform.localPosition =
                 new Vector3( ScrollTransform.localPosition.x + ScrollingSpeed,
@@ -38,7 +38,7 @@ public class ItemUIScroll : MonoBehaviour
             ToLeft = false;
         }
 
-        if( ToRight && ( ScrollTransform.localPosition.x != NowPage * -800f ) )
+        if( ToRight && ( ScrollTransform.localPosition.x != NowPage * -ScrollLimit ) )
         {
             ScrollTransform.localPosition =
                 new Vector3( ScrollTransform.localPosition.x - ScrollingSpeed,

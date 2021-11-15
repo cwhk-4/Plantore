@@ -62,7 +62,7 @@ public class DialogueEvent : MonoBehaviour
 
         if( checkTool )
         {
-            if( toolConvertion.getIsCan( ) )
+            if( toolConvertion.GetIsCan( ) )
             {
                 closeMouseRightGuide( );
                 checkTool = false;

@@ -30,17 +30,17 @@ public class ToolConvertion : MonoBehaviour
         }
     }
 
-    public bool getIsCan( )
+    public bool GetIsCan( )
     {
         return isCan;
     }
 
-    public void setOnGO( )
+    public void SetOnGO( )
     {
         isOnGO = true;
     }
 
-    public void setExitGO()
+    public void SetExitGO()
     {
         isOnGO = false;
     }
