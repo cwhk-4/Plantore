@@ -15,6 +15,7 @@ public class MissionControl : MonoBehaviour
     private bool[] IsMissionCompleteShown = new bool[9];
     private bool[] IsLvCompletionShown = new bool[3];
     private int[] MissionTotalNum = new int[9];
+    private bool[] AnimalFound = new bool[( int )Define.ANIMAL.TOTAL_NUM];
 
     [SerializeField] private GameObject MissionParent;
     [SerializeField] private GameObject[] MissionCheck = new GameObject[3];
@@ -55,6 +56,11 @@ public class MissionControl : MonoBehaviour
         for( int i = 0; i < 3; i++ )
         {
             IsLvCompletionShown[i] = false;
+        }
+
+        for(int i = 0; i<(int)Define.ANIMAL.TOTAL_NUM; i++ )
+        {
+            AnimalFound[i] = false;
         }
     }
 
@@ -214,10 +220,21 @@ public class MissionControl : MonoBehaviour
         }
     }
 
-    public void FilledIndex( )
+    public void FoundAnimal( int animalNum )
     {
+        AnimalFound[animalNum] = true;
+
         MissionNum[8] += 1;
-        CheckMissionsCompletion( );
+
+        if( MapLevel.getMapLevel( ) == 3 )
+        {
+            CheckMissionsCompletion( );
+        }
+    }
+
+    public bool GetAnimalFound( int index )
+    {
+        return AnimalFound[index];
     }
 
     private void GoToNextLevel( )

@@ -2,11 +2,10 @@
 
 public class InstantiateItem : MonoBehaviour
 {
-    private InstantiateMoveControl imController;
-    private TimeController timeController;
-    private GridTerritoryControl territoryControl;
-    private ItemStorage storage;
-    private AvailabilityControl availability;
+    private InstantiateMoveControl IMController;
+    private TimeController TimeController;
+    private ItemStorage ItemStorage;
+    private AvailabilityControl Availability;
 
     [SerializeField]private GameObject ItemToInstantiate;
     private GameObject parentGO;
@@ -17,13 +16,12 @@ public class InstantiateItem : MonoBehaviour
 
     private void Start( )
     {
-        timeController = GameObject.Find( "System" ).GetComponent<TimeController>( );
-        imController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
-        territoryControl = GameObject.Find( "TerritoryController" ).GetComponent<GridTerritoryControl>( );
-        storage = GameObject.Find( "ItemStorage" ).GetComponent<ItemStorage>( );
-        availability = GameObject.Find( "AvailabilityController" ).GetComponent<AvailabilityControl>( );
+        TimeController = GameObject.Find( "System" ).GetComponent<TimeController>( );
+        IMController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
+        ItemStorage = GameObject.Find( "ItemStorage" ).GetComponent<ItemStorage>( );
+        Availability = GameObject.Find( "AvailabilityController" ).GetComponent<AvailabilityControl>( );
 
-        thisStartingTime = timeController.GetNowSec( );
+        thisStartingTime = TimeController.GetNowSec( );
 
         switch( name )
         {
@@ -55,7 +53,7 @@ public class InstantiateItem : MonoBehaviour
                 break;
         }
 
-        imController.setGOItemNum( itemNum );
+        IMController.setGOItemNum( itemNum );
     }
 
     private void Update( )
@@ -71,7 +69,7 @@ public class InstantiateItem : MonoBehaviour
 
         if( Input.GetMouseButton( 0 ) && parentGO.transform.childCount == 0)
         {
-            var available = imController.CheckThisGrid( );
+            var available = IMController.CheckThisGrid( );
 
             if( !available )
             {
@@ -80,7 +78,7 @@ public class InstantiateItem : MonoBehaviour
 
             if( name!= "grass_Instan(Clone)" && name != "smallRock_Instan(Clone)" )
             {
-                available = imController.CheckGrids( itemNum );
+                available = IMController.CheckGrids( itemNum );
             }
 
             if( !available )
@@ -96,42 +94,44 @@ public class InstantiateItem : MonoBehaviour
             var index = parentGO.transform.GetSiblingIndex( );
             //Debug.Log( index );
 
-            storage.PlaceItem( index, itemNum );
+            item.GetComponent<ItemBase>( ).Init( TimeController, IMController, itemNum, index );
+
+            ItemStorage.PlaceItem( index, itemNum );
 
             if( name != "grass_Instan(Clone)" && name != "smallRock_Instan(Clone)" )
             {
-                imController.InstantiateExtraGrid( itemNum, item );
+                IMController.InstantiateExtraGrid( itemNum, item );
             }
 
             #region !Tutorial
             if( name != "Tutorial_grass(Clone)" )
             {
-                if( imController.GetIsMoving( ) )
+                if( IMController.GetIsMoving( ) )
                 {
                     item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
-                    var timeDelayed = timeController.GetNowSec( ) - thisStartingTime;
-                    item.GetComponent<CountDown>( ).SetStartingTime( imController.GetStartingTime( ) + timeDelayed );
+                    var timeDelayed = TimeController.GetNowSec( ) - thisStartingTime;
+                    item.GetComponent<CountDown>( ).SetStartingTime( IMController.GetStartingTime( ) + timeDelayed );
                     Debug.Log( timeDelayed );
                 }
                 else
                 {
                     item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
-                    item.GetComponent<CountDown>( ).SetStartingTime( timeController.GetNowSec( ) );
+                    item.GetComponent<CountDown>( ).SetStartingTime( TimeController.GetNowSec( ) );
                 }
 
             }
             #endregion
 
-            availability.ItemInstantiated( index );
+            Availability.ItemInstantiated( index );
 
-            if( !imController.GetIsMoving( ) )
+            if( !IMController.GetIsMoving( ) )
             {
-                imController.FinishedByInstan( );
-                imController.FinishInstantiate( );
+                IMController.FinishedByInstan( );
+                IMController.FinishInstantiate( );
             }
             else
             {
-                imController.FinishMoving( index );
+                IMController.FinishMoving( index );
             }
 
             Destroy( gameObject );

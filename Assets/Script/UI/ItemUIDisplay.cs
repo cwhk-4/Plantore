@@ -9,6 +9,7 @@ public class ItemUIDisplay : MonoBehaviour
     [SerializeField] private Transform ItemUI;
     [SerializeField] private GameObject[] Items;
     [SerializeField] private Button[] ItemButtons;
+    [SerializeField] private Image[] ItemButtonsImage;
     [SerializeField] private MapLevel map;
 
     private int level1Limit = 3;
@@ -18,6 +19,9 @@ public class ItemUIDisplay : MonoBehaviour
 
     [SerializeField] private MapLevel Map;
     [SerializeField] private int mapLevel;
+
+    [SerializeField] private Sprite[] OpenedImage;
+    [SerializeField] private Sprite[] ClosedImage;
 
     void Start()
     {
@@ -29,18 +33,15 @@ public class ItemUIDisplay : MonoBehaviour
     {
         totalNum = ( int )Define.ITEM.TOTAL_NUM;
 
-        if( ( int )Define.ITEM.TOTAL_NUM % 2 != 0 )
-        {
-            totalNum += 1;
-        }
-
         Items = new GameObject[totalNum];
         ItemButtons = new Button[totalNum];
+        ItemButtonsImage = new Image[totalNum];
 
         for( int i = 0; i < totalNum; i++ )
         {
             Items[i] = ItemUI.GetChild( i ).GetChild(0).gameObject;
             ItemButtons[i] = ItemUI.GetChild( i ).GetComponent<Button>( );
+            ItemButtonsImage[i] = ItemUI.GetChild( i ).GetComponent<Image>( );
         }
     }
 
@@ -81,11 +82,13 @@ public class ItemUIDisplay : MonoBehaviour
             {
                 Items[i].SetActive( true );
                 ItemButtons[i].interactable = true;
+                ItemButtons[i].GetComponent<Image>( ).sprite = OpenedImage[i];
             }
             else
             {
                 Items[i].SetActive( false );
                 ItemButtons[i].interactable = false;
+                ItemButtons[i].GetComponent<Image>( ).sprite = ClosedImage[i];
             }
         }
     }
@@ -97,7 +100,7 @@ public class ItemUIDisplay : MonoBehaviour
             if( i < limit )
             {
                 var remain = ItemData.ITEM_LIMIT[mapLevel - 1, i] - storage.GetNumOfItemPlaced( i );
-                Items[i].transform.GetChild( 2 ).GetComponent<TMP_Text>( ).text = "x " + remain;
+                Items[i].GetComponent<TMP_Text>( ).text = remain.ToString( );
 
                 if( remain == 0 )
                 {

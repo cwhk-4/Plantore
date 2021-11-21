@@ -119,11 +119,6 @@ public class AnimalBase : MonoBehaviour
     {
         int Period = TimeController.GetNowPeriod( );
 
-        if(!_animal.IsActionable[Period])
-        {
-            return;
-        }
-
         switch(_animal.State)
         {
             case ( int )AnimalData.ANIMAL_STATE.LEAVE_ITEM:
@@ -155,7 +150,7 @@ public class AnimalBase : MonoBehaviour
                 break;
 
             case ( int )AnimalData.ANIMAL_STATE.DECIDING:
-                MakeDecision( );
+                MakeDecision( Period );
                 break;
 
             case ( int )AnimalData.ANIMAL_STATE.PATROL:
@@ -195,11 +190,30 @@ public class AnimalBase : MonoBehaviour
                 ReactionControl.StartFighting( );
                 break;
 
+            case ( int )AnimalData.ANIMAL_STATE.REST:
+                if( this.transform.position != _animal.TargetPos )
+                {
+                    this.transform.position = Vector3.MoveTowards( this.transform.position, _animal.TargetPos, Time.deltaTime * _animal.Speed );
+                }
+
+                if( _animal.IsActionable[Period] )
+                {
+                    _animal.State = ( int )AnimalData.ANIMAL_STATE.DECIDING;
+                }
+                break;
+
         }
     }
 
-    private void MakeDecision( )
+    private void MakeDecision( int period )
     {
+        if( !_animal.IsActionable[period] )
+        {
+            _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
+            _animal.State = ( int )AnimalData.ANIMAL_STATE.REST;
+            return;
+        }
+
         if( !_animal.IsCarnivore )
         {
             RandomTarget( );
@@ -426,6 +440,7 @@ public class AnimalBase : MonoBehaviour
     public void Hunted( )
     {
         GridParent.GetChild( _animal.TargetIndex ).GetComponent<GridBase>( ).AnimalDestoryed( _animal.TargetType, _animal.AnimalType, gameObject );
+        GridParent.GetChild( _animal.TargetIndex ).GetChild( 0 ).GetComponent<ItemBase>( ).AnimalRemoved( );
         Destroy( gameObject );
     }
 
@@ -452,7 +467,7 @@ public class AnimalBase : MonoBehaviour
         _animal.TargetIndex = index;
         _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
         _animal.CDStartingTime = TimeController.GetNowSec( );
-        _animal.State = ( int )AnimalData.ANIMAL_STATE.DECIDING;
+        _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
     }
     #endregion
 

@@ -23,11 +23,11 @@ public class MissionsList : MonoBehaviour
         #region MissionTextInitialize
         //lv1
         Missions[0].totalNum = 3;
-		Missions[0].MissionText = "かんきょうを３コおく";
+		Missions[0].MissionText = "かんきょうを3つおく";
 		Missions[0].level = 1;
 
 		Missions[1].totalNum = 5;
-		Missions[1].MissionText = "かんきょうを５回なおす";
+		Missions[1].MissionText = "かんきょうを5かいなおす";
 		Missions[1].level = 1;
 
 		Missions[2].totalNum = 1;
@@ -36,28 +36,28 @@ public class MissionsList : MonoBehaviour
 
 		//lv2
 		Missions[3].totalNum = 1;
-		Missions[3].MissionText = "ゾウ、サイをみつける";
+		Missions[3].MissionText = "ゾウかサイをみつける";
 		Missions[3].level = 2;
 
 		Missions[4].totalNum = 3;
-		Missions[4].MissionText = "ライオンが３回狩りに成功する";
+		Missions[4].MissionText = "ライオンが\"かり\"を3かいする";
 		Missions[4].level = 2;
 
 		Missions[5].totalNum = 15;
-        Missions[5].MissionText = "かんきょうを１５回なおす";
+        Missions[5].MissionText = "かんきょうを15かいなおす";
 		Missions[5].level = 2;
 
 		//lv3
         Missions[6].totalNum = 10;
-		Missions[6].MissionText = "草食動物をみつける";
+		Missions[6].MissionText = "そうしょくどうぶつをみつける";
 		Missions[6].level = 3;
 
 		Missions[7].totalNum = 10;
-		Missions[7].MissionText = "動物同士があらそう";
+		Missions[7].MissionText = "どうぶつどうしがあらそう";
 		Missions[7].level = 3;
 
 		Missions[8].totalNum = 8;
-		Missions[8].MissionText = "ずかんを埋める";
+		Missions[8].MissionText = "ずかんをうめる";
 		Missions[8].level = 3;
 
         #endregion

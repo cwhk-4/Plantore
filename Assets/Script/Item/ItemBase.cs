@@ -3,27 +3,45 @@ using UnityEngine.EventSystems;
 
 public class ItemBase : MonoBehaviour
 {
+    [SerializeField] private TimeController TimeController;
+    [SerializeField] private InstantiateMoveControl IMController;
+    [SerializeField] private MapLevel MapLevel;
     [SerializeField] private MissionControl MissionControl;
     [SerializeField] private ToolConvertion ToolConvertion;
-    [SerializeField] private MapLevel MapLevel;
-    [SerializeField] private InstantiateMoveControl IMController;
-    private CountDown countDown;
-    private MoveItem moveItem;
+    [SerializeField] private AnimalInstantiate AnimalInstantiate;
+
+    private CountDown CountDown;
+    private MoveItem MoveItemScript;
+
+    [SerializeField] private int itemType;
+    [SerializeField] private int gridNum;
 
     [SerializeField]private bool isOnMouse;
     private float clickDelay = 1;
     private float clickTime;
     private int click;
 
+    [SerializeField] private float AnimalLeaveStamp = -1;
+    private float AnimalRespawnCD = 3 * 10;
+
     void Start( )
     {
         ToolConvertion = GameObject.FindWithTag( "Cursor" ).GetComponent<ToolConvertion>( );
         MissionControl = GameObject.FindWithTag( "MissionController" ).GetComponent<MissionControl>( );
         MapLevel = GameObject.FindWithTag( "Map" ).GetComponent<MapLevel>( );
-        IMController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
-        countDown = GetComponent<CountDown>( );
-        moveItem = GetComponent<MoveItem>( );
+        AnimalInstantiate = GameObject.FindWithTag( "AnimalController" ).GetComponent<AnimalInstantiate>( );
+        CountDown = GetComponent<CountDown>( );
+        MoveItemScript = GetComponent<MoveItem>( );
         isOnMouse = false;
+        AnimalLeaveStamp = -1;
+    }
+
+    public void Init( TimeController timeController, InstantiateMoveControl imController, int itemIndex, int gridIndex )
+    {
+        TimeController = timeController;
+        IMController = imController;
+        itemType = itemIndex;
+        gridNum = gridIndex;
     }
 
     private void Update( )
@@ -39,7 +57,7 @@ public class ItemBase : MonoBehaviour
             {
                 if( Input.GetMouseButtonDown( 0 ) )
                 {
-                    if( countDown.GetCD( ) <= 0 )
+                    if( CountDown.GetCD( ) <= 0 )
                     {
                         Repair( );
                     }
@@ -70,14 +88,24 @@ public class ItemBase : MonoBehaviour
                     }
                 }
             }
+        }
 
-
+        if( AnimalLeaveStamp != -1 )
+        {
+            if( CountDown.GetCD( ) > 0 )
+            {
+                if( TimeController.GetNowSec( ) - AnimalLeaveStamp >= AnimalRespawnCD )
+                {
+                    AnimalInstantiate.ItemCreated( itemType, gridNum );
+                    AnimalLeaveStamp = -1;
+                }
+            }
         }
     }
 
     public void Repair( )
     {
-        countDown.StartRepairing( );
+        CountDown.StartRepairing( );
 
         if( MapLevel.getMapLevel( ) == 1 )
         {
@@ -93,7 +121,7 @@ public class ItemBase : MonoBehaviour
     public void MoveItem( )
     {
         var GO = transform.parent.GetComponent<GridBase>( ).GetAnimal( );
-        moveItem.StartMoving( countDown.GetStartTime( ), GO );
+        MoveItemScript.StartMoving( CountDown.GetStartTime( ), GO );
     }
 
     public void SetOnMouse( )
@@ -111,5 +139,10 @@ public class ItemBase : MonoBehaviour
     public int GetIndex( )
     {
         return transform.parent.GetSiblingIndex( );
+    }
+
+    public void AnimalRemoved()
+    {
+        AnimalLeaveStamp = TimeController.GetNowSec( );
     }
 }

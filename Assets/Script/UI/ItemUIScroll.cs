@@ -6,7 +6,7 @@ public class ItemUIScroll : MonoBehaviour
     [SerializeField] private float ScrollingSpeed;
     [SerializeField] private float ScrollLimit = 800f;
 
-    private int[] PageLimit = { 1, 2, 2 };
+    private int[] PageLimit = { 0, 1, 1 };
     [SerializeField] private int NowPage = 0;
 
     [SerializeField] private MapLevel map;
@@ -19,6 +19,12 @@ public class ItemUIScroll : MonoBehaviour
     [SerializeField] private bool ToRight = false;
 
     private void Start( )
+    {
+        ResetScrollValue( );
+        mapLevel = map.getMapLevel( );
+    }
+
+    public void OpenScroll( )
     {
         ResetScrollValue( );
         mapLevel = map.getMapLevel( );

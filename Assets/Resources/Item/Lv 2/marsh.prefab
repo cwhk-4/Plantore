@@ -420,12 +420,12 @@ SpriteRenderer:
   m_SortingLayerID: 92946567
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 08cc27f9ecbad254ebec3aa276695a44, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1fb6244ebedc49b19a8bf207bcf12bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.8, y: 6.2}
+  m_Size: {x: 6.4, y: 3.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -446,10 +446,8 @@ MonoBehaviour:
   slider: {fileID: 8584160821621319382}
   text: {fileID: 3505927593707313778}
   Timer: 30
-  original: {fileID: 21300000, guid: 08cc27f9ecbad254ebec3aa276695a44, type: 3}
-  timeOutImage: {fileID: 21300000, guid: 9a8d36086fcb844e782af9040735209b, type: 3}
-  IsRepairing: 0
-  RepairingSpeed: 10
+  OriginalImage: {fileID: 21300000, guid: f1fb6244ebedc49b19a8bf207bcf12bd, type: 3}
+  TimedOutImage: {fileID: 21300000, guid: 65dece29d8f934f4c8f9cfa29f2e41b6, type: 3}
 --- !u!114 &6652426450643470656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,10 +461,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MissionControl: {fileID: 0}
-  imController: {fileID: 0}
-  toolConvertion: {fileID: 0}
+  ToolConvertion: {fileID: 0}
+  MapLevel: {fileID: 0}
+  IMController: {fileID: 0}
   isOnMouse: 0
-  ClickDelay: 1
 --- !u!114 &5987775568955140852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,7 +478,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemToBeInstantiate: {fileID: 8642123341480803075, guid: 92b364ea915ed49db940a82da0bbbe0c, type: 3}
-  xCount: 8
   queueNum: -1
 --- !u!1 &7632158571744373881
 GameObject:

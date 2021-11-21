@@ -75,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: 92946567
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: e526bdbdda7c0d34c846956fd6c03468, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d178f3b3e6894cbd93b32d5d41a1479, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.4, y: 3.6}
+  m_Size: {x: 3.2, y: 1.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -101,8 +101,8 @@ MonoBehaviour:
   MissionControl: {fileID: 0}
   ToolConvertion: {fileID: 0}
   MapLevel: {fileID: 0}
+  IMController: {fileID: 0}
   isOnMouse: 0
-  ClickDelay: 1
 --- !u!114 &1752186953828826263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,11 +118,8 @@ MonoBehaviour:
   slider: {fileID: 3717367911681660643}
   text: {fileID: 3717367912121007463}
   Timer: 5
-  original: {fileID: 21300000, guid: e526bdbdda7c0d34c846956fd6c03468, type: 3}
-  timeOutImage: {fileID: 21300000, guid: fbd0c291d4ce74395acda1a5a88d32e0, type: 3}
-  IsRepairing: 0
-  originalTagName: 
-  driedTagName: 
+  OriginalImage: {fileID: 21300000, guid: 6d178f3b3e6894cbd93b32d5d41a1479, type: 3}
+  TimedOutImage: {fileID: 21300000, guid: 8f2f8180fe0c6427393e035827bdb2c0, type: 3}
 --- !u!114 &7972121589767019377
 MonoBehaviour:
   m_ObjectHideFlags: 0

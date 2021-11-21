@@ -14,11 +14,8 @@ public class CountDown : MonoBehaviour
     private float startingTime;
     private float CD;
 
-    [SerializeField]private Sprite original;
-    [SerializeField]private Sprite timeOutImage;
-
-    [SerializeField] private string originalTagName;
-    [SerializeField] private string driedTagName;
+    [SerializeField]private Sprite OriginalImage;
+    [SerializeField]private Sprite TimedOutImage;
 
     private void Awake( )
     {
@@ -31,11 +28,9 @@ public class CountDown : MonoBehaviour
         timeController = GameObject.Find( "System" ).GetComponent<TimeController>( );
 
         spriteRenderer = GetComponent<SpriteRenderer>( );
-        spriteRenderer.sprite = original;
+        spriteRenderer.sprite = OriginalImage;
 
         slider.value = 1;
-        originalTagName = gameObject.tag;
-        driedTagName = originalTagName.Insert( 0, "TimedOut_" );
     }
 
     void Update()
@@ -58,11 +53,9 @@ public class CountDown : MonoBehaviour
     {
         if( val <= 0 )
         {
-            if( spriteRenderer.sprite != timeOutImage)
+            if( spriteRenderer.sprite != TimedOutImage)
             {
-                spriteRenderer.sprite = timeOutImage;
-
-                gameObject.tag = driedTagName;
+                spriteRenderer.sprite = TimedOutImage;
 
                 var animal = transform.parent.GetComponent<GridBase>( ).GetAnimal( );
                 if( animal != null )
@@ -74,10 +67,9 @@ public class CountDown : MonoBehaviour
         }
         else
         {
-            if( spriteRenderer.sprite != original )
+            if( spriteRenderer.sprite != OriginalImage )
             {
-                spriteRenderer.sprite = original;
-                gameObject.tag = originalTagName;
+                spriteRenderer.sprite = OriginalImage;
             }
         }
     }

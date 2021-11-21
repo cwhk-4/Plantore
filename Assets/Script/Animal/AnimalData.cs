@@ -30,6 +30,7 @@ public static class AnimalData
         WAITING_FOR_FIGHTING,
         HUNTING,
         FIGHTING,
+        REST,
         MAX,
     }
 

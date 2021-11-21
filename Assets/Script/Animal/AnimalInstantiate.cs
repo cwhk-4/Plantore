@@ -125,6 +125,7 @@ public class AnimalInstantiate : MonoBehaviour
                                                  MapLevel, ReactionControl, MissionControl, TimeController );
 
         MissionControl.FoundHerbivore( );
+        MissionControl.FoundAnimal( ( int )Define.ANIMAL.ZEBRA );
 
         animalGO = animal;
         animalNum = ( int )Define.ANIMAL.ZEBRA;
@@ -137,6 +138,8 @@ public class AnimalInstantiate : MonoBehaviour
         animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.LION, nowItemIndex, nowItemType,
                                                  GridParent, AnimalParent, MainCamera,
                                                  MapLevel, ReactionControl, MissionControl, TimeController );
+
+        MissionControl.FoundAnimal( ( int )Define.ANIMAL.LION );
 
         animalGO = animal;
         animalNum = ( int )Define.ANIMAL.LION;
@@ -151,6 +154,7 @@ public class AnimalInstantiate : MonoBehaviour
                                                  MapLevel, ReactionControl, MissionControl, TimeController );
 
         MissionControl.FoundHerbivore( );
+        MissionControl.FoundAnimal( ( int )Define.ANIMAL.GIRAFFE );
 
         animalGO = animal;
         animalNum = ( int )Define.ANIMAL.GIRAFFE;
@@ -163,6 +167,8 @@ public class AnimalInstantiate : MonoBehaviour
         animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.HYENA, nowItemIndex, nowItemType,
                                                  GridParent, AnimalParent, MainCamera,
                                                  MapLevel, ReactionControl, MissionControl, TimeController );
+
+        MissionControl.FoundAnimal( ( int )Define.ANIMAL.HYENA );
 
         animalGO = animal;
         animalNum = ( int )Define.ANIMAL.HYENA;
@@ -178,6 +184,7 @@ public class AnimalInstantiate : MonoBehaviour
 
         MissionControl.FoundRhino( );
         MissionControl.FoundHerbivore( );
+        MissionControl.FoundAnimal( ( int )Define.ANIMAL.RHINO );
 
         animalGO = animal;
         animalNum = ( int )Define.ANIMAL.RHINO;
@@ -192,6 +199,7 @@ public class AnimalInstantiate : MonoBehaviour
                                                  MapLevel, ReactionControl, MissionControl, TimeController );
 
         MissionControl.FoundHerbivore( );
+        MissionControl.FoundAnimal( ( int )Define.ANIMAL.BUFFALO );
 
         animalGO = animal;
         animalNum = ( int )Define.ANIMAL.BUFFALO;
@@ -204,6 +212,8 @@ public class AnimalInstantiate : MonoBehaviour
         animal.GetComponent<AnimalBase>( ).Init( ( int )Define.ANIMAL.LEOPARD, nowItemIndex, nowItemType,
                                                  GridParent, AnimalParent, MainCamera,
                                                  MapLevel, ReactionControl, MissionControl, TimeController );
+
+        MissionControl.FoundAnimal( ( int )Define.ANIMAL.LEOPARD );
 
         animalGO = animal;
         animalNum = ( int )Define.ANIMAL.LEOPARD;
@@ -219,6 +229,7 @@ public class AnimalInstantiate : MonoBehaviour
 
         MissionControl.FoundElephant( );
         MissionControl.FoundHerbivore( );
+        MissionControl.FoundAnimal( ( int )Define.ANIMAL.ELEPHANT );
 
         animalGO = animal;
         animalNum = ( int )Define.ANIMAL.ELEPHANT;
