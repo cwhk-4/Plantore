@@ -224,10 +224,17 @@ public class MissionControl : MonoBehaviour
     {
         AnimalFound[animalNum] = true;
 
-        MissionNum[8] += 1;
-
         if( MapLevel.getMapLevel( ) == 3 )
         {
+            int count = 0;
+            for( int i = 0; i < ( int )Define.ANIMAL.TOTAL_NUM; i++ )
+            {
+                if(AnimalFound[i])
+                {
+                    count++;
+                }
+            }
+            MissionNum[8] = count;
             CheckMissionsCompletion( );
         }
     }

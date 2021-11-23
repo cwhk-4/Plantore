@@ -2,7 +2,7 @@
 using System;
 
 [Serializable]
-public class SubClass
+public class Missions
 {
 	public int totalNum;
 	public string MissionText;
@@ -11,7 +11,7 @@ public class SubClass
 
 public class MissionsList : MonoBehaviour
 {
-	[SerializeField] private SubClass[] Missions = new SubClass[9];
+	[SerializeField] private Missions[] Missions = new Missions[9];
 
 	private readonly string[] MissionClearText =
 		{ "草、木、岩が1つふえました！\n草原、沼がついかされました！\nマップが広くなりました！",
@@ -63,12 +63,12 @@ public class MissionsList : MonoBehaviour
         #endregion
     }
 
-    public void SetValue( int index, SubClass subClass )
+    public void SetValue( int index, Missions subClass )
 	{
 		Missions[index] = subClass;
 	}
 
-	public SubClass GetValue( int index )
+	public Missions GetValue( int index )
 	{
 		return Missions[index];
 	}

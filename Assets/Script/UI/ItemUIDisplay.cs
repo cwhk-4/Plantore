@@ -100,11 +100,16 @@ public class ItemUIDisplay : MonoBehaviour
             if( i < limit )
             {
                 var remain = ItemData.ITEM_LIMIT[mapLevel - 1, i] - storage.GetNumOfItemPlaced( i );
-                Items[i].GetComponent<TMP_Text>( ).text = remain.ToString( );
 
                 if( remain == 0 )
                 {
+                    Items[i].GetComponent<TMP_Text>( ).text = "";
+                    ItemButtons[i].GetComponent<Image>( ).sprite = ClosedImage[i];
                     ItemButtons[i].interactable = false;
+                }
+                else
+                {
+                    Items[i].GetComponent<TMP_Text>( ).text = remain.ToString( );
                 }
             }
         }
