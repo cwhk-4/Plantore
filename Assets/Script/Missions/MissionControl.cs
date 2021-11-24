@@ -36,7 +36,7 @@ public class MissionControl : MonoBehaviour
 
     private void InitAllData( )
     {
-        NowMapLevel = MapLevel.getMapLevel( );
+        NowMapLevel = MapLevel.GetMapLevel( );
         NowStartingMission = MissionStartingNum[NowMapLevel - 1];
 
         for( int i = 0; i < 9; i++ )
@@ -66,7 +66,7 @@ public class MissionControl : MonoBehaviour
 
     public void OpenMission( )
     {
-        NowMapLevel = MapLevel.getMapLevel( );
+        NowMapLevel = MapLevel.GetMapLevel( );
         NowStartingMission = MissionStartingNum[NowMapLevel - 1];
 
         UpdateMissionNum( );
@@ -127,7 +127,7 @@ public class MissionControl : MonoBehaviour
     //Lv 1
     public void PlacedItem( )
     {
-        if( MapLevel.getMapLevel( ) == 1 )
+        if( MapLevel.GetMapLevel( ) == 1 )
         {
             MissionNum[0] += 1;
             CheckMissionsCompletion( );
@@ -137,7 +137,7 @@ public class MissionControl : MonoBehaviour
 
     public void FixedItem1( )
     {
-        if( MapLevel.getMapLevel( ) == 1 )
+        if( MapLevel.GetMapLevel( ) == 1 )
         {
             MissionNum[1] += 1;
             CheckMissionsCompletion( );
@@ -179,7 +179,7 @@ public class MissionControl : MonoBehaviour
 
     private void FoundElephantRhino( )
     {
-        if( MapLevel.getMapLevel( ) == 2 )
+        if( MapLevel.GetMapLevel( ) == 2 )
         {
             MissionNum[3] += 1;
             CheckMissionsCompletion( );
@@ -188,7 +188,7 @@ public class MissionControl : MonoBehaviour
 
     public void HuntedByLion( )
     {
-        if( MapLevel.getMapLevel( ) == 2 )
+        if( MapLevel.GetMapLevel( ) == 2 )
         {
             MissionNum[4] += 1;
             CheckMissionsCompletion( );
@@ -204,7 +204,7 @@ public class MissionControl : MonoBehaviour
     //Lv 3
     public void FoundHerbivore( )
     {
-        if( MapLevel.getMapLevel( ) == 3 )
+        if( MapLevel.GetMapLevel( ) == 3 )
         {
             MissionNum[6] += 1;
             CheckMissionsCompletion( );
@@ -213,7 +213,7 @@ public class MissionControl : MonoBehaviour
 
     public void HuntingSucceed( )
     {
-        if( MapLevel.getMapLevel( ) == 3 )
+        if( MapLevel.GetMapLevel( ) == 3 )
         {
             MissionNum[7] += 1;
             CheckMissionsCompletion( );
@@ -224,7 +224,7 @@ public class MissionControl : MonoBehaviour
     {
         AnimalFound[animalNum] = true;
 
-        if( MapLevel.getMapLevel( ) == 3 )
+        if( MapLevel.GetMapLevel( ) == 3 )
         {
             int count = 0;
             for( int i = 0; i < ( int )Define.ANIMAL.TOTAL_NUM; i++ )
@@ -246,7 +246,7 @@ public class MissionControl : MonoBehaviour
 
     private void GoToNextLevel( )
     {
-        MapLevel.setMapLevel( NowMapLevel + 1 );
+        MapLevel.SetMapLevel( NowMapLevel + 1 );
 
         if( !IsLvCompletionShown[NowMapLevel - 1] )
         {

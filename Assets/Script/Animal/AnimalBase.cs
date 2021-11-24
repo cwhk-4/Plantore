@@ -73,7 +73,7 @@ public class AnimalBase : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>( ).flipX = false;
         }
 
-        var level = MapLevel.getMapLevel( ) - 1;
+        var level = MapLevel.GetMapLevel( ) - 1;
 
         var y = Random.Range( -7, 7 + level );
 

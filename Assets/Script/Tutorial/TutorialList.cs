@@ -5,20 +5,20 @@ using System.IO;
 public class TutorialList : MonoBehaviour
 {
     [SerializeField] TextAsset Tutorialcsv;
-    [SerializeField] List<string> TutorialText = new List<string>( );
+    [SerializeField] List<string[]> TutorialText = new List<string[]>( );
 
-    void Start( )
+    void Awake( )
     {
         StringReader reader = new StringReader( Tutorialcsv.text );
 
         while( reader.Peek( ) != -1 )
         {
             string line = reader.ReadLine( );
-            TutorialText.Add( line );
+            TutorialText.Add( line.Split(',') );
         }
     }
 
-    public string GetTutorialText( int index )
+    public string[] GetTutorialText( int index )
     {
         return TutorialText[index];
     }

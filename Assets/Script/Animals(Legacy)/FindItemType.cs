@@ -14,7 +14,7 @@ public class FindItemType : MonoBehaviour
     void Update( )
     {
         changeItemType( );
-        nowMapLevel = MapLevel.GetComponent<MapLevel>( ).getMapLevel( );
+        nowMapLevel = MapLevel.GetComponent<MapLevel>( ).GetMapLevel( );
     }
 
     private void changeItemType( )

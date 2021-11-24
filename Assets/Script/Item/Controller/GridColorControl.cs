@@ -67,7 +67,7 @@ public class GridColorControl : MonoBehaviour
 
         if( SceneManager.GetActiveScene( ).name == "Stage" )
         {
-            level = mapLevel.getMapLevel( );
+            level = mapLevel.GetMapLevel( );
         }
 
         var GridNum = this.transform.GetSiblingIndex( );

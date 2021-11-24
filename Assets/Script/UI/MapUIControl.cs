@@ -70,7 +70,7 @@ public class MapUIControl : MonoBehaviour
 
     private void mapBlocker()
     {
-        level = mapLevel.getMapLevel( );
+        level = mapLevel.GetMapLevel( );
 
         mapBlockInit( );
 

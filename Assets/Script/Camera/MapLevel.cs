@@ -3,34 +3,34 @@
 public class MapLevel : MonoBehaviour
 {
     [SerializeField] private int level = 1;
-    private int[,] mapSize = new int[3,2] { { 6, 5 }, { 8, 7 }, { 10, 9 } };
+    private int[,] MapSize = new int[3,2] { { 6, 5 }, { 8, 7 }, { 10, 9 } };
 
     [SerializeField] private MissionTextDisplay MissionText;
     [SerializeField] private ItemUIDisplay ItemUIDisplay;
 
-    public int getMapLevel( )
+    public int GetMapLevel( )
     {
         return level;
     }
 
-    public void setMapLevel( int input )
+    public void SetMapLevel( int input )
     {
         level = input;
         ItemUIDisplay.SetMapLevel( level );
     }
 
-    public void loadMapLevel( int levelLoaded )
+    public void LoadMapLevel( int levelLoaded )
     {
         level = levelLoaded;
     }
 
     public int GetNowMapXCount( )
     {
-        return mapSize[level - 1, 0];
+        return MapSize[level - 1, 0];
     }
 
     public int GetNowMapYCount( )
     {
-        return mapSize[level - 1, 1];
+        return MapSize[level - 1, 1];
     }
 }

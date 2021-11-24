@@ -43,7 +43,7 @@ public class WHITERHINO : MonoBehaviour
         numsProbability( );
         setTurnScale( );
         whiterhinoMove( );
-        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 2 )
+        if ( MapLevel.GetComponent<MapLevel>( ).GetMapLevel( ) == 2 )
         {
             itemsNum = this.gameObject.GetComponent<FindItemType>( ).getItemsNum( );
             item = this.gameObject.GetComponent<FindItemType>( ).getItemType( );

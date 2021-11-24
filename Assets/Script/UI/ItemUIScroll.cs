@@ -21,13 +21,13 @@ public class ItemUIScroll : MonoBehaviour
     private void Start( )
     {
         ResetScrollValue( );
-        mapLevel = map.getMapLevel( );
+        mapLevel = map.GetMapLevel( );
     }
 
     public void OpenScroll( )
     {
         ResetScrollValue( );
-        mapLevel = map.getMapLevel( );
+        mapLevel = map.GetMapLevel( );
     }
 
     private void Update( )
@@ -82,13 +82,13 @@ public class ItemUIScroll : MonoBehaviour
             NowPage -= 1;
             ToLeft = true;
             ToRight = false;
-            mapLevel = map.getMapLevel( );
+            mapLevel = map.GetMapLevel( );
         }
     }
 
     public void RightButtonClick( )
     {
-        mapLevel = map.getMapLevel( );
+        mapLevel = map.GetMapLevel( );
 
         if( NowPage < PageLimit[mapLevel - 1] )
         {

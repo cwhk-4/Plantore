@@ -48,7 +48,7 @@ public class ZEBRA : MonoBehaviour
     {
         timeIn( );
         setTurnScale( );
-        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 1 )
+        if ( MapLevel.GetComponent<MapLevel>( ).GetMapLevel( ) == 1 )
         {
             zebraMove( );
         }

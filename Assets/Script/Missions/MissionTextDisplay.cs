@@ -54,7 +54,7 @@ public class MissionTextDisplay : MonoBehaviour
 
     public void MissionSwitch( )
     {
-        Level = MapLevel.getMapLevel( );
+        Level = MapLevel.GetMapLevel( );
 
         switch( Level )
         {

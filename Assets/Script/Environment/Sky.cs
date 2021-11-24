@@ -14,15 +14,15 @@ public class Sky : MonoBehaviour
 
     void Start()
     {
-        level = mapLevel.getMapLevel( );
+        level = mapLevel.GetMapLevel( );
         changeSkyScale( level );
     }
 
     private void Update( )
     {
-        if( level != mapLevel.getMapLevel( ) )
+        if( level != mapLevel.GetMapLevel( ) )
         {
-            level = mapLevel.getMapLevel( );
+            level = mapLevel.GetMapLevel( );
             changeSkyScale( level );
         }
     }

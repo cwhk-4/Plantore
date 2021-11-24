@@ -25,7 +25,7 @@ public class ItemUIDisplay : MonoBehaviour
 
     void Start()
     {
-        mapLevel = map.getMapLevel( );
+        mapLevel = map.GetMapLevel( );
         Init( );
     }
 
@@ -53,7 +53,7 @@ public class ItemUIDisplay : MonoBehaviour
 
     public void SetItemDisplayLevel( )
     {
-        mapLevel = Map.getMapLevel( );
+        mapLevel = Map.GetMapLevel( );
 
         switch( mapLevel )
         {

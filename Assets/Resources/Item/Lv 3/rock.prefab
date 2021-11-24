@@ -215,12 +215,12 @@ SpriteRenderer:
   m_SortingLayerID: 92946567
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 5bfa633c939d24c94b8c5db1d366b2f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1af6bb35d708441b290fe059f125d7d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.8, y: 6.2}
+  m_Size: {x: 6.4, y: 3.73}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -241,7 +241,7 @@ MonoBehaviour:
   slider: {fileID: 2134248640082176931}
   text: {fileID: 6492151686986929927}
   Timer: 30
-  OriginalImage: {fileID: 21300000, guid: 5bfa633c939d24c94b8c5db1d366b2f8, type: 3}
+  OriginalImage: {fileID: 21300000, guid: 1af6bb35d708441b290fe059f125d7d7, type: 3}
   TimedOutImage: {fileID: 21300000, guid: 9be159e7aca9745249d637d6d2b43dca, type: 3}
 --- !u!114 &3957931254818620469
 MonoBehaviour:

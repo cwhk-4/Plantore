@@ -18,13 +18,13 @@ public class PlayerData : MonoBehaviour
     public void getPlayerData( )
     {
         nowTime = TimeController.GetNowSec( ) - 1;
-        mapLevel = MapLevel.getMapLevel( );
+        mapLevel = MapLevel.GetMapLevel( );
     }
 
     public void loadPlayerData( )
     {
         TimeController.loadNowSec( nowTime );
-        MapLevel.loadMapLevel( mapLevel );
+        MapLevel.LoadMapLevel( mapLevel );
     }
 
     public void savePlayer( )

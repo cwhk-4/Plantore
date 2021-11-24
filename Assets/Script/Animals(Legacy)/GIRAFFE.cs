@@ -44,7 +44,7 @@ public class GIRAFFE : MonoBehaviour
     {
         timeIn( );
         setTurnScale( );
-        if ( MapLevel.GetComponent<MapLevel>( ).getMapLevel( ) == 1 )
+        if ( MapLevel.GetComponent<MapLevel>( ).GetMapLevel( ) == 1 )
         {
             giraffeMove( );
         }

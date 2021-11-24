@@ -107,12 +107,12 @@ public class ItemBase : MonoBehaviour
     {
         CountDown.StartRepairing( );
 
-        if( MapLevel.getMapLevel( ) == 1 )
+        if( MapLevel.GetMapLevel( ) == 1 )
         {
             MissionControl.FixedItem1( );
         }
 
-        if( MapLevel.getMapLevel( ) == 2 )
+        if( MapLevel.GetMapLevel( ) == 2 )
         {
             MissionControl.FixedItem2( );
         }   

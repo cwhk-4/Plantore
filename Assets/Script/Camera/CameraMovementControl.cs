@@ -185,7 +185,7 @@ public class CameraMovementControl : MonoBehaviour
 
     private void LevelCheck()
     {
-        level = mapLevel.getMapLevel();
+        level = mapLevel.GetMapLevel();
 
         switch (level)
         {
