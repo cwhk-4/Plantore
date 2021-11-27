@@ -3,11 +3,13 @@ using UnityEngine.EventSystems;
 
 public class RubbishBin : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] private InstantiateMoveControl IMController;
     private BoxCollider2D tempCollider;
 
     public void DestroyItem( )
     {
         Destroy( GameObject.FindWithTag( "Instantiate" ) );
+        IMController.ItemDeleted( );
         tempCollider.enabled = true;
     }
 

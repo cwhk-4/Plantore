@@ -23,8 +23,8 @@ public class MissionCompletionControl : MonoBehaviour
         var box = Instantiate( Box, BoxParent.transform );
 
         box.SetActive( false );
-        box.transform.GetChild( 0 ).GetChild( 1 ).GetComponent<TMP_Text>( ).text
-            = "おめでとうございます！\n\n- クリア報酬 -\n" + Missions.GetMissionClearText( level );
+        box.transform.GetChild( 0 ).GetChild( 0 ).GetComponent<TMP_Text>( ).text
+            = Missions.GetMissionClearText( level );
         box.SetActive( true );
     }
 }

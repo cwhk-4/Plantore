@@ -6,38 +6,41 @@ public class ItemUIDisplay : MonoBehaviour
 {
     [SerializeField] private ItemStorage storage;
 
+    [Header( "Map Level" )]
+    [SerializeField] private MapLevel Map;
+    [SerializeField] private int mapLevel;
+
+    [Header("Item")]
+    [SerializeField] private int itemTotalNum;
+    [Space]
     [SerializeField] private Transform ItemUI;
     [SerializeField] private GameObject[] Items;
     [SerializeField] private Button[] ItemButtons;
     [SerializeField] private Image[] ItemButtonsImage;
-    [SerializeField] private MapLevel map;
 
     private int level1Limit = 3;
     private int level2Limit = 5;
     private int level3Limit = 6;
-    [SerializeField] private int totalNum;
 
-    [SerializeField] private MapLevel Map;
-    [SerializeField] private int mapLevel;
-
+    [Header( "Item Image" )]
     [SerializeField] private Sprite[] OpenedImage;
     [SerializeField] private Sprite[] ClosedImage;
 
     void Start()
     {
-        mapLevel = map.GetMapLevel( );
+        mapLevel = Map.GetMapLevel( );
         Init( );
     }
 
     private void Init( )
     {
-        totalNum = ( int )Define.ITEM.TOTAL_NUM;
+        itemTotalNum = ( int )Define.ITEM.TOTAL_NUM;
 
-        Items = new GameObject[totalNum];
-        ItemButtons = new Button[totalNum];
-        ItemButtonsImage = new Image[totalNum];
+        Items = new GameObject[itemTotalNum];
+        ItemButtons = new Button[itemTotalNum];
+        ItemButtonsImage = new Image[itemTotalNum];
 
-        for( int i = 0; i < totalNum; i++ )
+        for( int i = 0; i < itemTotalNum; i++ )
         {
             Items[i] = ItemUI.GetChild( i ).GetChild(0).gameObject;
             ItemButtons[i] = ItemUI.GetChild( i ).GetComponent<Button>( );
@@ -76,7 +79,7 @@ public class ItemUIDisplay : MonoBehaviour
 
     private void SetItemVisibility( int limit )
     {
-        for( int i = 0; i < totalNum; i++ )
+        for( int i = 0; i < itemTotalNum; i++ )
         {
             if( i < limit )
             {
@@ -95,7 +98,7 @@ public class ItemUIDisplay : MonoBehaviour
 
     private void SetItemLimit( int limit )
     {
-        for( int i = 0; i < totalNum; i++ )
+        for( int i = 0; i < itemTotalNum; i++ )
         {
             if( i < limit )
             {

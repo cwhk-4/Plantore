@@ -3,21 +3,22 @@
 public class SettingUIControl : MonoBehaviour
 {
     [SerializeField] private GameObject settingUI;
+    [SerializeField] private TimeController TimeController;
 
     void Start()
     {
-        CloseSettingUI( );
+        settingUI.SetActive( false );
     }
 
     public void CloseSettingUI( )
     {
         settingUI.SetActive( false );
-        Time.timeScale = 1;
+        TimeController.StartTime( );
     }
 
     public void OpenSettingUI( )
     {
         settingUI.SetActive( true );
-        Time.timeScale = 0;
+        TimeController.StopTime( );
     }
 }

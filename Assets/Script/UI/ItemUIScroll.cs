@@ -1,23 +1,29 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemUIScroll : MonoBehaviour
 {
-    [SerializeField] private RectTransform ScrollTransform;
-    [SerializeField] private float ScrollingSpeed;
-    [SerializeField] private float ScrollLimit = 800f;
-
-    private int[] PageLimit = { 0, 1, 1 };
-    [SerializeField] private int NowPage = 0;
-
+    [Header( "Map Info" )]
     [SerializeField] private MapLevel map;
     private int mapLevel;
 
-    [SerializeField] private GameObject LeftButton;
-    [SerializeField] private GameObject RightButton;
-
+    [Header("Scrolling Setting")]
+    [SerializeField] private RectTransform ScrollTransform;
+    [SerializeField] private float ScrollingSpeed;
+    [SerializeField] private float ScrollLimit = 800f;
     [SerializeField] private bool ToLeft = false;
     [SerializeField] private bool ToRight = false;
 
+    [Header( "Page" )]
+    private int[] PageLimit = { 0, 1, 1 };
+    [SerializeField] private int NowPage = 0;
+    [SerializeField] private Image PageImage;
+    [SerializeField] private Sprite[] PageSprite;
+
+    [Header( "Button Setup" )]
+    [SerializeField] private GameObject LeftButton;
+    [SerializeField] private GameObject RightButton;
+    
     private void Start( )
     {
         ResetScrollValue( );
@@ -41,6 +47,7 @@ public class ItemUIScroll : MonoBehaviour
         }
         else
         {
+            PageImage.sprite = PageSprite[NowPage];
             ToLeft = false;
         }
 
@@ -53,6 +60,7 @@ public class ItemUIScroll : MonoBehaviour
         }
         else
         {
+            PageImage.sprite = PageSprite[NowPage];
             ToRight = false;
         }
 

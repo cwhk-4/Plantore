@@ -3,21 +3,22 @@
 public class HelpUIControl : MonoBehaviour
 {
     [SerializeField] private GameObject helpUI;
+    [SerializeField] private TimeController TimeController;
 
     void Start( )
     {
-        CloseHelpUI( );
+        helpUI.SetActive( false );
     }
 
     public void CloseHelpUI( )
     {
         helpUI.SetActive( false );
-        Time.timeScale = 1;
+        TimeController.StartTime( );
     }
 
     public void OpenHelpUI( )
     {
         helpUI.SetActive( true );
-        Time.timeScale = 0;
+        TimeController.StopTime( );
     }
 }

@@ -14,8 +14,8 @@ public class AnimalBase : MonoBehaviour
     private Transform AnimalParent;
     private Transform CameraTransform;
 
-    private readonly float StartingCD = 5f;
-    private readonly float ActionCD = 3f;
+    private float StartingCD = 5f;
+    private float ActionCD = 3f;
     private List<int> HuntingList = new List<int>( );
     private List<int> FightingList = new List<int>( );
 
@@ -211,6 +211,7 @@ public class AnimalBase : MonoBehaviour
         {
             _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
             _animal.State = ( int )AnimalData.ANIMAL_STATE.REST;
+            ChangeDir( );
             return;
         }
 
@@ -240,6 +241,19 @@ public class AnimalBase : MonoBehaviour
     }
 
     #region Action
+    private void ChangeDir()
+    {
+        //left = false right = true
+        if( transform.position.x >= _animal.TargetPos.x )
+        {
+            gameObject.GetComponent<SpriteRenderer>( ).flipX = false;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>( ).flipX = true;
+        }
+    }
+
     private void CheckTerritory( )
     {
         FightingList.Clear( );
@@ -296,6 +310,7 @@ public class AnimalBase : MonoBehaviour
                     //not available then reset and return
                     _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
                     _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
+                    ChangeDir( );
                     return;
                 }
 
@@ -304,6 +319,7 @@ public class AnimalBase : MonoBehaviour
                 {
                     _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
                     _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
+                    ChangeDir( );
                     return;
                 }
 
@@ -320,6 +336,7 @@ public class AnimalBase : MonoBehaviour
             {
                 _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
                 _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
+                ChangeDir( );
                 return;
             }
 
@@ -327,6 +344,7 @@ public class AnimalBase : MonoBehaviour
             {
                 _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
                 _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
+                ChangeDir( );
                 return;
             }
 
@@ -353,6 +371,7 @@ public class AnimalBase : MonoBehaviour
                     //not available then reset and return
                     _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
                     _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
+                    ChangeDir( );
                     return;
                 }
 
@@ -360,6 +379,7 @@ public class AnimalBase : MonoBehaviour
                 {
                     _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
                     _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
+                    ChangeDir( );
                     return;
                 }
 
@@ -376,6 +396,7 @@ public class AnimalBase : MonoBehaviour
             {
                 _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
                 _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
+                ChangeDir( );
                 return;
             }
 
@@ -383,11 +404,13 @@ public class AnimalBase : MonoBehaviour
             {
                 _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
                 _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
+                ChangeDir( );
                 return;
             }
 
             _animal.TargetPos = targetAnimal.transform.position;
             _animal.State = ( int )AnimalData.ANIMAL_STATE.WAITING_FOR_HUNTING;
+            ChangeDir( );
 
         }
 
@@ -434,6 +457,7 @@ public class AnimalBase : MonoBehaviour
 
         _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
         _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
+        ChangeDir( );
     }
 
     //destory
@@ -452,6 +476,7 @@ public class AnimalBase : MonoBehaviour
     {
         _animal.TargetPos = _animal.OriginalPos;
         _animal.State = ( int )AnimalData.ANIMAL_STATE.LEAVE_ITEM;
+        ChangeDir( );
     }
 
     //item fixed
@@ -459,6 +484,7 @@ public class AnimalBase : MonoBehaviour
     {
         _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
         _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
+        ChangeDir( );
     }
 
     //call after environment finished moving
@@ -468,6 +494,7 @@ public class AnimalBase : MonoBehaviour
         _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
         _animal.CDStartingTime = TimeController.GetNowSec( );
         _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
+        ChangeDir( );
     }
     #endregion
 
@@ -479,6 +506,7 @@ public class AnimalBase : MonoBehaviour
 
         Debug.Log( target );
         _animal.TargetPos = GridParent.GetChild( target ).position;
+        ChangeDir( );
 
         _animal.CDStartingTime = TimeController.GetNowSec( );
         _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
@@ -515,6 +543,23 @@ public class AnimalBase : MonoBehaviour
         return _animal.State;
     }
 
+    public bool GetOnItem( )
+    {
+        if( _animal.State > ( int )AnimalData.ANIMAL_STATE.STARTING_PATROL )
+        {
+            return true;
+        }
+
+        return false;
+    }
+    #endregion
+
+    #region Cheating
+    public void CallImmediatelyFromStartingCD( )
+    {
+        _animal.CDStartingTime = TimeController.GetNowSec( );
+        _animal.State = ( int )AnimalData.ANIMAL_STATE.STARTING_PATROL;
+    }
     #endregion
 
     #region Checking

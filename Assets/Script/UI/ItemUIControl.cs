@@ -2,23 +2,23 @@
 
 public class ItemUIControl : MonoBehaviour
 {
-    public GameObject ItemMenu;
+    [SerializeField] private GameObject ItemMenu;
+    [SerializeField] private TimeController TimeController;
 
     void Start( )
     {
-        closeUIMenu( );
-        Time.timeScale = 1;
+        ItemMenu.SetActive( false );
     }
 
     public void openUIMenu( )
     {
         ItemMenu.SetActive( true );
-        Time.timeScale = 0;
+        TimeController.StopTime( );
     }
 
     public void closeUIMenu( )
     {
         ItemMenu.SetActive( false );
-        Time.timeScale = 1;
+        TimeController.StartTime( );
     }
 }

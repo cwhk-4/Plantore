@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class IndexUIControl : MonoBehaviour
 {
+    [SerializeField] private TimeController TimeController;
     [SerializeField] private GameObject IndexUI;
     [SerializeField] private GameObject IndexContent;
     [SerializeField] private MissionControl MissionControl;
@@ -12,7 +13,7 @@ public class IndexUIControl : MonoBehaviour
     void Start( )
     {
         InitAnimalButton( );
-        CloseIndexUI( );
+        IndexUI.SetActive( false );
         CloseContent( );
     }
 
@@ -20,7 +21,7 @@ public class IndexUIControl : MonoBehaviour
     {
         CloseContent( );
         IndexUI.SetActive( false );
-        Time.timeScale = 1;
+        TimeController.StartTime( );
     }
 
     public void OpenIndexUI( )
@@ -28,7 +29,7 @@ public class IndexUIControl : MonoBehaviour
         CheckAnimal( );
 
         IndexUI.SetActive( true );
-        Time.timeScale = 0;
+        TimeController.StopTime( );
     }
 
     private void InitAnimalButton( )

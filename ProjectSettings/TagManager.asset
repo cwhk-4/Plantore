@@ -45,6 +45,7 @@ TagManager:
   - GridParent
   - AnimalParent
   - AnimalController
+  - Tutorial
   layers:
   - Default
   - TransparentFX

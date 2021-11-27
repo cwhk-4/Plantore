@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MapUIControl : MonoBehaviour
 {
@@ -28,7 +26,8 @@ public class MapUIControl : MonoBehaviour
         Map2 = new Vector3(camPos.position.x, camPos.position.y + Height, camPos.position.z);
         Map3 = new Vector3(camPos.position.x + Width, camPos.position.y + Height, camPos.position.z);
         Map4 = new Vector3(camPos.position.x + Width, camPos.position.y, camPos.position.z);
-        closeMap();
+
+        Map.SetActive( false );
     }
 
     public void openMap()

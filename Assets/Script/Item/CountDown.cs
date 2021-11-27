@@ -14,6 +14,8 @@ public class CountDown : MonoBehaviour
     private float startingTime;
     private float CD;
 
+    private bool isForcingDry = false;
+
     [SerializeField]private Sprite OriginalImage;
     [SerializeField]private Sprite TimedOutImage;
 
@@ -35,6 +37,14 @@ public class CountDown : MonoBehaviour
 
     void Update()
     {
+        if( isForcingDry )
+        {
+            spriteRenderer.sprite = TimedOutImage;
+            CD = 0;
+            slider.value = ( CD / Timer );
+            return;
+        }
+
         if( ( timeController.GetNowSec( ) - startingTime ) > Timer )
         {
             startingTime = timeController.GetNowSec( ) - Timer;
@@ -93,6 +103,8 @@ public class CountDown : MonoBehaviour
         {
             animal.GetComponent<AnimalBase>( ).ItemFixed( );
         }
+
+        isForcingDry = false;
     }
 
     public float GetStartTime( )
@@ -113,5 +125,13 @@ public class CountDown : MonoBehaviour
     public float GetCD( )
     {
         return CD;
+    }
+
+    public void ForceDryItem()
+    {
+        spriteRenderer.sprite = TimedOutImage;
+        CD = 0;
+        slider.value = ( CD / Timer );
+        isForcingDry = true;
     }
 }

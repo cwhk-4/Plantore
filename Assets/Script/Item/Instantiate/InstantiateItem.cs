@@ -6,6 +6,8 @@ public class InstantiateItem : MonoBehaviour
     private TimeController TimeController;
     private ItemStorage ItemStorage;
     private AvailabilityControl Availability;
+    private TutorialControl TutorialControl;
+    private TutorialEvent TutorialEvent;
 
     [SerializeField]private GameObject ItemToInstantiate;
     private GameObject parentGO;
@@ -20,6 +22,8 @@ public class InstantiateItem : MonoBehaviour
         IMController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
         ItemStorage = GameObject.Find( "ItemStorage" ).GetComponent<ItemStorage>( );
         Availability = GameObject.Find( "AvailabilityController" ).GetComponent<AvailabilityControl>( );
+        TutorialControl = GameObject.FindWithTag( "Tutorial" ).GetComponent<TutorialControl>( );
+        TutorialEvent = GameObject.FindWithTag( "Tutorial" ).GetComponent<TutorialEvent>( );
 
         thisStartingTime = TimeController.GetNowSec( );
 
@@ -103,24 +107,24 @@ public class InstantiateItem : MonoBehaviour
                 IMController.InstantiateExtraGrid( itemNum, item );
             }
 
-            #region !Tutorial
-            if( name != "Tutorial_grass(Clone)" )
+            if( IMController.GetIsMoving( ) )
             {
-                if( IMController.GetIsMoving( ) )
-                {
-                    item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
-                    var timeDelayed = TimeController.GetNowSec( ) - thisStartingTime;
-                    item.GetComponent<CountDown>( ).SetStartingTime( IMController.GetStartingTime( ) + timeDelayed );
-                    Debug.Log( timeDelayed );
-                }
-                else
-                {
-                    item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
-                    item.GetComponent<CountDown>( ).SetStartingTime( TimeController.GetNowSec( ) );
-                }
-
+                item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
+                var timeDelayed = TimeController.GetNowSec( ) - thisStartingTime;
+                item.GetComponent<CountDown>( ).SetStartingTime( IMController.GetStartingTime( ) + timeDelayed );
+                Debug.Log( timeDelayed );
             }
-            #endregion
+            else
+            {
+                item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
+                item.GetComponent<CountDown>( ).SetStartingTime( TimeController.GetNowSec( ) );
+            }
+
+            if( TutorialControl.GetTextCount( ) < 12 )
+            {
+                TutorialEvent.ClearGrid( );
+                TutorialEvent.HidePointer( );
+            }
 
             Availability.ItemInstantiated( index );
 
@@ -133,7 +137,6 @@ public class InstantiateItem : MonoBehaviour
             {
                 IMController.FinishMoving( index );
             }
-
             Destroy( gameObject );
         }
     }

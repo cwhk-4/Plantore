@@ -14,9 +14,8 @@ public class MissionsList : MonoBehaviour
 	[SerializeField] private Missions[] Missions = new Missions[9];
 
 	private readonly string[] MissionClearText =
-		{ "草、木、岩が1つふえました！\n草原、沼がついかされました！\nマップが広くなりました！",
-		  "草、木、岩、草原、沼が1つふえました！\n稲穂生える草原、大岩がついかされました！\nマップが広くなりました！",
-		  "草、木、岩、草原、沼、\n稲穂生える草原、大岩が1つふえました！\n湖、岩群がついかされました！\nマップが広くなりました！"};
+		{ "\"くさ\" \"き\" \"いわ\"が1つずつふえた\nかんきょうに\"そうげん\" \"ぬま\"がついか\nマップがおおきくなった",
+		  "\"くさ\" \"き\" \"いわ\" \"そうげん\" \"ぬま\"が1つずつふえた\nかんきょうに\"いわ(大)\"がついか\nマップがおおきくなった",};
 
     private void Awake( )
     {

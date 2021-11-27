@@ -2,6 +2,7 @@
 
 public class PopUpAnimation : MonoBehaviour
 {
+    [SerializeField] private TimeController TimeController;
     [SerializeField] private GameObject MapUI;
     [SerializeField] private MenuUIControl menuControl;
     [SerializeField] private RectTransform targetBoard;
@@ -32,7 +33,7 @@ public class PopUpAnimation : MonoBehaviour
             {
                 IsShowing = false;
                 BoardShown = true;
-                Time.timeScale = 0;
+                TimeController.StopTime( );
             }
         }
 
@@ -49,7 +50,7 @@ public class PopUpAnimation : MonoBehaviour
                 BoardShown = false;
                 menuControl.DisableBG( );
                 targetBoard.gameObject.SetActive( false );
-                Time.timeScale = 1;
+                TimeController.StartTime( );
             }
         }
     }

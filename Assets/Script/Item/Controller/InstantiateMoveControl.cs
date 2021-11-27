@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class InstantiateMoveControl : MonoBehaviour
 {
+    [SerializeField] private TimeController TimeController;
     [SerializeField] private MissionControl missionControl;
     [SerializeField] private MapLevel mapLevel;
     [SerializeField] private AnimalInstantiate animalInstantiate;
@@ -52,13 +53,13 @@ public class InstantiateMoveControl : MonoBehaviour
     public void StartInstantiate( )
     {
         isInstantiating = true;
-        Time.timeScale = 0;
+        TimeController.StopTime( );
         SetUIActive( false );
     }
 
     public void FinishedByInstan( )
     {
-        Time.timeScale = 1;
+        TimeController.StartTime( );
 
         missionControl.PlacedItem( );
 
@@ -69,7 +70,7 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         isInstantiating = false;
 
-        Time.timeScale = 1;
+        TimeController.StartTime( );
         SetUIActive( true );
     }
 
@@ -85,7 +86,7 @@ public class InstantiateMoveControl : MonoBehaviour
         movingAnimal = GO;
 
         startingTime = time;
-        Time.timeScale = 0;
+        TimeController.StopTime( );
         SetUIActive( false );
     }
 
@@ -99,7 +100,16 @@ public class InstantiateMoveControl : MonoBehaviour
         movingAnimal.GetComponent<AnimalBase>( ).EnvironmentMoved( targetIndex );
         movingAnimal = null;
 
-        Time.timeScale = 1;
+        TimeController.StartTime( );
+        SetUIActive( true );
+    }
+
+    public void ItemDeleted()
+    {
+        isMoving = false;
+        isInstantiating = false;
+
+        TimeController.StartTime( );
         SetUIActive( true );
     }
 
