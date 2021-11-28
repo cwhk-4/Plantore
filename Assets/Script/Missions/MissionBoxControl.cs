@@ -2,6 +2,13 @@
 
 public class MissionBoxControl : MonoBehaviour
 {
+    [SerializeField] private TutorialControl TutorialControl;
+
+    public void Init(TutorialControl tutorial)
+    {
+        TutorialControl = tutorial;
+    }
+
     private void Start( )
     {
         transform.localScale = Vector3.zero;
@@ -18,5 +25,6 @@ public class MissionBoxControl : MonoBehaviour
     public void CloseBox( )
     {
         Destroy( gameObject.transform.parent.gameObject );
+        TutorialControl.LevelUp( );
     }
 }

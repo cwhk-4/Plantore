@@ -67,6 +67,9 @@ public class MissionTextDisplay : MonoBehaviour
             case 3:
                 MissionStartingNum = 6;
                 break;
+            case 4:
+                MissionStartingNum = 6;
+                break;
         }
 
         SetText( );

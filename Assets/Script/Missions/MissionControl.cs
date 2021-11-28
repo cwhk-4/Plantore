@@ -7,6 +7,7 @@ public class MissionControl : MonoBehaviour
     [SerializeField] private MapLevel MapLevel;
     [SerializeField] private PopUpAnimation Animation;
     [SerializeField] private MissionCompletionControl CompletionControl;
+    [SerializeField] private TutorialControl TutorialControl;
 
     private int NowMapLevel;
 
@@ -67,8 +68,13 @@ public class MissionControl : MonoBehaviour
     public void OpenMission( )
     {
         NowMapLevel = MapLevel.GetMapLevel( );
+        if( NowMapLevel == 4 )
+        {
+            NowMapLevel = 3;
+        }
         NowStartingMission = MissionStartingNum[NowMapLevel - 1];
 
+        CheckAnimalFound( );
         UpdateMissionNum( );
         CheckMissionsCompletion( );
 
@@ -77,6 +83,12 @@ public class MissionControl : MonoBehaviour
 
     private void UpdateMissionNum( )
     {
+        if( NowMapLevel == 4 )
+        {
+            NowStartingMission = MissionStartingNum[NowMapLevel - 1];
+            NowMapLevel = 3;
+        }
+
         for( int i = NowStartingMission; i < MissionStartingNum[NowMapLevel]; i++ )
         {
             MissionNowNum[i - NowStartingMission].text = MissionNum[i].ToString( );
@@ -239,6 +251,28 @@ public class MissionControl : MonoBehaviour
         }
     }
 
+    public void CheckAnimalFound()
+    {
+        int count = 0;
+        for( int i = 0; i < ( int )Define.ANIMAL.TOTAL_NUM; i++ )
+        {
+            if( AnimalFound[i] )
+            {
+                count++;
+            }
+        }
+        MissionNum[8] = count;
+    }
+
+    public void FillIndex( )
+    {
+        for( int i = 0; i < ( int )Define.ANIMAL.TOTAL_NUM; i++ )
+        {
+            AnimalFound[i] = true;
+        }
+        MissionNum[8] = MissionTotalNum[8];
+    }
+
     public bool GetAnimalFound( int index )
     {
         return AnimalFound[index];
@@ -247,6 +281,12 @@ public class MissionControl : MonoBehaviour
     private void GoToNextLevel( )
     {
         MapLevel.SetMapLevel( NowMapLevel + 1 );
+
+        if( NowMapLevel + 1 == 4 )
+        {
+            TutorialControl.StartTutorial( );
+            return;
+        }
 
         if( !IsLvCompletionShown[NowMapLevel - 1] )
         {

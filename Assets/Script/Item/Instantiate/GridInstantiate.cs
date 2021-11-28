@@ -5,6 +5,8 @@ public class GridInstantiate : MonoBehaviour
     [SerializeField] private GameObject grid;
     [SerializeField] private GridAvailabilityControl availabilityControl;
     [SerializeField] private GridTerritoryControl territoryControl;
+    [SerializeField] private AvailabilityControl availability;
+    [SerializeField] private InstantiateMoveControl imControl;
 
     private int x;
     private int y;
@@ -32,6 +34,7 @@ public class GridInstantiate : MonoBehaviour
 
                 var gridName = "x" + x + "y" + y;
                 gridInstan.name = gridName;
+                gridInstan.GetComponent<MouseOnGrid>( ).Init( availability, imControl );
 
                 availabilityControl.SetGrid( totalGridCount, gridInstan );
                 territoryControl.SetGrid( totalGridCount );

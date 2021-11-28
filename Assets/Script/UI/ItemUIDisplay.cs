@@ -51,6 +51,10 @@ public class ItemUIDisplay : MonoBehaviour
     public void SetMapLevel( int level )
     {
         mapLevel = level;
+        if(mapLevel == 4)
+        {
+            mapLevel = 3;
+        }    
         SetItemDisplayLevel( );
     }
 
@@ -71,6 +75,11 @@ public class ItemUIDisplay : MonoBehaviour
                 break;
 
             case 3:
+                SetItemVisibility( level3Limit );
+                SetItemLimit( level3Limit );
+                break;
+
+            case 4:
                 SetItemVisibility( level3Limit );
                 SetItemLimit( level3Limit );
                 break;

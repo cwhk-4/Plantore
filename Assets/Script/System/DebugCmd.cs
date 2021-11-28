@@ -12,11 +12,6 @@ public class DebugCmd : MonoBehaviour
                 SceneManager.LoadSceneAsync( "Title" );
             }
 
-            if( Input.GetKey( KeyCode.W ) )
-            {
-                SceneManager.LoadSceneAsync( "Tutorial" );
-            }
-
             if( Input.GetKey( KeyCode.E ) )
             {
                 SceneManager.LoadSceneAsync( "Stage" );

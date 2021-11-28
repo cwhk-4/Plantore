@@ -202,8 +202,8 @@ public class CameraMovementControl : MonoBehaviour
                 horiLimit = 12.8f;
                 break;
             case 4:
-                vertLimit = 10.8f;
-                horiLimit = 19.2f;
+                vertLimit = 7.2f;
+                horiLimit = 12.8f;
                 break;
         }
     }

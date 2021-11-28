@@ -38,6 +38,7 @@ public class InstantiateMoveControl : MonoBehaviour
         if( isInstantiating || isMoving )
         {
             rubbishBin.gameObject.SetActive( true );
+            SetUIActive( false );
         }
         else
         {

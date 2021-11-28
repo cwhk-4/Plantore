@@ -26,10 +26,18 @@ public class TutorialEvent : MonoBehaviour
     [SerializeField] private Transform GridParent;
     [SerializeField] private GameObject GridBlock;
 
+    private Vector2 LeftBottomGrid = new Vector2( -675, -480 );
+    private Vector2 RightTopGrid = new Vector2( 900, 125 );
+    private Vector2 Item = new Vector2( 520, 285 );
+    private Vector2 Mission = new Vector2( 900, 285 );
+    private Vector2 Grass = new Vector2( -210, -255 );
+    private Vector2 Rock = new Vector2( 480, -255 );
+    private Vector2 Arrow = new Vector2( 900, -115 );
+
     [SerializeField] private ToolConvertion Tool;
 
     [Header( "Parents" )]
-    [SerializeField] private Transform StageParent;
+    [SerializeField] private Transform MapControlParent;
     [SerializeField] private Transform MenuParent;
     [SerializeField] private Transform ItemParent;
 
@@ -38,6 +46,7 @@ public class TutorialEvent : MonoBehaviour
     [SerializeField] private GameObject GrassButton;
     [SerializeField] private GameObject RockButton;
     [SerializeField] private GameObject MissionButton;
+    [SerializeField] private GameObject MapArrow;
 
     private void Start( )
     {
@@ -108,12 +117,12 @@ public class TutorialEvent : MonoBehaviour
         StageBlock.gameObject.SetActive( true );
         ItemButton.transform.parent = StageBlock;
 
-        ShowPointer( Vector2.zero );
+        ShowPointer( Item );
     }
 
     public void MenuClicked( )
     {
-        if( TutorialControl.GetTextCount() < 12 )
+        if( TutorialControl.GetTextCount() < 11 )
         {
             StageBlock.gameObject.SetActive( false );
             ItemButton.transform.parent = MenuParent;
@@ -137,18 +146,23 @@ public class TutorialEvent : MonoBehaviour
     private void ClickGrass( )
     {
         GrassButton.transform.parent = UIBlock;
-        ShowPointer( Vector2.zero );
+        ShowPointer( Grass );
     }
 
     public void ClickRock( )
     {
         ItemButton.transform.parent = MenuParent;
         RockButton.transform.parent = UIBlock;
-        ShowPointer( Vector2.zero );
+        ShowPointer( Rock );
     }
 
     public void ItemClicked( )
     {
+        if( TutorialControl.GetTextCount( ) > 11 )
+        {
+            return;
+        }
+
         GrassButton.transform.parent = ItemParent;
         RockButton.transform.parent = ItemParent;
 
@@ -158,12 +172,23 @@ public class TutorialEvent : MonoBehaviour
 
         if( isGrass )
         {
-            isGrass = false;
+            ShowPointer( LeftBottomGrid );
+        }
+        else
+        {
+            ShowPointer( RightTopGrid );
         }
 
         TutorialControl.FinishedAction( );
-        ShowPointer( Vector2.zero );
 
+    }
+
+    public void RockButtonClicked( )
+    {
+        RockButton.transform.parent = ItemParent;
+        isWaitingOnGrid = true;
+        UIBlock.gameObject.SetActive( false );
+        ShowPointer( RightTopGrid );
     }
 
     private void ShowPointer( Vector2 toPos )
@@ -199,7 +224,15 @@ public class TutorialEvent : MonoBehaviour
 
     private void PutOnGrid( )
     {
-        ShowPointer( Vector2.zero );
+        if( isGrass )
+        {
+            isGrass = false;
+            ShowPointer( LeftBottomGrid );
+        }
+        else
+        {
+            ShowPointer( RightTopGrid );
+        }
     }
 
     public void ClearGrid( )
@@ -238,7 +271,7 @@ public class TutorialEvent : MonoBehaviour
     {
         GrassCD = GridParent.GetChild( 0 ).GetChild( 0 ).GetComponent<CountDown>( );
         GrassCD.ForceDryItem( );
-        ShowPointer( Vector2.zero );
+        ShowPointer( LeftBottomGrid );
 
         Count = 1;
         isCounting = true;
@@ -265,23 +298,42 @@ public class TutorialEvent : MonoBehaviour
     {
         isWaitingToRepair = true;
         HideRightClick( );
-        ShowPointer( Vector2.zero );
+        ShowPointer( LeftBottomGrid );
     }
 
     public void OpenMission( )
     {
+        ShowPointer( Mission );
         StageBlock.gameObject.SetActive( true );
         MissionButton.transform.parent = StageBlock;
     }
 
     public void ClickedMission( )
     {
-        StageBlock.gameObject.SetActive( false );
-        MissionButton.transform.parent = MenuParent;
-
-        if( TutorialControl.GetTextCount( ) < 20 )
+        if( TutorialControl.GetTextCount( ) == 17 )
         {
+            HidePointer( );
             TutorialControl.FinishedThisAction( );
+            StageBlock.gameObject.SetActive( false );
+            MissionButton.transform.parent = MenuParent;
+        }
+    }
+
+    public void GuideToMapArrow( )
+    {
+        ShowPointer( Arrow );
+        StageBlock.gameObject.SetActive( true );
+        MapArrow.transform.parent = StageBlock;
+    }
+
+    public void MapArrowClicked( )
+    {
+        if( TutorialControl.GetTextCount( ) == 15 )
+        {
+            HidePointer( );
+            TutorialControl.FinishedThisAction( );
+            StageBlock.gameObject.SetActive( false );
+            MapArrow.transform.parent = MapControlParent;
         }
     }
 }

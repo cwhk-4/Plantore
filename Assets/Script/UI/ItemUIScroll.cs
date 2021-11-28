@@ -15,7 +15,7 @@ public class ItemUIScroll : MonoBehaviour
     [SerializeField] private bool ToRight = false;
 
     [Header( "Page" )]
-    private int[] PageLimit = { 0, 1, 1 };
+    private int[] PageLimit = { 0, 1, 1, 1 };
     [SerializeField] private int NowPage = 0;
     [SerializeField] private Image PageImage;
     [SerializeField] private Sprite[] PageSprite;
@@ -28,12 +28,20 @@ public class ItemUIScroll : MonoBehaviour
     {
         ResetScrollValue( );
         mapLevel = map.GetMapLevel( );
+        if( mapLevel == 4 )
+        {
+            mapLevel = 3;
+        }
     }
 
     public void OpenScroll( )
     {
         ResetScrollValue( );
         mapLevel = map.GetMapLevel( );
+        if( mapLevel == 4 )
+        {
+            mapLevel = 3;
+        }
     }
 
     private void Update( )
@@ -91,12 +99,21 @@ public class ItemUIScroll : MonoBehaviour
             ToLeft = true;
             ToRight = false;
             mapLevel = map.GetMapLevel( );
+            if( mapLevel == 4 )
+            {
+                mapLevel = 3;
+            }
         }
     }
 
     public void RightButtonClick( )
     {
         mapLevel = map.GetMapLevel( );
+
+        if( mapLevel == 4 )
+        {
+            mapLevel = 3;
+        }
 
         if( NowPage < PageLimit[mapLevel - 1] )
         {

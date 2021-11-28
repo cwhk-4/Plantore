@@ -2,13 +2,13 @@
 
 public class MouseOnGrid : MonoBehaviour
 {
-    private AvailabilityControl availabilityControl;
-    private InstantiateMoveControl imController;
+    [SerializeField] private AvailabilityControl availabilityControl;
+    [SerializeField] private InstantiateMoveControl imController;
 
-    private void Start( )
+    public void Init( AvailabilityControl availability, InstantiateMoveControl control)
     {
-        imController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
-        availabilityControl = GameObject.FindWithTag( "GridAvailability" ).GetComponent<AvailabilityControl>( );
+        availabilityControl = availability;
+        imController = control;
     }
 
     private void OnMouseOver( )

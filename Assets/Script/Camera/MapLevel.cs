@@ -3,7 +3,7 @@
 public class MapLevel : MonoBehaviour
 {
     [SerializeField] private int level = 1;
-    private int[,] MapSize = new int[3,2] { { 6, 5 }, { 8, 7 }, { 10, 9 } };
+    private int[,] MapSize = new int[4, 2] { { 6, 5 }, { 8, 7 }, { 10, 9 }, { 10, 9 } };
 
     [SerializeField] private MissionTextDisplay MissionText;
     [SerializeField] private ItemUIDisplay ItemUIDisplay;

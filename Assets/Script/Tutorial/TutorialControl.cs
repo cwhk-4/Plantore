@@ -6,11 +6,13 @@ using System.Linq;
 public class TutorialControl : MonoBehaviour
 {
     [Header( "Flag" )]
+    [SerializeField] private bool isTutorial = true;
     [SerializeField] private bool isReadText = false;
     [SerializeField] private bool isInAction = false;
     [SerializeField] private bool isFinishedAction = false;
 
     [Header( "Tutorial Setup" )]
+    [SerializeField] private MapLevel MapLevel;
     [SerializeField] private TimeController TimeController;
     [SerializeField] private TutorialEvent TutorialEvent;
     [SerializeField] private TutorialList TutorialList;
@@ -32,10 +34,7 @@ public class TutorialControl : MonoBehaviour
     void Start()
     {
         TextCount = 0;
-        isReadText = true;
-        isInAction = false;
-        isFinishedAction = false;
-        TimeController.StopTime( );
+        StartTutorial( );
 
         Init( );
         SetText( );
@@ -43,6 +42,11 @@ public class TutorialControl : MonoBehaviour
 
     void Update()
     {
+        if( !isTutorial )
+        {
+            return;
+        }
+
         if(isInAction)
         {
             return;
@@ -78,6 +82,7 @@ public class TutorialControl : MonoBehaviour
             }
             else
             {
+                StopTutorial( );
                 TutorialUI.SetActive( false );
                 isReadText = false;
                 isInAction = true;
@@ -85,6 +90,47 @@ public class TutorialControl : MonoBehaviour
                 TutorialEvent.HidePointer( );
             }
         }
+    }
+
+    public void StartTutorial( )
+    {
+        if( TextCount == 23 )
+        {
+            StopTutorial( );
+            return;
+        }
+
+        Debug.Log( "Called" );
+        isTutorial = true;
+        isReadText = true;
+        isInAction = false;
+        isFinishedAction = true;
+        TimeController.StopTime( );
+        TutorialUI.SetActive( true );
+        TutorialText.SetActive( true );
+    }
+
+    public void StopTutorial()
+    {
+        isTutorial = false;
+        TutorialUI.SetActive( false );
+        TutorialText.SetActive( false );
+        TutorialEvent.HidePointer( );
+    }
+
+    public void LevelUp( )
+    {
+        if( MapLevel.GetMapLevel( ) == 2 )
+        {
+            StartTutorial( );
+        }
+
+        if( MapLevel.GetMapLevel( ) == 4 )
+        {
+            StartTutorial( );
+        }
+
+        isFinishedAction = true;
     }
 
     #region text
@@ -148,6 +194,12 @@ public class TutorialControl : MonoBehaviour
 
     public void FinishedThisAction( )
     {
+        if( TextCount == 23 )
+        {
+            StopTutorial( );
+            return;
+        }
+
         isInAction = false;
         isReadText = true;
         isFinishedAction = true;
@@ -202,12 +254,15 @@ public class TutorialControl : MonoBehaviour
                 break;
 
             case 19:
+                StopTutorial( );
                 break;
 
             case 15:
+                TutorialEvent.GuideToMapArrow( );
                 break;
 
             case 16:
+                StopTutorial( );
                 break;
         }
     }

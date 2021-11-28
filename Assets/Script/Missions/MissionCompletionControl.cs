@@ -7,6 +7,7 @@ public class MissionCompletionControl : MonoBehaviour
     [SerializeField] private GameObject BoxParent;
     [SerializeField] private GameObject Box;
     [SerializeField] private GameObject Banner;
+    [SerializeField] private TutorialControl TutorialControl;
 
     public void CreateBanner( int index )
     {
@@ -25,6 +26,7 @@ public class MissionCompletionControl : MonoBehaviour
         box.SetActive( false );
         box.transform.GetChild( 0 ).GetChild( 0 ).GetComponent<TMP_Text>( ).text
             = Missions.GetMissionClearText( level );
+        box.transform.GetChild( 0 ).GetComponent<MissionBoxControl>( ).Init( TutorialControl );
         box.SetActive( true );
     }
 }

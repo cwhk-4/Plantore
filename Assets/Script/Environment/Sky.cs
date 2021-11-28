@@ -42,7 +42,7 @@ public class Sky : MonoBehaviour
                 break;
 
             case 4:
-                newPos = level4Pos;
+                newPos = level3Pos;
                 break;
         }
 
