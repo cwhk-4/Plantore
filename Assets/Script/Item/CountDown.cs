@@ -67,7 +67,7 @@ public class CountDown : MonoBehaviour
             {
                 spriteRenderer.sprite = TimedOutImage;
 
-                var animal = transform.parent.GetComponent<GridBase>( ).GetAnimal( );
+                var animal = transform.parent.GetComponent<GridBase>( ).GetMainAnimal( );
                 if( animal != null )
                 {
                     animal.GetComponent<AnimalBase>( ).ItemTimedOut( );

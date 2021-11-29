@@ -52,6 +52,7 @@ public class AnimalInstantiate : MonoBehaviour
                 break;
         }
 
+        GridParent.GetChild( index ).GetComponent<GridBase>( ).AddMainAnimal( animalGO );
         GridTerritoryControl.SetTerritory( animalGO, nowItemIndex, nowItemType, animalNum );
 
         return animalGO;

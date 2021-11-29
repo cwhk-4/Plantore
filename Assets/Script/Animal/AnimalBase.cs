@@ -271,7 +271,7 @@ public class AnimalBase : MonoBehaviour
 
             if( isOccupied )
             {
-                if( GridParent.GetChild( index ).GetComponent<GridBase>( ).GetIsCarnTerr( _animal.AnimalType ) )
+                if( GridParent.GetChild( index ).GetComponent<GridBase>( ).GetIsCarnTerr( ) )
                 {
                     FightingList.Add( index );
                 }
@@ -279,27 +279,25 @@ public class AnimalBase : MonoBehaviour
                 {
                     HuntingList.Add( index );
                 }
-
-                Debug.Log( "Added to List " + index );
             }
         }
     }
 
     private void SetTarget( )
     {
-        Debug.Log( "Enter Set Target" );
-
+        //fighting
         if( FightingList.Count > 0 )
         {
-            var target = FightingList[0];
+            int target = FightingList[0];
 
             //request
-            while( !ReactionControl.RequestAction( this.gameObject, target ) )
+            while( ReactionControl.RequestAction( this.gameObject, target ) )
             {
                 //still availble?
                 GameObject targetGO = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimal( );
 
-                if( targetGO == gameObject )
+                //target get is self?
+                if( targetGO == this.gameObject )
                 {
                     targetGO = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimalbyIndex( 1 );
                 }
@@ -327,7 +325,7 @@ public class AnimalBase : MonoBehaviour
 
             GameObject targetAnimal = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimal( );
 
-            if( targetAnimal == gameObject )
+            if( targetAnimal == this.gameObject )
             {
                 targetAnimal = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimalbyIndex( 1 );
             }
@@ -340,7 +338,7 @@ public class AnimalBase : MonoBehaviour
                 return;
             }
 
-            if( targetAnimal.GetComponent<AnimalBase>().GetAnimalState( ) <= ( int )AnimalData.ANIMAL_STATE.STARTING_PATROL )
+            if( targetAnimal.GetComponent<AnimalBase>( ).GetAnimalState( ) <= ( int )AnimalData.ANIMAL_STATE.STARTING_PATROL )
             {
                 _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
                 _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
@@ -351,21 +349,28 @@ public class AnimalBase : MonoBehaviour
             _animal.TargetPos = targetAnimal.transform.position;
 
             _animal.State = ( int )AnimalData.ANIMAL_STATE.WAITING_FOR_FIGHTING;
+
+            _animal.CDStartingTime = TimeController.GetNowSec( );
+
+            return;
         }
-        else
+
+        //hunting
+        if( HuntingList.Count > 0 )
         {
             var target = HuntingList[0];
 
             //request
-            while( !ReactionControl.RequestAction( this.gameObject, target ) )
+            while( ReactionControl.RequestAction( this.gameObject, target ) )
             {
                 //check still availble?
                 GameObject targetGO = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimal( );
 
-                if( targetGO == gameObject )
+                if( targetGO == this.gameObject )
                 {
                     targetGO = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimalbyIndex( 1 );
                 }
+
                 if( targetGO == null )
                 {
                     //not available then reset and return
@@ -375,7 +380,7 @@ public class AnimalBase : MonoBehaviour
                     return;
                 }
 
-                if( targetGO.GetComponent<AnimalBase>().GetAnimalState( ) <= ( int )AnimalData.ANIMAL_STATE.STARTING_PATROL )
+                if( targetGO.GetComponent<AnimalBase>( ).GetAnimalState( ) <= ( int )AnimalData.ANIMAL_STATE.STARTING_PATROL )
                 {
                     _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
                     _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
@@ -392,7 +397,7 @@ public class AnimalBase : MonoBehaviour
                 targetAnimal = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimalbyIndex( 1 );
             }
 
-            if(targetAnimal==null)
+            if( targetAnimal == null )
             {
                 _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
                 _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
@@ -400,7 +405,7 @@ public class AnimalBase : MonoBehaviour
                 return;
             }
 
-            if( targetAnimal.GetComponent<AnimalBase>().GetAnimalState( ) <= ( int )AnimalData.ANIMAL_STATE.STARTING_PATROL )
+            if( targetAnimal.GetComponent<AnimalBase>( ).GetAnimalState( ) <= ( int )AnimalData.ANIMAL_STATE.STARTING_PATROL )
             {
                 _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
                 _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
@@ -412,9 +417,10 @@ public class AnimalBase : MonoBehaviour
             _animal.State = ( int )AnimalData.ANIMAL_STATE.WAITING_FOR_HUNTING;
             ChangeDir( );
 
+            _animal.CDStartingTime = TimeController.GetNowSec( );
+
         }
 
-        _animal.CDStartingTime = TimeController.GetNowSec( );
     }
 
     //finish action and go back to patrol mode
@@ -464,6 +470,7 @@ public class AnimalBase : MonoBehaviour
     public void Hunted( )
     {
         GridParent.GetChild( _animal.TargetIndex ).GetComponent<GridBase>( ).AnimalDestoryed( _animal.TargetType, _animal.AnimalType, gameObject );
+        GridParent.GetChild( _animal.TargetIndex ).GetComponent<GridBase>( ).RemoveMainAnimal( this.gameObject );
         GridParent.GetChild( _animal.TargetIndex ).GetChild( 0 ).GetComponent<ItemBase>( ).AnimalRemoved( );
         Destroy( gameObject );
     }

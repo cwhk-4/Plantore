@@ -91,7 +91,13 @@ public class MissionControl : MonoBehaviour
 
         for( int i = NowStartingMission; i < MissionStartingNum[NowMapLevel]; i++ )
         {
-            MissionNowNum[i - NowStartingMission].text = MissionNum[i].ToString( );
+            int displayNum = MissionNum[i];
+
+            if(MissionNum[i] > MissionTotalNum[i])
+            {
+                displayNum = MissionTotalNum[i];
+            }
+            MissionNowNum[i - NowStartingMission].text = displayNum.ToString( );
         }
     }
 

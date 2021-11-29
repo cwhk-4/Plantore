@@ -7,6 +7,7 @@ public class GridBase : MonoBehaviour
     [SerializeField] private List<int> carnivoreList = new List<int>( );
     [SerializeField] private List<int> herbivoreList = new List<int>( );
     [SerializeField] private List<GameObject> AnimalList = new List<GameObject>( );
+    [SerializeField] private GameObject MainAnimal = null;
 
     private void Start( )
     {
@@ -19,6 +20,21 @@ public class GridBase : MonoBehaviour
         carnivoreList.Clear( );
         herbivoreList.Clear( );
         AnimalList.Clear( );
+    }
+
+    public void AddMainAnimal( GameObject animal )
+    {
+        MainAnimal = animal;
+    }
+
+    public void RemoveMainAnimal( GameObject animal )
+    {
+        MainAnimal = null;
+    }
+
+    public GameObject GetMainAnimal( )
+    {
+        return MainAnimal;
     }
 
     public void AddAnimal( GameObject animal, int animalNum )
@@ -72,9 +88,9 @@ public class GridBase : MonoBehaviour
         return false;
     }
 
-    public bool GetIsCarnTerr( int animalNum )
+    public bool GetIsCarnTerr( )
     {
-        if( carnivoreList.Count > 0 && !carnivoreList.Contains(animalNum))
+        if( carnivoreList.Count > 1 )
         {
             return true;
         }

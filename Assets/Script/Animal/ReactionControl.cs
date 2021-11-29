@@ -29,7 +29,7 @@ public class ReactionControl : MonoBehaviour
         if( isProcessing )
         {
             Debug.Log( "is Processing" );
-            return false;
+            return true;
         }
 
         TargetAnimal = GridParent.GetChild( targetIndex ).GetComponent<GridBase>( ).GetAnimal( );
@@ -42,20 +42,20 @@ public class ReactionControl : MonoBehaviour
         if( TargetAnimal == null )
         {
             Debug.Log( "No Target" );
-            return false;
+            return true;
         }
 
         if(TargetAnimal.GetComponent<AnimalBase>().GetAnimalState() <= (int)AnimalData.ANIMAL_STATE.STARTING_PATROL)
         {
             Debug.Log( "Not Yet Arrive" );
-            return false;
+            return true;
         }
 
         ActiveAnimal = GO;
         isProcessing = true;
 
         Debug.Log( "Request Succeed " + targetIndex );
-        return true;
+        return false;
     }
 
     public void StartHunting( )
