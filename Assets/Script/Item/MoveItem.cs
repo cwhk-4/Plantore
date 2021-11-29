@@ -16,7 +16,7 @@ public class MoveItem : MonoBehaviour
         storage = GameObject.Find( "ItemStorage" ).GetComponent<ItemStorage>( );
     }
 
-    public void StartMoving( float time, GameObject animal )
+    public void StartMoving( float time, GameObject animal, int itemType )
     {
         var index = transform.parent.GetSiblingIndex( );
         Debug.Log( index );
@@ -27,37 +27,18 @@ public class MoveItem : MonoBehaviour
         mousePos = new Vector3( mousePos.x, mousePos.y, 0 );
         Instantiate( itemToBeInstantiate, mousePos, Quaternion.identity );
 
-        switch( name )
+        if( ( itemType != ( int )Define.ITEM.GRASS ) && ( itemType != ( int )Define.ITEM.SMALL_ROCK ) )
         {
-            case "grass(Clone)":
-                GridTerritoryControl.RemoveTerritory( animal, index, ( int )Define.ITEM.GRASS, animalNum );
-                storage.RemoveItem( queueNum, ( int )Define.ITEM.GRASS );
-                break;
-
-            case "wood(Clone)":
-                RemoveExtraGrid( ( int )Define.ITEM.WOOD, index );
-                GridTerritoryControl.RemoveTerritory( animal, index, ( int )Define.ITEM.WOOD, animalNum );
-                storage.RemoveItem( queueNum, ( int )Define.ITEM.WOOD );
-                break;
-
-            case "grassland(Clone)":
-                RemoveExtraGrid( ( int )Define.ITEM.GRASSLAND, index );
-                GridTerritoryControl.RemoveTerritory( animal, index, ( int )Define.ITEM.GRASSLAND, animalNum );
-                storage.RemoveItem( queueNum, ( int )Define.ITEM.GRASSLAND );
-                break;
-
-            case "marsh(Clone)":
-                RemoveExtraGrid( ( int )Define.ITEM.MARSH, index );
-                GridTerritoryControl.RemoveTerritory( animal, index, ( int )Define.ITEM.MARSH, animalNum );
-                storage.RemoveItem( queueNum, ( int )Define.ITEM.MARSH );
-                break;
-
-            case "rock(Clone)":
-                RemoveExtraGrid( ( int )Define.ITEM.ROCK, index );
-                GridTerritoryControl.RemoveTerritory( animal, index, ( int )Define.ITEM.ROCK, animalNum );
-                storage.RemoveItem( queueNum, ( int )Define.ITEM.ROCK );
-                break;
+            RemoveExtraGrid( itemType, index );
         }
+
+        if( animal != null )
+        {
+            GridTerritoryControl.RemoveTerritory( animal, index, itemType, animalNum );
+        }
+
+        storage.RemoveItem( queueNum, itemType );
+        
 
         Destroy( gameObject );
     }

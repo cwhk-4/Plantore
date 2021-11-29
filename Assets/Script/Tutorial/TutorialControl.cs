@@ -18,6 +18,7 @@ public class TutorialControl : MonoBehaviour
     [SerializeField] private TutorialList TutorialList;
     [SerializeField] private GameObject TutorialUI;
     [SerializeField] private GameObject TutorialText;
+    [SerializeField] private GameObject PointerParent;
     [SerializeField] private TMP_Text TextBox;
     [SerializeField] private int TextCount = 0;
     [SerializeField] private string[] TextShown;
@@ -33,8 +34,9 @@ public class TutorialControl : MonoBehaviour
 
     void Start()
     {
-        TextCount = 0;
         StartTutorial( );
+        TextCount = 0;
+        isFinishedAction = false;
 
         Init( );
         SetText( );
@@ -108,6 +110,7 @@ public class TutorialControl : MonoBehaviour
         TimeController.StopTime( );
         TutorialUI.SetActive( true );
         TutorialText.SetActive( true );
+        PointerParent.SetActive( true );
     }
 
     public void StopTutorial()
@@ -116,6 +119,7 @@ public class TutorialControl : MonoBehaviour
         TutorialUI.SetActive( false );
         TutorialText.SetActive( false );
         TutorialEvent.HidePointer( );
+        PointerParent.SetActive( false );
     }
 
     public void LevelUp( )

@@ -113,6 +113,11 @@ public class ItemUIDisplay : MonoBehaviour
             {
                 var remain = ItemData.ITEM_LIMIT[mapLevel - 1, i] - storage.GetNumOfItemPlaced( i );
 
+                if( mapLevel == 4 )
+                {
+                    remain = 99;
+                }
+
                 if( remain == 0 )
                 {
                     Items[i].GetComponent<TMP_Text>( ).text = "";
@@ -121,7 +126,14 @@ public class ItemUIDisplay : MonoBehaviour
                 }
                 else
                 {
-                    Items[i].GetComponent<TMP_Text>( ).text = remain.ToString( );
+                    if( mapLevel == 4 )
+                    {
+                        Items[i].GetComponent<TMP_Text>( ).text = "∞";
+                    }
+                    else
+                    {
+                        Items[i].GetComponent<TMP_Text>( ).text = remain.ToString( );
+                    }
                 }
             }
         }

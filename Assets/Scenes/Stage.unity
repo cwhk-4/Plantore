@@ -1527,6 +1527,7 @@ MonoBehaviour:
   TutorialList: {fileID: 213769473}
   TutorialUI: {fileID: 1160449156}
   TutorialText: {fileID: 217210714}
+  PointerParent: {fileID: 1360070806}
   TextBox: {fileID: 1285377361}
   TextCount: 0
   TextShown: []
@@ -1552,6 +1553,7 @@ MonoBehaviour:
   StageBlock: {fileID: 1891992339}
   UIBlock: {fileID: 1404071044}
   Pointer: {fileID: 1610679340}
+  PointerAnimation: {fileID: 1610679344}
   RightClick: {fileID: 1637290945}
   ZebraBase: {fileID: 0}
   GrassCD: {fileID: 0}
@@ -20529,6 +20531,7 @@ GameObject:
   - component: {fileID: 1610679341}
   - component: {fileID: 1610679343}
   - component: {fileID: 1610679342}
+  - component: {fileID: 1610679344}
   m_Layer: 5
   m_Name: Pointer
   m_TagString: Untagged
@@ -20593,6 +20596,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610679340}
   m_CullTransparentMesh: 0
+--- !u!114 &1610679344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610679340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b63017706ad540c3af8d3fd4d8a9a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RectTransform: {fileID: 1610679341}
+  OriginalVec: {x: 0, y: 0}
+  TargetVec: {x: 0, y: 0}
+  x: 0
+  y: 0
+  dir: 1
+  distance: 15
 --- !u!1 &1628285154
 GameObject:
   m_ObjectHideFlags: 0

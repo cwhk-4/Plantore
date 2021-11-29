@@ -216,11 +216,8 @@ public class MissionControl : MonoBehaviour
     //Lv 3
     public void FoundHerbivore( )
     {
-        if( MapLevel.GetMapLevel( ) == 3 )
-        {
-            MissionNum[6] += 1;
-            CheckMissionsCompletion( );
-        }
+        MissionNum[6] += 1;
+        CheckMissionsCompletion( );
     }
 
     public void HuntingSucceed( )

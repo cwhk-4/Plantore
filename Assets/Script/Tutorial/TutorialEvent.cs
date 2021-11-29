@@ -17,6 +17,7 @@ public class TutorialEvent : MonoBehaviour
     [SerializeField] private Transform StageBlock;
     [SerializeField] private Transform UIBlock;
     [SerializeField] private GameObject Pointer;
+    [SerializeField] private PointerAnimation PointerAnimation;
     [SerializeField] private GameObject RightClick;
 
     [SerializeField] private AnimalBase ZebraBase = null;
@@ -115,7 +116,7 @@ public class TutorialEvent : MonoBehaviour
     private void OpenItemMenu( )
     {
         StageBlock.gameObject.SetActive( true );
-        ItemButton.transform.parent = StageBlock;
+        ItemButton.transform.SetParent( StageBlock );
 
         ShowPointer( Item );
     }
@@ -125,7 +126,7 @@ public class TutorialEvent : MonoBehaviour
         if( TutorialControl.GetTextCount() < 11 )
         {
             StageBlock.gameObject.SetActive( false );
-            ItemButton.transform.parent = MenuParent;
+            ItemButton.transform.SetParent( MenuParent );
             UIBlock.gameObject.SetActive( true );
 
             if( isGrass )
@@ -145,14 +146,14 @@ public class TutorialEvent : MonoBehaviour
 
     private void ClickGrass( )
     {
-        GrassButton.transform.parent = UIBlock;
+        GrassButton.transform.SetParent( UIBlock );
         ShowPointer( Grass );
     }
 
     public void ClickRock( )
     {
-        ItemButton.transform.parent = MenuParent;
-        RockButton.transform.parent = UIBlock;
+        ItemButton.transform.SetParent( MenuParent );
+        RockButton.transform.SetParent( UIBlock );
         ShowPointer( Rock );
     }
 
@@ -163,8 +164,8 @@ public class TutorialEvent : MonoBehaviour
             return;
         }
 
-        GrassButton.transform.parent = ItemParent;
-        RockButton.transform.parent = ItemParent;
+        GrassButton.transform.SetParent( ItemParent );
+        RockButton.transform.SetParent( ItemParent );
 
         isWaitingOnGrid = true;
 
@@ -185,7 +186,7 @@ public class TutorialEvent : MonoBehaviour
 
     public void RockButtonClicked( )
     {
-        RockButton.transform.parent = ItemParent;
+        RockButton.transform.SetParent( ItemParent );
         isWaitingOnGrid = true;
         UIBlock.gameObject.SetActive( false );
         ShowPointer( RightTopGrid );
@@ -193,8 +194,8 @@ public class TutorialEvent : MonoBehaviour
 
     private void ShowPointer( Vector2 toPos )
     {
-        Pointer.GetComponent<RectTransform>( ).anchoredPosition = toPos;
         Pointer.SetActive( true );
+        PointerAnimation.ChangePos( toPos );
     }
 
     public void HidePointer( )
@@ -305,7 +306,7 @@ public class TutorialEvent : MonoBehaviour
     {
         ShowPointer( Mission );
         StageBlock.gameObject.SetActive( true );
-        MissionButton.transform.parent = StageBlock;
+        MissionButton.transform.SetParent( StageBlock );
     }
 
     public void ClickedMission( )
@@ -315,7 +316,8 @@ public class TutorialEvent : MonoBehaviour
             HidePointer( );
             TutorialControl.FinishedThisAction( );
             StageBlock.gameObject.SetActive( false );
-            MissionButton.transform.parent = MenuParent;
+            MissionButton.transform.SetParent( MenuParent );
+
         }
     }
 
@@ -323,7 +325,7 @@ public class TutorialEvent : MonoBehaviour
     {
         ShowPointer( Arrow );
         StageBlock.gameObject.SetActive( true );
-        MapArrow.transform.parent = StageBlock;
+        MapArrow.transform.SetParent( StageBlock );
     }
 
     public void MapArrowClicked( )
@@ -333,7 +335,8 @@ public class TutorialEvent : MonoBehaviour
             HidePointer( );
             TutorialControl.FinishedThisAction( );
             StageBlock.gameObject.SetActive( false );
-            MapArrow.transform.parent = MapControlParent;
+            MapArrow.transform.SetParent( MapControlParent );
+
         }
     }
 }

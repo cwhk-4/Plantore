@@ -121,7 +121,7 @@ public class ItemBase : MonoBehaviour
     public void MoveItem( )
     {
         var GO = transform.parent.GetComponent<GridBase>( ).GetAnimal( );
-        MoveItemScript.StartMoving( CountDown.GetStartTime( ), GO );
+        MoveItemScript.StartMoving( CountDown.GetStartTime( ), GO, itemType );
     }
 
     public void SetOnMouse( )
