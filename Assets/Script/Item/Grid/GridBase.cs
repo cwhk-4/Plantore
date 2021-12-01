@@ -24,11 +24,13 @@ public class GridBase : MonoBehaviour
 
     public void AddMainAnimal( GameObject animal )
     {
+        Debug.Log( "ADDED" );
         MainAnimal = animal;
     }
 
-    public void RemoveMainAnimal( GameObject animal )
+    public void RemoveMainAnimal( )
     {
+        Debug.Log( "Removed" );
         MainAnimal = null;
     }
 

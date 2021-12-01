@@ -470,7 +470,7 @@ public class AnimalBase : MonoBehaviour
     public void Hunted( )
     {
         GridParent.GetChild( _animal.TargetIndex ).GetComponent<GridBase>( ).AnimalDestoryed( _animal.TargetType, _animal.AnimalType, gameObject );
-        GridParent.GetChild( _animal.TargetIndex ).GetComponent<GridBase>( ).RemoveMainAnimal( this.gameObject );
+        GridParent.GetChild( _animal.TargetIndex ).GetComponent<GridBase>( ).RemoveMainAnimal( );
         GridParent.GetChild( _animal.TargetIndex ).GetChild( 0 ).GetComponent<ItemBase>( ).AnimalRemoved( );
         Destroy( gameObject );
     }

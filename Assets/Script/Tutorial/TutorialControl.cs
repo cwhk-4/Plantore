@@ -16,6 +16,7 @@ public class TutorialControl : MonoBehaviour
     [SerializeField] private TimeController TimeController;
     [SerializeField] private TutorialEvent TutorialEvent;
     [SerializeField] private TutorialList TutorialList;
+    [SerializeField] private InstantiateMoveControl IMControl;
     [SerializeField] private GameObject TutorialUI;
     [SerializeField] private GameObject TutorialText;
     [SerializeField] private GameObject PointerParent;
@@ -111,6 +112,7 @@ public class TutorialControl : MonoBehaviour
         TutorialUI.SetActive( true );
         TutorialText.SetActive( true );
         PointerParent.SetActive( true );
+        IMControl.SetIsTutorial( isTutorial );
     }
 
     public void StopTutorial()
@@ -120,6 +122,7 @@ public class TutorialControl : MonoBehaviour
         TutorialText.SetActive( false );
         TutorialEvent.HidePointer( );
         PointerParent.SetActive( false );
+        IMControl.SetIsTutorial( isTutorial );
     }
 
     public void LevelUp( )

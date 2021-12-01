@@ -11,6 +11,7 @@ public class InstantiateMoveControl : MonoBehaviour
 
     [SerializeField] private bool isInstantiating = false;
     [SerializeField] private bool isMoving = false;
+    [SerializeField] private bool isTutorial = false;
 
     [SerializeField] private float startingTime;
     [SerializeField] private int GOItemNum;
@@ -37,13 +38,22 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         if( isInstantiating || isMoving )
         {
-            rubbishBin.gameObject.SetActive( true );
+            if( !isTutorial )
+            {
+                rubbishBin.gameObject.SetActive( true );
+            }
+
             SetUIActive( false );
         }
         else
         {
             rubbishBin.gameObject.SetActive( false );
         }
+    }
+
+    public void SetIsTutorial( bool flag )
+    {
+        isTutorial = flag;
     }
 
     private void SetUIActive( bool flag )
@@ -80,11 +90,12 @@ public class InstantiateMoveControl : MonoBehaviour
         return isInstantiating;
     }
 
-    public void StartMoving( float time, GameObject GO )
+    public void StartMoving( float time, GameObject GO, int GridNum )
     {
         isMoving = true;
 
         movingAnimal = GO;
+        gridInstan.transform.GetChild( GridNum ).GetComponent<GridBase>( ).RemoveMainAnimal( );
 
         startingTime = time;
         TimeController.StopTime( );
@@ -99,7 +110,9 @@ public class InstantiateMoveControl : MonoBehaviour
         GridTerritoryControl.SetTerritory( movingAnimal, targetIndex, GOItemNum, animalNum );
 
         movingAnimal.GetComponent<AnimalBase>( ).EnvironmentMoved( targetIndex );
+        gridInstan.transform.GetChild( targetIndex ).GetComponent<GridBase>( ).AddMainAnimal( movingAnimal );
         movingAnimal = null;
+
 
         TimeController.StartTime( );
         SetUIActive( true );

@@ -98,7 +98,7 @@ public class CountDown : MonoBehaviour
     {
         startingTime = timeController.GetNowSec( );
 
-        var animal = transform.parent.GetComponent<GridBase>( ).GetAnimal( );
+        var animal = transform.parent.GetComponent<GridBase>( ).GetMainAnimal( );
         if( animal != null )
         {
             animal.GetComponent<AnimalBase>( ).ItemFixed( );

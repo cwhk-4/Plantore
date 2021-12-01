@@ -97,6 +97,7 @@ public class MissionControl : MonoBehaviour
             {
                 displayNum = MissionTotalNum[i];
             }
+
             MissionNowNum[i - NowStartingMission].text = displayNum.ToString( );
         }
     }
@@ -223,7 +224,11 @@ public class MissionControl : MonoBehaviour
     public void FoundHerbivore( )
     {
         MissionNum[6] += 1;
-        CheckMissionsCompletion( );
+
+        if( NowMapLevel == 3 )
+        {
+            CheckMissionsCompletion( );
+        }
     }
 
     public void HuntingSucceed( )

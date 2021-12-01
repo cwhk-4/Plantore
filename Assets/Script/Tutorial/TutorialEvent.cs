@@ -87,6 +87,7 @@ public class TutorialEvent : MonoBehaviour
                 TutorialControl.FinishedThisAction( );
                 isWaitingToRepair = false;
                 GrassCD = null;
+                MenuParent.gameObject.SetActive( true );
             }
         }
 
@@ -293,6 +294,7 @@ public class TutorialEvent : MonoBehaviour
     {
         isWaitingtoChangeTool = true;
         ShowRightClick( Vector2.zero );
+        MenuParent.gameObject.SetActive( false );
     }
 
     private void GuideToRepair( )
@@ -300,6 +302,7 @@ public class TutorialEvent : MonoBehaviour
         isWaitingToRepair = true;
         HideRightClick( );
         ShowPointer( LeftBottomGrid );
+        MenuParent.gameObject.SetActive( false );
     }
 
     public void OpenMission( )

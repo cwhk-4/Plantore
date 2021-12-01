@@ -22,7 +22,7 @@ public class MoveItem : MonoBehaviour
         Debug.Log( index );
         var animalNum = animal.GetComponent<AnimalBase>( ).GetAnimalNum( );
 
-        imController.StartMoving( time, animal );
+        imController.StartMoving( time, animal, transform.parent.GetSiblingIndex( ) );
         Vector3 mousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
         mousePos = new Vector3( mousePos.x, mousePos.y, 0 );
         Instantiate( itemToBeInstantiate, mousePos, Quaternion.identity );
@@ -35,11 +35,11 @@ public class MoveItem : MonoBehaviour
         if( animal != null )
         {
             GridTerritoryControl.RemoveTerritory( animal, index, itemType, animalNum );
+            GameObject.FindWithTag( "GridParent" ).transform.GetChild( index ).GetComponent<GridBase>( ).RemoveMainAnimal( );
         }
 
         storage.RemoveItem( queueNum, itemType );
         
-
         Destroy( gameObject );
     }
 
