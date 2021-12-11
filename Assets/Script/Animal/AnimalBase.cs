@@ -291,7 +291,7 @@ public class AnimalBase : MonoBehaviour
             int target = FightingList[0];
 
             //request
-            while( ReactionControl.RequestAction( this.gameObject, target ) )
+            if( ReactionControl.RequestAction( this.gameObject, target ) )
             {
                 //still availble?
                 GameObject targetGO = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimal( );

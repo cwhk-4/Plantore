@@ -4,12 +4,14 @@
     {
         //unit = second
 
-        60/3,     //grass
-        60/3,     //small rock
-        60/3,     //wood
-        180/3,    //grassland
-        180/3,    //marsh
-        300/3,    //rock
+        60,     //grass
+        60,     //small rock
+        120,     //wood
+
+        180,    //grassland
+        180,    //marsh
+        
+        300,    //rock
     };
 
     public static readonly int[,] ITEM_LIMIT =
