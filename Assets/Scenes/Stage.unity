@@ -20615,7 +20615,7 @@ MonoBehaviour:
   TargetVec: {x: 0, y: 0}
   x: 0
   y: 0
-  dir: 1
+  dir: 0.75
   distance: 15
 --- !u!1 &1628285154
 GameObject:
