@@ -221,6 +221,8 @@ public class AnimalBase : MonoBehaviour
         }
         else
         {
+            _animal.State = ( int )AnimalData.ANIMAL_STATE.MAKING_DECISION;
+
             CheckTerritory( );
 
             bool hvTarget = false;

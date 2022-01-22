@@ -20,7 +20,6 @@ public class MoveItem : MonoBehaviour
     {
         var index = transform.parent.GetSiblingIndex( );
         Debug.Log( index );
-        var animalNum = animal.GetComponent<AnimalBase>( ).GetAnimalNum( );
 
         imController.StartMoving( time, animal, transform.parent.GetSiblingIndex( ) );
         Vector3 mousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
@@ -34,6 +33,7 @@ public class MoveItem : MonoBehaviour
 
         if( animal != null )
         {
+            var animalNum = animal.GetComponent<AnimalBase>( ).GetAnimalNum( );
             GridTerritoryControl.RemoveTerritory( animal, index, itemType, animalNum );
             GameObject.FindWithTag( "GridParent" ).transform.GetChild( index ).GetComponent<GridBase>( ).RemoveMainAnimal( );
         }

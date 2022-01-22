@@ -17,16 +17,14 @@ public class ToolConvertion : MonoBehaviour
     {
         if( Input.GetMouseButtonDown( 1 ) )
         {
-            if( !isCan )
-            {
-                Cursor.SetCursor( wateringCan, canHotSpot, CursorMode.ForceSoftware );
-                isCan = true;
-            }
-            else
-            {
-                Cursor.SetCursor( defaultCursor, Vector2.zero, CursorMode.ForceSoftware );
-                isCan = false;
-            }
+            Cursor.SetCursor( wateringCan, canHotSpot, CursorMode.ForceSoftware );
+            isCan = true;
+        }
+
+        if( Input.GetMouseButtonDown( 0 ) )
+        {
+            Cursor.SetCursor( defaultCursor, Vector2.zero, CursorMode.ForceSoftware );
+            isCan = false;
         }
     }
 

@@ -25,6 +25,7 @@ public static class AnimalData
         STARTING_PATROL,
         COOL_DOWN,
         DECIDING,
+        MAKING_DECISION,
         PATROL,
         WAITING_FOR_HUNTING,
         WAITING_FOR_FIGHTING,

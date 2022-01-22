@@ -17,9 +17,9 @@ public class ItemBase : MonoBehaviour
     [SerializeField] private int gridNum;
 
     [SerializeField]private bool isOnMouse;
-    private float clickDelay = 1;
-    private float clickTime;
-    private int click;
+    private float holding = 1;
+    private float holdTime;
+    private bool isLastStateHold;
 
     [SerializeField] private float AnimalLeaveStamp = -1;
     private float AnimalRespawnCD = 3 * 10;
@@ -34,6 +34,7 @@ public class ItemBase : MonoBehaviour
         MoveItemScript = GetComponent<MoveItem>( );
         isOnMouse = false;
         AnimalLeaveStamp = -1;
+        isLastStateHold = false;
     }
 
     public void Init( TimeController timeController, InstantiateMoveControl imController, int itemIndex, int gridIndex )
@@ -44,7 +45,7 @@ public class ItemBase : MonoBehaviour
         gridNum = gridIndex;
     }
 
-    private void Update( )
+    private void FixedUpdate( )
     {
         if( isOnMouse )
         {
@@ -53,40 +54,36 @@ public class ItemBase : MonoBehaviour
                 return;
             }
 
-            if( ToolConvertion.GetIsCan( ) )
+            if( Input.GetMouseButtonDown( 1 ) )
             {
-                if( Input.GetMouseButtonDown( 0 ) )
+                if( CountDown.GetCD( ) <= 0 )
                 {
-                    if( CountDown.GetCD( ) <= 0 )
-                    {
-                        Repair( );
-                    }
-
-                }
-
+                    Repair( );
             }
-            else
+
+            if( Input.GetMouseButton( 0 ) )
             {
-                if( Input.GetMouseButtonUp( 0 ) )
+                if( EventSystem.current.IsPointerOverGameObject( ) )
+                    return;
+
+                if( !isLastStateHold )
                 {
-                    if( EventSystem.current.IsPointerOverGameObject( ) )
-                        return;
-
-                    if( Time.time - clickTime <= clickDelay )
-                    {
-                        click++;
-                    }
-                    else
-                    {
-                        click = 0;
-                        clickTime = Time.time;
-                    }
-
-                    if( click == 2 )
-                    {
-                        MoveItem( );
-                    }
+                    isLastStateHold = true;
                 }
+
+                holdTime += Time.deltaTime;
+                Debug.Log( "OnHold" + holdTime );
+            }
+
+            if( Input.GetMouseButtonUp( 0 ) )
+            {
+                if( holdTime >= holding )
+                {
+                    MoveItem( );
+                }
+
+                isLastStateHold = false;
+                holdTime = 0;
             }
         }
 

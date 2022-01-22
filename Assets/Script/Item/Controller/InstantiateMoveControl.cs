@@ -95,7 +95,8 @@ public class InstantiateMoveControl : MonoBehaviour
         isMoving = true;
 
         movingAnimal = GO;
-        gridInstan.transform.GetChild( GridNum ).GetComponent<GridBase>( ).RemoveMainAnimal( );
+        if( movingAnimal != null )
+            gridInstan.transform.GetChild( GridNum ).GetComponent<GridBase>( ).RemoveMainAnimal( );
 
         startingTime = time;
         TimeController.StopTime( );
@@ -106,11 +107,14 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         isMoving = false;
 
-        var animalNum = movingAnimal.GetComponent<AnimalBase>( ).GetAnimalNum( );
-        GridTerritoryControl.SetTerritory( movingAnimal, targetIndex, GOItemNum, animalNum );
+        if( movingAnimal != null )
+        {
+            var animalNum = movingAnimal.GetComponent<AnimalBase>( ).GetAnimalNum( );
+            GridTerritoryControl.SetTerritory( movingAnimal, targetIndex, GOItemNum, animalNum );
+            movingAnimal.GetComponent<AnimalBase>( ).EnvironmentMoved( targetIndex );
+            gridInstan.transform.GetChild( targetIndex ).GetComponent<GridBase>( ).AddMainAnimal( movingAnimal );
+        }
 
-        movingAnimal.GetComponent<AnimalBase>( ).EnvironmentMoved( targetIndex );
-        gridInstan.transform.GetChild( targetIndex ).GetComponent<GridBase>( ).AddMainAnimal( movingAnimal );
         movingAnimal = null;
 
 
