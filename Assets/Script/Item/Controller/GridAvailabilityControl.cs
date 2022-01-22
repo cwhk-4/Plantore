@@ -37,4 +37,14 @@ public class GridAvailabilityControl : MonoBehaviour
     {
         Grids[index].DisableAvailability( );
     }
+
+    public void ShowArea( int index, int type )
+    {
+        Grids[index].ShowArea( type );
+    }
+
+    public void DisableArea( int index )
+    {
+        Grids[index].DisableAvailability( );
+    }
 }

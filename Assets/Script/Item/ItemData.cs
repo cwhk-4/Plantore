@@ -42,6 +42,10 @@
     public static readonly int[] MARSH_SIZE = { 0, -1, Define.XCOUNT, Define.XCOUNT - 1 };
 
     public static readonly int[] ROCK_SIZE = { 0, -1, Define.XCOUNT, Define.XCOUNT - 1 };
+
+    public static readonly int[][] ITEM_SIZE_ARR = { GRASS_SIZE, WOOD_SIZE, SMALL_ROCK_SIZE,
+                                                     GRASSLAND_SIZE, MARSH_SIZE,
+                                                     ROCK_SIZE};
     #endregion
 
     #region itemTerritory

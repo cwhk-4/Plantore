@@ -86,5 +86,10 @@ public class GridColorControl : MonoBehaviour
         return false;
     }
 
+    public void ShowArea( int type )
+    {
+        var colorShow = type == 0 ? available : territory;
 
+        spriteRenderer.color = colorShow;
+    }
 }

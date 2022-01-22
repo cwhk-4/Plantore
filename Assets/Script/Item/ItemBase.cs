@@ -9,6 +9,7 @@ public class ItemBase : MonoBehaviour
     [SerializeField] private MissionControl MissionControl;
     [SerializeField] private ToolConvertion ToolConvertion;
     [SerializeField] private AnimalInstantiate AnimalInstantiate;
+    [SerializeField] private GridAvailabilityControl GridAvailabilityControl;
 
     private CountDown CountDown;
     private MoveItem MoveItemScript;
@@ -17,6 +18,8 @@ public class ItemBase : MonoBehaviour
     [SerializeField] private int gridNum;
 
     [SerializeField]private bool isOnMouse;
+    private bool isLastStateOnMouse;
+
     private float holding = 1;
     private float holdTime;
     private bool isLastStateHold;
@@ -35,12 +38,14 @@ public class ItemBase : MonoBehaviour
         isOnMouse = false;
         AnimalLeaveStamp = -1;
         isLastStateHold = false;
+        isLastStateOnMouse = false;
     }
 
-    public void Init( TimeController timeController, InstantiateMoveControl imController, int itemIndex, int gridIndex )
+    public void Init( TimeController timeController, InstantiateMoveControl imController, int itemIndex, int gridIndex, GridAvailabilityControl gridAvailabilityControl )
     {
         TimeController = timeController;
         IMController = imController;
+        GridAvailabilityControl = gridAvailabilityControl;
         itemType = itemIndex;
         gridNum = gridIndex;
     }
@@ -53,6 +58,8 @@ public class ItemBase : MonoBehaviour
             {
                 return;
             }
+
+            ShowArea( );
 
             if( Input.GetMouseButtonDown( 1 ) )
             {
@@ -86,7 +93,21 @@ public class ItemBase : MonoBehaviour
                 isLastStateHold = false;
                 holdTime = 0;
             }
+
+            ShowArea( );
+
+            isLastStateOnMouse = true;
         }
+        else
+        {
+            if( isLastStateOnMouse )
+            {
+                ClearArea( );
+            }
+
+            isLastStateOnMouse = false;
+        }
+        
 
         if( AnimalLeaveStamp != -1 )
         {
@@ -142,5 +163,46 @@ public class ItemBase : MonoBehaviour
     public void AnimalRemoved()
     {
         AnimalLeaveStamp = TimeController.GetNowSec( );
+    }
+
+    private void ShowArea( )
+    {
+        for( int i = 0; i < ItemData.TERRITORY_ARR[itemType].Length; i++ )
+        {
+            int index = gridNum + ItemData.TERRITORY_ARR[itemType][i];
+            if( CheckRange( index ) )
+            {
+                if( i < ItemData.ITEM_SIZE_ARR[itemType].Length )
+                {
+                    GridAvailabilityControl.ShowArea( index, 0 );
+                }
+                else
+                {
+                    GridAvailabilityControl.ShowArea( index, 1 );
+                }
+            }
+        }
+    }
+
+    private void ClearArea( )
+    {
+        for( int i = 0; i < ItemData.TERRITORY_ARR[itemType].Length; i++ )
+        {
+            int index = gridNum + ItemData.TERRITORY_ARR[itemType][i];
+            if( CheckRange( index ) )
+            {
+                GridAvailabilityControl.DisableArea( index );
+            }
+        }
+    }
+
+    private bool CheckRange( int index )
+    {
+        if( index >= 0 && index < Define.TOTAL_GRID_NUM )
+        {
+            return true;
+        }
+
+        return false;
     }
 }

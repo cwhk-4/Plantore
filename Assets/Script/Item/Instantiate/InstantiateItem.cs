@@ -8,6 +8,7 @@ public class InstantiateItem : MonoBehaviour
     private AvailabilityControl Availability;
     private TutorialControl TutorialControl;
     private TutorialEvent TutorialEvent;
+    private GridAvailabilityControl GridAvailabilityControl;
 
     [SerializeField]private GameObject ItemToInstantiate;
     private GameObject parentGO;
@@ -22,6 +23,7 @@ public class InstantiateItem : MonoBehaviour
         IMController = GameObject.FindWithTag( "InstantiateMoveControl" ).GetComponent<InstantiateMoveControl>( );
         ItemStorage = GameObject.Find( "ItemStorage" ).GetComponent<ItemStorage>( );
         Availability = GameObject.Find( "AvailabilityController" ).GetComponent<AvailabilityControl>( );
+        GridAvailabilityControl = GameObject.Find( "AvailabilityController" ).GetComponent<GridAvailabilityControl>( );
         TutorialControl = GameObject.FindWithTag( "Tutorial" ).GetComponent<TutorialControl>( );
         TutorialEvent = GameObject.FindWithTag( "Tutorial" ).GetComponent<TutorialEvent>( );
 
@@ -98,7 +100,7 @@ public class InstantiateItem : MonoBehaviour
             var index = parentGO.transform.GetSiblingIndex( );
             //Debug.Log( index );
 
-            item.GetComponent<ItemBase>( ).Init( TimeController, IMController, itemNum, index );
+            item.GetComponent<ItemBase>( ).Init( TimeController, IMController, itemNum, index, GridAvailabilityControl );
 
             ItemStorage.PlaceItem( index, itemNum );
 
