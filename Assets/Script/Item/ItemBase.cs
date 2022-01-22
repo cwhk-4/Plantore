@@ -59,6 +59,7 @@ public class ItemBase : MonoBehaviour
                 if( CountDown.GetCD( ) <= 0 )
                 {
                     Repair( );
+                }
             }
 
             if( Input.GetMouseButton( 0 ) )
