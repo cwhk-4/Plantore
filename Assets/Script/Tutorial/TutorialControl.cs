@@ -95,6 +95,11 @@ public class TutorialControl : MonoBehaviour
         }
     }
 
+    public bool GetIfTutorial( )
+    {
+        return isTutorial;
+    }
+
     public void StartTutorial( )
     {
         if( TextCount == 23 )
@@ -103,7 +108,6 @@ public class TutorialControl : MonoBehaviour
             return;
         }
 
-        Debug.Log( "Called" );
         isTutorial = true;
         isReadText = true;
         isInAction = false;

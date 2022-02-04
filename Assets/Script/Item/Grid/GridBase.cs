@@ -24,13 +24,11 @@ public class GridBase : MonoBehaviour
 
     public void AddMainAnimal( GameObject animal )
     {
-        Debug.Log( "ADDED" );
         MainAnimal = animal;
     }
 
     public void RemoveMainAnimal( )
     {
-        Debug.Log( "Removed" );
         MainAnimal = null;
     }
 
@@ -121,7 +119,6 @@ public class GridBase : MonoBehaviour
 
     public GameObject GetAnimalbyIndex(int index)
     {
-        Debug.Log( index + " " + AnimalList.Count );
         if( index >= AnimalList.Count )
         {
             return null;

@@ -18,6 +18,7 @@ public class InstantiateMoveControl : MonoBehaviour
 
     [SerializeField] private GameObject gridInstan;
     [SerializeField] private int nowGridNum;
+    [SerializeField] private int originalGridNum;
     [SerializeField] private int xCount;
     [SerializeField] private GameObject extraGrid;
 
@@ -32,6 +33,7 @@ public class InstantiateMoveControl : MonoBehaviour
         rubbishBin.gameObject.SetActive( false );
         xCount = Define.XCOUNT;
         movingAnimal = null;
+        originalGridNum = -1;
     }
 
     private void Update( )
@@ -95,6 +97,8 @@ public class InstantiateMoveControl : MonoBehaviour
         isMoving = true;
 
         movingAnimal = GO;
+
+        originalGridNum = GridNum;
         if( movingAnimal != null )
             gridInstan.transform.GetChild( GridNum ).GetComponent<GridBase>( ).RemoveMainAnimal( );
 
@@ -126,6 +130,13 @@ public class InstantiateMoveControl : MonoBehaviour
     {
         isMoving = false;
         isInstantiating = false;
+
+        if( movingAnimal != null )
+        {
+            Destroy( movingAnimal );
+        }
+
+        movingAnimal = null;
 
         TimeController.StartTime( );
         SetUIActive( true );

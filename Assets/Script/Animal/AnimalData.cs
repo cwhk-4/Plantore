@@ -8,6 +8,7 @@ public static class AnimalData
         public int TypeNum { get; set; }
         public int TargetIndex { get; set; }
         public int TargetType { get; set; }
+        public Transform TargetTransform { get; set; }
         public Vector3 TargetPos { get; set; }
         public Vector3 OriginalPos { get; set; }
         public float CDStartingTime { get; set; }

@@ -19,7 +19,6 @@ public class GrassRepairing : MonoBehaviour
 
     private void OnMouseOver( )
     {
-        toolConvertion.SetOnGO( );
         itemCountDown.showGauge( );        
     }
 
@@ -33,7 +32,6 @@ public class GrassRepairing : MonoBehaviour
 
     private void OnMouseExit( )
     {
-        toolConvertion.SetExitGO( );
         itemCountDown.closeGauge( );
     }
 }

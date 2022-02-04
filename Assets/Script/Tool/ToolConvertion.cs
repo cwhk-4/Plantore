@@ -6,7 +6,6 @@ public class ToolConvertion : MonoBehaviour
     public Texture2D wateringCan;
     public Vector2 canHotSpot = Vector2.zero;
     private bool isCan = false;
-    private bool isOnGO = false;
 
     void Start()
     {
@@ -31,16 +30,6 @@ public class ToolConvertion : MonoBehaviour
     public bool GetIsCan( )
     {
         return isCan;
-    }
-
-    public void SetOnGO( )
-    {
-        isOnGO = true;
-    }
-
-    public void SetExitGO()
-    {
-        isOnGO = false;
     }
 
     public void ResetCan( )

@@ -26,7 +26,6 @@ public class PointerAnimation : MonoBehaviour
 
     public void ChangePos( Vector2 newPos )
     {
-        Debug.Log( newPos + " / " + OriginalVec );
         if( newPos == OriginalVec )
         {
             return;

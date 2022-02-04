@@ -80,7 +80,6 @@ public class ItemBase : MonoBehaviour
                 }
 
                 holdTime += Time.deltaTime;
-                Debug.Log( "OnHold" + holdTime );
             }
 
             if( Input.GetMouseButtonUp( 0 ) )
@@ -139,20 +138,18 @@ public class ItemBase : MonoBehaviour
 
     public void MoveItem( )
     {
-        var GO = transform.parent.GetComponent<GridBase>( ).GetAnimal( );
+        var GO = transform.parent.GetComponent<GridBase>( ).GetMainAnimal( );
         MoveItemScript.StartMoving( CountDown.GetStartTime( ), GO, itemType );
     }
 
     public void SetOnMouse( )
     {
         isOnMouse = true;
-        ToolConvertion.SetOnGO( );
     }
 
     public void SetExitMouse( )
     {
         isOnMouse = false;
-        ToolConvertion.SetExitGO( );
     }
 
     public int GetIndex( )
@@ -165,7 +162,7 @@ public class ItemBase : MonoBehaviour
         AnimalLeaveStamp = TimeController.GetNowSec( );
     }
 
-    private void ShowArea( )
+    public void ShowArea( )
     {
         for( int i = 0; i < ItemData.TERRITORY_ARR[itemType].Length; i++ )
         {
@@ -184,7 +181,7 @@ public class ItemBase : MonoBehaviour
         }
     }
 
-    private void ClearArea( )
+    public void ClearArea( )
     {
         for( int i = 0; i < ItemData.TERRITORY_ARR[itemType].Length; i++ )
         {

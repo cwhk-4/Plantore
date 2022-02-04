@@ -14,7 +14,7 @@ public class PopUpTransparencyAnimation : MonoBehaviour
     private RectTransform[] rawImageRect;
     private RectTransform[] ImageRect;
 
-    [SerializeField] private float animationSpeed = 10f;
+    //[SerializeField] private float animationSpeed = 10f;
 
     private bool isOpen = false;
     private bool isMoving = false;

@@ -114,7 +114,6 @@ public class InstantiateItem : MonoBehaviour
                 item.GetComponent<CountDown>( ).SetCD( ItemData.ItemTime[itemNum] );
                 var timeDelayed = TimeController.GetNowSec( ) - thisStartingTime;
                 item.GetComponent<CountDown>( ).SetStartingTime( IMController.GetStartingTime( ) + timeDelayed );
-                Debug.Log( timeDelayed );
             }
             else
             {

@@ -28,6 +28,8 @@ public class AnimalBase : MonoBehaviour
         _animal.TargetType = target_type;
 
         GridParent = grid_parent;
+
+        _animal.TargetTransform = null;
         _animal.TargetPos = GridParent.GetChild( target_index ).position;
 
         AnimalParent = animal_parent;
@@ -88,6 +90,8 @@ public class AnimalBase : MonoBehaviour
             {
                 _animal.TypeNum = i;
 
+                Debug.Log( gameObject.name + " " + _animal.TypeNum );
+
                 HuntingList.Clear( );
                 FightingList.Clear( );
 
@@ -118,6 +122,11 @@ public class AnimalBase : MonoBehaviour
     private void FixedUpdate( )
     {
         int Period = TimeController.GetNowPeriod( );
+
+        if( _animal.TargetTransform != null )
+        {
+            _animal.TargetPos = _animal.TargetTransform.position;
+        }
 
         switch(_animal.State)
         {
@@ -154,43 +163,56 @@ public class AnimalBase : MonoBehaviour
                 break;
 
             case ( int )AnimalData.ANIMAL_STATE.PATROL:
+                ChangeDir( );
                 this.transform.position = Vector3.MoveTowards( this.transform.position, _animal.TargetPos, Time.deltaTime * _animal.Speed );
                 if( this.transform.position == _animal.TargetPos )
                 {
+                    _animal.TargetTransform = null;
                     _animal.CDStartingTime = TimeController.GetNowSec( );
                     _animal.State = ( int )AnimalData.ANIMAL_STATE.COOL_DOWN;
                 }
                 break;
 
             case ( int )AnimalData.ANIMAL_STATE.WAITING_FOR_HUNTING:
+                ChangeDir( );
                 this.transform.position = Vector3.MoveTowards( this.transform.position, _animal.TargetPos, Time.deltaTime * _animal.Speed );
 
                 if( this.transform.position == _animal.TargetPos )
                 {
+                    _animal.TargetTransform = null;
                     _animal.State = ( int )AnimalData.ANIMAL_STATE.HUNTING;
                 }
 
                 break;
 
             case ( int )AnimalData.ANIMAL_STATE.WAITING_FOR_FIGHTING:
+                ChangeDir( );
                 this.transform.position = Vector3.MoveTowards( this.transform.position, _animal.TargetPos, Time.deltaTime * _animal.Speed );
 
                 if( this.transform.position == _animal.TargetPos )
                 {
+                    _animal.TargetTransform = null;
                     _animal.State = ( int )AnimalData.ANIMAL_STATE.FIGHTING;
                 }
 
                 break;
 
             case ( int )AnimalData.ANIMAL_STATE.HUNTING:
-                ReactionControl.StartHunting( );
+                if( !ReactionControl.StartHunting( ) )
+                {
+                    _animal.State = ( int )AnimalData.ANIMAL_STATE.DECIDING;
+                }
                 break;
 
             case ( int )AnimalData.ANIMAL_STATE.FIGHTING:
-                ReactionControl.StartFighting( );
+                if( !ReactionControl.StartFighting( ) )
+                {
+                    _animal.State = ( int )AnimalData.ANIMAL_STATE.DECIDING;
+                }
                 break;
 
             case ( int )AnimalData.ANIMAL_STATE.REST:
+                ChangeDir( );
                 if( this.transform.position != _animal.TargetPos )
                 {
                     this.transform.position = Vector3.MoveTowards( this.transform.position, _animal.TargetPos, Time.deltaTime * _animal.Speed );
@@ -207,6 +229,8 @@ public class AnimalBase : MonoBehaviour
 
     private void MakeDecision( int period )
     {
+         _animal.State = ( int )AnimalData.ANIMAL_STATE.MAKING_DECISION;
+
         if( !_animal.IsActionable[period] )
         {
             _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
@@ -221,8 +245,6 @@ public class AnimalBase : MonoBehaviour
         }
         else
         {
-            _animal.State = ( int )AnimalData.ANIMAL_STATE.MAKING_DECISION;
-
             CheckTerritory( );
 
             bool hvTarget = false;
@@ -295,34 +317,8 @@ public class AnimalBase : MonoBehaviour
             //request
             if( ReactionControl.RequestAction( this.gameObject, target ) )
             {
-                //still availble?
-                GameObject targetGO = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimal( );
-
-                //target get is self?
-                if( targetGO == this.gameObject )
-                {
-                    targetGO = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimalbyIndex( 1 );
-                }
-
-                //still alive?
-                if( targetGO == null )
-                {
-                    //not available then reset and return
-                    _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
-                    _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
-                    ChangeDir( );
-                    return;
-                }
-
-                //on item?
-                if( targetGO.GetComponent<AnimalBase>( ).GetAnimalState( ) <= ( int )AnimalData.ANIMAL_STATE.STARTING_PATROL )
-                {
-                    _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
-                    _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
-                    ChangeDir( );
-                    return;
-                }
-
+                RandomTarget( );
+                return;
             }
 
             GameObject targetAnimal = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimal( );
@@ -334,21 +330,18 @@ public class AnimalBase : MonoBehaviour
 
             if( targetAnimal == null )
             {
-                _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
-                _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
-                ChangeDir( );
+                RandomTarget( );
                 return;
             }
 
             if( targetAnimal.GetComponent<AnimalBase>( ).GetAnimalState( ) <= ( int )AnimalData.ANIMAL_STATE.STARTING_PATROL )
             {
-                _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
-                _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
-                ChangeDir( );
+                RandomTarget( );
                 return;
             }
 
             _animal.TargetPos = targetAnimal.transform.position;
+            _animal.TargetTransform = targetAnimal.transform;
 
             _animal.State = ( int )AnimalData.ANIMAL_STATE.WAITING_FOR_FIGHTING;
 
@@ -363,33 +356,11 @@ public class AnimalBase : MonoBehaviour
             var target = HuntingList[0];
 
             //request
-            while( ReactionControl.RequestAction( this.gameObject, target ) )
+            if( ReactionControl.RequestAction( this.gameObject, target ) )
             {
-                //check still availble?
-                GameObject targetGO = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimal( );
-
-                if( targetGO == this.gameObject )
-                {
-                    targetGO = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimalbyIndex( 1 );
-                }
-
-                if( targetGO == null )
-                {
-                    //not available then reset and return
-                    _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
-                    _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
-                    ChangeDir( );
-                    return;
-                }
-
-                if( targetGO.GetComponent<AnimalBase>( ).GetAnimalState( ) <= ( int )AnimalData.ANIMAL_STATE.STARTING_PATROL )
-                {
-                    _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
-                    _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
-                    ChangeDir( );
-                    return;
-                }
-
+                //failed
+                RandomTarget( );
+                return;
             }
 
             GameObject targetAnimal = GridParent.GetChild( target ).GetComponent<GridBase>( ).GetAnimal( );
@@ -401,21 +372,19 @@ public class AnimalBase : MonoBehaviour
 
             if( targetAnimal == null )
             {
-                _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
-                _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
-                ChangeDir( );
+                RandomTarget( );
                 return;
             }
 
             if( targetAnimal.GetComponent<AnimalBase>( ).GetAnimalState( ) <= ( int )AnimalData.ANIMAL_STATE.STARTING_PATROL )
             {
-                _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
-                _animal.State = ( int )AnimalData.ANIMAL_STATE.PATROL;
-                ChangeDir( );
+                RandomTarget( );
                 return;
             }
 
             _animal.TargetPos = targetAnimal.transform.position;
+            _animal.TargetTransform = targetAnimal.transform;
+
             _animal.State = ( int )AnimalData.ANIMAL_STATE.WAITING_FOR_HUNTING;
             ChangeDir( );
 
@@ -513,7 +482,6 @@ public class AnimalBase : MonoBehaviour
         int rand = RandomTerritory( );
         int target = _animal.TargetIndex + _animal.Territory[rand];
 
-        Debug.Log( target );
         _animal.TargetPos = GridParent.GetChild( target ).position;
         ChangeDir( );
 

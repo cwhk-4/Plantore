@@ -24,11 +24,8 @@ public class ReactionControl : MonoBehaviour
 
     public bool RequestAction( GameObject GO, int targetIndex)
     {
-        Debug.Log( "Requesting " + targetIndex );
-
         if( isProcessing )
         {
-            Debug.Log( "is Processing" );
             return true;
         }
 
@@ -41,25 +38,27 @@ public class ReactionControl : MonoBehaviour
 
         if( TargetAnimal == null )
         {
-            Debug.Log( "No Target" );
             return true;
         }
 
         if(TargetAnimal.GetComponent<AnimalBase>().GetAnimalState() <= (int)AnimalData.ANIMAL_STATE.STARTING_PATROL)
         {
-            Debug.Log( "Not Yet Arrive" );
             return true;
         }
 
         ActiveAnimal = GO;
         isProcessing = true;
 
-        Debug.Log( "Request Succeed " + targetIndex );
         return false;
     }
 
-    public void StartHunting( )
+    public bool StartHunting( )
     {
+        if( TargetAnimal == null || ActiveAnimal == null )
+        {
+            return false;
+        }
+
         int ActiveType = ActiveAnimal.GetComponent<AnimalBase>( ).GetTypeNum( );
         int TargetType = TargetAnimal.GetComponent<AnimalBase>( ).GetTypeNum( );
 
@@ -77,10 +76,17 @@ public class ReactionControl : MonoBehaviour
         }
 
         isProcessing = false;
+
+        return true;
     }
 
-    public void StartFighting( )
+    public bool StartFighting( )
     {
+        if( TargetAnimal == null || ActiveAnimal == null)
+        {
+            return false;
+        }
+
         int ActiveType = ActiveAnimal.GetComponent<AnimalBase>( ).GetTypeNum( );
         int TargetType = TargetAnimal.GetComponent<AnimalBase>( ).GetTypeNum( );
 
@@ -98,6 +104,8 @@ public class ReactionControl : MonoBehaviour
         }
 
         isProcessing = false;
+
+        return true;
     }
 
 }

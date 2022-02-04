@@ -22,8 +22,6 @@ public class ItemMovementTest : MonoBehaviour
 
     private void OnMouseOver( )
     {
-        toolConvertion.SetOnGO( );
-
         if( !toolConvertion.GetIsCan( ) )
         {
             if( Input.GetMouseButtonDown( 1 ) )
