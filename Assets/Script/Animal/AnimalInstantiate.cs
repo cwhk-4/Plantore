@@ -20,6 +20,7 @@ public class AnimalInstantiate : MonoBehaviour
 
     [SerializeField] private GameObject animalGO = null;
 
+    //環境を置いたら→動物を呼ぶ
     public GameObject ItemCreated(int item_type, int index)
     {
         nowItemType = item_type;

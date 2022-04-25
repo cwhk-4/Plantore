@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+//動物間の処理
 public class ReactionControl : MonoBehaviour
 {
     [SerializeField] private Transform GridParent;

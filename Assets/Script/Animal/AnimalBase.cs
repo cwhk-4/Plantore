@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+//動物ベース
 public class AnimalBase : MonoBehaviour
 {
     private AnimalData.AnimalBase _animal = new AnimalData.AnimalBase( );
@@ -128,6 +129,7 @@ public class AnimalBase : MonoBehaviour
             _animal.TargetPos = _animal.TargetTransform.position;
         }
 
+        //状態→行動
         switch(_animal.State)
         {
             case ( int )AnimalData.ANIMAL_STATE.LEAVE_ITEM:
@@ -231,6 +233,7 @@ public class AnimalBase : MonoBehaviour
     {
          _animal.State = ( int )AnimalData.ANIMAL_STATE.MAKING_DECISION;
 
+        //行動できる時間帯かを判断
         if( !_animal.IsActionable[period] )
         {
             _animal.TargetPos = GridParent.GetChild( _animal.TargetIndex ).position;
@@ -239,6 +242,7 @@ public class AnimalBase : MonoBehaviour
             return;
         }
 
+        //肉食動物か草食動物か
         if( !_animal.IsCarnivore )
         {
             RandomTarget( );
@@ -278,6 +282,7 @@ public class AnimalBase : MonoBehaviour
         }
     }
 
+    //肉食動物→縄張りに他の動物があるか
     private void CheckTerritory( )
     {
         FightingList.Clear( );
@@ -394,9 +399,10 @@ public class AnimalBase : MonoBehaviour
 
     }
 
-    //finish action and go back to patrol mode
+    //行動が終わって、パトロールに戻る
     public void BackToPatrol( bool isSuccess )
     {
+        //行動が成功したか
         if( isSuccess )
         {
             if( _animal.State == ( int )AnimalData.ANIMAL_STATE.FIGHTING )
@@ -449,7 +455,7 @@ public class AnimalBase : MonoBehaviour
     #endregion
 
     #region ItemRelatedAction
-    //back to original pos immediately
+    //環境が時間切れ、動物が環境から離れる
     public void ItemTimedOut( )
     {
         _animal.TargetPos = _animal.OriginalPos;
@@ -531,7 +537,7 @@ public class AnimalBase : MonoBehaviour
     }
     #endregion
 
-    #region Cheating
+    #region debugging
     public void CallImmediatelyFromStartingCD( )
     {
         _animal.CDStartingTime = TimeController.GetNowSec( );
