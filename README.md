@@ -1,9 +1,15 @@
 # Plantore
 
-学研ホールディングスとの企業プロジェクト
+学研ホールディングスとの企業プロジェクト「楽しみながら学べるゲーム制作」を行いました。
 
-「楽しみながら学べるゲーム制作」を行いました。
+----
 
+ビルドデータ：https://drive.google.com/file/d/1CBmHvPR3DM33Xwy6Aai1crG6BThnKR1I/view?usp=sharing
+
+font assetは100mbを超えたため、githubにアップロードできません
+もしunityでプロジェクトを見たい場合は、unitypackageを開いて、テキストに入れて見てください
+
+----
 
 動物とその動物が住む環境を最適化するとクリアできるゲームです。
 
@@ -12,9 +18,3 @@
 そのミッションは草や木などのアイテムをユーザーが配置や整理する必要があるもので、クリアすると新しいアイテムや新しい動物が増えます。
 
 ミッションをクリアしながら、全部のアイテムと動物を発見しましたらゲームクリアです。
-
-
-ビルドデータ：https://drive.google.com/file/d/1CBmHvPR3DM33Xwy6Aai1crG6BThnKR1I/view?usp=sharing
-
-font assetは100mbを超えたため、githubにアップロードできません
-もしunityでプロジェクトを見たい場合は、unitypackageを開いて、テキストに入れて見てください
